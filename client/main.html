@@ -1,0 +1,774 @@
+<head>
+    <title>Austrian Higher School of Ladies | Saint-Petersburg</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+</head>
+<body>
+
+</body>
+
+
+<template name="mainLayout">
+
+<div class="wrap">
+
+    <header class="main">
+        
+        <div class="container">
+
+            <div class="social">
+                <a data-aura-html-href="common.vkLink" href="http://vk.com"><i class="fa fa-vk"></i></a>
+                <a data-aura-html-href="common.facebookLink" href="http://facebook.com"><i class="fa fa-facebook"></i></a>
+                <a data-aura-html-href="common.twitterLink" href="http://twitter.com"><i class="fa fa-twitter"></i></a>
+                <a data-aura-html-href="common.instagramLink" href="http://instagram.com"><i class="fa fa-instagram"></i></a>
+            </div>
+
+            <a href="/"><img src="/img/main_logo.jpg" alt="Austrian Higher School of Ladies"/></a>
+
+            <div class="contacts-top">
+                <span data-aura-html="common.phoneMain">(812) 984-30-88</span>
+                <span data-aura-html="common.emailInfo">info@sisi-elizabeth.com</span>
+            </div>
+
+            <nav>
+                <a href="/">Школа</a><span>|</span>
+                <a href="/direction">Направления</a><span>|</span>
+                <a href="">События</a><span>|</span>
+                <a href="">Расписание</a><span>|</span>
+                <a href="/gallery">Галерея</a><span>|</span>
+                <a href="/blog">Блог</a><span>|</span>
+                <a href="/contacts">Контакты</a>
+            </nav>
+            
+        </div>
+
+    </header>
+
+    <section class="slider">
+
+        <div class="container">
+
+            <div id="top-slider" class="aura-slider carousel slide" data-plugin="slider">
+
+                <div class="arrows">
+                    <button data-slide="prev" href="#top-slider" class="carousel-control left"></button>
+                    <button data-slide="next" href="#top-slider" class="carousel-control right"></button>
+                </div>
+
+                <ul class="slider-cont carousel-inner">
+                    <li data-aura-media-background="slider.$.2.img" class="item active" style="background-image: url(/img/slider_1.jpg);" data-stellar-background-ratio=".8">
+                        <p data-aura-html="slider.$.2.desc">Школа основана под патронажем австрийской императрицы Sisi Elizabeth в 1867 году</p>
+                    </li>
+                    <li data-aura-media-background="slider.$.3.img" class="item" style="background-image: url(/img/slider_2.jpg);" data-stellar-background-ratio=".8">
+                        <p data-aura-html="slider.$.3.desc">Увлекательные дисциплины для настоящих леди</p>
+                    </li>
+                    <li data-aura-media-background="slider.$.4.img" class="item" style="background-image: url(/img/slider_3.jpg);" data-stellar-background-ratio=".8">
+                        <p data-aura-html="slider.$.4.desc">Звездные преподователи, признанные специалисты в своих областях</p>
+                    </li>
+                    <li data-aura-media-background="slider.$.5.img" class="item" style="background-image: url(/img/slider_4.jpg);" data-stellar-background-ratio=".8">
+                        <p data-aura-html="slider.$.5.desc">Международная программа</p>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <hr/>
+
+    <section class="directions">
+        
+        <div class="container">
+
+            <h2>Направления:</h2>
+
+            <div class="row">
+                <div class="direction" data-aura-with="directions.$.kids">
+                    <div class="img" style="background-image: url(/img/slider_2.jpg)"></div>
+                    <h3><span>Детская</span><span>ГРУППА</span></h3>
+                    <p>Группа для самых маленьких принцесс</p>
+                </div>
+                <div class="direction" data-aura-with="directions.$.teens">
+                    <div class="img" style="background-image: url(/img/slider_3.jpg)"></div>
+                    <h3><span>Школьная</span><span>ГРУППА</span></h3>
+                    <p>Группа для самых маленьких принцесс</p>
+                </div>
+                <div class="direction" data-aura-with="directions.$.lateTeens">
+                    <div class="img" style="background-image: url(/img/slider_4.jpg)"></div>
+                    <h3><span>Подростковая</span><span>ГРУППА</span></h3>
+                    <p>Группа для самых маленьких принцесс</p>
+                </div>
+                <div class="direction" data-aura-with="directions.$.grownUps">
+                    <div class="img" style="background-image: url(/img/slider_1.jpg)"></div>
+                    <h3><span>Взрослая</span><span>ГРУППА</span></h3>
+                    <p>Группа для самых маленьких принцесс</p>
+                </div>
+            </div>
+            
+        </div>
+
+    </section>
+
+    <hr/>
+
+    
+    <section class="about">
+        
+        <div class="container">
+
+            <h2 data-aura-html="index.header1">О школе:</h2>
+
+            <div class="row">
+                <article  data-aura-html="indexPage.MainDesc">
+                    <p class="quot">
+                        Австрийская Высшая Школа Леди была основана  в 1867 году под патронажем Австрийской императрицы Сиси Элизабет
+                    </p>
+                    <p>
+                        Школа специализируется на обучении и профессиональной подготовке девушек из высшего общества по передовым международным образовательным программам в области искусства, дизайна, этикета и другим, необходимым для каждой леди, прикладным предметам.
+                        Австрийская Высшая Школа Леди в  г. Санкт-Петербург является одним из важнейших образовательных центров России для девушек, специализирующаяся на профессиональном образовании в сфере творческих и гуманитарных дисциплин.
+                    </p>
+                    <p> В основе развития данного образовательного центра лежит тесная партнерская связь с творческими и культурными нововведениями международного сообщества. По окончании института лишь шесть лучших выпускниц (подростковой группы)  получат  «шифр» - золотой вензель в виде инициала императрицы  Сиси Елизабет, и примут участие в выпускном бале в качестве  дебютанток в Венском Ховбурге.</p>
+                    <p>Уникальное преимущество Австрийской Высшей Школы Леди  заключается в возможности получения высшего образования для  девушек в России в соответствии со строжайшими международными стандартами. Эту возможность предоставляют учебные программы, аккредитованные  Quality Assurance Agency - независимым агентством по контролю качества высшего образования. Основной принцип заключается в том, что курсы австрийского образования, предлагаемые в России, проводятся, в большинстве своем, иностранными профессионалами в своей сфере. </p>
+                </article>
+                <div class="news">
+                    <h2 data-aura-html="index.header2">Новости:</h2>
+                    <div data-aura-list="news" data-aura-limit="3">
+                        <div class="item">
+                            <p class="date">22.05.2014</p>
+                            <img src="/img/news.jpg" alt="новость"/>
+                            <h4>Новость очень крутая</h4>
+                        </div>
+                        <div class="item">
+                            <p class="date">22.05.2014</p>
+                            <img src="/img/news.jpg" alt="новость"/>
+                            <h4>Новость очень крутая</h4>
+                        </div>
+                        <div class="item">
+                            <p class="date">22.05.2014</p>
+                            <img src="/img/news.jpg" alt="новость"/>
+                            <h4>Новость очень крутая</h4>
+                        </div>
+                    </div>
+                    <a href="/news">все новости</a>
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </section>
+
+    <hr/>
+
+
+    <section class="events">
+
+        <h2 data-aura-html="index.header3">Ближайшие события</h2>
+
+        <div class="container">
+            
+            <div class="arrows small">
+
+                <button data-slide="prev" href="#events-carousel" class="carousel-control left"></button>
+                <button data-slide="next" href="#events-carousel" class="carousel-control right"></button>
+            </div>
+
+            <div id="events-carousel" class="carousel slide">
+
+                <div class="carousel-inner">
+
+                    <div class="item active">
+
+                        <div class="row">
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+
+                        <div class="row">
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+
+                        <div class="row">
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                            <div class="event">
+                                <div style="background-image: url(/img/event.jpg)">
+                                    <p>22.01.2015</p>
+                                </div>
+                                <h4>
+                                    Очень крутое событие в школе не пропустите!
+                                </h4>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <hr/>
+    
+    
+    <section class="schedule">
+
+        <h2 data-aura-html="index.header4">Расписание</h2>
+
+        <div id="main-calendar" class="calendar-cont"></div>
+
+        <!--<div class="container group-change-cont">-->
+            <!--<div class="row">-->
+                <!--<div>-->
+                    <!--<button class="lead _active" data-group="children">Детская группа</button>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<button class="lead" data-group="teens" data-time="teens_day teens_evening">Подростковая группа</button>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<button class="lead" data-group="lateTeens">Взрослая группа</button>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<button class="lead" data-group="grownUps">Еще группа</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="container group-time">-->
+            <!--<div class="chckbx _active">-->
+                <!--<div></div>-->
+                <!--<p>Дневная группа</p>-->
+            <!--</div>-->
+
+            <!--<div class="chckbx">-->
+                <!--<div></div>-->
+                <!--<p>Вечерняя группа</p>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="container">-->
+
+            <!--<div class="calendar-controls">-->
+                <!--<p>-->
+                    <!--<span>2014</span>-->
+                    <!--<span>октябрь</span>-->
+                <!--</p>-->
+                <!--<div class="arrows small">-->
+
+                    <!--<button></button>-->
+                    <!--<button></button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <!---->
+        <!--<div id="main-calendar" class="container">-->
+            <!---->
+            <!--<div class="calendar">-->
+
+                <!--<div class="header">-->
+
+                    <!--<div>Время</div>-->
+                    <!--<div>ПН</div>-->
+                    <!--<div>ВТ</div>-->
+                    <!--<div>СР</div>-->
+                    <!--<div>ЧТ</div>-->
+                    <!--<div>ПТ</div>-->
+                    <!--<div>СБ</div>-->
+                    <!--<div>ВС</div>-->
+
+                <!--</div>-->
+
+                <!--<div class="body">-->
+
+                    <!--<aside>-->
+                        <!--<div>-->
+                            <!--<div>17:00</div>-->
+                            <!--<div>17:45</div>-->
+                            <!--<div>18:40</div>-->
+                        <!--</div>-->
+                        <!--<div>-->
+                            <!--<div>17:00</div>-->
+                            <!--<div>17:45</div>-->
+                            <!--<div>18:40</div>-->
+                        <!--</div>-->
+                        <!--<div>-->
+                            <!--<div>17:00</div>-->
+                            <!--<div>17:45</div>-->
+                            <!--<div>18:40</div>-->
+                        <!--</div>-->
+                        <!--<div>-->
+                            <!--<div>17:00</div>-->
+                            <!--<div>17:45</div>-->
+                            <!--<div>18:40</div>-->
+                        <!--</div>-->
+                        <!--<div>-->
+                            <!--<div>17:00</div>-->
+                            <!--<div>17:45</div>-->
+                            <!--<div>18:40</div>-->
+                        <!--</div>-->
+                    <!--</aside>-->
+                    <!--<div class="output">-->
+                        <!--<div class="calendar-row">-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="calendar-row">-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="calendar-row">-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="calendar-row">-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="calendar-row">-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                                <!--<div></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<div><p>Стилистика</p></div>-->
+                                <!--<div><p>Дефиле</p></div>-->
+                                <!--<div><p>Актерское мастерство</p></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
+            <!--</div>-->
+            <!---->
+        <!--</div>-->
+        
+    </section>
+
+    <hr/>
+    
+    <section class="partners">
+
+        <h2 data-aura-html="index.header5">Партнеры</h2>
+
+        <div class="container">
+
+            <div class="arrows small">
+
+                <button data-slide="prev" href="#partners-carousel" class="carousel-control left"></button>
+                <button data-slide="next" href="#partners-carousel" class="carousel-control right"></button>
+            </div>
+
+            <div id="partners-carousel" class="carousel slide">
+
+                <div class="carousel-inner">
+
+                    <div class="item active">
+
+                        <div class="row">
+
+                            <div class="partner">
+                                <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
+                                    <a href="">
+                                        <img src="/img/partner1.jpg" alt=""/>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="partner">
+                                <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
+                                    <a href="">
+                                        <img src="/img/partner2.jpg" alt=""/>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="partner">
+                                <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
+                                    <a href="">
+                                        <img src="/img/partner3.jpg" alt=""/>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="partner">
+                                <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
+                                    <a href="">
+                                        <img src="/img/partner4.jpg" alt=""/>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+
+                        <div class="row">
+
+                            <div class="partner">
+                                <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
+                                    <a href="">
+                                        <img src="/img/partner1.jpg" alt=""/>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="partner">
+                                <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
+                                    <a href="">
+                                        <img src="/img/partner1.jpg" alt=""/>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+        
+    </section>
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row links">
+
+                <div>
+                    <a href="">ссылочка</a>
+                    <a href="">ссылочка</a>
+                    <a href="">ссылочка</a>
+                    <a href="">ссылочка</a>
+                </div>
+                <div>
+                    <a href="">ссылочка</a>
+                    <a href="">ссылочка</a>
+                    <a href="">ссылочка</a>
+                </div>
+                <div>
+                    <a href="">ссылочка</a>
+                    <a href="">ссылочка</a>
+                    <a href="">ссылочка</a>
+                    <a href="">ссылочка</a>
+                </div>
+                <div>
+                    <a href="">ссылочка</a>
+                    <a href="">ссылочка</a>
+                    <a href="">ссылочка</a>
+                </div>
+
+            </div>
+
+            <div class="bottom-info">
+
+                    <p class="disclaimer"><span><strong>2012-2014</strong> Austrian Higher School of Ladies. </span> Все права защищены.</p>
+
+                    <div class="contacts-footer">
+                        <span data-aura-html="common.phoneMain">(812) 984-30-88</span>
+                        <span data-aura-html="common.emailInfo">info@sisi-elizabeth.com</span>
+                    </div>
+
+                    <div class="social huge">
+                        <a href="http://vk.com"><i class="fa fa-vk"></i></a>
+                        <a href="http://facebook.com"><i class="fa fa-facebook"></i></a>
+                        <a href="http://twitter.com"><i class="fa fa-twitter"></i></a>
+                        <a href="http://instagram.com"><i class="fa fa-instagram"></i></a>
+                    </div>
+
+            </div>
+
+        </div>
+        
+        
+    </footer>
+
+
+</div>
+
+
+</template>

@@ -1,0 +1,17 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+iron:router
+less
+underscore
+coffeescript
+accounts-password
+miguelvalverde:font-awesome-4.1.0
+jeeeyul:moment-with-langs
+noorderstorm:stellar
+jquery-waypoints
+andruschka:scroll-to-fixed
+

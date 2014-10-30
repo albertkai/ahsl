@@ -1,0 +1,67 @@
+#blog{
+
+  background: url(/img/rockywall.png);
+
+  >.container{
+
+    >.row{
+
+      aside{
+        position: relative;
+        top: 50px;
+        .make-md-column(4);
+        ul{
+          li{
+            position: relative;
+            width: 100%;
+            >div{
+              position: absolute;
+              border-top: 8px solid transparent;
+              border-bottom: 8px solid transparent;
+              border-left: 8px solid @brand-primary;
+              right: -8px;
+              top: 50%;
+              margin-top: -8px;
+              opacity: 0;
+            }
+            &.active{
+              border: 1px solid @brand-primary;
+              background: white;
+              div{
+                opacity: 1;
+              }
+            }
+          }
+          width: 100%;
+        }
+      }
+
+      .blog-cont{
+
+        .make-md-column(8);
+
+        article{
+          padding: 10px;
+          margin: 10px 0;
+          border: 1px solid @gray-darker;
+          min-height: 500px;
+          background: white;
+          img{
+            width: 100%;
+          }
+          h3{
+            color: @brand-primary;
+          }
+          &.active{
+            border: 1px solid @brand-primary;
+            
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+}
