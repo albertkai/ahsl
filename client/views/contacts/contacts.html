@@ -2,6 +2,11 @@
 
     <section id="contacts" class="wrap">
 
+        <div class="loading-map">
+            {{>spinner}}
+
+        </div>
+
         <div id="map">
         </div>
 
@@ -10,18 +15,18 @@
             <div class="container">
                 <div class="row">
                     <div>
-                        <h4><i class="fa fa-phone"></i> Телефон:</h4>
-                        <p>(812) 343-34-34</p>
-                        <p>(812) 876-31-31</p>
+                        <h4><i class="fa fa-phone"></i> <span data-aura-html="contacts.phoneHeader" contenteditable="false">{{{contacts.phoneHeader}}}</span></h4>
+                        <p data-aura-html="common.phoneMain" contenteditable="false">{{{common.phoneMain}}}</p>
+                        <p data-aura-html="common.phoneSecond" contenteditable="false">{{{common.phoneSecond}}}</p>
                     </div>
                     <div>
-                        <h4><i class="fa fa-envelope"></i> E-mail:</h4>
-                        <p>ladiesschool@me.com - <span>менеджер</span></p>
-                        <p>ladiesschool@me.com - <span>для записи</span></p>
+                        <h4><i class="fa fa-envelope"></i> <span data-aura-html="contacts.emailHeader" contenteditable="false">{{{contacts.emailHeader}}}</span></h4>
+                        <p data-aura-html="contacts.emailMain" contenteditable="false">{{{contacts.emailMain}}}</p>
+                        <p data-aura-html="contacts.emailSecondary" contenteditable="false">{{{contacts.emailSecondary}}}</p>
                     </div>
                     <div>
-                        <h4><i class="fa fa-map-marker"></i> Адрес:</h4>
-                        <p>Санкт-Петербург, Суворовский пр. 34, Austrian Higher School of Ladies</p>
+                        <h4><i class="fa fa-map-marker"></i> <span data-aura-html="contacts.addressHeader" contenteditable="false">{{{contacts.addressHeader}}}</span></h4>
+                        <p data-aura-html="common.address" contenteditable="false">{{{common.address}}}</p>
                     </div>
                 </div>
             </div>
@@ -32,9 +37,9 @@
 
             <div class="container">
 
-                <p>По всем вопросам звоните:</p>
-                <h2>(812) 345-45-45</h2>
-                <p>Либо оставьте нам заявку, и мы свяжемся с вами в ближайшее время:</p>
+                <p data-aura-html="contacts.allQuestions" contenteditable="false">{{{contacts.allQuestions}}}</p>
+                <h2 data-aura-html="common.phoneMain" contenteditable="false">{{{common.phoneMain}}}</h2>
+                <p data-aura-html="contacts.weWillContactU" contenteditable="false">{{{contacts.weWillContactU}}}</p>
                 <button class="lead">Записаться</button>
 
             </div>

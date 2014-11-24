@@ -6,12 +6,25 @@
 meteor-platform
 iron:router
 less
-underscore
 coffeescript
-accounts-password
 miguelvalverde:font-awesome-4.1.0
 jeeeyul:moment-with-langs
 noorderstorm:stellar
 jquery-waypoints
 andruschka:scroll-to-fixed
+sacha:spin
+alanning:roles
+accounts-password
+kidovate:pnotify
+aura:core
+meteorhacks:npm
+
+
+npm-container
+natestrauser:select2
+mandrill:ace
+mrt:nprogress
+linto:jquery-ui
+underscore
+mrt:jquery-masonry
 

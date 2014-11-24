@@ -38,6 +38,7 @@ Template.contacts.rendered = ->
   map  = new google.maps.Map(document.getElementById('map'), mapOptions)
   google.maps.event.addListener map, 'tilesloaded', ->
     $('#map').addClass '_loaded'
+    $('.loading-map').css 'display', 'none'
 
 
   styles = [

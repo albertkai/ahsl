@@ -4,13 +4,36 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/img/favicon.ico">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
+
+{{>aura}}
+
+<div class="modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">22.04.2014</h4>
+            </div>
+            <div class="modal-body">
+                {{#with getCurrentNew}}
+                {{>currentNew}}
+                {{/with}}
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 </body>
 
 
 <template name="mainLayout">
+
 
 <div class="wrap">
 
@@ -19,27 +42,38 @@
         <div class="container">
 
             <div class="social">
-                <a data-aura-html-href="common.vkLink" href="http://vk.com"><i class="fa fa-vk"></i></a>
-                <a data-aura-html-href="common.facebookLink" href="http://facebook.com"><i class="fa fa-facebook"></i></a>
-                <a data-aura-html-href="common.twitterLink" href="http://twitter.com"><i class="fa fa-twitter"></i></a>
-                <a data-aura-html-href="common.instagramLink" href="http://instagram.com"><i class="fa fa-instagram"></i></a>
+                <a href="{{common.vkLink}}"><i class="fa fa-vk"></i></a>
+                <a href="{{common.facebookLink}}"><i class="fa fa-facebook"></i></a>
+                <a href="{{common.twitterLink}}"><i class="fa fa-twitter"></i></a>
+                <a href="{{common.instagramLink}}"><i class="fa fa-instagram"></i></a>
             </div>
 
-            <a href="/"><img src="/img/main_logo.jpg" alt="Austrian Higher School of Ladies"/></a>
+            <a id="main-logo" href="/"><img src="/img/main_logo.png" alt="Austrian Higher School of Ladies"/></a>
 
             <div class="contacts-top">
-                <span data-aura-html="common.phoneMain">(812) 984-30-88</span>
-                <span data-aura-html="common.emailInfo">info@sisi-elizabeth.com</span>
+                <span data-aura-html="common.phoneMain" contenteditable="false">{{common.phoneMain}}</span>
+                <span data-aura-html="common.emailMain" contenteditable="false">{{common.emailMain}}</span>
             </div>
 
             <nav>
-                <a href="/">Школа</a><span>|</span>
-                <a href="/direction">Направления</a><span>|</span>
-                <a href="">События</a><span>|</span>
-                <a href="">Расписание</a><span>|</span>
-                <a href="/gallery">Галерея</a><span>|</span>
-                <a href="/blog">Блог</a><span>|</span>
-                <a href="/contacts">Контакты</a>
+                <ul>
+                    <li><a href="/">Школа</a></li><span>|</span>
+                    <li>
+                        <a>Направления</a>
+                        <ul>
+                            <li><a href="/children">Детская группа</a></li>
+                            <li><a href="/teens">Школьная группа</a></li>
+                            <li><a href="/lateteens">Подростковая группа</a></li>
+                            <li><a href="/grownups">Взрослая группа</a></li>
+                        </ul>
+                    </li><span>|</span>
+                    <li><a href="/events" class="disabled">События</a></li><span>|</span>
+                    <li><a href="/schedule">Расписание</a></li><span>|</span>
+                    <li><a href="/gallery" class="disabled">Галерея</a></li><span>|</span>
+                    <li><a href="/blog" class="disabled">Блог</a></li><span>|</span>
+                    <li><a href="/contacts">Контакты</a></li>
+                </ul>
+
             </nav>
             
         </div>
@@ -57,19 +91,21 @@
                     <button data-slide="next" href="#top-slider" class="carousel-control right"></button>
                 </div>
 
-                <ul class="slider-cont carousel-inner">
-                    <li data-aura-media-background="slider.$.2.img" class="item active" style="background-image: url(/img/slider_1.jpg);" data-stellar-background-ratio=".8">
-                        <p data-aura-html="slider.$.2.desc">Школа основана под патронажем австрийской императрицы Sisi Elizabeth в 1867 году</p>
+                <ul class="slider-cont carousel-inner" data-aura-list="index.slider">
+                    {{#each index.slider}}
+                    <li data-aura-list-item data-aura-list-image-background="pic" class="item" style="background-image: url({{storagePath}}/images/{{pic}});" data-stellar-background-ratio=".8">
+                        <p data-aura-list-html="desc" contenteditable="false">{{{desc}}}</p>
                     </li>
-                    <li data-aura-media-background="slider.$.3.img" class="item" style="background-image: url(/img/slider_2.jpg);" data-stellar-background-ratio=".8">
-                        <p data-aura-html="slider.$.3.desc">Увлекательные дисциплины для настоящих леди</p>
-                    </li>
-                    <li data-aura-media-background="slider.$.4.img" class="item" style="background-image: url(/img/slider_3.jpg);" data-stellar-background-ratio=".8">
-                        <p data-aura-html="slider.$.4.desc">Звездные преподователи, признанные специалисты в своих областях</p>
-                    </li>
-                    <li data-aura-media-background="slider.$.5.img" class="item" style="background-image: url(/img/slider_4.jpg);" data-stellar-background-ratio=".8">
-                        <p data-aura-html="slider.$.5.desc">Международная программа</p>
-                    </li>
+                    {{/each}}
+                    <!--<li data-aura-media-background="slider.$.3.img" class="item" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/slider_2.jpg);" data-stellar-background-ratio=".8">-->
+                        <!--<p data-aura-item-html="slider.$.3.desc"><span>Увлекательные дисциплины для настоящих леди:</span> <span>этикет, иностранные языки, актерское мастерство, уроки высокой кухня и многое другое</span></p>-->
+                    <!--</li>-->
+                    <!--<li data-aura-media-background="slider.$.4.img" class="item" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/slider_3.jpg);" data-stellar-background-ratio=".8">-->
+                        <!--<p data-aura-html="slider.$.4.desc"><span>25 ноября</span> <span>при поддержке нашей школы пройдет мастер-класс Ирины Хакамада "Мастер общения. Успех без затрат"</span></p>-->
+                    <!--</li>-->
+                    <!--<li data-aura-media-background="slider.$.5.img" class="item" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/slider_4.jpg);" data-stellar-background-ratio=".8">-->
+                        <!--<p data-aura-html="slider.$.5.desc"><span>Международная программа:</span> <span>этикет с графиней Marie De Tilly, современное искусство с педагогами Sotheby's, актерское мастерство с Paul Brown</span></p>-->
+                    <!--</li>-->
                 </ul>
 
             </div>
@@ -84,31 +120,31 @@
         
         <div class="container">
 
-            <h2>Направления:</h2>
+            <h2 data-aura-html="index.header2" contenteditable="false">{{index.header2}}</h2>
 
             <div class="row">
-                <div class="direction" data-aura-with="directions.$.kids">
-                    <div class="img" style="background-image: url(/img/slider_2.jpg)"></div>
-                    <h3><span>Детская</span><span>ГРУППА</span></h3>
-                    <p>Группа для самых маленьких принцесс</p>
+                <div class="direction" data-aura-with="directions.$.kids" data-target="children">
+                    <div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{children.mainPic}})"></div>
+                    <h3>{{{children.heading}}}</h3>
+                    <p data-aura-html="children.indexDesc" contenteditable="false">{{{children.indexDesc}}}</p>
                 </div>
-                <div class="direction" data-aura-with="directions.$.teens">
-                    <div class="img" style="background-image: url(/img/slider_3.jpg)"></div>
-                    <h3><span>Школьная</span><span>ГРУППА</span></h3>
-                    <p>Группа для самых маленьких принцесс</p>
+                <div class="direction" data-aura-with="directions.$.teens" data-target="teens">
+                    <div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{teens.mainPic}})"></div>
+                    <h3>{{{teens.heading}}}</h3>
+                    <p data-aura-html="teens.indexDesc" contenteditable="false">{{{teens.indexDesc}}}</p>
                 </div>
-                <div class="direction" data-aura-with="directions.$.lateTeens">
-                    <div class="img" style="background-image: url(/img/slider_4.jpg)"></div>
-                    <h3><span>Подростковая</span><span>ГРУППА</span></h3>
-                    <p>Группа для самых маленьких принцесс</p>
+                <div class="direction" data-aura-with="directions.$.lateTeens" data-target="lateteens">
+                    <div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{lateTeens.mainPic}})"></div>
+                    <h3>{{{lateTeens.heading}}}</h3>
+                    <p data-aura-html="lateTeens.indexDesc" contenteditable="false">{{{lateTeens.indexDesc}}}</p>
                 </div>
-                <div class="direction" data-aura-with="directions.$.grownUps">
-                    <div class="img" style="background-image: url(/img/slider_1.jpg)"></div>
-                    <h3><span>Взрослая</span><span>ГРУППА</span></h3>
-                    <p>Группа для самых маленьких принцесс</p>
+                <div class="direction" data-aura-with="directions.$.grownUps" data-target="grownups">
+                    <div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{grownUps.mainPic}})"></div>
+                    <h3>{{{grownUps.heading}}}</h3>
+                    <p data-aura-html="grownUps.indexDesc" contenteditable="false">{{{grownUps.indexDesc}}}</p>
                 </div>
             </div>
-            
+
         </div>
 
     </section>
@@ -120,38 +156,24 @@
         
         <div class="container">
 
-            <h2 data-aura-html="index.header1">О школе:</h2>
 
             <div class="row">
-                <article  data-aura-html="indexPage.MainDesc">
-                    <p class="quot">
-                        Австрийская Высшая Школа Леди была основана  в 1867 году под патронажем Австрийской императрицы Сиси Элизабет
-                    </p>
-                    <p>
-                        Школа специализируется на обучении и профессиональной подготовке девушек из высшего общества по передовым международным образовательным программам в области искусства, дизайна, этикета и другим, необходимым для каждой леди, прикладным предметам.
-                        Австрийская Высшая Школа Леди в  г. Санкт-Петербург является одним из важнейших образовательных центров России для девушек, специализирующаяся на профессиональном образовании в сфере творческих и гуманитарных дисциплин.
-                    </p>
-                    <p> В основе развития данного образовательного центра лежит тесная партнерская связь с творческими и культурными нововведениями международного сообщества. По окончании института лишь шесть лучших выпускниц (подростковой группы)  получат  «шифр» - золотой вензель в виде инициала императрицы  Сиси Елизабет, и примут участие в выпускном бале в качестве  дебютанток в Венском Ховбурге.</p>
-                    <p>Уникальное преимущество Австрийской Высшей Школы Леди  заключается в возможности получения высшего образования для  девушек в России в соответствии со строжайшими международными стандартами. Эту возможность предоставляют учебные программы, аккредитованные  Quality Assurance Agency - независимым агентством по контролю качества высшего образования. Основной принцип заключается в том, что курсы австрийского образования, предлагаемые в России, проводятся, в большинстве своем, иностранными профессионалами в своей сфере. </p>
+                <article  data-aura-html="index.mainDesc" contenteditable="false">
+                    <h2 data-aura-html="index.header1" contenteditable="false">{{index.header1}}</h2>
+
+                    {{{index.mainDesc}}}
+
                 </article>
                 <div class="news">
-                    <h2 data-aura-html="index.header2">Новости:</h2>
+                    <h2 data-aura-html="index.header6" contenteditable="false">{{index.header6}}</h2>
                     <div data-aura-list="news" data-aura-limit="3">
+                        {{#each news.news}}
                         <div class="item">
-                            <p class="date">22.05.2014</p>
-                            <img src="/img/news.jpg" alt="новость"/>
-                            <h4>Новость очень крутая</h4>
+                            <p class="date">{{date}}</p>
+                            <img src="{{storagePath}}/images/{{pic}}" alt="новость"/>
+                            <h4>{{title}}</h4>
                         </div>
-                        <div class="item">
-                            <p class="date">22.05.2014</p>
-                            <img src="/img/news.jpg" alt="новость"/>
-                            <h4>Новость очень крутая</h4>
-                        </div>
-                        <div class="item">
-                            <p class="date">22.05.2014</p>
-                            <img src="/img/news.jpg" alt="новость"/>
-                            <h4>Новость очень крутая</h4>
-                        </div>
+                        {{/each}}
                     </div>
                     <a href="/news">все новости</a>
                 </div>
@@ -167,7 +189,7 @@
 
     <section class="events">
 
-        <h2 data-aura-html="index.header3">Ближайшие события</h2>
+        <h2 data-aura-html="index.header3" contenteditable="false">{{index.header3}}</h2>
 
         <div class="container">
             
@@ -185,129 +207,18 @@
 
                         <div class="row">
 
+                            {{#each eventsList.events}}
+
                             <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
+                                <div style="background-image: url({{storagePath}}/images/{{pic}})">
+                                    <p>{{date}}</p>
                                 </div>
                                 <h4>
-                                    Очень крутое событие в школе не пропустите!
+                                    {{{title}}}
                                 </h4>
                             </div>
 
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
-
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
-
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="item">
-
-                        <div class="row">
-
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
-
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
-
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
-
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="item">
-
-                        <div class="row">
-
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
-
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
-
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
-
-                            <div class="event">
-                                <div style="background-image: url(/img/event.jpg)">
-                                    <p>22.01.2015</p>
-                                </div>
-                                <h4>
-                                    Очень крутое событие в школе не пропустите!
-                                </h4>
-                            </div>
+                            {{/each}}
 
                         </div>
 
@@ -328,7 +239,9 @@
     
     <section class="schedule">
 
-        <h2 data-aura-html="index.header4">Расписание</h2>
+        <h2 data-aura-html="index.header4" contenteditable="false">{{index.header4}}</h2>
+
+        {{>mandrill_ace}}
 
         <div id="main-calendar" class="calendar-cont"></div>
 
@@ -623,7 +536,7 @@
     
     <section class="partners">
 
-        <h2 data-aura-html="index.header5">Партнеры</h2>
+        <h2 data-aura-html="index.header5" contenteditable="false">{{index.header5}}</h2>
 
         <div class="container">
 
@@ -746,11 +659,11 @@
 
             <div class="bottom-info">
 
-                    <p class="disclaimer"><span><strong>2012-2014</strong> Austrian Higher School of Ladies. </span> Все права защищены.</p>
+                    <p class="disclaimer" data-aura-html="common.footerDesc" contenteditable="false">{{{common.footerDesc}}}</p>
 
                     <div class="contacts-footer">
-                        <span data-aura-html="common.phoneMain">(812) 984-30-88</span>
-                        <span data-aura-html="common.emailInfo">info@sisi-elizabeth.com</span>
+                        <span data-aura-html="common.phoneMain" contenteditable="false">{{common.phoneMain}}</span>
+                        <span data-aura-html="common.emailMain" contenteditable="false">{{common.emailMain}}</span>
                     </div>
 
                     <div class="social huge">

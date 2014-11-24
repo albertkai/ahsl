@@ -1,0 +1,341 @@
+@widget-color: rgba(0, 0, 0, .85);
+@widget-font-color: white;
+@white_t: rgba(255, 255, 255, .2);
+
+@brand-color: #5300cc;
+
+.admin-modal{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1000;
+  background: rgba(255, 255, 255, .7);
+}
+
+#admin-login-modal{
+  width: 328px;
+  height: 328px;
+  background: white;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -164px;
+  margin-top: -164px;
+  z-index: 9999;
+  background: @widget-color;
+  .transition(.8s);
+  -webkit-animation-duration: .7s;
+  -moz-animation-duration: .7s;
+  animation-duration: .7s;
+  visibility: hidden;
+  .rounded(10px);
+  img{
+    width: 60%;
+    margin: 4% 20%;
+  }
+  .close{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 33px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, .5);
+    border: 2px solid white;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    color: white;
+    opacity: 1;
+    &:hover{
+      background: rgba(255, 0, 0, .8);
+    }
+  }
+  .header{
+    .aura-company-logo{
+      width: 90px;
+      height: 89px;
+      background-repeat: no-repeat;
+      background-image: url(/img/logo.png);
+      margin: 30px auto 20px auto;
+    }
+  }
+  .body{
+    width: 92%;
+    height: 92%;
+    margin-top: -6%;
+    margin-left: 4%;
+    .rounded(7px);
+    padding: 15px;
+    input[type="text"]:focus, input[type="password"]:focus{
+      border-color: #bff5ff;
+      box-shadow: 0 0 5px cyan, inset 0 0 5px cyan;
+    }
+    form{
+      button{
+        width: 50%;
+        float: right;
+        height: 35px;
+        .rounded(30px);
+        margin-top: 10px;
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+        .transition(.4s);
+        &:hover{
+          color: #bff5ff;
+          text-shadow: 0 0 3px cyan;
+          border-color: #bff5ff;
+          box-shadow: 0 0 5px cyan, inset 0 0 5px cyan;
+        }
+      }
+    }
+  }
+  .footer{
+    position: absolute;
+    width: 100%;
+    top: 300px;
+    p{
+      color: rgba(255, 255, 255, .7);
+      text-align: center;
+      letter-spacing: 1.8em;
+      font-size: 11px;
+      span{
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.admin-panel{
+  height: 100%;
+  width: 300px;
+  background: @widget-color;
+  z-index: 9999;
+  position: fixed;
+  right: -300px;
+  top: 0;
+  .transition(.4s, cubic-bezier(0.915, 0.000, 0.205, 0.895));
+  &:hover{
+    right: 0;
+  }
+  #toggle-admin-panel{
+    position: absolute;
+    width: 80px;
+    height: 75px;
+    top: 70px;
+    left: -80px;
+    color: @widget-font-color;
+    background: @widget-color;
+    text-align: center;
+    line-height: 70px;
+    .border-radius(0, 0, 100px, 100px);
+    cursor: pointer;
+    .aura-logo{
+      height: 70px;
+      width: 70px;
+      background-image: url(/img/aura_logo.png);
+      -webkit-background-size: cover;
+      background-size: cover;
+      margin-top: 2px;
+      margin-left: 5px;
+    }
+  }
+  .aura-admin-button{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: left;
+    color: white;
+    padding: 15px 20px;
+    border-top: 1px solid @white_t;
+    font-weight: 100;
+    .transition(.4s);
+    &:hover{
+      background: @brand-color;
+      i{
+        color: white;
+      }
+    }
+    >div{
+      position: absolute;
+      top: 0;
+      height: 100%;
+      &:nth-child(1){
+        width: 15%;
+        left: 0;
+        text-align: center;
+      }
+      &:nth-child(2){
+        width: 70%;
+        left: 15%;
+      }
+      &:nth-child(3){
+        width: 15%;
+        left: 85%;
+        text-align: center;
+      }
+    }
+    P{
+      margin: 0;
+    }
+    i{
+      color: @brand-color;
+      font-size: 18px;
+      .transition(.4s);
+    }
+  }
+  .aura-admin-list{
+    background: black;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: white;
+    li{
+      padding: 10px 10px 10px 45px;
+      font-weight: 200;
+      border-top: 1px solid rgba(255, 255, 255, .15);
+    }
+  }
+  .wrap{
+    height: 100%;
+    overflow: scroll;
+    .header{
+      .user-pic{
+        width: 160px;
+        height: 160px;
+        .rounded(100px);
+        border: 2px solid @widget-font-color;
+        margin: 30px auto;
+        background-image: url(/img/user_icon.png);
+        -webkit-background-size: cover;
+        background-size: cover;
+      }
+      h2, h3{
+        color: @widget-font-color;
+        font-family: Helvetica Neue, Helvetica, Arial;
+        text-align: center;
+        margin: 0;
+        font-size: 21px;
+      }
+      h3{
+        font-weight: 100;
+      }
+      h2{
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      .logout{
+        display: block;
+        color: #0066ff;
+        text-align: center;
+        margin: 10px 0;
+        font-size: 16px;
+        font-weight: 100;
+      }
+      hr{
+        border-top: 1px solid @white_t;
+        margin: 30px 30px;
+      }
+    }
+    .body{
+      overflow-y: scroll;
+      .switcher{
+        width: 200px;
+        height: 50px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        border: 2px solid #cccccc;
+        margin: 10px auto;
+      }
+      a{
+        display: block;
+        margin: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      hr{
+        border-top: 1px solid rgba(255, 255, 255, .15);
+        margin: 30px 40px;
+      }
+      #history-cont{
+        li{
+          position: relative;
+          height: 65px;
+          padding: 0;
+          >div{
+            position: absolute;
+            height: 100%;
+            top: 0;
+            &:nth-child(1){
+              width: 80%;
+              left: 0;
+              padding-left: 20px;
+              padding-top: 5px;
+              p{
+                font-size: 14px;
+                span{
+                  &:nth-child(1){
+                    color: @brand-color;
+                  }
+                  &:nth-child(2){
+                    float: right;
+                  }
+                }
+              }
+            }
+            &:nth-child(2){
+              width: 20%;
+              left: 80%;
+              font-size: 22px;
+              line-height: 65px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.aura-toggle-edit{
+  position: relative;
+  width: 200px;
+  height: 34px;
+  text-align: center;
+  border-radius: 20px;
+  line-height: 25px;
+  font-size: 20px;
+  border: 2px solid white;
+  color: white;
+  cursor: pointer;
+  .transition(.4s);
+  margin: 20px auto 40px auto;
+  >div{
+    width: 26px;
+    height: 26px;
+    border: 2px solid white;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border-radius: 20px;
+  }
+  &._active{
+    border-color: #bff5ff;
+    box-shadow: 0 0 5px cyan, inset 0 0 5px cyan;
+    color: #bff5ff;
+    text-shadow: 0 0 5px cyan;
+    >div{
+      border-color: #bff5ff;
+      box-shadow: 0 0 5px cyan, inset 0 0 5px cyan;
+      left: 168px;
+      .transition(.4s);
+    }
+  }
+  input[type="checkbox"]{
+    display: none;
+  }
+}

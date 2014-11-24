@@ -1,0 +1,153 @@
+<template name="auraAdminPanel">
+    <div class="admin-panel">
+
+        <div id="toggle-admin-panel">
+
+            <div class="aura-logo"></div>
+
+        </div>
+        <div class="wrap">
+            <div class="header">
+
+                <p class="aura-company-logo">aura <span>cms</span></p>
+
+                <div class="user-pic" style="background-image: url(http://d22dq06nm2ti3w.cloudfront.net/aura/{{currentUser.profile.pic}})"></div>
+
+                <h3>{{currentUser.profile.name}}</h3>
+                <h2>{{currentUser.profile.surname}}</h2>
+
+                <a class="logout">выйти</a>
+            </div>
+            <div class="body">
+                <div class="aura-toggle-edit">
+                    <p>просмотр</p>
+                    <div></div>
+                </div>
+                <button class="aura-admin-button">
+                    <div>
+                        <i class="fa fa-plus"></i>
+                    </div>
+                    <div>
+                        <p>Добавить</p>
+                    </div>
+                    <div>
+                       <i class="fa fa-caret-down"></i>
+                    </div>
+                </button>
+                <ul class="aura-admin-list">
+                    <li>новость</li>
+                    <li>событие</li>
+                    <li>запись в блоге</li>
+                </ul>
+                <button class="aura-admin-button">
+                    <div><i class="fa fa-th"></i></div>
+                    <div><p>Структура</p></div>
+                    <div></div>
+                </button>
+                <button class="aura-admin-button">
+                    <div>
+                        <i class="fa fa-gears"></i>
+                    </div>
+                    <div><p>Настройки</p></div>
+                    <div></div>
+                </button>
+                <button id="toggle-users" class="aura-admin-button">
+                    <div>
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div>
+                        <p>Пользователи</p>
+                    </div>
+                    <div></div>
+                </button>
+                <button class="aura-admin-button">
+                    <div>
+                        <i class="fa fa-plug"></i>
+                    </div>
+                    <div>
+                        <p>Компоненты</p>
+                    </div>
+                    <div><i class="fa fa-caret-down"></i></div>
+                </button>
+                <ul class="aura-admin-list">
+                    <li>галерея</li>
+                    <li>блог</li>
+                    <li>слайдер</li>
+                    <li>новости</li>
+                    <li>события</li>
+                </ul>
+                <button class="aura-admin-button">
+                    <div><i class="fa fa-history"></i></div>
+                    <div>
+                        <p>История</p>
+                    </div>
+                    <div><i class="fa fa-caret-down"></i></div>
+                </button>
+                <ul id="history-cont" class="aura-admin-list">
+                    <!--{{#each history}}-->
+                    <!--<li data-id="{{_id}}" data-selector-path="{{selectorPath}}" class="{{#if rolledBack}}rolled-back{{/if}}">-->
+                        <!--<h5>{{getDate date}}</h5>-->
+                        <!--<p>{{collection}}>{{document}}>{{field}}</p>-->
+                    <!--</li>-->
+                    <!--{{/each}}-->
+                    <li>
+                        <div>
+                            <p><span>22.03.2014</span> <span>Ксюша Бастрыкина</span></p>
+                            <p>MainPage -> index -> header</p>
+                        </div>
+                        <div>
+                            <div>
+                                <i class="fa fa-undo"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p><span>22.03.2014</span> <span>Ксюша Бастрыкина</span></p>
+                            <p>MainPage -> index -> header</p>
+                        </div>
+                        <div>
+                            <div>
+                                <i class="fa fa-undo"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p><span>22.03.2014</span> <span>Ксюша Бастрыкина</span></p>
+                            <p>Страницы -> Главная -> Заголовок1</p>
+                        </div>
+                        <div>
+                            <div>
+                                <i class="fa fa-undo"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p><span>22.03.2014</span> <span>Ксюша Бастрыкина</span></p>
+                            <p>MainPage -> index -> header</p>
+                        </div>
+                        <div>
+                            <div>
+                                <i class="fa fa-undo"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <p><span>22.03.2014</span> <span>Ксюша Бастрыкина</span></p>
+                            <p>MainPage -> index -> header</p>
+                        </div>
+                        <div>
+                            <div>
+                                <i class="fa fa-undo"></i>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</template>

@@ -1,0 +1,16 @@
+<template name="aura">
+
+    {{>auraLoginModal}}
+
+    {{#if isInRole 'admin' 'owner'}}
+
+        {{>auraAdminPanel}}
+
+        {{>auraEditor}}
+        {{>auraModal}}
+        {{>auraUsersModal}}
+
+    {{/if}}
+
+
+</template>

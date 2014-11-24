@@ -1,0 +1,1 @@
+@AuraGallery = new Mongo.Collection 'auraGallery'

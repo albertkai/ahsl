@@ -1,14 +1,13 @@
-<template name="direction">
+<template name="children">
 
     <section id="direction" class="wrap">
 
-        <section class="top" style="background-image: url(/img/direction_bg.jpg)" data-stellar-background-ratio=".7">
+        <section class="top" data-aura-image-background="children.mainPic" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{children.mainPic}})" data-stellar-background-ratio=".7">
 
             <div class="container">
 
-                <h1>
-                    <span>Детская</span>
-                    <span>группа</span>
+                <h1 data-aura-html="children.heading" contenteditable="false">
+                    {{{children.heading}}}
                 </h1>
 
             </div>
@@ -21,14 +20,13 @@
 
                 <div class="row">
 
-                    <div>
-                        <p>	Как представиться. Как поприветствовать. Как попрощаться. В столовом этикете малыши будут изучать роль каждого столового прибора. И учиться пить чай по книгам Льюиса Кэролла. Основные темы – столовый этикет и этикет общения. Программа этикета и хороших манер поможет развить устойчивые поведенческие навыки, которые позволят в дальнейшем чувствовать себя уверенно в любой ситуации, связанной с  общением.</p>
-                        <p> История костюма изучается по сказкам, по полотнам известных художников. Стили и стилевые направления для маленьких леди открываются через бренды, создающие коллекции для детей – от Dior до Dolce & Gabbana! </p>
+                    <div data-aura-html="children.mainDesc" contenteditable="false">
+                        {{{children.mainDesc}}}
                     </div>
                     <aside>
                         <span class="quots">“</span>
                         <span class="quots">“</span>
-                        <p>Австрийская Высшая Школа Леди в  г. Санкт-Петербург является одним из важнейших образовательных центров России для девочек  и девушек</p>
+                        <p data-aura-html="children.mainQuot" contenteditable="false">{{{children.mainQuot}}}</p>
 
                     </aside>
 
@@ -42,62 +40,36 @@
 
         <section class="classes-header">
 
-            <h2>Предметы</h2>
+            <h2 data-aura-html="children.classesHeader" contenteditable="false">{{{children.classesHeader}}}</h2>
 
             <div class="container">
 
-                <div class="row">
+                <div class="row" data-aura-list="children.classes">
 
-                    <div>
-                        <button class="lead _active">
-                            <div>
-                                <p>Стилистика</p>
-                            </div>
-                        </button>
-                    </div>
-                    <div>
+                    {{#each children.classes}}
+
+                    <div data-aura-list-item>
                         <button class="lead">
                             <div>
-                                <p>Английский язык</p>
+                                <p data-aura-list-html="name">{{{name}}}</p>
                             </div>
-                        </button>
-                    </div>
-                    <div>
-                        <button class="lead">
-                            <div>
-                                <p>Красота и здоровье</p>
-                            </div>
-                        </button>
-                    </div>
-                    <div>
-                        <button class="lead">
-                            <div>
-                                <p>Верховая езда</p>
-                            </div>
+                            {{#if isInRole 'admin' 'owner'}}
+                            <span class="remove" data-aura-list-remove><i class="fa fa-times"></i></span>
+                            {{/if}}
                         </button>
                     </div>
 
+                    {{/each}}
+
+                    {{#if isInRole 'admin' 'owner'}}
                     <div>
-                        <button class="lead">
+                        <button id="add-item" class="lead" data-aura-list-add data-aura-sample-text="Новый предмет">
                             <div>
-                                <p>Актерское мастерство</p>
+                                +
                             </div>
                         </button>
                     </div>
-                    <div>
-                        <button class="lead">
-                            <div>
-                                <p>Рисунок</p>
-                            </div>
-                        </button>
-                    </div>
-                    <div>
-                        <button class="lead">
-                            <div>
-                                <p>Этикет</p>
-                            </div>
-                        </button>
-                    </div>
+                    {{/if}}
 
                 </div>
 
@@ -109,20 +81,34 @@
 
             <div class="shadow"></div>
 
-            <div class="container">
+            <div class="tab-cont" data-aura-list="children.classes">
 
-                <div class="row">
+                {{#each children.classes}}
 
-                    <div>
-                        <img src="/img/news.jpg" alt="Новости"/>
-                    </div>
+                <div class="custom-tab" data-aura-list-item>
 
-                    <div>
-                        <p class="quot">Как представиться. Как поприветствовать. Как попрощаться. В столовом этикете малыши будут изучать роль каждого столового прибора. И учиться пить чай по книгам Льюиса Кэролла</p>
-                        <p>Основные темы – столовый этикет и этикет общения. Программа этикета и хороших манер поможет развить устойчивые поведенческие навыки, которые позволят в дальнейшем чувствовать себя уверенно в любой ситуации, связанной с  общением. </p>
+
+                    <h3 data-aura-list-html="name" contenteditable="false">{{{name}}}</h3>
+
+                    <div class="container">
+
+                        <div class="row">
+
+                            <div>
+                                <img data-aura-list-image="pic" src="{{storagePath}}/images/{{pic}}" alt="Новости"/>
+                            </div>
+
+                            <div data-aura-list-html="desc" contenteditable="false">
+                                {{{desc}}}
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>
+
+                {{/each}}
 
             </div>
 
@@ -138,68 +124,682 @@
 
         </section>
 
+        <!--<hr/>-->
+
+        <!--<section class="teachers">-->
+
+            <!--<h2>Преподователи</h2>-->
+
+            <!--<div class="container">-->
+
+                <!--<div class="row">-->
+                    <!--<div class="teacher row">-->
+                        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+                        <!--<div>-->
+                            <!--<p class="name">Альбина</p>-->
+                            <!--<p class="second-name">Григорьева</p>-->
+                            <!--<p class="classes">Стилистика</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="teacher row">-->
+                        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+                        <!--<div>-->
+                            <!--<p class="name">Альбина</p>-->
+                            <!--<p class="second-name">Григорьева</p>-->
+                            <!--<p class="classes">Стилистика</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="teacher row">-->
+                        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+                        <!--<div>-->
+                            <!--<p class="name">Альбина</p>-->
+                            <!--<p class="second-name">Григорьева</p>-->
+                            <!--<p class="classes">Стилистика</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="teacher row">-->
+                        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+                        <!--<div>-->
+                            <!--<p class="name">Альбина</p>-->
+                            <!--<p class="second-name">Григорьева</p>-->
+                            <!--<p class="classes">Стилистика</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="teacher row">-->
+                        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+                        <!--<div>-->
+                            <!--<p class="name">Альбина</p>-->
+                            <!--<p class="second-name">Григорьева</p>-->
+                            <!--<p class="classes">Стилистика</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="teacher row">-->
+                        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+                        <!--<div>-->
+                            <!--<p class="name">Альбина</p>-->
+                            <!--<p class="second-name">Григорьева</p>-->
+                            <!--<p class="classes">Стилистика</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            <!--</div>-->
+
+        <!--</section>-->
+
         <hr/>
 
-        <section class="teachers">
+        <section class="lead-button">
 
-            <h2>Преподователи</h2>
+            <div class="container">
+                <button class="lead red">Записаться</button>
+                <p>Наш менеджер свяжется с вами в ближайшие 5 минут</p>
+            </div>
+
+        </section>
+
+    </section>
+
+</template>
+
+
+<template name="teens">
+
+    <section id="direction" class="wrap">
+
+        <section class="top" data-aura-image-background="teens.mainPic" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{teens.mainPic}})" data-stellar-background-ratio=".7">
+
+            <div class="container">
+
+                <h1 data-aura-html="teens.heading" contenteditable="false">
+                    {{{teens.heading}}}
+                </h1>
+
+            </div>
+
+        </section>
+
+        <section class="about">
 
             <div class="container">
 
                 <div class="row">
-                    <div class="teacher row">
-                        <div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>
-                        <div>
-                            <p class="name">Альбина</p>
-                            <p class="second-name">Григорьева</p>
-                            <p class="classes">Стилистика</p>
-                        </div>
+
+                    <div data-aura-html="teens.mainDesc" contenteditable="false">
+                        {{{teens.mainDesc}}}
                     </div>
-                    <div class="teacher row">
-                        <div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>
-                        <div>
-                            <p class="name">Альбина</p>
-                            <p class="second-name">Григорьева</p>
-                            <p class="classes">Стилистика</p>
-                        </div>
-                    </div>
-                    <div class="teacher row">
-                        <div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>
-                        <div>
-                            <p class="name">Альбина</p>
-                            <p class="second-name">Григорьева</p>
-                            <p class="classes">Стилистика</p>
-                        </div>
-                    </div>
-                    <div class="teacher row">
-                        <div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>
-                        <div>
-                            <p class="name">Альбина</p>
-                            <p class="second-name">Григорьева</p>
-                            <p class="classes">Стилистика</p>
-                        </div>
-                    </div>
-                    <div class="teacher row">
-                        <div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>
-                        <div>
-                            <p class="name">Альбина</p>
-                            <p class="second-name">Григорьева</p>
-                            <p class="classes">Стилистика</p>
-                        </div>
-                    </div>
-                    <div class="teacher row">
-                        <div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>
-                        <div>
-                            <p class="name">Альбина</p>
-                            <p class="second-name">Григорьева</p>
-                            <p class="classes">Стилистика</p>
-                        </div>
-                    </div>
+                    <aside>
+                        <span class="quots">“</span>
+                        <span class="quots">“</span>
+                        <p data-aura-html="teens.mainQuot" contenteditable="false">{{{teens.mainQuot}}}</p>
+
+                    </aside>
+
                 </div>
 
             </div>
 
         </section>
+
+        <hr/>
+
+        <section class="classes-header">
+
+            <h2 data-aura-html="teens.classesHeader" contenteditable="false">{{{teens.classesHeader}}}</h2>
+
+            <div class="container">
+
+                <div class="row" data-aura-list="teens.classes">
+
+                    {{#each teens.classes}}
+
+                    <div data-aura-list-item>
+                        <button class="lead">
+                            <div>
+                                <p data-aura-list-html="name">{{{name}}}</p>
+                            </div>
+                            {{#if isInRole 'admin' 'owner'}}
+                            <span class="remove" data-aura-list-remove><i class="fa fa-times"></i></span>
+                            {{/if}}
+                        </button>
+                    </div>
+
+                    {{/each}}
+
+                    {{#if isInRole 'admin' 'owner'}}
+                    <div>
+                        <button id="add-item" class="lead" data-aura-list-add data-aura-sample-text="Новый предмет">
+                            <div>
+                                +
+                            </div>
+                        </button>
+                    </div>
+                    {{/if}}
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="classes-body">
+
+            <div class="shadow"></div>
+
+            <div class="tab-cont" data-aura-list="teens.classes">
+
+                {{#each teens.classes}}
+
+                <div class="custom-tab" data-aura-list-item>
+
+
+                    <h3 data-aura-list-html="name" contenteditable="false">{{{name}}}</h3>
+
+                    <div class="container">
+
+                        <div class="row">
+
+                            <div>
+                                <img data-aura-list-image="pic" src="{{storagePath}}/images/{{pic}}" alt="Новости"/>
+                            </div>
+
+                            <div data-aura-list-html="desc" contenteditable="false">
+                                {{{desc}}}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {{/each}}
+
+            </div>
+
+        </section>
+
+        <hr/>
+
+        <section class="schedule">
+
+            <h2>Расписание</h2>
+
+            <div id="group-schedule"></div>
+
+        </section>
+
+        <!--<hr/>-->
+
+        <!--<section class="teachers">-->
+
+        <!--<h2>Преподователи</h2>-->
+
+        <!--<div class="container">-->
+
+        <!--<div class="row">-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--</div>-->
+
+        <!--</section>-->
+
+        <hr/>
+
+        <section class="lead-button">
+
+            <div class="container">
+                <button class="lead red">Записаться</button>
+                <p>Наш менеджер свяжется с вами в ближайшие 5 минут</p>
+            </div>
+
+        </section>
+
+    </section>
+
+</template>
+
+
+<template name="lateteens">
+
+    <section id="direction" class="wrap">
+
+        <section class="top" data-aura-image-background="lateTeens.mainPic" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{lateTeens.mainPic}})" data-stellar-background-ratio=".7">
+
+            <div class="container">
+
+                <h1 data-aura-html="lateTeens.heading" contenteditable="false">
+                    {{{lateTeens.heading}}}
+                </h1>
+
+            </div>
+
+        </section>
+
+        <section class="about">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div data-aura-html="lateTeens.mainDesc" contenteditable="false">
+                        {{{lateTeens.mainDesc}}}
+                    </div>
+                    <aside>
+                        <span class="quots">“</span>
+                        <span class="quots">“</span>
+                        <p data-aura-html="lateTeens.mainQuot" contenteditable="false">{{{lateTeens.mainQuot}}}</p>
+
+                    </aside>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <hr/>
+
+        <section class="classes-header">
+
+            <h2 data-aura-html="lateTeens.classesHeader" contenteditable="false">{{{lateTeens.classesHeader}}}</h2>
+
+            <div class="container">
+
+                <div class="row" data-aura-list="lateTeens.classes">
+
+                    {{#each lateTeens.classes}}
+
+                    <div data-aura-list-item>
+                        <button class="lead">
+                            <div>
+                                <p data-aura-list-html="name">{{{name}}}</p>
+                            </div>
+                            {{#if isInRole 'admin' 'owner'}}
+                            <span class="remove" data-aura-list-remove><i class="fa fa-times"></i></span>
+                            {{/if}}
+                        </button>
+                    </div>
+
+                    {{/each}}
+
+                    {{#if isInRole 'admin' 'owner'}}
+                    <div>
+                        <button id="add-item" class="lead" data-aura-list-add data-aura-sample-text="Новый предмет">
+                            <div>
+                                +
+                            </div>
+                        </button>
+                    </div>
+                    {{/if}}
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="classes-body">
+
+            <div class="shadow"></div>
+
+            <div class="tab-cont" data-aura-list="lateTeens.classes">
+
+                {{#each lateTeens.classes}}
+
+                <div class="custom-tab" data-aura-list-item>
+
+
+                    <h3 data-aura-list-html="name" contenteditable="false">{{{name}}}</h3>
+
+                    <div class="container">
+
+                        <div class="row">
+
+                            <div>
+                                <img data-aura-list-image="pic" src="{{storagePath}}/images/{{pic}}" alt="Новости"/>
+                            </div>
+
+                            <div data-aura-list-html="desc" contenteditable="false">
+                                {{{desc}}}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {{/each}}
+
+            </div>
+
+        </section>
+
+        <hr/>
+
+        <section class="schedule">
+
+            <h2>Расписание</h2>
+
+            <div id="group-schedule"></div>
+
+        </section>
+
+        <!--<hr/>-->
+
+        <!--<section class="teachers">-->
+
+        <!--<h2>Преподователи</h2>-->
+
+        <!--<div class="container">-->
+
+        <!--<div class="row">-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--</div>-->
+
+        <!--</section>-->
+
+        <hr/>
+
+        <section class="lead-button">
+
+            <div class="container">
+                <button class="lead red">Записаться</button>
+                <p>Наш менеджер свяжется с вами в ближайшие 5 минут</p>
+            </div>
+
+        </section>
+
+    </section>
+
+</template>
+
+
+<template name="grownups">
+
+    <section id="direction" class="wrap">
+
+        <section class="top" data-aura-image-background="grownUps.mainPic" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{grownUps.mainPic}})" data-stellar-background-ratio=".7">
+
+            <div class="container">
+
+                <h1 data-aura-html="grownUps.heading" contenteditable="false">
+                    {{{grownUps.heading}}}
+                </h1>
+
+            </div>
+
+        </section>
+
+        <section class="about">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div data-aura-html="grownUps.mainDesc" contenteditable="false">
+                        {{{grownUps.mainDesc}}}
+                    </div>
+                    <aside>
+                        <span class="quots">“</span>
+                        <span class="quots">“</span>
+                        <p data-aura-html="grownUps.mainQuot" contenteditable="false">{{{grownUps.mainQuot}}}</p>
+                    </aside>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <hr/>
+
+        <section class="classes-header">
+
+            <h2 data-aura-html="grownUps.classesHeader" contenteditable="false">{{{grownUps.classesHeader}}}</h2>
+
+            <div class="container">
+
+                <div class="row" data-aura-list="grownUps.classes">
+
+                    {{#each grownUps.classes}}
+
+                    <div data-aura-list-item>
+                        <button class="lead">
+                            <div>
+                                <p data-aura-list-html="name">{{{name}}}</p>
+                            </div>
+                            {{#if isInRole 'admin' 'owner'}}
+                            <span class="remove" data-aura-list-remove><i class="fa fa-times"></i></span>
+                            {{/if}}
+                        </button>
+                    </div>
+
+                    {{/each}}
+
+                    {{#if isInRole 'admin' 'owner'}}
+                    <div>
+                        <button id="add-item" class="lead" data-aura-list-add data-aura-sample-text="Новый предмет">
+                            <div>
+                                +
+                            </div>
+                        </button>
+                    </div>
+                    {{/if}}
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="classes-body">
+
+            <div class="shadow"></div>
+
+            <div class="tab-cont" data-aura-list="grownUps.classes">
+
+                {{#each grownUps.classes}}
+
+                <div class="custom-tab" data-aura-list-item>
+
+
+                    <h3 data-aura-list-html="name" contenteditable="false">{{{name}}}</h3>
+
+                    <div class="container">
+
+                        <div class="row">
+
+                            <div>
+                                <img data-aura-list-image="pic" src="{{storagePath}}/images/{{pic}}" alt="Новости"/>
+                            </div>
+
+                            <div data-aura-list-html="desc" contenteditable="false">
+                                {{{desc}}}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {{/each}}
+
+            </div>
+
+        </section>
+
+        <hr/>
+
+        <section class="schedule">
+
+            <h2>Расписание</h2>
+
+            <div id="group-schedule"></div>
+
+        </section>
+
+        <!--<hr/>-->
+
+        <!--<section class="teachers">-->
+
+        <!--<h2>Преподователи</h2>-->
+
+        <!--<div class="container">-->
+
+        <!--<div class="row">-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="teacher row">-->
+        <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+        <!--<div>-->
+        <!--<p class="name">Альбина</p>-->
+        <!--<p class="second-name">Григорьева</p>-->
+        <!--<p class="classes">Стилистика</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--</div>-->
+
+        <!--</section>-->
 
         <hr/>
 

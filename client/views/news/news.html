@@ -1,0 +1,118 @@
+<template name="news">
+ 	<section id="news">
+
+        <div class="container">
+
+            <h2>НОВОСТИ</h2>
+
+            <div class="masonry">
+
+                {{#each news.news}}
+
+                <div class="item">
+                        <img src="{{storagePath}}/images/{{pic}}" width="100%" alt="{{desc}}"/>
+                        <h4>{{date}}</h4>
+
+                        <h3>{{title}}</h3>
+
+                        <p>{{{desc}}}</p>
+                </div>
+
+                {{/each}}
+
+                <div class="item">
+
+                        <div class="fake" style="height: 80px;"></div>
+                        <h4>24.14.2014</h4>
+
+                        <h3>Запись в блоге</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, repellat. Lorem ipsum
+                            dolor.</p>
+
+                </div>
+
+                <div class="item">
+
+                        <div class="fake" style="height: 50px;"></div>
+                        <h4>24.14.2014</h4>
+
+                        <h3>Запись в блоге</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, repellat. Lorem ipsum
+                            dolor.</p>
+
+                </div>
+
+                <div class="item">
+
+                        <div class="fake" style="height: 60px;"></div>
+                        <h4>24.14.2014</h4>
+
+                        <h3>Запись в блоге</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, repellat. Lorem ipsum
+                            dolor.</p>
+
+                </div>
+
+                <div class="item">
+
+                        <div class="fake" style="height: 100px;"></div>
+                        <h4>24.14.2014</h4>
+
+                        <h3>Запись в блоге</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, repellat. Lorem ipsum
+                            dolor.</p>
+
+                </div>
+
+                <div class="item">
+
+                    <div class="fake" style="height: 100px;"></div>
+                    <h4>24.14.2014</h4>
+
+                    <h3>Запись в блоге</h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, repellat. Lorem ipsum
+                        dolor.</p>
+
+                </div>
+
+                <div class="item">
+
+                    <div class="fake" style="height: 100px;"></div>
+                    <h4>24.14.2014</h4>
+
+                    <h3>Запись в блоге</h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, repellat. Lorem ipsum
+                        dolor.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+ 	</section>
+</template>
+
+
+<template name="currentNew">
+
+    <div class="wrap">
+
+        <div class="img">
+
+            <img src="{{storagePath}}/images/{{pic}}" alt=""/>
+
+            <h3>{{title}}</h3>
+
+        </div>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda blanditiis dolor ea illo magni maxime molestiae ratione sint tempore?</p>
+    </div>
+
+</template>

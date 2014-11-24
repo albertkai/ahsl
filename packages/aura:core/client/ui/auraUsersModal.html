@@ -1,0 +1,124 @@
+<template name="auraUsersModal">
+
+    <div id="auraUsersModal" class="auraModal reversed">
+
+        <div class="close-modal"><i class="fa fa-times"></i></div>
+
+        <div class="header">
+
+            <h3><i class="fa fa-users"></i> Пользователи</h3>
+
+        </div>
+
+        <div class="body">
+
+            <aside id="aura-users-settings">
+
+                {{#if isNewUser}}
+
+                    {{>auraNewUser}}
+
+                {{else}}
+
+                    {{#with selectedUser}}
+
+                        {{>auraUsersModalSettings}}
+
+                    {{/with}}
+
+                {{/if}}
+
+            </aside>
+
+            <div id="aura-users-cont" class="list-wrap">
+
+                <ul>
+                    {{#each allUsers}}
+                    <li data-id="{{_id}}">
+                        <div>
+                            <div class="img" style="{{getImage profile.pic}}"></div>
+                        </div>
+                        <div>
+                            <p>{{profile.name}}</p>
+                            <p>{{profile.surname}}</p>
+                            <p>{{getPermissions roles}}</p>
+                        </div>
+                        <div></div>
+                        <div class="remove"><i class="fa fa-times"></i></div>
+                    </li>
+                    {{/each}}
+                    <li class="add-user">
+                        <div>
+                            <div class="img">
+                                +
+                            </div>
+                        </div>
+                        <div>
+                            <p>Добавить</p>
+                            <p>Пользователя</p>
+                        </div>
+                        <div></div>
+                    </li>
+                </ul>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</template>
+
+
+<template name="auraUsersModalSettings">
+
+    <h4>Имя:</h4>
+    <input type="text" class="aura-input" value="{{profile.name}}"/>
+    <h4>Фамилия:</h4>
+    <input type="text" class="aura-input" value="{{profile.surname}}"/>
+    <h4>Права:</h4>
+    <select class="aura-select" name="permissions-select" id="permissions-select">
+        <option value="owner">Владелец</option>
+        <option value="admin">Админ</option>
+        <option value="blog">Только блог</option>
+        <option value="blog">Только новости</option>
+        <option value="blog">Только события</option>
+    </select>
+    {{#if isInRole 'owner'}}
+    <h4>E-mail:</h4>
+    <input type="text" class="aura-input" value="{{getEmail emails}}"/>
+    <h4>Новый пароль:</h4>
+    <input type="password" class="aura-input"/>
+    <!--<h4>Новое изображение:</h4>-->
+    <!--<input type="file"/>-->
+    <button id="save-user" class="aura-button">сохранить</button>
+    {{/if}}
+
+</template>
+
+
+<template name="auraNewUser">
+
+    <h4><sup>*</sup>Имя:</h4>
+    <input id="user-name" type="text" class="aura-input" placeholder="имя:"/>
+    <h4><sup>*</sup>Фамилия:</h4>
+    <input id="user-surname" type="text" class="aura-input"  placeholder="фамилия:"/>
+    <h4>Права:</h4>
+    <select class="aura-select" name="permissions-select" id="permissions-select">
+        <option value="owner">Владелец</option>
+        <option value="admin">Админ</option>
+        <option value="blog">Только блог</option>
+        <option value="blog">Только новости</option>
+        <option value="blog">Только события</option>
+    </select>
+    <h4><sup>*</sup>E-mail:</h4>
+    <input id="user-email" type="text" class="aura-input" placeholder="e-mail"/>
+    <h4><sup>*</sup>Пароль:</h4>
+    <input id="user-password" type="text" class="aura-input" placeholder="придумайте пароль"/>
+    <!--<h4>Новое изображение:</h4>-->
+    <!--<input id="user-pic" type="file"/>-->
+    <button id="create-user" class="aura-button">сохранить</button>
+
+</template>

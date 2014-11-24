@@ -2,24 +2,40 @@ Template.mainLayout.rendered = ->
 
   Meteor.defer ->
     $('.wrap').addClass '_animated'
+  Meteor.setTimeout ->
+    $('#events-carousel').carousel({
+      interval: 4000
+    })
 
-  $('#events-carousel').carousel({
-    interval: 4000
-  })
+    $('#partners-carousel').carousel({
+      interval: 4000
+    })
 
-  $('#partners-carousel').carousel({
-    interval: 4000
-  })
+    $('#top-slider').carousel({
+      interval: 6000
+    })
+  , 200
 
-  $('#top-slider').carousel({
-    interval: 6000
-  })
+  $('#top-slider').find('ul li').first().addClass 'active'
+
+  $('body').find('header nav a.disabled').on 'click', (e)->
+    e.preventDefault()
+    Aura.notify 'Извините, раздел в разработке', 'Приносим изменения за временные неудобства'
 
 
 #  @mainSlider = new Slider('.aura-slider')
-  new Calendar('#main-calendar', {month: '10', group: 'children'})
+  new Calendar('#main-calendar', {month: '11', group: 'children'})
 
 #  $.stellar()
+
+
+Template.mainLayout.events {
+
+  'click .news .item': ->
+
+    $('#newsModal').modal('show')
+
+}
 
 
 
@@ -130,8 +146,8 @@ class @Slider
 #      AuraSlider.prev()
 
 #}
-#Template.mainLayout.events {
-#
+Template.mainLayout.events {
+
 #  'mouseenter [data-tltp]': (e)->
 #
 #    Tltp.currentElement = $(e.currentTarget)
@@ -143,9 +159,13 @@ class @Slider
 #
 #    Tltp.currentElement = null
 #    Tltp.hide(e)
-#
-#
-#}
+
+  'click .directions .direction': (e)->
+    target = $(e.currentTarget).data('target')
+    Router.go '/' + target
+
+
+}
 #
 #
 #@Tltp = {
@@ -184,3 +204,9 @@ class @Slider
 
 
 
+Meteor.Spinner.options = {
+
+  width: 1
+  radius: 25
+
+}

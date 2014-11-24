@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "aws-sdk": {
+      "version": "2.0.17",
+      "dependencies": {
+        "aws-sdk-apis": {
+          "version": "3.1.10"
+        },
+        "xml2js": {
+          "version": "0.2.6",
+          "dependencies": {
+            "sax": {
+              "version": "0.4.2"
+            }
+          }
+        },
+        "xmlbuilder": {
+          "version": "0.4.2"
+        }
+      }
+    },
+    "data-uri-to-buffer": {
+      "version": "0.0.3"
+    }
+  }
+}

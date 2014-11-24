@@ -1,7 +1,7 @@
 #gallery{
 
   .main-pic{
-    background-image: url(/img/rockywall.png);
+    background: #f5f5f5;
     padding: 40px 0;
     position: relative;
     overflow: hidden;
@@ -18,10 +18,16 @@
       padding: 0 !important;
       box-sizing: initial !important;
       .make-md-column(10);
+      text-align: center;
       .make-md-column-offset(1);
-      img{
-        width: 100%;
-        border: 1px solid white;
+      .pic-wrap{
+        position: relative;
+        display: inline-block;
+        img{
+          max-width: 100%;
+          max-height: 600px;
+          border: 1px solid white;
+        }
       }
       .arrows{
         top: 50%;
@@ -63,13 +69,15 @@
     height: 100px;
     width: 100%;
     overflow-x: scroll;
+    overflow-y: hidden;
+    text-align: center;
     margin-top: 5px;
 
     .carousel-container{
 
       height: 100%;
-      width: 200%;
       overflow: hidden;
+      display: inline-block;
 
       >div{
         width: 110px;
