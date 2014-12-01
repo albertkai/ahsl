@@ -23,28 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="aura.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="37" selection-start="1283" selection-end="1293" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="19500">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="router.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/router.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="35" selection-start="828" selection-end="828" vertical-scroll-proportion="-10.8" vertical-offset="420" max-vertical-offset="1710">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/main.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="835" column="26" selection-start="14682" selection-end="14682" vertical-scroll-proportion="-3.1290324" vertical-offset="12234" max-vertical-offset="15795">
+            <state line="102" column="24" selection-start="1905" selection-end="1906" vertical-scroll-proportion="67.591835" vertical-offset="4842" max-vertical-offset="16710">
               <folding />
             </state>
           </provider>
@@ -53,65 +35,81 @@
       <file leaf-file-name="news.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/news/news.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="0" selection-start="2884" selection-end="2884" vertical-scroll-proportion="-16.333334" vertical-offset="1213" max-vertical-offset="1845">
+            <state line="11" column="53" selection-start="230" selection-end="230" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="795">
               <folding>
-                <marker date="1416810121000" expanded="true" signature="141:2758" placeholder="..." />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="news.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/news/news.coffee">
+      <file leaf-file-name="blog.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/blog/blog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="4" selection-start="82" selection-end="111" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+            <state line="56" column="29" selection-start="1764" selection-end="1764" vertical-scroll-proportion="-19.041666" vertical-offset="383" max-vertical-offset="1395">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aura.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.less">
+      <file leaf-file-name="collection.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/components/blog/collection.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="23" selection-start="670" selection-end="670" vertical-scroll-proportion="310.625" vertical-offset="7830" max-vertical-offset="9975">
+            <state line="6" column="43" selection-start="236" selection-end="236" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="180">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="news.lessimport" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="blog.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/components/blog/blog.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="184" column="26" selection-start="3840" selection-end="3840" vertical-scroll-proportion="-4.347826" vertical-offset="2460" max-vertical-offset="4350">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blog.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/blog/blog.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="39" selection-start="198" selection-end="198" vertical-scroll-proportion="-6.6" vertical-offset="0" max-vertical-offset="600">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blog.lessimport" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/blog/blog.lessimport">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="151" column="17" selection-start="3472" selection-end="3472" vertical-scroll-proportion="-5.5510206" vertical-offset="1993" max-vertical-offset="5700">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="news.lessimport" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/news/news.lessimport">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="5" selection-start="912" selection-end="912" vertical-scroll-proportion="0.8548387" vertical-offset="400" max-vertical-offset="1080">
-              <folding>
-                <marker date="1416810823000" expanded="true" signature="41:487" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/main.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="33" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3255">
+            <state line="3" column="23" selection-start="54" selection-end="54" vertical-scroll-proportion="-0.9183673" vertical-offset="0" max-vertical-offset="2790">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gallery.lessimport" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/gallery/gallery.lessimport">
+      <file leaf-file-name="event.lessimport" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/event/event.lessimport">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="23" selection-start="40" selection-end="47" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="2340">
+            <state line="246" column="28" selection-start="4940" selection-end="4940" vertical-scroll-proportion="-75.30612" vertical-offset="0" max-vertical-offset="5715">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/main.html">
+      <file leaf-file-name="events.lessimport" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/views/events/events.lessimport">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="162" column="0" selection-start="7730" selection-end="7730" vertical-scroll-proportion="-11.25" vertical-offset="2160" max-vertical-offset="10380">
+            <state line="6" column="14" selection-start="139" selection-end="139" vertical-scroll-proportion="0.14563107" vertical-offset="0" max-vertical-offset="2910">
               <folding />
             </state>
           </provider>
@@ -127,57 +125,57 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/client/views/schedule/schedule.lessimport" />
-        <option value="$PROJECT_DIR$/client/views/events/events.lessimport" />
-        <option value="$PROJECT_DIR$/client/views/blog/blog.lessimport" />
-        <option value="$PROJECT_DIR$/server/seed.coffee" />
-        <option value="$PROJECT_DIR$/server/publications.coffee" />
-        <option value="$PROJECT_DIR$/modules/aura/server/publications.coffee" />
-        <option value="$PROJECT_DIR$/modules/aura/collections/pages.coffee" />
-        <option value="$PROJECT_DIR$/modules/aura/server/seed.coffee" />
-        <option value="$PROJECT_DIR$/modules/aura/aura.html" />
-        <option value="$PROJECT_DIR$/modules/aura/client/ui/auraLoginModal.html" />
-        <option value="$PROJECT_DIR$/modules/aura/client/aura.html" />
-        <option value="$PROJECT_DIR$/modules/aura/client/ui/adminPanel.html" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/ui/auraModal.html" />
-        <option value="$PROJECT_DIR$/packages/aura:core/server/methods.coffee" />
-        <option value="$PROJECT_DIR$/packages/aura:core/server/publications.coffee" />
-        <option value="$PROJECT_DIR$/packages/aura:core/lib/collections.coffee" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/ui/auraUsersModal.html" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/ui/auraLoginModal.html" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/aura.html" />
-        <option value="$PROJECT_DIR$/public/scripts/aloha.min.js" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/less/admin.lessimport" />
-        <option value="$PROJECT_DIR$/client/views/directions/directions.coffee" />
-        <option value="$PROJECT_DIR$/modules/components/calendar/collections/schedules_coll.coffee" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/ui/adminPanel.html" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/third_party/utils.js" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/ui/editor.html" />
-        <option value="$PROJECT_DIR$/public/scripts/ace.js" />
-        <option value="$PROJECT_DIR$/packages/aura:core/lib/config.json" />
-        <option value="$PROJECT_DIR$/packages/aura:core/package.js" />
-        <option value="$PROJECT_DIR$/modules/components/calendar/calendar.coffee" />
-        <option value="$PROJECT_DIR$/client/views/contacts/contacts.html" />
         <option value="$PROJECT_DIR$/client/views/schedule/schedule.coffee" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/aura.less" />
         <option value="$PROJECT_DIR$/modules/components/gallery/collections.coffee" />
         <option value="$PROJECT_DIR$/client/views/components/loading.html" />
         <option value="$PROJECT_DIR$/modules/components/gallery/gallery.coffee" />
         <option value="$PROJECT_DIR$/client/views/gallery/gallery.html" />
         <option value="$PROJECT_DIR$/client/views/directions/directions.lessimport" />
-        <option value="$PROJECT_DIR$/client/views/inner_layout/inner_layout.html" />
-        <option value="$PROJECT_DIR$/packages/aura:core/server/server.coffee" />
         <option value="$PROJECT_DIR$/client/views/directions/directions.html" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/aura.coffee" />
-        <option value="$PROJECT_DIR$/packages/aura:core/server/seed.coffee" />
-        <option value="$PROJECT_DIR$/lib/router.coffee" />
         <option value="$PROJECT_DIR$/client/views/gallery/gallery.lessimport" />
         <option value="$PROJECT_DIR$/client/views/news/news.coffee" />
-        <option value="$PROJECT_DIR$/client/views/news/news.html" />
-        <option value="$PROJECT_DIR$/client/main.html" />
-        <option value="$PROJECT_DIR$/client/main.coffee" />
+        <option value="$PROJECT_DIR$/modules/components/calendar/client/compatibility/jqcloud.js" />
+        <option value="$PROJECT_DIR$/modules/components/calendar/client/jqcloud.css" />
+        <option value="$PROJECT_DIR$/modules/components/blog/client/jqcloud.css" />
+        <option value="$PROJECT_DIR$/modules/components/blog/ui/blog_crate_modal.html" />
+        <option value="$PROJECT_DIR$/client/views/blog/blog.html" />
+        <option value="$PROJECT_DIR$/modules/components/blog/ui/blog_create_modal.less" />
+        <option value="$PROJECT_DIR$/packages/aura:core/lib/collections.coffee" />
+        <option value="$PROJECT_DIR$/packages/aura:core/server/server.coffee" />
+        <option value="$PROJECT_DIR$/server/publications.coffee" />
+        <option value="$PROJECT_DIR$/lib/router.coffee" />
+        <option value="$PROJECT_DIR$/lib/collections.coffee" />
+        <option value="$PROJECT_DIR$/modules/components/calendar/collections/schedules_coll.coffee" />
         <option value="$PROJECT_DIR$/client/main.less" />
+        <option value="$PROJECT_DIR$/packages/aura:core/package.js" />
+        <option value="$PROJECT_DIR$/packages/aura:core/client/aura.less" />
+        <option value="$PROJECT_DIR$/client/main.html" />
+        <option value="$PROJECT_DIR$/client/views/components/addEventModal.less" />
+        <option value="$PROJECT_DIR$/client/views/inner_layout/inner_layout.html" />
+        <option value="$PROJECT_DIR$/client/views/components/addEventModal.html" />
+        <option value="$PROJECT_DIR$/server/server.coffee" />
+        <option value="$PROJECT_DIR$/client/views/components/eventCreateModal.coffee" />
+        <option value="$PROJECT_DIR$/client/views/events/events.html" />
+        <option value="$PROJECT_DIR$/client/views/event/event.coffee" />
+        <option value="$PROJECT_DIR$/modules/components/calendar/calendar.coffee" />
+        <option value="$PROJECT_DIR$/client/main.coffee" />
+        <option value="$PROJECT_DIR$/client/views/directions/directions.coffee" />
+        <option value="$PROJECT_DIR$/client/views/event/event.html" />
+        <option value="$PROJECT_DIR$/packages/aura:core/server/seed.coffee" />
+        <option value="$PROJECT_DIR$/server/seed.coffee" />
+        <option value="$PROJECT_DIR$/client/views/events/events.coffee" />
+        <option value="$PROJECT_DIR$/packages/aura:core/client/less/editor.lessimport" />
+        <option value="$PROJECT_DIR$/packages/aura:core/client/ui/editor.html" />
+        <option value="$PROJECT_DIR$/packages/aura:core/client/aura.coffee" />
+        <option value="$PROJECT_DIR$/client/views/blog/blogPage.html" />
+        <option value="$PROJECT_DIR$/modules/components/blog/collection.coffee" />
+        <option value="$PROJECT_DIR$/client/views/blog/blog.lessimport" />
+        <option value="$PROJECT_DIR$/client/views/blog/blog.coffee" />
+        <option value="$PROJECT_DIR$/modules/components/blog/blog.coffee" />
+        <option value="$PROJECT_DIR$/client/views/news/news.html" />
         <option value="$PROJECT_DIR$/client/views/news/news.lessimport" />
+        <option value="$PROJECT_DIR$/client/views/event/event.lessimport" />
+        <option value="$PROJECT_DIR$/client/views/events/events.lessimport" />
       </list>
     </option>
   </component>
@@ -240,7 +238,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
+              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -286,15 +284,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="packages" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="aura:core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -308,21 +302,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ahsl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ahsl" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="blog" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -337,10 +325,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -359,10 +343,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -384,7 +364,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gallery" />
+              <option name="myItemId" value="events" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ahsl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ahsl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="event" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -399,28 +401,20 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../promo2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../detilly" />
     <property name="SearchEverywhereHistory" value="" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/modules/components/blog" />
+      <recent name="$PROJECT_DIR$/modules/components/calendar/client" />
       <recent name="$PROJECT_DIR$/modules/aura/client" />
       <recent name="$PROJECT_DIR$/modules/components" />
       <recent name="$PROJECT_DIR$/client/views/blog" />
-      <recent name="$PROJECT_DIR$/modules/calendar" />
-      <recent name="$PROJECT_DIR$/client/views" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -431,15 +425,23 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -497,9 +499,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -521,156 +523,21 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/views/schedule/schedule.lessimport">
+    <entry file="file://$PROJECT_DIR$/client/views/inner_layout/inner_layout.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="20" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="435">
+        <state line="2" column="15" selection-start="51" selection-end="51" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="195" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/components/blog/client/compatibility/jqcloud.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="231" column="11" selection-start="10333" selection-end="10333" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3555" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/components/blog/client/jqcloud.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/blog/blog.lessimport">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="22" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1080">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/blog/blog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="16" selection-start="605" selection-end="2583" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="915" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/contacts/contacts.lessimport">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="3" selection-start="865" selection-end="865" vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="1290">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/aura:core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/ui/auraModal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="4" selection-start="63" selection-end="1272" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="1590" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/less/editor.lessimport">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="8" selection-start="2782" selection-end="2864" vertical-scroll-proportion="-8.78" vertical-offset="1661" max-vertical-offset="3540">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/aura:core-tests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="25" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/third_party/aloha.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="263" column="31" selection-start="133780" selection-end="133780" vertical-scroll-proportion="0.0" vertical-offset="3783" max-vertical-offset="4425" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/ui/auraLoginModal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="49" selection-start="498" selection-end="498" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="495" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/scripts/aloha.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="651" column="52" selection-start="156919" selection-end="156919" vertical-scroll-proportion="0.0" vertical-offset="8467" max-vertical-offset="10110" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/collections/pages.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/contacts/contacts.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="2" selection-start="92" selection-end="397" vertical-scroll-proportion="-4.2" vertical-offset="0" max-vertical-offset="1500" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/directions/directions.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="33" selection-start="66" selection-end="66" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="1875" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/components/calendar/collections/schedules_coll.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="12" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="2160">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/ui/adminPanel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="29" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="2370" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/third_party/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="611" column="0" selection-start="24871" selection-end="24871" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9255" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/ui/editor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="28" selection-start="58" selection-end="58" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="870" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/scripts/ace.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18174" column="27" selection-start="685279" selection-end="685279" vertical-scroll-proportion="0.0" vertical-offset="266614" max-vertical-offset="273150" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/lib/collections.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="46" selection-start="97" selection-end="97" vertical-scroll-proportion="-0.6" vertical-offset="0" max-vertical-offset="105" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/less/admin.lessimport">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="213" column="31" selection-start="4328" selection-end="4328" vertical-scroll-proportion="-23.87755" vertical-offset="2025" max-vertical-offset="5205">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/lib/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="34" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="643" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/versions.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3840" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/components/calendar/calendar.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="219" column="23" selection-start="7516" selection-end="7516" vertical-scroll-proportion="-3.9411764" vertical-offset="3084" max-vertical-offset="4155" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/package.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="39" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/ui/auraUsersModal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="52" selection-start="860" selection-end="860" vertical-scroll-proportion="-13.125" vertical-offset="255" max-vertical-offset="1935" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/contacts/contacts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="117" selection-start="2003" selection-end="2003" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="840" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/schedule/schedule.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="68" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="120" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/components/gallery/collections.coffee">
@@ -678,154 +545,340 @@
         <state line="0" column="49" selection-start="49" selection-end="49" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="90" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/components/loading.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="75" selection-start="102" selection-end="102" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="180" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/gallery/gallery.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="2" selection-start="47" selection-end="98" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="135" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/components/gallery/gallery.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="28" selection-start="361" selection-end="361" vertical-scroll-proportion="-8.4" vertical-offset="0" max-vertical-offset="1500" />
+        <state line="14" column="28" selection-start="361" selection-end="361" vertical-scroll-proportion="9.6" vertical-offset="450" max-vertical-offset="1500" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/gallery/gallery.html">
+    <entry file="file://$PROJECT_DIR$/client/views/schedule/schedule.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="44" selection-start="2910" selection-end="2910" vertical-scroll-proportion="-20.0" vertical-offset="810" max-vertical-offset="2040" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/directions/directions.lessimport">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="13" selection-start="2060" selection-end="2060" vertical-scroll-proportion="-5.0266666" vertical-offset="1273" max-vertical-offset="3975">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/inner_layout/inner_layout.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="31" selection-start="183" selection-end="183" vertical-scroll-proportion="-4.2" vertical-offset="0" max-vertical-offset="195" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/inner_layout/inner_layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="86" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="1665">
+        <state line="2" column="68" selection-start="101" selection-end="101" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="120">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/directions/directions.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="643" column="113" selection-start="19974" selection-end="19974" vertical-scroll-proportion="0.0" vertical-offset="9645" max-vertical-offset="12330">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="4" selection-start="53" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="330">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/events/events.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="25" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/server/seed.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="36" selection-start="483" selection-end="483" vertical-scroll-proportion="-4.8" vertical-offset="0" max-vertical-offset="7575">
-          <folding>
-            <marker date="1325381141000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1325381141000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/server/server.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="210" column="40" selection-start="4803" selection-end="4803" vertical-scroll-proportion="0.0" vertical-offset="2738" max-vertical-offset="3450">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/gallery/gallery.lessimport">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="23" selection-start="40" selection-end="47" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="2340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="23" selection-start="670" selection-end="670" vertical-scroll-proportion="310.625" vertical-offset="7830" max-vertical-offset="9975">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="37" selection-start="1283" selection-end="1293" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="19500">
+        <state line="4" column="82" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="12330">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/router.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="35" selection-start="828" selection-end="828" vertical-scroll-proportion="-10.8" vertical-offset="420" max-vertical-offset="1710">
+        <state line="69" column="33" selection-start="1239" selection-end="1239" vertical-scroll-proportion="-7.08" vertical-offset="858" max-vertical-offset="1815">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/news/news.html">
+    <entry file="file://$PROJECT_DIR$/client/views/schedule/schedule.lessimport">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="0" selection-start="2884" selection-end="2884" vertical-scroll-proportion="-16.333334" vertical-offset="1213" max-vertical-offset="1845">
-          <folding>
-            <marker date="1416810121000" expanded="true" signature="141:2758" placeholder="..." />
-          </folding>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/publications.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="15" selection-start="94" selection-end="94" vertical-scroll-proportion="-2.4" vertical-offset="0" max-vertical-offset="165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/components/calendar/collections/schedules_coll.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="1" selection-start="271" selection-end="271" vertical-scroll-proportion="-13.8" vertical-offset="0" max-vertical-offset="6750">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/packages">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="439" selection-end="452" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/package.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="43" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/collections.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="27" selection-start="68" selection-end="68" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="120">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/collections/pages.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/lib/collections.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="33" selection-start="186" selection-end="186" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/server/server.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="216" column="47" selection-start="5171" selection-end="5171" vertical-scroll-proportion="-15.48" vertical-offset="2853" max-vertical-offset="3705">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="253" column="22" selection-start="5637" selection-end="5637" vertical-scroll-proportion="-17.626667" vertical-offset="2473" max-vertical-offset="11655">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="4" selection-start="53" selection-end="85" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="330">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/components/blog/ui/blog_create_modal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="4" selection-start="39" selection-end="527" vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/components/blog/ui/blog_create_modal.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="121" column="21" selection-start="0" selection-end="3398" vertical-scroll-proportion="-37.040817" vertical-offset="0" max-vertical-offset="2415">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/components/addEventModal.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2415">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/inner_layout/inner_layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="72" selection-start="1312" selection-end="1312" vertical-scroll-proportion="-15.0" vertical-offset="135" max-vertical-offset="1665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/components/addEventModal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="44" selection-start="347" selection-end="347" vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/components/loading.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="20" selection-start="377" selection-end="377" vertical-scroll-proportion="-8.4" vertical-offset="0" max-vertical-offset="540">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/components/eventCreateModal.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="227" selection-end="227" vertical-scroll-proportion="-5.4" vertical-offset="0" max-vertical-offset="570">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/events/events.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="69" selection-start="812" selection-end="812" vertical-scroll-proportion="0.083333336" vertical-offset="602" max-vertical-offset="1245">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/components/calendar/calendar.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="40" selection-start="1818" selection-end="1818" vertical-scroll-proportion="-17.4" vertical-offset="0" max-vertical-offset="5085">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="0" selection-start="7730" selection-end="7730" vertical-scroll-proportion="-11.25" vertical-offset="2160" max-vertical-offset="10380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/news/news.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="4" selection-start="82" selection-end="111" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+        <state line="97" column="39" selection-start="3777" selection-end="3777" vertical-scroll-proportion="43.125" vertical-offset="2490" max-vertical-offset="10845">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/main.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="33" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3255">
+        <state line="31" column="34" selection-start="676" selection-end="676" vertical-scroll-proportion="-7.76" vertical-offset="271" max-vertical-offset="960">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/directions/directions.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="181" selection-end="181" vertical-scroll-proportion="-5.4" vertical-offset="0" max-vertical-offset="1830">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/server/seed.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="494" column="43" selection-start="36178" selection-end="36178" vertical-scroll-proportion="-259.2" vertical-offset="930" max-vertical-offset="7530">
+          <folding>
+            <marker date="1417396086000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1417396086000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/seed.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="1" selection-end="59" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/event/event.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="571" selection-end="571" vertical-scroll-proportion="-16.2" vertical-offset="0" max-vertical-offset="525">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/events/events.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="42" selection-start="1182" selection-end="1182" vertical-scroll-proportion="-16.68" vertical-offset="438" max-vertical-offset="1500">
+          <folding>
+            <marker date="1417396261000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1417396261000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1417396261000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1417396261000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/event/event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="109" selection-start="1876" selection-end="1923" vertical-scroll-proportion="-13.125" vertical-offset="270" max-vertical-offset="1530">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/less/editor.lessimport">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="15" selection-start="300" selection-end="300" vertical-scroll-proportion="-4.285714" vertical-offset="0" max-vertical-offset="3555">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/ui/editor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="0" selection-start="1747" selection-end="2295" vertical-scroll-proportion="-16.166666" vertical-offset="242" max-vertical-offset="930">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="635" column="21" selection-start="18733" selection-end="18733" vertical-scroll-proportion="-6.5882354" vertical-offset="9189" max-vertical-offset="22170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/blog/blogPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="50" selection-start="2419" selection-end="2419" vertical-scroll-proportion="-32.5" vertical-offset="0" max-vertical-offset="1455">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/blog/blog.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="39" selection-start="198" selection-end="198" vertical-scroll-proportion="-6.6" vertical-offset="0" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/components/blog/collection.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="43" selection-start="236" selection-end="236" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/components/blog/blog.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="184" column="26" selection-start="3840" selection-end="3840" vertical-scroll-proportion="-4.347826" vertical-offset="2460" max-vertical-offset="4350">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/main.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="835" column="26" selection-start="14682" selection-end="14682" vertical-scroll-proportion="-3.1290324" vertical-offset="12234" max-vertical-offset="15795">
+        <state line="102" column="24" selection-start="1905" selection-end="1906" vertical-scroll-proportion="67.591835" vertical-offset="4842" max-vertical-offset="16710">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/blog/blog.lessimport">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="17" selection-start="3472" selection-end="3472" vertical-scroll-proportion="-5.5510206" vertical-offset="1993" max-vertical-offset="5700">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/blog/blog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="29" selection-start="1764" selection-end="1764" vertical-scroll-proportion="-19.041666" vertical-offset="383" max-vertical-offset="1395">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/news/news.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="53" selection-start="230" selection-end="230" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="795">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/news/news.lessimport">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="5" selection-start="912" selection-end="912" vertical-scroll-proportion="0.8548387" vertical-offset="400" max-vertical-offset="1080">
-          <folding>
-            <marker date="1416810823000" expanded="true" signature="41:487" placeholder="{...}" />
-          </folding>
+        <state line="3" column="23" selection-start="54" selection-end="54" vertical-scroll-proportion="-0.9183673" vertical-offset="0" max-vertical-offset="2790">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/event/event.lessimport">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="246" column="28" selection-start="4940" selection-end="4940" vertical-scroll-proportion="-75.30612" vertical-offset="0" max-vertical-offset="5715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/events/events.lessimport">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="14" selection-start="139" selection-end="139" vertical-scroll-proportion="0.14563107" vertical-offset="0" max-vertical-offset="2910">
+          <folding />
         </state>
       </provider>
     </entry>

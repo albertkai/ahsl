@@ -61,6 +61,20 @@ Router.map ->
 
   @route 'events', {
     layoutTemplate: 'innerLayout'
+    waitOn: ->
+      Meteor.subscribe('events')
+  }
+
+  @route 'eventPage', {
+    path: 'event/:alias'
+    layoutTemplate: 'innerLayout'
+    waitOn: ->
+      Meteor.subscribe('events')
+    data: ->
+      Events.findOne({alias: @params.alias})
+    action: ->
+      if @ready()
+        @render()
   }
 
   @route 'gallery', {
@@ -83,13 +97,6 @@ Router.map ->
     path: 'contacts'
     layoutTemplate: 'innerLayout'
     template: 'contacts'
-
-  }
-
-  @route 'blog', {
-    path: 'blog'
-    layoutTemplate: 'innerLayout'
-    template: 'blog'
 
   }
 

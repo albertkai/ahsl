@@ -1,50 +1,78 @@
 <template name="blog">
 
-    <section id="blog" class="wrap" data-stellar-background-ratio=".4">
+    <section id="blog" class="wrap">
+
+        <div class="shadow"></div>
+
+        <h2>Блог</h2>
 
         <div class="container">
             <div class="row">
 
-                <aside class="blog-nav" >
+                <aside>
 
-                    <ul class="nav">
-                        <li class="active"><a href="#f">Привет братцы</a><div></div></li>
-                        <li><a href="#s">как дела</a><div></div></li>
-                        <li><a href="#t">Передаю вам пламенный привет</a><div></div></li>
-                    </ul>
+                    <h4>Категория:</h4>
 
-                    <div class="tags"></div>
+                    <select name="" id="">
+                        <option>Все категории</option>
+                        <option>О школе</option>
+                        <option>Из жизни</option>
+                        <option>Интересное</option>
+                    </select>
+
+                    <h4>Сортировать по:</h4>
+
+                    <select name="" id="">
+                        <option>Дате</option>
+                        <option>Категориям</option>
+                        <option>Тегам</option>
+                    </select>
+
+                    <h4>Теги:</h4>
+
+                    <div id="tags-cont"></div>
 
                 </aside>
 
-                <div class="blog-cont"  data-spy="scroll" data-target=".blog-nav">
+                <div class="blog-cont">
 
-                    <article id="f">
+                    {{#each blogList}}
 
-                        <h3>Живопись начала XX века</h3>
-                        <h5>22.11.2014</h5>
-                        <img src="/img/slider_1.jpg" alt="Статья"/>
-                        <p class="bold">Как представиться. Как поприветствовать. Как попрощаться. В столовом этикете малыши будут изучать роль каждого столового прибора. И учиться пить чай по книгам Льюиса Кэролла. Основные темы – столовый этикет и этикет общения. Программа этикета и хороших манер поможет развить устойчивые поведенческие навыки, которые позволят в дальнейшем чувствовать себя уверенно в любой ситуации, связанной с  общением. </p>
-                        <p>Как представиться. Как поприветствовать. Как попрощаться. В столовом этикете малыши будут изучать роль кажьюиса Кэролла. Основные темы – столовый этикет и этикет общения. Программа этикета и хороших манер поможет развить устойчивые поведенческие навыки, которые позволят в дальнейшем чувствовать себя уверенно в любой ситуации, связанной с  общением. </p>
-                        <p>В столовом этикете малыши будут изучать роль каждого столового прибора. И учиться пить чай по книгам Льюиса Кэролла. Основные темы – столовый этикет и этикет общения. Программа этикета и хороших манер поможет развить устойчивые поведенческие навыки, которые позволят в дальнейшем чувствовать себя уверенно в любой ситуации, связанной с  общением. </p>
-                        <div class="tags">
-                            <button class="lead tag">ЖИВОПИСЬ</button>
-                            <button class="lead tag">СЕРЕБРЯНЫЙ ВЕК</button>
-                            <button class="lead tag">ЭСТЕТИКА</button>
+                    <article class="item">
+
+                        <div class="thumbnail" data-alias="{{alias}}" data-goto-blog-page>
+                            {{#if isInRole 'admin' 'blog'}}
+                            <button class="remove"><i class="fa fa-times"></i></button>
+                            {{/if}}
+
+                            <div class="img" data-blog-image-background="pic" style="background-image: url({{storagePath}}/images/{{pic}})">
+                                <h3>{{{title}}}</h3>
+                            </div>
+                            <h4>{{getBlogDate date}}</h4>
+                            <p data-blog-html="shortDesc">{{{shortDesc}}}</p>
                         </div>
 
+                    </article>
+
+                    {{/each}}
+
+                    {{#if isInRole 'admin' 'owner' 'blog'}}
+
+                    <article class="add-new">
+
+                        <div class="thumbnail" data-add-new-blog-page>
+
+                            <div>+</div>
+
+                        </div>
 
                     </article>
 
-                    <article id="s">
+                    {{/if}}
 
-
-                    </article>
-
-                    <article id="t">
-
-
-                    </article>
+                    <button data-blog-load-more>
+                        <div>загрузить еще..</div>
+                    </button>
 
                 </div>
 
@@ -54,3 +82,6 @@
     </section>
 
 </template>
+
+
+

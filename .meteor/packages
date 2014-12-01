@@ -8,7 +8,6 @@ iron:router
 less
 coffeescript
 miguelvalverde:font-awesome-4.1.0
-jeeeyul:moment-with-langs
 noorderstorm:stellar
 jquery-waypoints
 andruschka:scroll-to-fixed
@@ -27,4 +26,5 @@ mrt:nprogress
 linto:jquery-ui
 underscore
 mrt:jquery-masonry
+jeeeyul:moment-with-langs
 

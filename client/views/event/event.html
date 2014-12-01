@@ -1,0 +1,97 @@
+<template name="eventPage">
+
+    <section id="event-page" class="wrap" data-aura-with="{{_id}}" data-aura-collection="events" data-aura-index="_id">
+        <div class="container">
+            <div class="header" data-aura-with-image-background="pic" style="background-image: url({{storagePath}}/images/{{pic}})" data-stellar-background-ratio=".7">
+                <h3>
+                    <div class="container">
+                        <span>{{eventGetDay date}} {{eventGetMonth date}}</span>
+                        <span data-aura-with-html="title" contenteditable="false">{{{title}}}</span>
+                    </div>
+                </h3>
+            </div>
+        </div>
+        <div class="container body">
+            <div class="row">
+                <div>
+                    <p data-aura-with-html="mainDesc" contenteditable="false">
+                        {{{mainDesc}}}
+                    </p>
+                    <button class="lead checkin">записаться</button>
+                </div>
+                <aside>
+
+                    <h4>Место:</h4>
+
+                    <h3 data-aura-with-html="place" contenteditable="false">{{{place}}}</h3>
+
+                    <h4>Время:</h4>
+
+                    <h3 data-aura-with-html="time" class="huge" contenteditable="false">{{{time}}}</h3>
+
+                    <h4>Стоимость:</h4>
+
+                    <h3 data-aura-with-html="price" class="huge" contenteditable="false">{{{price}}}</h3>
+                    
+                    {{#if isInRole 'admin' 'owner'}}
+                    <h4>Дата:</h4>
+                    <input id="set-event-date" class="aura-input input-white" type="date" value="{{getEventInputDate date}}" data-aura-instant-input="events.{{_id}}.date"/>
+                    <h4>Ссылка:</h4>
+                    <input id="aura-alias-input" class="aura-input input-white" type="text" value="{{alias}}" data-aura-instant-input="events.{{_id}}.alias"/>
+                    {{/if}}
+
+                    {{#if isInRole 'admin' 'owner'}}
+                    <h4>Короткое описание</h4>
+                    <p class="short-desc" data-aura-with-html="shortDesc" contenteditable="false">{{shortDesc}}</p>
+                    {{/if}}
+
+                </aside>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="custom-modal">
+
+        <div class="body">
+
+            <h2 class="red">ЗАПИСЬ</h2>
+
+            <div class="close-it">&times;</div>
+
+            <form id="form" action="">
+
+                <input id="user-name" type="text" minlength="2" maxlength="50" placeholder="Ваше имя:" required/>
+                <input id="user-email" type="email" name="email" maxlength="80" placeholder="Ваш email:" required/>
+                <input id="user-phone" name="tel" type="tel" placeholder="Ваше телефон:" required/>
+
+            </form>
+
+            <!--<div class="types">-->
+
+            <!--<div id="day1" class="item">Международный этикет</div>-->
+            <!--<div id="day2" class="item">Столовый этикет</div>-->
+            <!--<div id="diner" class="item">Гала-ужин</div>-->
+            <!--<span style="clear: both; display: block;"></span>-->
+
+            <!--</div>-->
+
+            <button id="send" class="lead" data-title="title">ОТПРАВИТЬ</button>
+
+        </div>
+
+    </div>
+
+    <div class="modal-overlay"></div>
+
+    <div class="sccss">
+        <div class="body">
+            <h3 class="red">
+                Ваша заявка отправлена!
+            </h3>
+            <h4>Мы свяжемся с вами в ближайшее время</h4>
+        </div>
+
+    </div>
+
+</template>

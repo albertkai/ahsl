@@ -494,6 +494,3 @@ Meteor.startup ->
     Roles.addUsersToRoles(user2, ['owner'])
     Roles.addUsersToRoles(user3, ['admin'])
 
-  console.log AuraPages.find().fetch()
-  console.log 'hello'
-

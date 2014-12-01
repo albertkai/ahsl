@@ -7,98 +7,70 @@
         <h2>Ближайшие события</h2>
 
         <div class="container">
-            <div id="masonry-cont">
 
-                <div class="item">
-                    <div><img src="/img/news.jpg" alt=""/>
-                        <h5>22.11.2014</h5>
-                    </div>
-                    <h4>
-                        Вечеринка в честь нового года
-                    </h4>
+            <div class="timeline">
+                <div></div>
+                <div></div>
+            </div>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem expedita saepe?</p>
+            {{#if isInRole 'admin' 'owner'}}
+
+            <div id="add-event" class="row item" data-add-event>
+
+                <div class="date"></div>
+
+                <div class="body">
+
+                    <div>+</div>
+                    <p>Добавить событие</p>
+
                 </div>
 
-                <div class="item">
-                    <div><img src="/img/event.jpg" alt=""/>
-                        <h5>22.11.2014</h5>
-                    </div>
-                    <h4>
-                        Вечеринка в честь
-                    </h4>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+            </div>
+
+            {{/if}}
+
+
+            {{#each events}}
+
+            <div class="row item" data-alias="{{alias}}">
+
+                {{#if isInRole 'admin' 'owner'}}
+
+                <div class="remove"><i class="fa fa-times"></i></div>
+
+                {{/if}}
+
+                <div class="date">
+
+                    <h3>
+                        <span>{{eventGetDay date}}</span>
+                        <span>{{eventGetMonth date}}</span>
+                        <span>{{eventGetYear date}}</span>
+                    </h3>
+
                 </div>
 
-                <div class="item">
-                    <div><img src="/img/news.jpg" alt=""/>
-                        <h5>22.11.2014</h5>
+                <div class="body">
+
+                    <div class="stripe"></div>
+
+                    <h3>{{{title}}}</h3>
+
+                    <div class="row">
+
+                        <div><img src="{{storagePath}}/images/{{pic}}" alt=""/></div>
+                        <div><p>{{{shortDesc}}}</p></div>
+
                     </div>
-                    <h4>
-                        Вечеринка в честь нового года и Рождества
-                    </h4>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda beatae cumque, earum iusto
-                        necessitatibus quam repudiandae!</p>
-                </div>
-
-                <div class="item">
-                    <div><img src="/img/slider_3.jpg" alt=""/>
-                        <h5>22.11.2014</h5>
-                    </div>
-                    <h4>
-                        Вечеринка
-                    </h4>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-
-                <div class="item">
-                    <div><img src="/img/slider_1.jpg" alt=""/>
-                        <h5>22.11.2014</h5>
-                    </div>
-                    <h4>
-                        Вечеринка в честь нового
-                    </h4>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem expedita saepe?</p>
-                </div>
-
-                <div class="item">
-                    <div><img src="/img/teacher_pic.jpg" alt=""/>
-                        <h5>22.11.2014</h5>
-                    </div>
-                    <h4>
-                        Вечеринка в честь нового года
-                    </h4>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam </p>
-                </div>
-
-                <div class="item">
-                    <div><img src="/img/news.jpg" alt=""/>
-                        <h5>22.11.2014</h5>
-                    </div>
-                    <h4>
-                        Вечеринка в честь Хеллоуина
-                    </h4>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem expedita saepe?</p>
-                </div>
-
-                <div class="item">
-                    <div><img src="/img/event.jpg" alt=""/>
-                        <h5>22.11.2014</h5>
-                    </div>
-                    <h4>
-                        Вечеринка в честь просто так вечеринка
-                    </h4>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam autem </p>
                 </div>
 
             </div>
+
+            {{/each}}
+
         </div>
 
     </section>

@@ -10,6 +10,7 @@ Package.onUse(function(api) {
   api.use('standard-app-packages');
   api.use('alanning:roles@1.2.12');
   api.use('phuocd:ace@1.0.0', 'client');
+  api.use('mrt:nprogress@0.1.0', 'client');
   api.use(['session', 'templating', 'underscore', 'coffeescript', 'spacebars' ,'accounts-password', 'jquery', 'less'], 'client');
   api.use(['underscore', 'coffeescript','accounts-password'], 'server');
   api.use(['mongo'], ['client', 'server']);

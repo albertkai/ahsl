@@ -7,7 +7,6 @@ Template.children.rendered = ->
 
   new Calendar('#group-schedule', {
     group: 'children'
-    month: '11'
     drawGroups: false
   })
 
@@ -38,7 +37,6 @@ Template.teens.rendered = ->
 
   new Calendar('#group-schedule', {
     group: 'teens_day'
-    month: '11'
     drawGroups: false
   })
 
@@ -67,7 +65,6 @@ Template.lateteens.rendered = ->
 
   new Calendar('#group-schedule', {
     group: 'lateTeens'
-    month: '11'
     drawGroups: false
   })
 
@@ -97,8 +94,8 @@ Template.grownups.rendered = ->
 
   new Calendar('#group-schedule', {
     group: 'grownUps'
-    month: '11'
     drawGroups: false
+    chooseTime: true
   })
 
   Meteor.setTimeout ->

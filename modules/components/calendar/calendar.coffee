@@ -3,16 +3,20 @@ if Meteor.isClient
   class @Calendar
 
     group: null
-    hours:
-      day: ['12:00 - 12:45', '13:00 - 13:45', '14:00 - 14:45']
-      evening: ['17:00 - 17:45', '18:00 - 18:45', '19:00 - 19:45']
+    hourTimes:
+      children: ['17:00 - 17:45', '17:55 - 18:40', '18:45 - 19:30']
+      teens_day: ['17:00 - 17:45', '17:55 - 18:40', '18:45 - 19:30']
+      lateTeens: ['17:00 - 17:45', '17:55 - 18:40', '18:45 - 19:30']
+      grownUps: ['11:00 - 11:45', '11:55 - 12:35', '12:45 - 13:30', '13:40 - 14:25', '14:35 - 15:10']
+      grownUps_evening: ['19:30 - 20:15', '20:25 - 21:10', '21:15 - 22:00']
     month: new Date().getMonth()
     year: new Date().getYear()
     header: '<div class="header"><div>Время</div><div>ПН</div><div>ВТ</div><div>СР</div><div>ЧТ</div><div>ПТ</div><div>СБ</div><div>ВС</div></div>'
-    groups: '<div class="container group-change-cont"><div class="row"><div><button class="lead _active" data-group="children">Детская группа</button></div><div><button class="lead" data-group="teens" data-time="true">Школьная группа</button></div><div><button class="lead" data-group="lateTeens">Подростковая группа</button></div><div><button class="lead" data-group="grownUps">Взрослая группа</button></div></div></div>'
-    groupTimes: '<div class="container group-time"><div class="chckbx _active" data-group="teens_day"><div><div></div></div><p>Дневная группа</p></div><div class="chckbx" data-group="teens_evening"><div><div></div></div><p>Вечерняя группа</p></div></div>'
+    groups: '<div class="container group-change-cont"><div class="row"><div><button class="lead _active" data-group="children">Детская группа</button></div><div><button class="lead" data-group="teens_day">Школьная группа</button></div><div><button class="lead" data-group="lateTeens">Подростковая группа</button></div><div><button class="lead" data-group="grownUps" data-time="true">Взрослая группа</button></div></div></div>'
+    groupTimes: '<div class="container group-time"><div class="chckbx _active" data-group="grownUps"><div><div></div></div><p>Дневная группа</p></div><div class="chckbx" data-group="grownUps_evening"><div><div></div></div><p>Вечерняя группа</p></div></div>'
     months: ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
     drawGroups: true
+    chooseTime: false
     saveTimeout: null
 
     constructor: (element, options)->
@@ -22,10 +26,11 @@ if Meteor.isClient
       @el = element
       if options
         @group = options.group
-        @hours = @hours[options.hours] or @hours.evening
+        @hours = @hourTimes[@group]
         @month = options.month or @month
         @year = options.year or @year
         @drawGroups = options.drawGroups if options.drawGroups?
+        @chooseTime = options.chooseTime if options.chooseTime?
 
       console.log @group
       console.log @month
@@ -45,11 +50,14 @@ if Meteor.isClient
       $('body').find(@el).find('.calendar-controls .arrows').find('button:nth-child(2)').on 'click', (e)=>
         month = parseInt @month
         @month = do =>
-          if month > 11
+          if month >= 11
             @year = @year + 1
             0
           else
             month + 1
+
+        console.log 'month:'
+        console.log @month
 
         @_hideCalendar()
         @_hideControls()
@@ -66,11 +74,12 @@ if Meteor.isClient
       $('body').find(@el).find('.calendar-controls .arrows').find('button:nth-child(1)').on 'click', (e)=>
         month = parseInt @month
         @month = do =>
-          if month - 2 < 0
+          if month - 1 < 0
             @year = @year - 1
             11
           else
             month - 1
+        console.log @month
 
         @_hideCalendar()
         @_hideControls()
@@ -84,18 +93,58 @@ if Meteor.isClient
           , 100
         , 400
 
-      $('body').find(@el).find('.group-change-cont').find('button').on 'click', (e)=>
+      $('body').find(@el).on 'click', '.group-change-cont button', (e)=>
         target = $(e.currentTarget).data('group')
-        if !$(e.currentTarget).data('time') or $(e.currentTarget).data('time') is ''
-          $('.group-time').removeClass '_visible'
-        else
-          $('.group-time').addClass '_visible'
         $('body').find(@el).find('.group-change-cont').find('button').removeClass '_active'
         $(e.currentTarget).addClass '_active'
+        @hours = @hourTimes[target]
+        if !$(e.currentTarget).data('time') or $(e.currentTarget).data('time') is ''
+          $('.group-time').removeClass '_visible'
+          @group = target
+          @schedule = Schedules.findOne({'group': target}).schedule
+          @_redrawCalendar()
+        else
+          $('.group-time').addClass '_visible'
+          $('.group-time').find('.chckbx').find('div').first().trigger 'click'
+
+      $('body').on 'click', '.group-time .chckbx>div', (e)=>
+        target = $(e.currentTarget).closest('.chckbx').data('group')
+        console.log target
+        @hours = @hourTimes[target]
+        $(e.currentTarget).closest('.chckbx').addClass('_active').siblings().removeClass('_active')
         @schedule = Schedules.findOne({'group': target}).schedule
+        @group = target
+        console.log @schedule
         @_redrawCalendar()
 
-      $('body').find('.calendar').find('[contenteditable="true"]').on 'input', (e)=>
+      $('body').on 'mouseenter', '[data-day]', (e)->
+        $(e.currentTarget).find('.color-select').addClass '_hover'
+
+      $('body').on 'mouseleave', '[data-day]', (e)->
+        $(e.currentTarget).find('.color-select').removeClass '_hover'
+
+      $('body').off 'click', '.color-select > div'
+
+      $('body').on 'click', '.color-select > div', (e)=>
+        color = $(e.currentTarget).data('color')
+        $(e.currentTarget).closest('[data-day]').data('color', color)
+        $(e.currentTarget).closest('[data-day]').attr('class', 'color_' + color)
+        $target = $(e.currentTarget)
+        content = []
+        $target.closest('[data-day]').find('[contenteditable="true"]').each ->
+          content.push $(this).html()
+        day = $target.closest('[data-day]').data('day')
+        month = $target.closest('[data-month]').data('month')
+        Meteor.call 'updateSchedule', content, day, @month, @year, @group, color, (err, res)->
+          if err
+            console.log err
+          else
+            Aura.notify 'Расписание изменено!'
+
+
+      $('body').off 'input', '.calendar [contenteditable="true"]'
+
+      $('body').on 'input', '.calendar [contenteditable="true"]', (e)=>
         Meteor.clearTimeout @saveTimeout
         @saveTimeout = Meteor.setTimeout =>
           $target = $(e.currentTarget)
@@ -105,12 +154,8 @@ if Meteor.isClient
           day = $target.closest('[data-day]').data('day')
           month = $target.closest('[data-month]').data('month')
           index = $target.closest('div').index()
-          console.log content
-          console.log day
-          console.log month
-          console.log @year
-          console.log @group
-          Meteor.call 'updateSchedule', content, day, month, @group, index, (err, res)->
+          color = $target.closest('[data-color]').data('color')
+          Meteor.call 'updateSchedule', content, day, @month, @year, @group, color, (err, res)->
             if err
               console.log err
             else
@@ -127,6 +172,9 @@ if Meteor.isClient
       $(@el).html(markup)
       @_showCalendar()
       @_showControls()
+      if @chooseTime
+        $('.group-time').addClass '_visible'
+
 
     _drawHeading: ->
       console.log @drawGroups
@@ -150,12 +198,14 @@ if Meteor.isClient
 
     _redrawCalendar: ->
 
+      console.log 'redrawing calendar'
+
       newCalendar = @_drawCalendar()
       $(@el).find('.body').html(newCalendar)
 
     _redrawControls: ->
 
-      markup = '<span>' + (@year + 1900) + '</span><span>' + @months[(@month - 1)] + '</span>'
+      markup = '<span>' + (@year + 1900) + '</span><span>' + @months[(@month)] + '</span>'
       $(@el).find('.calendar-controls > p').html(markup)
 
 
@@ -163,7 +213,7 @@ if Meteor.isClient
 
       markup = '<p>'
       markup += '<span>' + (@year + 1900) + '</span>'
-      markup += '<span>' + @months[@month - 1] + '</span>'
+      markup += '<span>' + @months[@month] + '</span>'
       markup += '</p><div class="arrows small" data-year="' + @year + ' " data-month="' + @month + '"><button></button><button></button></div>'
       markup
 
@@ -172,16 +222,19 @@ if Meteor.isClient
 
       markup = '<aside>'
       for num in [1..6]
-        markup += '<div><div>' + @hours[0] + '</div><div>' + @hours[1] + '</div><div>' + @hours[2] + '</div></div>'
+        markup += '<div>'
+        for i in [0..@hours.length - 1]
+          markup += '<div>' + @hours[i] + '</div>'
+        markup += '</div>'
       markup += '</aside>'
       markup
 
     __drawOutput: ->
 
-      today = new Date().getDate()
-      furtherMonth = @month - 1
-      firstDay = new Date(@year, furtherMonth , 1).getDay()
-      lastDay = new Date(@year, @month , 0).getDate()
+      furtherMonth = @month + 1
+      firstDay = new Date(@year, @month , 1).getDay()
+      lastDay = new Date(@year, furtherMonth, 0).getDate()
+      lessonsLength = @hours.length - 1
       console.log @year
       console.log @month
       console.log firstDay
@@ -191,7 +244,7 @@ if Meteor.isClient
       for row in [1...7]
         markup += '<div class="calendar-row">'
         for cell in [1..7]
-          markup += @__drawCell(firstDay, counter, lastDay, today)
+          markup += @__drawCell(firstDay, counter, lastDay, lessonsLength)
           counter++
         markup += '</div>'
       markup += '</div></div>'
@@ -199,25 +252,30 @@ if Meteor.isClient
 
 
 
-    __drawCell: (startDay, day, lastDay, today)->
+    __drawCell: (startDay, day, lastDay, lessonsLength)->
+
+      console.log startDay
 
       if day < (startDay + 2) or day > (lastDay + startDay + 1)
-        '<div class="_disabled"></div>'
+        markup = '<div class="_disabled"><div>'
+        for num in [0..lessonsLength]
+            markup += '<div><p><span></span></p></div>'
+        markup += '</div></div>'
       else
-        todayClass = do ->
-          if (day - 1) is today
-            'class="today"'
+        color = do =>
+          if @schedule[@year] and @schedule[@year][@month] and @schedule[@year][@month][day - startDay - 1]
+            @schedule[@year][@month][day - startDay - 1].color
           else
-            ''
-        markup = '<div ' + todayClass + 'data-day="' + (day - startDay - 1) + '"><span class="date">' + (day - startDay - 1) + '</span><div>'
-        for num in [0..2]
-          if @schedule[@month]
-            if @schedule[@month][day]
-              markup += '<div><p><span contenteditable="true">' + @schedule[@month][day][num] + '</span></<p></p></div>'
+            '1'
+        markup = '<div class="color_' + color + '" ' + ' data-day="' + (day - startDay - 1) + '" data-color="' + color + '"><span class="date">' + (day - startDay - 1) + '</span><section class="color-select"><div data-color="1"></div><div data-color="2"></div><div data-color="3"></div></section><div>'
+        for num in [0..lessonsLength]
+          if @schedule[@year] and @schedule[@year][@month]
+            if @schedule[@year][@month][day - startDay - 1] and @schedule[@year][@month][day - startDay - 1]['lessons']
+              markup += '<div><p><span contenteditable="true">' + @schedule[@year][@month][day - startDay - 1]['lessons'][num] + '</span></<p></p></div>'
             else
               markup += '<div><p><span contenteditable="true"> </span></p></div>'
           else
-            console.log 'Aura::calendar: No schedule for this month:('
+            markup += '<div><p><span contenteditable="true"> </span></p></div>'
         markup += '</div></div>'
         markup
 
@@ -256,14 +314,18 @@ if Meteor.isServer
 
   Meteor.methods {
 
-    'updateSchedule': (content, day, month, group)->
+    'updateSchedule': (content, day, month, year, group, color)->
 
-      query = {}
-      queryString = 'schedule.' + month + '.' + (day + 5)
-      query[queryString] = content
-      Schedules.update {group: group}, {$set: query}
-      console.log Schedules.findOne {group: group}
-      console.log query
+      query1 = {}
+      query2 = {}
+      queryLessons = 'schedule.' + year + '.' + month + '.' + day + '.lessons'
+      queryColor = 'schedule.' + year + '.' + month + '.' + day + '.color'
+      query1[queryLessons] = content
+      query2[queryColor] = color
+      Schedules.update {group: group}, {$set: query1}
+      Schedules.update {group: group}, {$set: query2}
+      console.log query1
+      console.log query2
 
   }
 

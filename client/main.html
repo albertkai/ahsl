@@ -4,6 +4,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/img/favicon.ico">
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
@@ -27,6 +28,34 @@
         </div>
     </div>
 </div>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter27185078 = new Ya.Metrika({id:27185078,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/27185078" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 
 </body>
@@ -67,10 +96,10 @@
                             <li><a href="/grownups">Взрослая группа</a></li>
                         </ul>
                     </li><span>|</span>
-                    <li><a href="/events" class="disabled">События</a></li><span>|</span>
+                    <li><a href="/events">Мероприятия</a></li><span>|</span>
                     <li><a href="/schedule">Расписание</a></li><span>|</span>
                     <li><a href="/gallery" class="disabled">Галерея</a></li><span>|</span>
-                    <li><a href="/blog" class="disabled">Блог</a></li><span>|</span>
+                    <li><a href="/bloglist">Блог</a></li><span>|</span>
                     <li><a href="/contacts">Контакты</a></li>
                 </ul>
 
@@ -158,10 +187,12 @@
 
 
             <div class="row">
-                <article  data-aura-html="index.mainDesc" contenteditable="false">
+                <article>
                     <h2 data-aura-html="index.header1" contenteditable="false">{{index.header1}}</h2>
 
-                    {{{index.mainDesc}}}
+                    <div data-aura-html="index.mainDesc" contenteditable="false">
+                        {{{index.mainDesc}}}
+                    </div>
 
                 </article>
                 <div class="news">

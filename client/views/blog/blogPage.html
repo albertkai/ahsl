@@ -1,0 +1,92 @@
+<template name="blogPage">
+
+    <section id="blog-page" class="wrap" data-aura-with="{{_id}}" data-aura-collection="blog" data-aura-index="_id">
+        <div class="container">
+            <div class="header" data-aura-with-image-background="pic" style="background-image: url({{storagePath}}/images/{{pic}})" data-stellar-background-ratio=".7">
+                <h3>
+                    <div class="container">
+                        <span>{{getBlogDate date}}</span>
+                        <span data-aura-with-html="title" contenteditable="false">{{{title}}}</span>
+                    </div>
+                </h3>
+            </div>
+        </div>
+        <button class="arrows left"><i class="fa fa-angle-left"></i></button>
+        <button class="arrows right"><i class="fa fa-angle-right"></i></button>
+        <div class="container body">
+            <div class="row">
+                <div>
+                    <div data-aura-with-html="html" contenteditable="false">
+                        {{{html}}}
+                    </div>
+                    <div class="comments">
+                        <script type="text/javascript">
+                            VK.init({apiId: 4651140, onlyWidgets: true});
+                        </script>
+
+                        <!-- Put this div tag to the place, where the Comments block will be -->
+                        <div id="vk_comments"></div>
+                        <script type="text/javascript">
+                            VK.Widgets.Comments("vk_comments", {limit: 10, width: "720", attach: "*"});
+                        </script>
+                    </div>
+                </div>
+                <aside>
+                    <h4>Категория:</h4>
+                    <h3>О школе</h3>
+                    {{#if isInRole 'admin' 'owner'}}
+                    <h4>Изменить категорию:</h4>
+                    <select name="" id="">
+                        <option value="">о школе</option>
+                        <option value="">интересное</option>
+                        <option value="">что еще нового друзья мои??</option>
+                    </select>
+                    {{/if}}
+
+                    {{#if tags}}
+                    <h4>Теги:</h4>
+
+                    <ul class="tags-list">
+                        {{#each tags}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                        <li class="add-tag">+</li>
+                    </ul>
+                    {{/if}}
+
+                    {{#if isInRole 'admin' 'owner'}}
+                        <h4>Ссылка</h4>
+                        <input id="aura-alias-input" class="aura-input input-white" type="text" value="{{alias}}"  data-aura-instant-input="blog.{{_id}}.alias"/>
+                    {{/if}}
+
+                    {{#if isInRole 'admin' 'owner'}}
+                    <textarea name="" id="" cols="30" rows="10" value="{{shortDesc}}"></textarea>
+                    {{/if}}
+
+                    <h4>Рекомендации:</h4>
+
+                    <div class="item" data-alias="{{alias}}" data-goto-blog-page>
+                        <h4>22.04.2014</h4>
+                        <h3>Еще статья</h3>
+                        <p data-blog-html="shortDesc">Короткое описание, все круто, но надо заполнять самому</p>
+                    </div>
+
+                    <div class="item" data-alias="{{alias}}" data-goto-blog-page>
+                        <h4>22.04.2014</h4>
+                        <h3>Еще статья</h3>
+                        <p data-blog-html="shortDesc">Короткое описание, все круто, но надо заполнять самому</p>
+                    </div>
+
+                    <div class="item" data-alias="{{alias}}" data-goto-blog-page>
+                        <h4>22.04.2014</h4>
+                        <h3>Еще статья</h3>
+                        <p data-blog-html="shortDesc">Короткое описание, все круто, но надо заполнять самому</p>
+                    </div>
+
+                </aside>
+            </div>
+
+        </div>
+    </section>
+
+</template>

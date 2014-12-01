@@ -5,6 +5,7 @@
 @widget-color: rgba(0, 0, 0, .85);
 @aura-primary: #00c0ff;
 @aura-secondary: #fdff37;
+@aura-red: #ff5974;
 //Classes that affect your markup. You can customize it the way you want
 
 *[data-aura-html]{
@@ -127,6 +128,113 @@
   }
 }
 
+
+.aura-image-highlight{
+  position: relative;
+  .box-shadow(0 0 5px @aura-primary);
+  z-index: 8889;
+}
+.aura-image-embed-overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 8888;
+}
+
+.image-embed-edit{
+  position: absolute;
+  width: 210px;
+  height: 50px;
+  background: rgba(0, 0, 0, .8);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  z-index: 8889;
+  .translate(0, 20px);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+  &._opened{
+    opacity: 1;
+    visibility: visible;
+    .translate(0, 0);
+  }
+  button{
+    border: 0;
+    width: 38px;
+    height: 38px;
+    display: inline-block;
+    .rounded(50px);
+    border: 2px solid white;
+    .box-sizing(border-box);
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    margin: 5px;
+    background: rgba(0, 0, 0, .3);
+    color: white;
+    .transition(.4s);
+    &._active, &:hover{
+      border-color: #bff5ff;
+      box-shadow: 0 0 5px cyan, inset 0 0 5px cyan;
+    }
+    &.remove{
+      border-color: @aura-red;
+      color: @aura-red;
+      margin-left: 20px;
+      &:hover{
+        box-shadow: 0 0 5px #ff4144, inset 0 0 5px #ff4144;
+      }
+    }
+  }
+}
+
+*[data-aura-image-embed]{
+  -webkit-transition: .4s;
+  -moz-transition: .4s;
+  -ms-transition: .4s;
+  -o-transition: .4s;
+  transition: .4s;
+  &.aura-float-left{
+    width: 45%;
+    height: auto;
+    float: left;
+    margin: 0 10px 10px 0;
+  }
+  &.aura-float-right{
+    width: 45%;
+    height: auto;
+    float: right;
+    margin: 0px 0px 10px 10px;
+  }
+  &.aura-centered{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  &._hover{
+    position: relative;
+    &:after{
+      position: absolute;
+      display: block;
+      content: '<div style="position:absolute; width: 100%; height: 30px; top: 50%; margin-top: -15px;">ЗАГРУЗИТЬ ФАЙЛ</div>';
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      font-weight: bold;
+      line-height: 100%;
+      z-index: 2;
+      background: rgba(255, 255, 255, .3);
+    }
+  }
+}
+
 .aura-input{
   margin: 5%;
   width: 90%;
@@ -140,6 +248,10 @@
   &:focus{
     border-color: #7eff5f;
     box-shadow: 0 0 5px #29ff34, inset 0 0 5px #29ff34;
+  }
+  &.input-white{
+    background: white;
+    border-color: #ccc;
   }
 }
 

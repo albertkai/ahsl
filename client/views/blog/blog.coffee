@@ -3,29 +3,33 @@ Template.blog.rendered = ->
   Meteor.defer ->
     $('.wrap').addClass '_animated'
 
-  $.stellar()
-
-  $('#blog aside').scrollToFixed({
-    marginTop: 135,
-    postFixed: (e)->
-      Meteor.defer ->
-        $(e.target).css('top', '50px')
+  $('select').select2({
+    minimumResultsForSearch: -1
   })
 
-  $('body').css({'position', 'relative'}).scrollspy({ target: '.blog-nav', offset: 80 })
+  tags = []
 
-  $('body').on 'activate.bs.scrollspy', ->
-    target = $('.blog-nav').find('li.active a').attr('href')
-    console.log target
-    $('.blog-cont').find('article').removeClass('active')
-    $(target).addClass('active')
+  BlogTags.find().fetch().forEach (t)->
+    tags.push {
+      text: t.name
+      weight: t.count
+      html: {
+        class: 'tag-item'
+      }
+    }
+  console.log tags
+
+  $("#tags-cont").jQCloud(tags)
 
 Template.blog.events {
 
-  'click .blog-nav a': (e)->
-
-    e.preventDefault()
-    target = $(e.currentTarget).attr('href')
-    $('body').scrollTo $(target), 600, {offset: -70}
-
 }
+
+
+
+Template.blogPage.rendered = ->
+
+  Meteor.defer ->
+    $('.wrap').addClass '_animated'
+
+  $.stellar()

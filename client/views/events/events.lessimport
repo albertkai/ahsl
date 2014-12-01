@@ -2,6 +2,9 @@
   background-color: #f5f5f5;
   padding: 30px 0;
   position: relative;
+  padding-bottom: 80px;
+  overflow-x: hidden;
+  width: 100%;
   h2{
     margin-bottom: 20px;
   }
@@ -11,51 +14,174 @@
     left: -5%;
     width: 110%;
     height: 100%;
-    .box-shadow(0 0 5px rgba(0, 0, 0, .2) inset);
+    .box-shadow(0 0 5px rgba(0, 0, 0, .15) inset);
   }
 
   >.container{
-    -moz-column-width: 14em;
-    -webkit-column-width: 14em;
-    -moz-column-gap: 1em;
-    -webkit-column-gap: 1em;
-    .item{
-      display: inline-block;
-      margin:  0.25rem;
-      padding:  1rem;
-      width:  100%;
-      cursor: pointer;
-      margin: 15px 0;
+
+    position: relative;
+
+    .timeline{
+
+      position: absolute;
+      width: 3px;
       background: white;
-      .box-shadow(0 0 399px rgba(0, 0, 0, .2));
+      left: 28%;
+      height: 98%;
+      top: 3%;
 
       >div{
-        position: relative;
-        width: 100%;
+        position: absolute;
+        width: 23px;
+        height: 23px;
+        .rounded(20px);
+        bottom: -10px;
+        left: -10px;
+        background: white;
+        &:nth-child(2){
+          top: -10px;
+        }
+      }
+
+
+    }
+
+    .item{
+
+      position: relative;
+      margin-top: 50px;
+
+      &:hover{
+        .remove{
+          opacity: .7;
+          .scale(1);
+          visibility: visible;
+        }
+      }
+
+      .remove{
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 30px;
+        top: -9px;
+        right: -9px;
+        color: white;
+        cursor: pointer;
+        background: red;
+        .transition(.4s);
+        .scale(0);
+        padding: 0;
+        text-align: center;
+        line-height: 28px;
+        border: 1px solid white;
+        border-radius: 20px;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 5;
+        &:hover{
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      &#add-event{
+        .body{
+          padding: 0;
+          >div{
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+            background: @brand-success;
+            text-align: center;
+            color: white;
+            line-height: 85px;
+            font-size: 60px;
+            float: left;
+            margin: 20px;
+            .transition(.4s);
+          }
+          >p{
+            position: absolute;
+            left: 145px;
+            height: 100%;
+            line-height: 135px;
+            font-size: 38px;
+            font-weight: 500;
+            color: @brand-success;
+          }
+          &:hover{
+            >div{
+              .scale(1.07);
+            }
+          }
+        }
+      }
+
+      >.date{
+        .make-md-column(3);
+        h3{
+          text-align: center;
+          span{
+            display: block;
+            &:nth-child(1){
+              font-size: 90px;
+              color: @brand-primary;
+              font-family: @font-family-sans-serif;
+            }
+            &:nth-child(2){
+              font-size: 33px;
+            }
+            &:nth-child(3){
+              color: white;
+              font-family: @font-family-sans-serif;
+              font-size: 35px;
+              font-weight: 400;
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+
+      >.body{
+        padding-bottom: 15px;
+        cursor: pointer;
+
+        .stripe{
+          position: absolute;
+          height: 2px;
+          width: 22px;
+          top: 50%;
+          margin-top: -1px;
+          left: -60px;
+          background: white;
+        }
+
+        h3{
+          margin: 15px 0;
+          text-align: left;
+          font-size: 22px;
+        }
+
+        .row{
+          >div{
+            &:nth-child(1){
+              .make-md-column(6);
+            }
+            &:nth-child(1){
+              .make-md-column(6);
+            }
+          }
+        }
+        background: white;
+        .box-shadow(0 0 5px rgba(0, 0, 0, .15));
+        .rounded(3px);
+        .make-md-column(8);
+        .make-md-column-offset(1);
         img{
           width: 100%;
         }
-        h5{
-          position: absolute;
-          bottom: 0;
-          margin: 0;
-          width: 100%;
-          padding: 5px 10px;
-          background: rgba(0, 0, 0, .7);
-          color: white;
-          text-align: left;
-        }
       }
-
-      h4{
-        margin-top: 14px;
-        font-family: @font-family-serif;
-      }
-
-      p{
-        font-size: 14px;
-      }
-
     }
 
   }

@@ -405,6 +405,8 @@ if Meteor.isClient
 
   Meteor.startup ->
 
+    PNotify.prototype.options.styling = "fontawesome"
+
 
     $('body').on 'dragover', '[data-aura-image-background], [data-aura-image], [data-aura-list-image-background], [data-aura-list-image], [data-aura-with-image-background], [data-aura-with-image]', (e)->
       if e.preventDefault then e.preventDefault()
@@ -417,60 +419,63 @@ if Meteor.isClient
       return false
 
     $('body').on 'dragleave', '[data-aura-image-background], [data-aura-image], [data-aura-list-image-background], [data-aura-list-image], [data-aura-with-image-background], [data-aura-with-image]', (e)->
-      $(e.target).closest('[data-image]').removeClass('_hover')
+      if e.preventDefault then e.preventDefault()
+      $(e.currentTarget).removeClass('_hover')
       return false
 
     $('body').on 'drop', '[data-aura-image-background], [data-aura-image], [data-aura-list-image-background], [data-aura-list-image], [data-aura-with-image-background], [data-aura-with-image]', (e)->
-      console.log 'droped'
-      e.preventDefault()
-      e.stopPropagation()
-      $(e.target).removeClass('_hover')
-      file = e.originalEvent.dataTransfer.files[0]
-      fr = new FileReader()
-#      MainCtrl.showLoader()
-      fr.onload = ->
-        pic = {}
-        pic['data'] = fr.result
-        pic['name'] = file.name
-        pic['size'] = file.size
-        pic['type'] = file.type
-        currentPic = do ->
-          if $(e.currentTarget).data('aura-image-background') or $(e.currentTarget).data('aura-list-image-background') or $(e.currentTarget).data('aura-with-image-background')
-            path = $(e.currentTarget).css('background-image')
-            _.last(path.split('/')).replace(')', '')
-          else
-            path = $(e.currentTarget).attr('src')
-            _.last path.split('/')
-#        target = $(e.target).closest('[data-image]').data('image-target') or 'img'
-        (new PNotify({
-          title: 'Удалить старое изображение?',
-          text: 'Желательно удалять, чтобы не перегружать хостинг',
-          hide: false,
-          confirm: {
-            confirm: true
-          },
-          buttons: {
-            closer: false,
-            sticker: false
-          },
-          history: {
-            history: false
-          }
-        })).get().on('pnotify.confirm', ->
+      if Session.get('admin.editMode')
+        console.log 'droped'
+        e.preventDefault()
+        e.stopPropagation()
+        $(e.target).removeClass('_hover')
+        NProgress.start()
+        file = e.originalEvent.dataTransfer.files[0]
+        fr = new FileReader()
+  #      MainCtrl.showLoader()
+        fr.onload = ->
+          pic = {}
+          pic['data'] = fr.result
+          pic['name'] = file.name
+          pic['size'] = file.size
+          pic['type'] = file.type
+          currentPic = do ->
+            if $(e.currentTarget).data('aura-image-background') or $(e.currentTarget).data('aura-list-image-background') or $(e.currentTarget).data('aura-with-image-background')
+              path = $(e.currentTarget).css('background-image')
+              _.last(path.split('/')).replace(')', '')
+            else
+              path = $(e.currentTarget).attr('src')
+              _.last path.split('/')
+  #        target = $(e.target).closest('[data-image]').data('image-target') or 'img'
+          (new PNotify({
+            title: 'Удалить старое изображение?',
+            text: 'Желательно удалять, чтобы не перегружать хостинг',
+            hide: false,
+            confirm: {
+              confirm: true
+            },
+            buttons: {
+              closer: false,
+              sticker: false
+            },
+            history: {
+              history: false
+            }
+          })).get().on('pnotify.confirm', ->
 
-          Aura.media.updatePic(e, pic, file, currentPic, 'ahsl2/images', false)
-          console.log pic
-          console.log file
-          console.log currentPic
+            Aura.media.updatePic(e, pic, file, currentPic, 'ahsl2/images', false)
+            console.log pic
+            console.log file
+            console.log currentPic
 
-        ).on('pnotify.cancel', ->
-          Aura.media.uploadPic(e, pic, file, 'ahsl2/images', false)
-          console.log pic
-          console.log file
-          console.log currentPic
-        )
+          ).on('pnotify.cancel', ->
+            Aura.media.uploadPic(e, pic, file, 'ahsl2/images', false)
+            console.log pic
+            console.log file
+            console.log currentPic
+          )
 
-      fr.readAsBinaryString(file)
+        fr.readAsBinaryString(file)
 
 #    $('body').on 'paste', '[data-aura-html][contenteditable="true"], [data-aura-list-html][contenteditable="true"], [data-aura-list-html][contenteditable="true"]', (e)->
 #      console.log 'pasted'
@@ -481,10 +486,59 @@ if Meteor.isClient
 #        $el.html(text)
 #      , 100
 
+    $('body').on 'dragover', '[data-aura-image-embed]', (e)->
+      if e.preventDefault then e.preventDefault()
+      $(e.currentTarget).addClass('_hover')
+      return false
+
+    $('body').on 'dragenter', '[data-aura-image-embed]', (e)->
+      if e.preventDefault then e.preventDefault()
+      $(e.currentTarget).addClass('_hover')
+      return false
+
+    $('body').on 'dragleave', '[data-aura-image-embed]', (e)->
+      $(e.currentTarget).removeClass('_hover')
+      return false
+
+    $('body').on 'drop', '[data-aura-image-embed]', (e)->
+      if Session.get('admin.editMode')
+        console.log 'droped'
+        NProgress.start()
+        e.preventDefault()
+        e.stopPropagation()
+        $(e.currentTarget).removeClass('_hover')
+        file = e.originalEvent.dataTransfer.files[0]
+        fr = new FileReader()
+        #      MainCtrl.showLoader()
+        path = $(e.currentTarget).attr('src')
+        fr.onload = ->
+          pic = {}
+          pic['data'] = fr.result
+          pic['name'] = file.name
+          pic['size'] = file.size
+          pic['type'] = file.type
+          currentPic = do ->
+            _.last path.split('/')
+          Meteor.call 'deletePic', currentPic, 'ahsl2/images', (err, res)->
+            if err
+              console.log err
+            else
+              Meteor.call 'uploadPic', pic, 'ahsl2/images', (error, newPic)->
+                NProgress.done()
+                if error
+                  console.log error
+                else
+                  $(e.currentTarget).attr('src', _.without(path.split('/'), _.last(path.split('/'))).join('/') + '/' + newPic)
+                  $(e.currentTarget).closest('[contenteditable]').trigger('input')
+
+        fr.readAsBinaryString(file)
+
 
     $('body').on 'focus', '[data-aura-html][contenteditable="true"], [data-aura-list-html][contenteditable="true"],  [data-aura-with-html][contenteditable="true"]', 'focus', (e)->
 
-      console.log 'focused'
+      console.log 'focused on element'
+      e.stopImmediatePropagation()
+      e.stopPropagation()
       data = $(e.currentTarget).html()
       markup = $.htmlClean(data, {format:true})
       editor.showEditor(markup)
@@ -524,11 +578,40 @@ if Meteor.isClient
 
           else if $(e.currentTarget).data('aura-with-html')
 
+            query = $(e.currentTarget).data('aura-with-html')
+            withRule = $(e.currentTarget).closest('[data-aura-with]').data('aura-with')
+            withQuery = do ->
+              if withRule.split('.')
+                withRule.split('.')[0]
+              else
+                withRule
+            document = withQuery
+            field = query
+
+
             console.log 'this is with'
+
+          coll = do ->
+            if $(e.currentTarget).parents('[data-aura-collection]').length > 0
+              $(e.currentTarget).parents('[data-aura-collection]').data('aura-collection')
+            else
+              'auraPages'
+
+          docIndex = do ->
+            if $(e.currentTarget).parents('[data-aura-index]').length > 0
+              $(e.currentTarget).parents('[data-aura-index]').data('aura-index')
+            else
+              'name'
+
+          console.log 'indx'
+          console.log docIndex
+          console.log coll
 
           Aura._historyBuffer.push {
             field: field
             document: document
+            collection: coll
+            index: docIndex
             prevData: editor.editingItem
             newData: currentState
             selectorPath: $(e.currentTarget).getPath()
@@ -537,6 +620,8 @@ if Meteor.isClient
           editor._changedBuffer.push {
             field: field
             document: document
+            index: docIndex
+            collection: coll
             data: currentState
           }
           console.log editor._changedBuffer
@@ -548,23 +633,28 @@ if Meteor.isClient
           , 1000
 
 
+    #Editor add image
+
+
     $('body').on 'click', '[data-aura-list-remove]', (e)->
-      index = $(e.currentTarget).closest('[data-aura-list-item]').index()
-      list = $(e.currentTarget).closest('[data-aura-list]').data('aura-list')
-      document = list.split('.')[0]
-      field = list.split('.')[1]
-      object = AuraPages.findOne({name: document}).classes[index]
-      Meteor.call 'removeListItem', document, field, object, (err, res)->
-        if err then console.log err
+      if Session.get('admin.editMode')
+        index = $(e.currentTarget).closest('[data-aura-list-item]').index()
+        list = $(e.currentTarget).closest('[data-aura-list]').data('aura-list')
+        document = list.split('.')[0]
+        field = list.split('.')[1]
+        object = AuraPages.findOne({name: document}).classes[index]
+        Meteor.call 'removeListItem', document, field, object, (err, res)->
+          if err then console.log err
 
     $('body').on 'click', '[data-aura-list-add]', (e)->
-      list = $(e.currentTarget).closest('[data-aura-list]').data('aura-list')
-      document = list.split('.')[0]
-      field = list.split('.')[1]
-      sample = AuraPages.findOne({name: document})[field][0]
+      if Session.get('admin.editMode')
+        list = $(e.currentTarget).closest('[data-aura-list]').data('aura-list')
+        document = list.split('.')[0]
+        field = list.split('.')[1]
+        sample = AuraPages.findOne({name: document})[field][0]
 
-      Meteor.call 'addListItem', document, field, sample, (err, res)->
-        if err then console.log err
+        Meteor.call 'addListItem', document, field, sample, (err, res)->
+          if err then console.log err
 
 
     $('body').on 'mouseenter', '[data-aura-image-background]', (e)->
@@ -572,6 +662,89 @@ if Meteor.isClient
 
     $('body').on 'mouseleave', '[data-aura-image-background]', (e)->
       $(e.currentTaget).removeClass('_hover')
+
+
+    $('body').on 'click', '[data-aura-image-embed]', (e)->
+      if Session.get('admin.editMode')
+        id = do ->
+          if $(e.currentTarget).hasClass('aura-float-left')
+            'set-float-left'
+          else if $(e.currentTarget).hasClass('aura-float-right')
+            'set-float-right'
+          else
+            'set-centered'
+        $(e.currentTarget).addClass('aura-image-highlight')
+        top = $(e.currentTarget).offset().top - 60
+        left = $(e.currentTarget).offset().left
+        if $('.aura-image-embed-overlay').length is 0
+          $('body').append('<div class="aura-image-embed-overlay"></div>')
+          $('body').append(editor.imageEmbedEdit)
+          $('.image-embed-edit').css('left', left + 'px').css('top', top + 'px')
+          Meteor.setTimeout ->
+            $('.image-embed-edit').addClass '_opened'
+          , 100
+          $('.image-embed-edit').find('#' + id).addClass '_active'
+
+    $('body').on 'click', '.image-embed-edit button', (e)->
+      $img = $('.aura-image-highlight')
+      if !$(e.currentTarget).hasClass('remove')
+        $(e.currentTarget).addClass('_active').siblings().removeClass('_active')
+        target = $(e.currentTarget).data('class')
+        $img.removeClass('aura-float-left').removeClass('aura-float-right').removeClass('aura-centered')
+        $img.addClass(target)
+        top = $img.offset().top - 60
+        left = $img.offset().left
+        Meteor.setTimeout ->
+          $('.image-embed-edit').css('left', left + 'px').css('top', top + 'px')
+        , 400
+      else
+        pic = _.last $img.attr('src').split('/')
+        Meteor.call 'deletePic', pic, 'ahsl2/images', (err, res)->
+          if err
+            console.log err
+          else
+            $img.remove()
+            $('.image-embed-edit').remove()
+            $('.aura-image-embed-overlay').remove()
+            $(e.currentTarget).closest('[contenteditable]').trigger('input')
+            Aura.notify 'Изображение удалено!'
+
+
+    $('body').on 'click', '.aura-image-embed-overlay', (e)->
+      $('[data-aura-image-embed]').removeClass 'aura-image-highlight'
+      $('.image-embed-edit').removeClass '_opened'
+      Meteor.setTimeout ->
+        $('.image-embed-edit').remove()
+      , 400
+      $(e.currentTarget).remove()
+
+
+    $('body').on 'input','[data-aura-instant-input]', (e)->
+      if Aura.inputInstantTimeout
+        clearTimeout Aura.inputInstantTimeout
+      Aura.inputInstantTimeout = Meteor.setTimeout =>
+        query = $(e.currentTarget).data('aura-instant-input').split('.')
+        value = $(e.currentTarget).val()
+        item = {}
+        item['collection'] = query[0]
+        item['document'] = query[1]
+        item['index'] = '_id'
+        query.shift()
+        query.shift()
+        item['field'] = query
+        item['data'] = do ->
+          if $(e.currentTarget).attr('type') is 'date'
+            Date.parse(new Date(value))
+          else if $(e.currentTarget).attr('id') is 'aura-alias-input'
+            value
+        Meteor.call 'saveHtml', item, (err, res)->
+          if err
+            console.log err
+          else
+            Aura.notify 'Изменения сохранены!'
+            if $(e.currentTarget).attr('id') is 'aura-alias-input'
+              Router.go Router.current().route.getName(), {alias: value}
+      , 1500
 
 
     Template.body.events {
@@ -786,48 +959,25 @@ if Meteor.isClient
     #This method saves content and passes data to the saveHistory and log method
 
     Meteor.call 'saveContent', name, query, newContent, (err, res)->
+      #
 
-
-
-
-
+  inputInstantTimeout: null
 
 
 
   media: {
 
-    uploadPic: (e, pic, file)->
+    uploadPic: (e, pic, file, callback)->
+
+      NProgress.start()
 
       Meteor.call 'uploadPic', pic, 'ahsl2/images', (err, res)->
+        NProgress.done()
+
         if err
 #          MainCtrl.hideLoader()
           Aura.notify('Произошла ошибка, обратитесь к разработчику!')
         else
-#          if res
-#            console.log file.name
-#            fieldName = $(e.target).closest('[data-image]').data('image')
-#            document = $(e.target).closest('[data-document]').data('document')
-#            indexField = $(e.target).closest('[data-document]').data('index-field') or '_id'
-#            collection = $(e.target).closest('[data-collection]').data('collection')
-#            query = {}
-#            newData = {}
-#            query[indexField] = document
-#            newData[fieldName] = file.name
-#            targetId = eColl[collection].findOne(query)._id
-#            eColl[collection].update targetId, {$set: newData}, ->
-#              if target is 'background'
-#                $('<img>').attr('src', 'http://d9bm0rz9duwg1.cloudfront.net/' + file.name).load ->
-#                  MainCtrl.hideLoader()
-#                  $(e.target).closest('[data-image]').css('background-image', 'url(http://d9bm0rz9duwg1.cloudfront.net/' + file.name + ')')
-#
-#                  Aura.notify('Изображение обновлено, спасибо!')
-#              else if target is 'img'
-#                $('<img>').attr('src', 'http://d9bm0rz9duwg1.cloudfront.net/' + file.name).load ->
-#                  MainCtrl.hideLoader()
-#                  $(e.target).closest('[data-image]').attr('src', 'url(http://d9bm0rz9duwg1.cloudfront.net/' + file.name)
-#          else
-##            MainCtrl.hideLoader()
-#            Aura.notify('Произошла ошибка, обратитесь к разработчику!')
           if $(e.currentTarget).data('aura-image-background') or $(e.currentTarget).data('aura-image')
             query = do ->
               $(e.currentTarget).data('aura-image-background') or $(e.currentTarget).data('aura-image')
@@ -843,6 +993,31 @@ if Meteor.isClient
             item['document'] = list.split('.')[0]
             item['field'] = list.split('.')[1] + '.' + index + '.' + query
             item['data'] = res
+          else if $(e.currentTarget).data('aura-with-image-background') or $(e.currentTarget).data('aura-with-image')
+            query = $(e.currentTarget).data('aura-with-image-background') or $(e.currentTarget).data('aura-with-image')
+            withRule = $(e.currentTarget).closest('[data-aura-with]').data('aura-with')
+            withQuery = do ->
+              if withRule.split('.')
+                withRule.split('.')[0]
+              else
+                withRule
+            item = {}
+            item['document'] = withQuery
+            item['field'] = query
+            item['data'] = res
+
+          item['collection'] = do ->
+            if $(e.currentTarget).parents('[data-aura-collection]').length > 0
+              $(e.currentTarget).parents('[data-aura-collection]').data('aura-collection')
+            else
+              'auraPages'
+
+          item['index'] = do ->
+            if $(e.currentTarget).parents('[data-aura-index]').length > 0
+              $(e.currentTarget).parents('[data-aura-index]').data('aura-index')
+            else
+              'name'
+
           Meteor.call 'saveHtml', item, (error, response)->
             if err then console.log 'Smth went wrong'
           console.log item
@@ -1175,6 +1350,9 @@ if Meteor.isClient
           @_changedBuffer = []
           Aura._historyBuffer = []
           Aura.notify 'Изменения сохранены!'
+
+
+  imageEmbedEdit: '<div class="image-embed-edit"><button id="set-float-left" data-class="aura-float-left"><i class="fa fa-long-arrow-left"></i></button><button id="set-centered" data-class="aura-centered"><i class="fa fa-arrows-h"></i></button><button id="set-float-right" data-class="aura-float-right"><i class="fa fa-long-arrow-right"></i></button><button class="remove"><i class="fa fa-times"></i></button></div>'
 
 
   _trackChanges:
