@@ -1,0 +1,76 @@
+<template name="galleryEditModal">
+
+    <div id="galleryEditModal" class="auraModal">
+
+        <div class="close-modal"><i class="fa fa-times"></i></div>
+
+        <div class="header">
+
+            <h3>Редактировать галерею</h3>
+
+        </div>
+
+        <div class="body">
+
+            <aside>
+
+                <ul id="gallery-albums-list">
+                    {{#each itemList}}
+                    <li data-id="{{_id}}" data-order="{{order}}">
+                        <div>
+                            <!--<div class="pic" style="background-image: url(http://d9bm0rz9duwg1.cloudfront.net/{{getThumb}})">cdc</div>-->
+                            <div class="pic" style="background-image: url({{storagePath}}/gallery/{{getFirstPicThumb pics}})"></div>
+                        </div>
+                        <div>
+                            <h4>{{title}}</h4>
+                        </div>
+                        <button class="delete"><i class="fa fa-times"></i></button>
+                    </li>
+                    {{/each}}
+                </ul>
+                <button class="add-new">Добавить +</button>
+
+            </aside>
+            <div class="list-wrap">
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</template>
+
+<template name="galleryEditModalAlbum">
+    <input id="albumId" type="hidden" value="{{_id}}"/>
+    <div class="meta">
+        <div>
+            <input class="aura-input" type="text" id="albumName" value="{{title}}" data-aura-instant-input="auraGallery.{{_id}}.title"/>
+            <input class="aura-input" type="date" value="{{inputInstantGetDate date}}" data-aura-instant-input="auraGallery.{{_id}}.date"/>
+        </div>
+        <div>
+            <textarea class="aura-input" name="" id="" cols="30" rows="3" value="{{desc}}" data-aura-instant-input="auraGallery.{{_id}}.desc"></textarea>
+        </div>
+    </div>
+
+    <div class="list-cont">
+
+        <ul id="gallery-items-thumbs">
+            {{#each pics}}
+            <li class="item">
+                <div class="img" style="background-image: url({{storagePath}}/gallery/{{auraGalleryGetThumb this}})">
+                </div>
+                <button class="delete"><i class="fa fa-times"></i></button>
+            </li>
+            {{/each}}
+            <li class="add">
+                <input id="addAlbumPic" type="file"/>
+                <button class="add">+</button>
+            </li>
+        </ul>
+
+    </div>
+
+</template>

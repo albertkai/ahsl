@@ -1,26 +1,81 @@
-Template.events.helpers {
+Template.eventsList.helpers {
 
-  events: ->
+  eventsList: ->
 
-    Events.find()
+#    today = new Date().setHours(0, 0, 0, 0)
+
+#    Events.find({type: 'common', date: {$gte: today}}, {sort: {date: 1}})
+    Events.find({type: 'common'}, {sort: {date: 1}})
+
 
 }
 
-Template.eventCreateModal.rendered = ->
+Template.masterClassesList.helpers {
 
-  Meteor.defer ->
-    @.$('#event-create-modal').addClass '_opened'
+  masterClassesList: ->
 
-Template.eventCreateModal.events {
+#    today = new Date().setHours(0, 0, 0, 0)
 
-  'click .remove': (e)->
-    $(e.currentTarget).closest('#event-create-modal').removeClass '_opened'
+#    Events.find({type: 'masterclass', date: {$gte: today}}, {sort: {date: 1}})
+
+    Events.find({type: 'masterclass'}, {sort: {date: 1}})
+
+
 
 }
 
 
+Template.masterClassesList.events {
 
-Template.events.events {
+  'click [data-alias]': (e)->
+
+    if $(e.target).parent('.remove').length is 0 and !$(e.target).hasClass('remove')
+
+      alias = $(e.currentTarget).data('alias')
+      Router.go 'eventPage', {
+        alias: alias
+      }
+
+    else
+
+      (new PNotify({
+        title: 'Удалить событие?',
+        text: 'Возможности восстановить его уже не будет',
+        hide: false,
+        addclass: 'aura-notify',
+        confirm: {
+          confirm: true
+        },
+        buttons: {
+          closer: false,
+          sticker: false
+        },
+        history: {
+          history: false
+        }
+      })).get().on('pnotify.confirm', ->
+
+        alias = $(e.currentTarget).data('alias')
+        Meteor.call 'removeEvent', alias, (err, res)->
+          if err
+            console.log err
+          else
+            Aura.notify 'Событие удалено!'
+
+      )
+
+
+  'click [data-add-event]': (e)->
+
+    if !EventsCtrl.eventCreateModal
+      EventsCtrl.eventCreateModal = Blaze.render Template.eventCreateModal, document.body
+    else
+      $('#event-create-modal').addClass('_opened')
+
+}
+
+
+Template.eventsList.events {
 
   'click [data-alias]': (e)->
 

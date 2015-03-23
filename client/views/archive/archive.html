@@ -1,0 +1,41 @@
+<template name="archive">
+
+    <section id="archive" class="wrap">
+
+        <div class="shadow"></div>
+
+        <div class="container">
+
+            <h2>Архив</h2>
+
+
+            <div class="row">
+
+                {{#each events}}
+
+                    <div class="item" data-alias="{{alias}}">
+
+                        <div class="thumbnail">
+
+                            <p>
+                                <span>{{eventGetDay date}}</span> <span>{{eventGetMonth date}}</span> <span>{{eventGetYear date}}</span>
+                            </p>
+
+                            <div class="pic" style="background-image: url({{storagePath}}/images/{{pic}})"></div>
+
+                            <h3>{{{title}}}</h3>
+
+                        </div>
+
+                    </div>
+
+                {{/each}}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</template>

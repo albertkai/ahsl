@@ -1,4 +1,4 @@
-<template name="events">
+<template name="eventsList">
 
     <section id="events">
 
@@ -13,7 +13,7 @@
                 <div></div>
             </div>
 
-            {{#if isInRole 'admin' 'owner'}}
+            {{#if userIsAdmin}}
 
             <div id="add-event" class="row item" data-add-event>
 
@@ -32,11 +32,91 @@
             {{/if}}
 
 
-            {{#each events}}
+            {{#each eventsList}}
 
             <div class="row item" data-alias="{{alias}}">
 
-                {{#if isInRole 'admin' 'owner'}}
+                {{#if userIsAdmin}}
+
+                <div class="remove"><i class="fa fa-times"></i></div>
+
+                {{/if}}
+
+                <div class="date">
+
+                    <h3>
+                        <span>{{eventGetDay date}}</span>
+                        <span>{{eventGetMonth date}}</span>
+                        <span>{{eventGetYear date}}</span>
+                    </h3>
+
+                </div>
+
+                <div class="body">
+
+                    <div class="stripe"></div>
+
+                    <h3>{{{title}}}</h3>
+
+                    <div class="row">
+
+                        <div><img src="{{storagePath}}/images/{{pic}}" alt=""/></div>
+                        <div><p>{{{shortDesc}}}</p></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {{/each}}
+
+        </div>
+
+    </section>
+
+</template>
+
+
+<template name="masterClassesList">
+
+    <section id="events">
+
+        <div class="shadow"></div>
+
+        <h2>Ближайшие события</h2>
+
+        <div class="container">
+
+            <div class="timeline">
+                <div></div>
+                <div></div>
+            </div>
+
+            {{#if userIsAdmin}}
+
+            <div id="add-event" class="row item" data-add-event>
+
+                <div class="date"></div>
+
+                <div class="body">
+
+                    <div>+</div>
+                    <p>Добавить событие</p>
+
+                </div>
+
+
+            </div>
+
+            {{/if}}
+
+
+            {{#each masterClassesList}}
+
+            <div class="row item" data-alias="{{alias}}">
+
+                {{#if userIsAdmin}}
 
                 <div class="remove"><i class="fa fa-times"></i></div>
 

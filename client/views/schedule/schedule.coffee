@@ -1,3 +1,3 @@
 Template.schedule.rendered = ->
 
-  new Calendar('#schedule-common', {month: '11', group: 'children'})
+  new Calendar('#schedule-common', {group: 'children'})

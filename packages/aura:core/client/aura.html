@@ -2,13 +2,14 @@
 
     {{>auraLoginModal}}
 
-    {{#if isInRole 'admin' 'owner'}}
+    {{#if userIsAdmin}}
 
         {{>auraAdminPanel}}
 
         {{>auraEditor}}
         {{>auraModal}}
         {{>auraUsersModal}}
+        {{>auraRequestsModal}}
 
     {{/if}}
 

@@ -2,7 +2,7 @@
 @widget-font-color: white;
 @white_t: rgba(255, 255, 255, .2);
 
-@brand-color: #5300cc;
+@brand-color: #2baecc;
 
 .admin-modal{
   width: 100%;
@@ -66,6 +66,9 @@
     margin-left: 4%;
     .rounded(7px);
     padding: 15px;
+    input{
+      color: white;
+    }
     input[type="text"]:focus, input[type="password"]:focus{
       border-color: #bff5ff;
       box-shadow: 0 0 5px cyan, inset 0 0 5px cyan;
@@ -153,10 +156,27 @@
     border-top: 1px solid @white_t;
     font-weight: 100;
     .transition(.4s);
-    &:hover{
+    i{
+      -webkit-transition: all .4s ease;
+      -moz-transition: all .4s ease;
+      -ms-transition: all .4s ease;
+      -o-transition: all .4s ease;
+      transition: all .4s ease;
+    }
+    &:hover, &._expanded{
       background: @brand-color;
       i{
         color: white;
+      }
+    }
+    &._expanded{
+      i:last-of-type{
+        color: white;
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
       }
     }
     >div{
@@ -176,6 +196,16 @@
         width: 15%;
         left: 85%;
         text-align: center;
+        >span{
+          padding: 7px 6px 5px 6px;
+          font-family: helvetica;
+          font-weight: bold;
+          -webkit-border-radius: 30px;
+          -moz-border-radius: 30px;
+          border-radius: 30px;
+          background: rgb(255, 29, 0);
+          color: white;
+        }
       }
     }
     P{
@@ -188,18 +218,55 @@
     }
   }
   .aura-admin-list{
-    background: black;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    color: white;
-    li{
-      padding: 10px 10px 10px 45px;
-      font-weight: 200;
-      border-top: 1px solid rgba(255, 255, 255, .15);
+    overflow: hidden;
+    height: 0;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+    &._expanded{
+      >ul{
+        -webkit-transform: scaleY(1);
+        -moz-transform: scaleY(1);
+        -ms-transform: scaleY(1);
+        -o-transform: scaleY(1);
+        transform: scaleY(1);
+        opacity: 1;
+      }
+    }
+    >ul{
+      background: black;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: white;
+      opacity: .3;
+      -webkit-transform-origin: center top;
+      -moz-transform-origin: center top;
+      -ms-transform-origin: center top;
+      -o-transform-origin: center top;
+      transform-origin: center top;
+      -webkit-transform: scaleY(0);
+      -moz-transform: scaleY(0);
+      -ms-transform: scaleY(0);
+      -o-transform: scaleY(0);
+      transform: scaleY(0);
+      -webkit-transition: all .4s ease;
+      -moz-transition: all .4s ease;
+      -ms-transition: all .4s ease;
+      -o-transition: all .4s ease;
+      transition: all .4s ease;
+      li{
+        padding: 10px 10px 10px 45px;
+        font-weight: 200;
+        border-top: 1px solid rgba(255, 255, 255, .15);
+        cursor: pointer;
+        
+      }
     }
   }
-  .wrap{
+  .admin-panel-wrap{
     height: 100%;
     overflow: scroll;
     .header{
@@ -295,6 +362,19 @@
               text-align: center;
             }
           }
+          &.restored{
+            opacity: .5;
+            background: #222222;
+            color: #ccc;
+            i{
+              -webkit-transform: rotate(90deg);
+              -moz-transform: rotate(90deg);
+              -ms-transform: rotate(90deg);
+              -o-transform: rotate(90deg);
+              transform: rotate(90deg);
+              color: @brand-color;
+            }
+          }
         }
       }
     }
@@ -338,4 +418,46 @@
   input[type="checkbox"]{
     display: none;
   }
+}
+
+.aura-diff-cont{
+
+  position: fixed;
+  height: 230px;
+  width: 320px;
+  padding: 10px;
+  background: @widget-color;
+  margin-left: -330px;
+  margin-top: -165px;
+  z-index: 9999;
+  border: 1px solid white;
+  border-radius: 3px;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+  opacity: 0;
+  &._visible{
+    opacity: 1;
+  }
+  h4{
+    font-weight: bold;
+    color: white;
+    margin: 5px 0 10px 0;
+  }
+  p{
+    border: 1px solid rgba(255, 255, 255, .3);
+    color: white;
+    height: 175px;
+    padding: 5px;
+    overflow-y: scroll;
+    del{
+      background: rgba(255, 0, 0, .3);
+    }
+    ins{
+      background: rgba(0, 255, 0, .3);
+    }
+  }
+
 }

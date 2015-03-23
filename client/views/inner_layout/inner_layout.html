@@ -1,5 +1,50 @@
 <template name="innerLayout">
 
+
+    <div class="custom-modal">
+
+        <div class="body">
+
+            <h2 class="red">ЗАПИСЬ</h2>
+
+            <div class="close-it">&times;</div>
+
+            <form id="form" action="">
+
+                <input id="user-name" type="text" minlength="2" maxlength="50" placeholder="Ваше имя:" required/>
+                <input id="user-email" type="email" name="email" maxlength="80" placeholder="Ваш email:" required/>
+                <input id="user-phone" name="tel" type="tel" placeholder="Ваше телефон:" required/>
+
+            </form>
+
+            <!--<div class="types">-->
+
+            <!--<div id="day1" class="item">Международный этикет</div>-->
+            <!--<div id="day2" class="item">Столовый этикет</div>-->
+            <!--<div id="diner" class="item">Гала-ужин</div>-->
+            <!--<span style="clear: both; display: block;"></span>-->
+
+            <!--</div>-->
+
+            <button id="send" class="lead" data-title="title">ОТПРАВИТЬ</button>
+
+        </div>
+
+    </div>
+
+    <div class="modal-overlay"></div>
+
+    <div class="sccss">
+        <div class="body">
+            <h3 class="red">
+                Ваша заявка отправлена!
+            </h3>
+            <h4>Мы свяжемся с вами в ближайшее время</h4>
+        </div>
+
+    </div>
+
+
     <header class="inner">
 
         <div class="container">
@@ -23,18 +68,28 @@
             <ul>
                 <li><a href="/">Школа</a></li><span>|</span>
                 <li>
-                    <a>Направления</a>
+                    <a>Обучение</a>
                     <ul>
                         <li><a href="/children">Детская группа</a></li>
                         <li><a href="/teens">Школьная группа</a></li>
                         <li><a href="/lateteens">Подростковая группа</a></li>
                         <li><a href="/grownups">Взрослая группа</a></li>
+                        <li><a href="/international">Международная программа</a></li>
+                        <li><a href="/summer-school">Летняя программа</a></li>
                     </ul>
                 </li><span>|</span>
-                <li><a href="/events">Мероприятия</a></li><span>|</span>
+                <li><a class="disabled" href="/masterclass">Мастер-классы</a></li><span>|</span>
+                <li>
+                    <a>События</a>
+                    <ul>
+                        <li><a href="/events">Мероприятия</a></li>
+                        <li><a href="/news">Новости</a></li>
+                        <li><a href="/archive">Архив</a></li>
+                    </ul>
+                </li><span>|</span>
                 <li><a href="/schedule">Расписание</a></li><span>|</span>
-                <li><a href="/gallery" class="disabled">Галерея</a></li><span>|</span>
-                <li><a href="/bloglist">Блог</a></li><span>|</span>
+                <li><a href="/gallery">Галерея</a></li><span>|</span>
+                <li><a href="/summer">Летняя школа</a></li><span>|</span>
                 <li><a href="/contacts">Контакты</a></li>
             </ul>
 
@@ -51,34 +106,38 @@
             <div class="row links">
 
                 <div>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
+                    <a href="/">главная</a>
+                    <a href="/contacts">контакты</a>
                 </div>
                 <div>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
+                    <a href="/children">детская группа</a>
+                    <a href="/teens">школьная группа</a>
+                    <a href="/lateteens">подростковая группа</a>
+                    <a href="/grownups">взрослая группа</a>
+                    <a href="/international">международная программа</a>
+                    <a href="/summer-school">летняя программа</a>
                 </div>
                 <div>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
+                    <a href="/news">новости</a>
+                    <a href="/events">мероприятия</a>
+                    <a href="/blog">блог</a>
                 </div>
                 <div>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
+                    <a href="/schedule">расписание</a>
+                    <a href="/gallery" class="disabled">галерея</a>
                 </div>
 
             </div>
 
             <div class="bottom-info">
 
-                <p class="disclaimer"><span><strong>2012-2014</strong> Austrian Higher School of Ladies. </span> Все права защищены.</p>
-
+                <p class="disclaimer" data-aura-html="common.footerDesc" contenteditable="false">
+                    <br/>
+                    <span>ИНН: </span> 7801351540 <br/>
+                    <span>ОГРН: </span> 1137800010875 <br/>
+                    * в данный момент, оплата картами возможна только для некоторых мастерклассов <br/>
+                    {{{common.footerDesc}}}
+                </p>
                 <div class="contacts-footer">
                     <span>(812) 984-30-88</span>
                     <span>info@sisi-elizabeth.com</span>

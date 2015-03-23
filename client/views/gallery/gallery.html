@@ -55,6 +55,8 @@
 
         <section class="main-pic" data-stellar-background-ratio=".7">
 
+            {{>spinner}}
+
             <div class="shadow"></div>
 
             <div class="container">
@@ -68,11 +70,11 @@
 
                     <div class="pic-wrap">
                         <h3>
-                            <span>{{date}}</span>
+                            <span>{{getBlogDate date}}</span>
                             <span>{{title}}</span>
                         </h3>
 
-                        <img src="{{storagePath}}/gallery/{{auraGalleryCurrentPic}}" alt="{{title}}"/>
+                        <img id="current-pic" src="{{storagePath}}/gallery/{{auraGalleryCurrentPic}}" alt="{{title}}"/>
 
                     </div>
 
@@ -90,6 +92,20 @@
                 <div style="background-image: url({{storagePath}}/gallery/{{auraGalleryGetThumb this}});"
                      data-gallery-pic-target="{{this}}"></div>
                 {{/each}}
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
+                <div data-gallery-pic-target=""></div>
 
             </div>
 
@@ -111,8 +127,8 @@
                     {{#each auraGalleryListAlbums}}
 
                     <div class="item" data-gallery-album-target="{{_id}}">
-                        <div><img src="{{storagePath}}/gallery/{{titlePic}}" alt="{{title}}"/>
-                            <h5>{{date}}</h5>
+                        <div style="background-image: url({{storagePath}}/gallery/{{getFirstPicThumb pics}})">
+                            <h5>{{getBlogDate date}}</h5>
                         </div>
                         <h4>
                             {{{title}}}
@@ -122,6 +138,18 @@
                     </div>
 
                     {{/each}}
+
+                    {{#if userIsAdmin}}
+
+                    <div id="gallery-edit-button" class="item" data-gallery-toggle-modal>
+
+                            <div>
+                                <i class="fa fa-camera"></i>
+                            </div>
+
+                    </div>
+
+                    {{/if}}
 
                 </div>
             </div>

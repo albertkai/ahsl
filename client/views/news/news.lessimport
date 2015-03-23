@@ -45,10 +45,40 @@
         margin: 10px 0;
         background: white;
         cursor: pointer;
-        height: 283px;
+        height: 320px;
         .box-shadow(0 0 3px rgba(0, 0, 0, .15));
         .rounded(3px);
         border: 0;
+        .remove{
+          position: absolute;
+          display: block;
+          width: 30px;
+          height: 30px;
+          top: -9px;
+          right: -9px;
+          color: white;
+          background: red;
+          .transition(.4s);
+          .scale(0);
+          padding: 0;
+          line-height: 28px;
+          border: 1px solid white;
+          border-radius: 20px;
+          opacity: 0;
+          visibility: hidden;
+          z-index: 5;
+          &:hover{
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+        &:hover{
+          .remove{
+            opacity: .7;
+            visibility: visible;
+            .scale(1);
+          }
+        }
         .img{
           position: relative;
           width: 100%;
@@ -82,7 +112,7 @@
       }
       &.add-new{
         .thumbnail{
-          height: 283px;
+          height: 320px;
           >div{
             width: 100px;
             height: 100px;
@@ -158,11 +188,16 @@
     .img{
       width: 100%;
       position: relative;
+      height: 520px;
+      -webkit-background-size: cover;
+      background-size: cover;
+
       img{
         width: 100%;
       }
       h3{
         position: absolute;
+        width: 100%;
         bottom: 0;
         color: white;
         margin: 0;

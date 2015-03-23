@@ -13,19 +13,18 @@
 
                     <h4>Категория:</h4>
 
-                    <select name="" id="">
-                        <option>Все категории</option>
-                        <option>О школе</option>
-                        <option>Из жизни</option>
-                        <option>Интересное</option>
+                    <select id="selectBlogCategory" data-select-bloglist-category>
+                        <option value="all">Все категории</option>
+                        {{#each blogCategories}}
+                            <option value="{{name}}">{{name}}</option>
+                        {{/each}}
                     </select>
 
                     <h4>Сортировать по:</h4>
 
-                    <select name="" id="">
-                        <option>Дате</option>
-                        <option>Категориям</option>
-                        <option>Тегам</option>
+                    <select data-select-bloglist-sort>
+                        <option value="date">Дате</option>
+                        <option value="category">Категориям</option>
                     </select>
 
                     <h4>Теги:</h4>
@@ -41,7 +40,7 @@
                     <article class="item">
 
                         <div class="thumbnail" data-alias="{{alias}}" data-goto-blog-page>
-                            {{#if isInRole 'admin' 'blog'}}
+                            {{#if userIsAdmin}}
                             <button class="remove"><i class="fa fa-times"></i></button>
                             {{/if}}
 
@@ -56,7 +55,7 @@
 
                     {{/each}}
 
-                    {{#if isInRole 'admin' 'owner' 'blog'}}
+                    {{#if userIsAdmin}}
 
                     <article class="add-new">
 
@@ -70,9 +69,9 @@
 
                     {{/if}}
 
-                    <button data-blog-load-more>
-                        <div>загрузить еще..</div>
-                    </button>
+                    <!--<button data-blog-load-more>-->
+                        <!--<div>загрузить еще..</div>-->
+                    <!--</button>-->
 
                 </div>
 

@@ -10,7 +10,6 @@ coffeescript
 miguelvalverde:font-awesome-4.1.0
 noorderstorm:stellar
 jquery-waypoints
-andruschka:scroll-to-fixed
 sacha:spin
 alanning:roles
 accounts-password
@@ -21,10 +20,15 @@ meteorhacks:npm
 
 npm-container
 natestrauser:select2
-mandrill:ace
 mrt:nprogress
 linto:jquery-ui
 underscore
 mrt:jquery-masonry
 jeeeyul:moment-with-langs
-
+mizzao:autocomplete
+email
+raix:handlebar-helpers
+pfafman:filesaver
+meteorhacks:kadira
+random
+percolate:paginated-subscription

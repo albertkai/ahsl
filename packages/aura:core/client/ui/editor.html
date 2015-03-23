@@ -14,10 +14,23 @@
             <button id="b-bold"><strong>B</strong></button>
             <button id="b-italic"><i>I</i></button>
             <button id="b-link"><i class="fa fa-chain"></i></button>
-            <button id="b-addimage">
-                <input id="add-embed-image" type="file"/>
-                <i class="fa fa-image"></i>
-            </button>
+            <div class="b-group">
+                <ul>
+                    <li><button>+</button></li>
+                    <li>
+                        <button id="b-addimage">
+                            <input id="add-embed-image" type="file"/>
+                            <i class="fa fa-image"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="b-add-quot"><i class="fa fa-quote-right"></i></button>
+                    </li>
+                    <li>
+                        <button id="b-add-video"><i class="fa fa-video-camera"></i></button>
+                    </li>
+                </ul>
+            </div>
             <div class="b-group">
                 <ul>
                     <li><button id="b-h1">H1</button></li>
@@ -40,14 +53,14 @@
                     <!--<li><button id="b-sub"><sub>sub</sub></button></li>-->
                 <!--</ul>-->
             <!--</div>-->
-            <!--<div class="b-group">-->
-                <!--<ul>-->
-                    <!--<li><button id="b-align-left"><i class="fa fa-align-left"></i></button></li>-->
-                    <!--<li><button id="b-align-center"><i class="fa fa-align-center"></i></button></li>-->
-                    <!--<li><button id="b-align-right"><i class="fa fa-align-right"></i></button></li>-->
-                    <!--<li><button id="b-align-justify"><i class="fa fa-align-justify"></i></button></li>-->
-                <!--</ul>-->
-            <!--</div>-->
+            <div class="b-group">
+                <ul>
+                    <li><button id="b-align-left"><i class="fa fa-align-left"></i></button></li>
+                    <li><button id="b-align-center"><i class="fa fa-align-center"></i></button></li>
+                    <li><button id="b-align-right"><i class="fa fa-align-right"></i></button></li>
+                    <li><button id="b-align-justify"><i class="fa fa-align-justify"></i></button></li>
+                </ul>
+            </div>
             <button id="b-save" class="save"><i class="fa fa-check"></i></button>
             <button id="b-del" class="del"><i class="fa fa-times"></i></button>
         </div>

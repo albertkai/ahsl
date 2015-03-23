@@ -11,24 +11,6 @@
 
 {{>aura}}
 
-<div class="modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">22.04.2014</h4>
-            </div>
-            <div class="modal-body">
-                {{#with getCurrentNew}}
-                {{>currentNew}}
-                {{/with}}
-            </div>
-
-        </div>
-    </div>
-</div>
-
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (d, w, c) {
@@ -88,18 +70,28 @@
                 <ul>
                     <li><a href="/">Школа</a></li><span>|</span>
                     <li>
-                        <a>Направления</a>
+                        <a>Обучение</a>
                         <ul>
                             <li><a href="/children">Детская группа</a></li>
                             <li><a href="/teens">Школьная группа</a></li>
                             <li><a href="/lateteens">Подростковая группа</a></li>
                             <li><a href="/grownups">Взрослая группа</a></li>
+                            <li><a href="/international">Международная программа</a></li>
+                            <li><a href="/summer-school">Летняя программа</a></li>
                         </ul>
                     </li><span>|</span>
-                    <li><a href="/events">Мероприятия</a></li><span>|</span>
+                    <li><a href="/masterclass">Мастер-классы</a></li><span>|</span>
+                    <li>
+                        <a>События</a>
+                        <ul>
+                            <li><a href="/events">Мероприятия</a></li>
+                            <li><a href="/news">Новости</a></li>
+                            <li><a href="/archive">Архив</a></li>
+                        </ul>
+                    </li><span>|</span>
                     <li><a href="/schedule">Расписание</a></li><span>|</span>
-                    <li><a href="/gallery" class="disabled">Галерея</a></li><span>|</span>
-                    <li><a href="/bloglist">Блог</a></li><span>|</span>
+                    <li><a href="/gallery">Галерея</a></li><span>|</span>
+                    <li><a href="/summer">Летняя школа</a></li><span>|</span>
                     <li><a href="/contacts">Контакты</a></li>
                 </ul>
 
@@ -109,39 +101,7 @@
 
     </header>
 
-    <section class="slider">
-
-        <div class="container">
-
-            <div id="top-slider" class="aura-slider carousel slide" data-plugin="slider">
-
-                <div class="arrows">
-                    <button data-slide="prev" href="#top-slider" class="carousel-control left"></button>
-                    <button data-slide="next" href="#top-slider" class="carousel-control right"></button>
-                </div>
-
-                <ul class="slider-cont carousel-inner" data-aura-list="index.slider">
-                    {{#each index.slider}}
-                    <li data-aura-list-item data-aura-list-image-background="pic" class="item" style="background-image: url({{storagePath}}/images/{{pic}});" data-stellar-background-ratio=".8">
-                        <p data-aura-list-html="desc" contenteditable="false">{{{desc}}}</p>
-                    </li>
-                    {{/each}}
-                    <!--<li data-aura-media-background="slider.$.3.img" class="item" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/slider_2.jpg);" data-stellar-background-ratio=".8">-->
-                        <!--<p data-aura-item-html="slider.$.3.desc"><span>Увлекательные дисциплины для настоящих леди:</span> <span>этикет, иностранные языки, актерское мастерство, уроки высокой кухня и многое другое</span></p>-->
-                    <!--</li>-->
-                    <!--<li data-aura-media-background="slider.$.4.img" class="item" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/slider_3.jpg);" data-stellar-background-ratio=".8">-->
-                        <!--<p data-aura-html="slider.$.4.desc"><span>25 ноября</span> <span>при поддержке нашей школы пройдет мастер-класс Ирины Хакамада "Мастер общения. Успех без затрат"</span></p>-->
-                    <!--</li>-->
-                    <!--<li data-aura-media-background="slider.$.5.img" class="item" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/slider_4.jpg);" data-stellar-background-ratio=".8">-->
-                        <!--<p data-aura-html="slider.$.5.desc"><span>Международная программа:</span> <span>этикет с графиней Marie De Tilly, современное искусство с педагогами Sotheby's, актерское мастерство с Paul Brown</span></p>-->
-                    <!--</li>-->
-                </ul>
-
-            </div>
-
-        </div>
-
-    </section>
+    {{>slider}}
 
     <hr/>
 
@@ -197,16 +157,16 @@
                 </article>
                 <div class="news">
                     <h2 data-aura-html="index.header6" contenteditable="false">{{index.header6}}</h2>
+                    <a href="/news">все новости</a>
                     <div data-aura-list="news" data-aura-limit="3">
-                        {{#each news.news}}
-                        <div class="item">
-                            <p class="date">{{date}}</p>
-                            <img src="{{storagePath}}/images/{{pic}}" alt="новость"/>
+                        {{#each mainNews}}
+                        <div class="item" data-id="{{_id}}">
+                            <p class="date">{{getBlogDate date}}</p>
+                            <div class="img" style="background-image: url({{storagePath}}/images/{{pic}})"></div>
                             <h4>{{title}}</h4>
                         </div>
                         {{/each}}
                     </div>
-                    <a href="/news">все новости</a>
                 </div>
                 
             </div>
@@ -224,36 +184,37 @@
 
         <div class="container">
             
-            <div class="arrows small">
 
-                <button data-slide="prev" href="#events-carousel" class="carousel-control left"></button>
-                <button data-slide="next" href="#events-carousel" class="carousel-control right"></button>
-            </div>
 
             <div id="events-carousel" class="carousel slide">
 
+                <div class="arrows small">
+
+                    <button data-slide="prev" href="#events-carousel" class="carousel-control left"></button>
+                    <button data-slide="next" href="#events-carousel" class="carousel-control right"></button>
+                </div>
+
                 <div class="carousel-inner">
 
-                    <div class="item active">
+                        {{{getEventsCarousel mainEvents}}}
 
-                        <div class="row">
 
-                            {{#each eventsList.events}}
+                        <!--<div class="row">-->
 
-                            <div class="event">
-                                <div style="background-image: url({{storagePath}}/images/{{pic}})">
-                                    <p>{{date}}</p>
-                                </div>
-                                <h4>
-                                    {{{title}}}
-                                </h4>
-                            </div>
+                            <!--{{#each mainEvents}}-->
 
-                            {{/each}}
+                            <!--<div class="event" data-alias="{{alias}}">-->
+                                <!--<div style="background-image: url({{storagePath}}/images/{{pic}})">-->
+                                    <!--<p>{{getBlogDate date}}</p>-->
+                                <!--</div>-->
+                                <!--<h4>-->
+                                    <!--{{{title}}}-->
+                                <!--</h4>-->
+                            <!--</div>-->
 
-                        </div>
+                            <!--{{/each}}-->
 
-                    </div>
+                        <!--</div>-->
 
                 </div>
 
@@ -271,8 +232,6 @@
     <section class="schedule">
 
         <h2 data-aura-html="index.header4" contenteditable="false">{{index.header4}}</h2>
-
-        {{>mandrill_ace}}
 
         <div id="main-calendar" class="calendar-cont"></div>
 
@@ -664,33 +623,38 @@
             <div class="row links">
 
                 <div>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
+                    <a href="/">главная</a>
+                    <a href="/contacts">контакты</a>
                 </div>
                 <div>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
+                    <a href="/children">детская группа</a>
+                    <a href="/teens">школьная группа</a>
+                    <a href="/lateteens">подростковая группа</a>
+                    <a href="/grownups">взрослая группа</a>
+                    <a href="/international">международная программа</a>
+                    <a href="/summer-school">летняя программа</a>
                 </div>
                 <div>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
+                    <a href="/news">новости</a>
+                    <a href="/events">мероприятия</a>
+                    <a href="/blog">блог</a>
                 </div>
                 <div>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
-                    <a href="">ссылочка</a>
+                    <a href="/schedule">расписание</a>
+                    <a href="/gallery">галерея</a>
                 </div>
 
             </div>
 
             <div class="bottom-info">
 
-                    <p class="disclaimer" data-aura-html="common.footerDesc" contenteditable="false">{{{common.footerDesc}}}</p>
+                    <p class="disclaimer" data-aura-html="common.footerDesc" contenteditable="false">
+                        <br/>
+                        <span>ИНН: </span> 7801351540 <br/>
+                        <span>ОГРН: </span> 1137800010875 <br/>
+                        * в данный момент, оплата картами возможна только для некоторых мастерклассов <br/>
+                        {{{common.footerDesc}}}
+                    </p>
 
                     <div class="contacts-footer">
                         <span data-aura-html="common.phoneMain" contenteditable="false">{{common.phoneMain}}</span>
@@ -714,5 +678,64 @@
 
 </div>
 
+
+</template>
+
+<template name="eventItem">
+
+    <div class="event" data-alias="{{alias}}">
+        <div style="background-image: url({{storagePath}}/images/{{pic}})">
+            <p>{{getBlogDate date}}</p>
+        </div>
+        <h4>
+            {{{title}}}
+        </h4>
+    </div>
+
+</template>
+
+
+<template name="slider">
+
+    <section class="slider">
+
+        <div class="container">
+
+            {{#if userIsAdmin}}
+            <div class="slider-edit">
+                <div id="slider-edit-button"><i class="fa fa-edit"></i></div>
+                <ul>
+                    {{#each slider}}
+                    <li class="slide-item" data-id="{{_id}}" data-order="{{order}}">
+                        <div style="background-image: url({{storagePath}}/images/{{pic}})"></div>
+                        <button class="remove"><i class="fa fa-times"></i></button>
+                    </li>
+                    {{/each}}
+                    <li class="add-slide"><i class="fa fa-plus"></i></li>
+                    <button class="close-slider-edit"><i class="fa fa-times"></i></button>
+                </ul>
+            </div>
+            {{/if}}
+
+            <div id="top-slider" class="aura-slider carousel slide" data-plugin="slider">
+
+                <div class="arrows">
+                    <button data-slide="prev" href="#top-slider" class="carousel-control left"></button>
+                    <button data-slide="next" href="#top-slider" class="carousel-control right"></button>
+                </div>
+
+                <ul class="slider-cont carousel-inner">
+                    {{#each slider}}
+                    <li data-aura-with="{{_id}}" data-aura-collection="slider" data-aura-index="_id" data-aura-with-image-background="pic" class="item" data-href="{{href}}" data-order="{{order}}" data-id="{{_id}}" style="background-image: url({{storagePath}}/images/{{pic}});" data-stellar-background-ratio=".8">
+                        <p data-aura-with-html="desc" contenteditable="false">{{{desc}}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </template>

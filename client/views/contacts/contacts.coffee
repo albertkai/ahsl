@@ -5,6 +5,8 @@ Template.contacts.rendered = ->
   Meteor.defer ->
     $('.wrap').addClass '_animated'
 
+  $('#contacts-user-phone').inputmask("+7(999)999-99-99")
+
   script = document.createElement("script")
   script.type = "text/javascript"
   script.src = "http://maps.google.com/maps/api/js?sensor=false&libraries=places&callback=initializeMap"
@@ -13,6 +15,77 @@ Template.contacts.rendered = ->
     initializeMap()
   else
     document.body.appendChild(script)
+
+
+Template.contacts.events {
+
+  'click button.lead': ->
+
+    $('.custom-modal').addClass('_visible')
+    $('.modal-overlay').addClass('_visible')
+
+  'click #send': (e)->
+
+    re = re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if $('#contacts-user-name').val() isnt '' and $('#contacts-user-phone').val() isnt '' and re.test($('#contacts-user-email').val())
+
+      if $('#contacts-user-name').val() is ''
+        $('#contacts-user-name').addClass '_invalid'
+      else
+        $('#contacts-user-name').removeClass('_invalid').addClass '_valid'
+      if !re.test($('#contacts-user-email').val())
+        $('#contacts-user-email').addClass '_invalid'
+      else
+        $('#contacts-user-email').removeClass('_invalid').addClass '_valid'
+      if $('#contacts-user-phone').val() is ''
+        $('#contacts-user-phone').addClass '_invalid'
+      else
+        $('#contacts-user-phone').removeClass('_invalid').addClass '_valid'
+      title = 'Заявка а обучение - общее'
+      name = $('#contacts-user-name').val()
+      phone = $('#contacts-user-phone').val()
+      email = $('#contacts-user-email').val()
+
+      NProgress.start()
+      Meteor.call 'addRequest', title, name, phone, email, (err, res)->
+
+        if err
+          console.log err
+        else
+
+          text = 'Имя: ' + name + ' \n Телефон: ' + phone + ' \n' + ' Почта: ' + email
+
+          Meteor.call 'sendRequestEmail', title, text, (error, response)->
+
+            if err
+              console.log err
+            else
+              NProgress.done()
+              $('.custom-modal').addClass('_shifted')
+              $('.sccss').addClass('_shifted')
+              Meteor.setTimeout ->
+                $('.custom-modal').removeClass('_shifted').removeClass('_visible')
+                $('.sccss').removeClass('_shifted')
+                $('.modal-overlay').removeClass '_visible'
+              , 2000
+
+    else
+
+      if $('#contacts-user-name').val() is ''
+        $('#contacts-user-name').addClass '_invalid'
+      else
+        $('#contacts-user-name').removeClass('_invalid').addClass '_valid'
+      if !re.test($('#contacts-user-email').val())
+        $('#contacts-user-email').addClass '_invalid'
+      else
+        $('#contacts-user-email').removeClass('_invalid').addClass '_valid'
+      if $('#contacts-user-phone').val() is ''
+        $('#contacts-user-phone').addClass '_invalid'
+      else
+        $('#contacts-user-phone').removeClass('_invalid').addClass '_valid'
+
+}
 
 
 @initializeMap = ->

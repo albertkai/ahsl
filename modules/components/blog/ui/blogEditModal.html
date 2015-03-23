@@ -1,0 +1,41 @@
+<template name="blogEditModal">
+
+    <div id="blog-edit-modal" class="aura-modal">
+
+
+        <div class="header">Блог</div>
+
+        <div class="body">
+
+            <aside>
+
+                <ul>
+                    <li>Категории</li>
+                    <li>Теги</li>
+                </ul>
+
+            </aside>
+
+            <div>
+
+                <div class="tab">
+
+                   {{#each blogCategories}}
+
+                        <p>{{name}} <span class="close"><i class="fa fa-times"></i></span></p>
+
+                   {{/each}}
+
+                    <input type="text" data-aura-add/>
+
+                </div>
+
+                <div class="tab"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</template>

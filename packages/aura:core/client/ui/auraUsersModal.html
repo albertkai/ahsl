@@ -44,7 +44,7 @@
                             <p>{{getPermissions roles}}</p>
                         </div>
                         <div></div>
-                        <div class="remove"><i class="fa fa-times"></i></div>
+                        {{#if isInRole 'owner'}}<div class="remove"><i class="fa fa-times"></i></div>{{/if}}
                     </li>
                     {{/each}}
                     <li class="add-user">
@@ -75,9 +75,9 @@
 <template name="auraUsersModalSettings">
 
     <h4>Имя:</h4>
-    <input type="text" class="aura-input" value="{{profile.name}}"/>
+    <input type="text" class="aura-input" value="{{profile.name}}" data-aura-instant-input="users.profile.name"/>
     <h4>Фамилия:</h4>
-    <input type="text" class="aura-input" value="{{profile.surname}}"/>
+    <input type="text" class="aura-input" value="{{profile.surname}}" data-aura-instant-input="users.profile.surname"/>
     <h4>Права:</h4>
     <select class="aura-select" name="permissions-select" id="permissions-select">
         <option value="owner">Владелец</option>
@@ -117,8 +117,8 @@
     <input id="user-email" type="text" class="aura-input" placeholder="e-mail"/>
     <h4><sup>*</sup>Пароль:</h4>
     <input id="user-password" type="text" class="aura-input" placeholder="придумайте пароль"/>
-    <!--<h4>Новое изображение:</h4>-->
-    <!--<input id="user-pic" type="file"/>-->
-    <button id="create-user" class="aura-button">сохранить</button>
+    <h4>Картинка:</h4>
+    <input id="user-pic" type="file"/>
+    <button id="create-user" class="aura-button">создать</button>
 
 </template>

@@ -190,7 +190,7 @@
             line-height: 1.3em;
           }
           .quot{
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
           }
         }
@@ -235,6 +235,41 @@
     }
 
   }
+  
+  .got-international{
+    display: block;
+    text-align: center;
+    font-family: copper;
+  }
+
+  .international{
+    background: #441133;
+    height: 300px;
+    text-align: center;
+    color: white;
+    -webkit-background-size: cover;
+    background-size: cover;
+    p{
+      &:nth-child(1){
+        margin-top: 55px;
+        font-size: 37px;
+        margin-bottom: -5px;
+      }
+      &:nth-child(2){
+        font-family: copper;
+        font-size: 45px;
+      }
+    }
+    a{
+      display: inline-block;
+      color: @brand-primary;
+      font-size: 30px;
+      font-family: copper;
+      border: 1px solid white;
+      padding: 5px 45px;
+    }
+  }
+
 
   .lead-button{
 

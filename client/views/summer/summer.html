@@ -1,0 +1,215 @@
+<template name="summer">
+
+
+
+    <section id="summer-page" class="wrap">
+        {{>summerSlider}}
+        <div class="container body">
+            <div class="row">
+                <div>
+                    <p data-aura-html="summer.mainDesc" contenteditable="false">
+                        {{{summer.mainDesc}}}
+                    </p>
+                    <button id="send-request" class="lead checkin">Оставить заявку</button>
+
+                </div>
+                <aside>
+
+                    <h4>Возможные периоды проживания:</h4>
+
+                    <div class="row dates"><div class="col-md-4">1 заезд - </div><div class="col-md-7" data-aura-html="summer.firstDate" contenteditable="false">{{{summer.firstDate}}}</div></div>
+                    <div class="row dates"><div class="col-md-4">2 заезд - </div><div class="col-md-7" data-aura-html="summer.secondDate" contenteditable="false">{{{summer.secondDate}}}</div></div>
+                    <div class="row dates"><div class="col-md-4">3 заезд - </div><div class="col-md-7" data-aura-html="summer.thirdDate" contenteditable="false">{{{summer.thirdDate}}}</div></div>
+
+                    <small data-aura-html="summer.disclaimer" contenteditable="false">{{{summer.disclaimer}}}</small>
+
+                    <h4>Стоимость всего тура:</h4>
+
+                    <p class="price huge" data-aura-html="summer.price" contenteditable="false">{{{summer.price}}}</p>
+
+                    <p data-aura-html="summer.priceExtended" contenteditable="false">{{{summer.priceExtended}}}</p>
+
+                    <h4>В стоимость входит:</h4>
+
+                    <ul data-aura-html="summer.priceList" contenteditable="false">
+                        {{{summer.priceList}}}
+                    </ul>
+
+                    <h4>Номера:</h4>
+
+                    <ul data-aura-html="summer.roomList" contenteditable="false">
+                        {{{summer.roomList}}}
+                    </ul>
+
+                    <h4>Медиа и Технологии</h4>
+
+                    <ul data-aura-html="summer.mediaList" contenteditable="false">
+                        {{{summer.mediaList}}}
+                    </ul>
+
+                    <h4>Дополнительно оплачивается:</h4>
+
+                    <ul data-aura-html="summer.additionalList" contenteditable="false">
+                        {{{summer.additionalList}}}
+                    </ul>
+
+                    <h3 data-aura-html="summer.pansion" contenteditable="false">{{{summer.pansion}}}</h3>
+
+                    <h4>Прочее:</h4>
+
+                    <ul data-aura-html="summer.elseList" contenteditable="false">
+                        {{{summer.elseList}}}
+                    </ul>
+
+                    <p data-aura-html="summer.disclaimer2" contenteditable="false">{{{summer.disclaimer2}}}</p>
+
+
+
+
+
+                    <!--<h4>Место:</h4>-->
+
+                    <!--<h3 data-aura-with-html="place" contenteditable="false">{{{place}}}</h3>-->
+
+                    <!--<h4>Время:</h4>-->
+
+                    <!--<h3 data-aura-with-html="time" class="huge" contenteditable="false">{{{time}}}</h3>-->
+
+                    <!--&lt;!&ndash;{{#if pricePrev}}&ndash;&gt;-->
+                    <!--&lt;!&ndash;<h3 class="previous" data-aura-with-html="pricePrev" contenteditable="false">{{{pricePrev}}}&ndash;&gt;-->
+                    <!--&lt;!&ndash;</h3>{{#if userIsAdmin}}<button class="del-previous">- удалить старую цену</button>{{/if}}&ndash;&gt;-->
+                    <!--&lt;!&ndash;{{else}}&ndash;&gt;-->
+                    <!--&lt;!&ndash;{{#if userIsAdmin}}&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button class="add-previous"><span>+</span> Старая цена</button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;{{/if}}&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;{{/if}}&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;{{#if online}}&ndash;&gt;-->
+                    <!--&lt;!&ndash;<h4>Стоимость вебинар:</h4>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<h3 data-aura-with-html="price" class="huge" contenteditable="false">{{{webinarPrice}}}</h3>&ndash;&gt;-->
+                    <!--&lt;!&ndash;{{/if}}&ndash;&gt;-->
+
+                    <!--{{#if userIsAdmin}}-->
+                    <!--<h4>Дата:</h4>-->
+                    <!--<input id="set-event-date" class="aura-input input-white" type="date" value="{{getEventInputDate date}}" data-aura-instant-input="events.{{_id}}.date"/>-->
+                    <!--<h4>Стоимость:</h4>-->
+                    <!--<input type="text" class="aura-input input-white" value="{{price}}" data-aura-instant-input="events.{{_id}}.price"/>-->
+                    <!--<div class="checkbox-cont">-->
+                        <!--<input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.gotVideo" {{auraCheckboxIsChecked gotVideo}}/> <span> Видео</span><br/>-->
+                        <!--{{#if gotVideo}}-->
+                        <!--<input type="text" class="aura-input input-white" value="{{videoPrice}}" data-aura-instant-input="events.{{_id}}.videoPrice" placeholder="Стоимость вебинара"/>-->
+                        <!--{{/if}}-->
+                    <!--</div>-->
+                    <!--<div class="checkbox-cont">-->
+                        <!--<input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.online" {{auraCheckboxIsChecked online}}/> <span> Вебинар</span><br/>-->
+                        <!--{{#if online}}-->
+                        <!--<input type="text" class="aura-input input-white" value="{{webinarLink}}" data-aura-instant-input="events.{{_id}}.webinarLink" placeholder="Ссылка на вебинар"/>-->
+                        <!--<input type="text" class="aura-input input-white" value="{{webinarPrice}}" data-aura-instant-input="events.{{_id}}.webinarPrice" placeholder="Стоимость вебинара"/>-->
+                        <!--{{/if}}-->
+                    <!--</div>-->
+                    <!--<h4>Тип:</h4>-->
+                    <!--<select id="type-select" data-aura-instant-select="events.{{_id}}.type">-->
+                        <!--<option value="common">Общее</option>-->
+                        <!--<option value="masterclass">Мастер-класс</option>-->
+                    <!--</select>-->
+                    <!--<h4>Ссылка:</h4>-->
+                    <!--<input id="aura-alias-input" class="aura-input input-white" type="text" value="{{alias}}" data-aura-instant-input="events.{{_id}}.alias"/>-->
+                    <!--<h4>Короткое описание</h4>-->
+                    <!--<p class="short-desc" data-aura-with-html="shortDesc" contenteditable="false">{{shortDesc}}</p>-->
+                    <!--<br/>-->
+                    <!--<div class="checkbox-cont">-->
+                        <!--<input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.mainPage" {{auraCheckboxIsChecked mainPage}}/> <span> Показывать на главной</span>-->
+                    <!--</div>-->
+
+                    <!--{{/if}}-->
+
+                </aside>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="custom-modal">
+
+        <div class="body">
+
+            <h2 class="red">ЗАПИСЬ</h2>
+
+            <div class="close-it">&times;</div>
+
+            <form id="form" action="">
+
+                <input id="event-user-name" type="text" minlength="2" maxlength="50" placeholder="Ваше имя:" required/>
+                <input id="event-user-email" type="email" name="email" maxlength="80" placeholder="Ваш email:" required/>
+                <input id="event-user-phone" name="tel" type="tel" placeholder="Ваше телефон:" required/>
+
+            </form>
+
+            <h4>Способ оплаты</h4>
+
+            <button id="send" class="lead" data-title="title">ОТПРАВИТЬ</button>
+
+        </div>
+
+    </div>
+
+    <div class="modal-overlay"></div>
+
+    <div class="sccss">
+        <div class="body">
+            <h3 class="red">
+                Ваша заявка отправлена!
+            </h3>
+            <h4>Мы свяжемся с вами в ближайшее время</h4>
+        </div>
+
+    </div>
+
+</template>
+
+
+<template name="summerSlider">
+
+    <section class="slider">
+
+        <div class="container">
+
+            {{#if userIsAdmin}}
+            <div class="slider-edit">
+                <div id="slider-edit-button"><i class="fa fa-edit"></i></div>
+                <ul>
+                    {{#each summerSlider}}
+                    <li class="slide-item" data-id="{{_id}}" data-order="{{order}}">
+                        <div style="background-image: url({{storagePath}}/images/{{pic}})"></div>
+                        <button class="remove"><i class="fa fa-times"></i></button>
+                    </li>
+                    {{/each}}
+                    <li class="add-slide"><i class="fa fa-plus"></i></li>
+                    <button class="close-slider-edit"><i class="fa fa-times"></i></button>
+                </ul>
+            </div>
+            {{/if}}
+
+            <div id="summer-slider" class="aura-slider carousel slide" data-plugin="slider">
+
+                <div class="arrows">
+                    <button data-slide="prev" href="#summer-slider" class="carousel-control left"></button>
+                    <button data-slide="next" href="#summer-slider" class="carousel-control right"></button>
+                </div>
+
+                <ul class="slider-cont carousel-inner">
+                        {{#each summerSlider}}
+                        <li data-aura-with="{{_id}}" data-aura-collection="summerSlider" data-aura-index="_id" data-aura-with-image-background="pic" class="item" data-order="{{order}}" data-id="{{_id}}" style="background-image: url({{storagePath}}/images/{{pic}});" data-stellar-background-ratio=".8">
+                            <p data-aura-with-html="desc" contenteditable="false">{{{desc}}}</p>
+                        </li>
+                        {{/each}}
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</template>

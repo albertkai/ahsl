@@ -5,10 +5,13 @@
             <div class="header" data-aura-with-image-background="pic" style="background-image: url({{storagePath}}/images/{{pic}})" data-stellar-background-ratio=".7">
                 <h3>
                     <div class="container">
-                        <span>{{eventGetDay date}} {{eventGetMonth date}}</span>
+                        <span id="event-date">{{eventGetDay date}} {{eventGetMonth date}}</span>
                         <span data-aura-with-html="title" contenteditable="false">{{{title}}}</span>
                     </div>
                 </h3>
+                {{#if online}}
+                <div class="got-webinar">Возможно участие онлайн</div>
+                {{/if}}
             </div>
         </div>
         <div class="container body">
@@ -17,7 +20,115 @@
                     <p data-aura-with-html="mainDesc" contenteditable="false">
                         {{{mainDesc}}}
                     </p>
-                    <button class="lead checkin">записаться</button>
+                    <!--{{#if online}}-->
+                    <!--<h4>Вариант участия:</h4>-->
+                    <!--<div class="types row">-->
+
+                        <!--<div>-->
+                            <!--<button class="item" data-type="live">В школе</button>-->
+                            <!--<p>Вы присутствуете непосредственно на мастер-классе, сможете общаться напрямую с ведущим и с другими участниками</p>-->
+                        <!--</div>-->
+                        <!--<div>-->
+                            <!--{{#if online}}-->
+                            <!--<button class="item" data-type="webinar">Вебинар</button>-->
+                            <!--<p>Вы находитесь в другом городе или не можете подъехать? Не проблема! Теперь вы можете присутствовать на мастер-классе с помощью вебкамеры и микрофона, и также можете в чате задавать вопросы ведущему</p>-->
+                            <!--{{/if}}-->
+                        <!--</div>-->
+                        <!--<div>-->
+                            <!--{{#if gotVideo}}-->
+                            <!--<button class="item" data-type="video">Видеозапись</button>-->
+                            <!--<p>Если у вас не получается по времени, то вы можете купить видео с прошлого аналогичного, либо конкретно этого мастер-класса</p>-->
+                            <!--{{/if}}-->
+                        <!--</div>-->
+
+                    <!--</div>-->
+                    <!--{{/if}}-->
+                    <h4>Стоимость:</h4>
+                    <h3 class="main-price">{{currentPrice}}</h3>
+                    <!--<button data-toggle="popover" data-placement="top" type="button" class="btn btn-default" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">условия</button>-->
+
+                    <!--<button class="lead checkin">записаться</button>-->
+
+                    <div class="row variants">
+
+                        <div>
+                            <div class="thumbnail _visible">
+                                <h2>Живое участие</h2>
+                                <ul>
+                                    <li>Возможность присутствия на лекции, дает Вам уникальную возможность общения со спикером</li>
+                                    <li>Персональный  подход</li>
+                                    <li>Возможность задавать вопросы</li>
+                                </ul>
+                                <p class="price">{{price}}</p>
+
+                                <div class="hover-group">
+
+                                    <button data-toggle="popover" data-placement="top" type="button" class="btn btn-default" data-content="<p>Услуга предоставляется при предварительной 100% оплате.
+Мастер-класс состоится по адресу – Санкт-Петербург. Суворовский пр. д.60.
+Продолжительность 3 часа</p>
+">условия</button>
+                                    <button data-toggle="popover" data-placement="top" type="button" class="btn btn-default" data-content="<ul><li>Карты оплаты</li><li>Наличный расчет или через терминал в офисе школы</li><li>Электронные деньги</li><li>Другие способы оплаты</li></ul>">оплата</button>
+
+                                </div>
+
+                                <button class="lead checkin" data-type="masterclass">записаться</button>
+                            </div>
+                        </div>
+                        <div>
+
+                            <div class="thumbnail {{#if online}} {{else}}_visible {{/if}}" >
+                                {{#if online}}
+
+                                <input id="webinar-link" type="hidden" value="{{webinarLink}}"/>
+                                <input id="webinar-pass" value="{{webinarPass}}" type="hidden"/>
+
+                                {{/if}}
+                                <div class="ovrl"></div>
+                                <h2>Вебинар</h2>
+                                <ul>
+                                    <li>Вы можете посетить мастер-класс из любой точки мира, не выходя из дома или офиса</li>
+                                    <li>Легкое подключение «в два клика»</li>
+                                    <li>Возможность задавать вопросы в чате спикеру и участникам</li>
+                                </ul>
+                                <p class="price">{{#if online}} {{webinarPrice}} {{else}} ... {{/if}}</p>
+
+                                <div class="hover-group">
+
+                                    <button data-toggle="popover" data-placement="top" type="button" class="btn btn-default" data-content="<p>Услуга предоставляется при предварительной 100% оплате .
+Трансляция мастер-класса состоится в указанное время проведения.
+ После выбора данной услуги,  вам на почту придет оповещение    с подробной инструкцией о способе подключения к вебинару.   Продолжительность  трансляции  3 часа.</p>
+">условия</button>
+                                    <button data-toggle="popover" data-placement="top" type="button" class="btn btn-default" data-content="<ul><li>Карты оплаты</li><li>Наличный расчет или через терминал в офисе школы</li><li>Электронные деньги</li><li>Другие способы оплаты</li></ul>">оплата</button>
+
+                                </div>
+
+                                <button class="lead checkin" data-type="webinar">записаться</button>
+                            </div>
+                        </div>
+                        <div>
+
+                            <div class="thumbnail {{#if gotVideo}} {{else}}_visible{{/if}}">
+                                <div class="ovrl"></div>
+                                <h2>Видео лекция</h2>
+                                <ul>
+                                    <li>Вы можете просмотреть лекцию или мастер-класс в удобное для вас время в свободном режиме</li>
+                                </ul>
+                                <p class="price">{{#if gotVideo}} {{videoPrice}} {{else}} ... {{/if}}</p>
+                                <div class="hover-group">
+
+                                    <button data-toggle="popover" data-placement="top" type="button" class="btn btn-default" data-content="<p>Услуга предоставляется при предварительной 100% оплате.
+После проведения оплаты услуги, Вы получите доступ к просмотру лекции.
+Продолжительность  лекции  2 часа 30 мин.</p>
+">условия</button>
+                                    <button data-toggle="popover" data-placement="top" type="button" class="btn btn-default" data-content="<ul><li>Карты оплаты</li><li>Наличный расчет или через терминал в офисе школы</li><li>Электронные деньги</li><li>Другие способы оплаты</li></ul>">оплата</button>
+
+                                </div>
+                                <button class="lead checkin" data-type="video">записаться</button>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
                 <aside>
 
@@ -29,20 +140,54 @@
 
                     <h3 data-aura-with-html="time" class="huge" contenteditable="false">{{{time}}}</h3>
 
-                    <h4>Стоимость:</h4>
-
-                    <h3 data-aura-with-html="price" class="huge" contenteditable="false">{{{price}}}</h3>
-                    
-                    {{#if isInRole 'admin' 'owner'}}
-                    <h4>Дата:</h4>
-                    <input id="set-event-date" class="aura-input input-white" type="date" value="{{getEventInputDate date}}" data-aura-instant-input="events.{{_id}}.date"/>
-                    <h4>Ссылка:</h4>
-                    <input id="aura-alias-input" class="aura-input input-white" type="text" value="{{alias}}" data-aura-instant-input="events.{{_id}}.alias"/>
+                    {{#if pricePrev}}
+                    <h3 class="previous" data-aura-with-html="pricePrev" contenteditable="false">{{{pricePrev}}}
+                    </h3>{{#if userIsAdmin}}<button class="del-previous">- удалить старую цену</button>{{/if}}
+                    {{else}}
+                    {{#if userIsAdmin}}
+                    <button class="add-previous"><span>+</span> Старая цена</button>
                     {{/if}}
 
-                    {{#if isInRole 'admin' 'owner'}}
+                    {{/if}}
+
+                    <!--{{#if online}}-->
+                    <!--<h4>Стоимость вебинар:</h4>-->
+                    <!--<h3 data-aura-with-html="price" class="huge" contenteditable="false">{{{webinarPrice}}}</h3>-->
+                    <!--{{/if}}-->
+
+                    {{#if userIsAdmin}}
+                    <h4>Дата:</h4>
+                    <input id="set-event-date" class="aura-input input-white" type="date" value="{{getEventInputDate date}}" data-aura-instant-input="events.{{_id}}.date"/>
+                    <h4>Стоимость:</h4>
+                    <input type="text" class="aura-input input-white" value="{{price}}" data-aura-instant-input="events.{{_id}}.price"/>
+                    <div class="checkbox-cont">
+                        <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.gotVideo" {{auraCheckboxIsChecked gotVideo}}/> <span> Видео</span><br/>
+                        {{#if gotVideo}}
+                        <input type="text" class="aura-input input-white" value="{{videoPrice}}" data-aura-instant-input="events.{{_id}}.videoPrice" placeholder="Стоимость вебинара"/>
+                        {{/if}}
+                    </div>
+                    <div class="checkbox-cont">
+                        <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.online" {{auraCheckboxIsChecked online}}/> <span> Вебинар</span><br/>
+                        {{#if online}}
+                        <input type="text" class="aura-input input-white" value="{{webinarLink}}" data-aura-instant-input="events.{{_id}}.webinarLink" placeholder="Ссылка на вебинар"/>
+                        <input type="text" class="aura-input input-white" value="{{webinarPrice}}" data-aura-instant-input="events.{{_id}}.webinarPrice" placeholder="Стоимость вебинара"/>
+                        <input type="text" class="aura-input input-white" value="{{webinarPass}}" data-aura-instant-input="events.{{_id}}.webinarPass" placeholder="Пароль"/>
+                        {{/if}}
+                    </div>
+                    <h4>Тип:</h4>
+                    <select id="type-select" data-aura-instant-select="events.{{_id}}.type">
+                        <option value="common">Общее</option>
+                        <option value="masterclass">Мастер-класс</option>
+                    </select>
+                    <h4>Ссылка:</h4>
+                    <input id="aura-alias-input" class="aura-input input-white" type="text" value="{{alias}}" data-aura-instant-input="events.{{_id}}.alias"/>
                     <h4>Короткое описание</h4>
                     <p class="short-desc" data-aura-with-html="shortDesc" contenteditable="false">{{shortDesc}}</p>
+                    <br/>
+                    <div class="checkbox-cont">
+                    <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.mainPage" {{auraCheckboxIsChecked mainPage}}/> <span> Показывать на главной</span>
+                    </div>
+
                     {{/if}}
 
                 </aside>
@@ -51,7 +196,7 @@
         </div>
     </section>
 
-    <div class="custom-modal">
+    <div class="custom-modal {{#if special}}_special{{/if}}" >
 
         <div class="body">
 
@@ -59,22 +204,105 @@
 
             <div class="close-it">&times;</div>
 
-            <form id="form" action="">
+            <form id="form">
 
-                <input id="user-name" type="text" minlength="2" maxlength="50" placeholder="Ваше имя:" required/>
-                <input id="user-email" type="email" name="email" maxlength="80" placeholder="Ваш email:" required/>
-                <input id="user-phone" name="tel" type="tel" placeholder="Ваше телефон:" required/>
+                <input id="event-user-name" class="required" name="name" type="text" minlength="2" maxlength="50" placeholder="Ваше имя:"/>
+                <input id="event-user-email" class="required email" type="email" name="email" maxlength="80" placeholder="Ваш email:"/>
+                <input id="event-user-phone" class="required" name="tel" type="tel" placeholder="Ваше телефон:"/>
 
             </form>
 
-            <!--<div class="types">-->
+            {{#if special}}
 
-            <!--<div id="day1" class="item">Международный этикет</div>-->
-            <!--<div id="day2" class="item">Столовый этикет</div>-->
-            <!--<div id="diner" class="item">Гала-ужин</div>-->
-            <!--<span style="clear: both; display: block;"></span>-->
+                <input id="isSpecial" type="hidden" value="true"/>
 
-            <!--</div>-->
+                <div class="choose-special-price">
+
+                    <div class="chckbx _active" data-value="5900">
+                        <div>
+                            <div></div>
+                        </div>
+                        <p>Лекция <span>5900р</span></p>
+                    </div>
+
+                    <div class="chckbx dinner" data-value="10500">
+                        <div>
+                            <div></div>
+                        </div>
+                        <p>Ужин (бизнес)<span>10500р</span></p>
+                    </div>
+
+                    <div class="chckbx" data-value="5000">
+                        <!--<div>-->
+                            <!--<div></div>-->
+                        <!--</div>-->
+                        <!--<p>Ужин (бизнес)<span>5000р</span></p>-->
+                    </div>
+
+                    <div class="chckbx dinner" data-value="15500">
+                        <div>
+                            <div></div>
+                        </div>
+                        <p>Ужин (VIP)<span>15500р</span></p>
+                    </div>
+
+                </div>
+
+                <div class="special-price">
+
+                    <h3><span>Сумма: </span> <span>5900р</span> </h3>
+
+                </div>
+
+            {{/if}}
+
+            <h4>Способ оплаты</h4>
+
+            <div class="payment-method">
+
+                <div class="rdo _active" data-value="cash1">
+                    <div>
+                        <div></div>
+                    </div>
+                    <p>Наличными курьеру</p>
+                </div>
+
+                <div class="rdo" data-value="card">
+                    <div>
+                        <div></div>
+                    </div>
+                    <div class="desc">
+                        <span>Оплата он-лайн </span>
+
+                        <div class="payment-types">
+
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rdo" data-value="cash2">
+                    <div>
+                        <div></div>
+                    </div>
+                    <p>Наличными в школе</p>
+                </div>
+
+
+                <div class="rdo" data-value="webmoney">
+                    <!--<div>-->
+                        <!--<div></div>-->
+                    <!--</div>-->
+                    <!--<p>Электронными деньгами</p>-->
+                </div>
+
+            </div>
 
             <button id="send" class="lead" data-title="title">ОТПРАВИТЬ</button>
 
@@ -87,9 +315,9 @@
     <div class="sccss">
         <div class="body">
             <h3 class="red">
-                Ваша заявка отправлена!
+                Ваш заказ принят!
             </h3>
-            <h4>Мы свяжемся с вами в ближайшее время</h4>
+            <h4>На указанны вами e-mail было выслано письмо с дальнейшими инструкциями! Если возникнут вопросы, звоните нам!</h4>
         </div>
 
     </div>

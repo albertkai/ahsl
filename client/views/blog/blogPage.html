@@ -11,8 +11,8 @@
                 </h3>
             </div>
         </div>
-        <button class="arrows left"><i class="fa fa-angle-left"></i></button>
-        <button class="arrows right"><i class="fa fa-angle-right"></i></button>
+        <button class="arrows left" data-aura-blog-prev><i class="fa fa-angle-left"></i></button>
+        <button class="arrows right" data-aura-blog-next><i class="fa fa-angle-right"></i></button>
         <div class="container body">
             <div class="row">
                 <div>
@@ -21,7 +21,7 @@
                     </div>
                     <div class="comments">
                         <script type="text/javascript">
-                            VK.init({apiId: 4651140, onlyWidgets: true});
+                            VK.init({apiId: 4651140, onlyWidgets: true, pageId: {{getPageId}} });
                         </script>
 
                         <!-- Put this div tag to the place, where the Comments block will be -->
@@ -33,13 +33,14 @@
                 </div>
                 <aside>
                     <h4>Категория:</h4>
-                    <h3>О школе</h3>
-                    {{#if isInRole 'admin' 'owner'}}
+                    <h3>{{category}}</h3>
+                    {{#if userIsAdmin}}
                     <h4>Изменить категорию:</h4>
-                    <select name="" id="">
-                        <option value="">о школе</option>
-                        <option value="">интересное</option>
-                        <option value="">что еще нового друзья мои??</option>
+                    <select name="" id="cat-select" data-aura-instant-select="blog.{{_id}}.category">
+                        <option value="-">изменить категорию</option>
+                        {{#each blogCategories}}
+                            <option value="{{name}}">{{name}}</option>
+                        {{/each}}
                     </select>
                     {{/if}}
 
@@ -48,19 +49,28 @@
 
                     <ul class="tags-list">
                         {{#each tags}}
-                        <li>{{this}}</li>
+                        <li data-tag-id="{{this}}">{{getTagName this}}
+                            {{#if userIsAdmin}}
+                            <div class="remove" data-aura-blog-remove-tag><i class="fa fa-times"></i></div>
+                            {{/if}}
+                        </li>
                         {{/each}}
-                        <li class="add-tag">+</li>
                     </ul>
                     {{/if}}
 
-                    {{#if isInRole 'admin' 'owner'}}
+                    {{#if userIsAdmin}}
+
+                        <div class="add-tag">
+                            {{> inputAutocomplete settings=settings id="aura-blog-add-tag" class="aura-input input-white" placeholder="Добавить тег"}}
+                        </div>
+
                         <h4>Ссылка</h4>
                         <input id="aura-alias-input" class="aura-input input-white" type="text" value="{{alias}}"  data-aura-instant-input="blog.{{_id}}.alias"/>
                     {{/if}}
 
-                    {{#if isInRole 'admin' 'owner'}}
-                    <textarea name="" id="" cols="30" rows="10" value="{{shortDesc}}"></textarea>
+                    {{#if userIsAdmin}}
+                    <h4>Короткое описание</h4>
+                    <p class="short-desc" data-aura-with-html="shortDesc" contenteditable="false">{{{shortDesc}}}</p>
                     {{/if}}
 
                     <h4>Рекомендации:</h4>
@@ -88,5 +98,12 @@
 
         </div>
     </section>
+
+</template>
+
+
+<template name="tagAutocomplete">
+
+    <p>{{name}}</p>
 
 </template>

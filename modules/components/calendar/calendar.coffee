@@ -9,11 +9,14 @@ if Meteor.isClient
       lateTeens: ['17:00 - 17:45', '17:55 - 18:40', '18:45 - 19:30']
       grownUps: ['11:00 - 11:45', '11:55 - 12:35', '12:45 - 13:30', '13:40 - 14:25', '14:35 - 15:10']
       grownUps_evening: ['19:30 - 20:15', '20:25 - 21:10', '21:15 - 22:00']
+      summerSchool: ['17:00 - 17:45', '17:55 - 18:40', '18:45 - 19:30']
+      summerSchool_evening: ['19:30 - 20:15', '20:25 - 21:10', '21:15 - 22:00']
     month: new Date().getMonth()
     year: new Date().getYear()
     header: '<div class="header"><div>Время</div><div>ПН</div><div>ВТ</div><div>СР</div><div>ЧТ</div><div>ПТ</div><div>СБ</div><div>ВС</div></div>'
     groups: '<div class="container group-change-cont"><div class="row"><div><button class="lead _active" data-group="children">Детская группа</button></div><div><button class="lead" data-group="teens_day">Школьная группа</button></div><div><button class="lead" data-group="lateTeens">Подростковая группа</button></div><div><button class="lead" data-group="grownUps" data-time="true">Взрослая группа</button></div></div></div>'
     groupTimes: '<div class="container group-time"><div class="chckbx _active" data-group="grownUps"><div><div></div></div><p>Дневная группа</p></div><div class="chckbx" data-group="grownUps_evening"><div><div></div></div><p>Вечерняя группа</p></div></div>'
+    summerGroupTimes: '<div class="container group-time"><div class="chckbx _active" data-group="summerSchool"><div><div></div></div><p>Дневная группа</p></div><div class="chckbx" data-group="summerSchool_evening"><div><div></div></div><p>Вечерняя группа</p></div></div>'
     months: ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
     drawGroups: true
     chooseTime: false
@@ -182,7 +185,11 @@ if Meteor.isClient
       markup = ''
       if @drawGroups is true
         markup += @groups
-      markup += @groupTimes
+      console.log 'group is ' + @group
+      if @group is 'summerSchool' or @group is 'summerSchool_evening'
+        markup += @summerGroupTimes
+      else
+        markup += @groupTimes
       markup += '<div class="container calendar-controls">'
       markup += controls
       markup += '<div class="arrows small"><button></button><button></button></div></div>'
@@ -316,16 +323,18 @@ if Meteor.isServer
 
     'updateSchedule': (content, day, month, year, group, color)->
 
-      query1 = {}
-      query2 = {}
-      queryLessons = 'schedule.' + year + '.' + month + '.' + day + '.lessons'
-      queryColor = 'schedule.' + year + '.' + month + '.' + day + '.color'
-      query1[queryLessons] = content
-      query2[queryColor] = color
-      Schedules.update {group: group}, {$set: query1}
-      Schedules.update {group: group}, {$set: query2}
-      console.log query1
-      console.log query2
+      if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+
+        query1 = {}
+        query2 = {}
+        queryLessons = 'schedule.' + year + '.' + month + '.' + day + '.lessons'
+        queryColor = 'schedule.' + year + '.' + month + '.' + day + '.color'
+        query1[queryLessons] = content
+        query2[queryColor] = color
+        Schedules.update {group: group}, {$set: query1}
+        Schedules.update {group: group}, {$set: query2}
+        console.log query1
+        console.log query2
 
   }
 

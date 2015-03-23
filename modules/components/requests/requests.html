@@ -1,0 +1,86 @@
+<template name="auraRequestsModal">
+
+    <div id="aura-requests-modal" class="auraModal">
+
+        <div class="close-modal"><i class="fa fa-times"></i></div>
+
+        <div class="header">
+
+            <h3>Заявки</h3>
+
+        </div>
+
+        <div class="body">
+
+            <aside>
+
+                <select name="" id="">
+                    <option value="">Все</option>
+                    <option value="">Только непрочитанные</option>
+                </select>
+
+                <select name="" id="">
+                    <option value="">По дате</option>
+                    <option value="">По типу</option>
+                </select>
+
+            </aside>
+
+            <div class="list-wrap">
+
+                <ul>
+                    {{#each requests}}
+                    <li data-id="{{_id}}" class="{{#if isWatched}}{{else}}_unwatched{{/if}}">
+                        <div class="heading">
+                            <div class="status-stripe"></div>
+                            <div>
+                                <p class="date">{{getDate date}}</p>
+                                <div class="status">
+                                    <button><i class="fa fa-times"></i></button>
+                                    <button><i class="fa fa-repeat"></i></button>
+                                    <button><i class="fa fa-check"></i></button>
+                                </div>
+                            </div>
+                            <p class="title">{{event}}</p>
+
+                        </div>
+                        <div class="info">
+                            <div>
+                                <div>Имя:</div>
+                                <div>{{name}}</div>
+                            </div>
+                            <div>
+                                <div>E-mail:</div>
+                                <div>{{email}}</div>
+                            </div>
+                            <div>
+                                <div>Телефон:</div>
+                                <div>{{phone}}</div>
+                            </div>
+                            <div>
+                                <div>Сумма:</div>
+                                <div>{{amount}}</div>
+                            </div>
+                            <div>
+                                <div>Способ:</div>
+                                <div>{{type}}</div>
+                            </div>
+                            <div>
+                                <div>Оплата:</div>
+                                <div>{{isPayed paymentStatus}}</div>
+                            </div>
+
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+                <button class="load-more">Загрузить еще..</button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    
+</template>

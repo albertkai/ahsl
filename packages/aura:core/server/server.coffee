@@ -6,17 +6,27 @@ Meteor.publish 'auraPages', ->
 Meteor.publish 'users', ->
   Meteor.users.find()
 
+#Meteor.publish 'auraHistory', ->
+#  AuraHistory.find({}, {limit: 50})
+
+Meteor.publish 'auraLogs', ->
+  AuraLogs.find()
+
+Meteor.publish 'auraSettings', ->
+  AuraSettings.find()
+
 if Meteor.isServer
   Meteor.startup ->
     @Future = Npm.require('fibers/future')
     @fs = Npm.require('fs')
     @AWS = Npm.require('aws-sdk')
-    process.env.MAIL_URL = 'smtp://postmaster@sandbox32926.mailgun.org:5ty-i8q8jz-3@smtp.mailgun.org:587'
+    @dataUriToBuffer = Npm.require('data-uri-to-buffer')
     AWS.config.update
-      accessKeyId: 'AKIAJKHELBJSF7V6D7FQ'
-      secretAccessKey: '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'
+      accessKeyId: process.env.AWS_KEY_ID
+      secretAccessKey: process.env.AWS_SECRET
 #    AWS.config.loadFromPath('config.json')
     AWS.config.region = 'eu-west-1'
+
 
 
 if Meteor.isServer
@@ -56,7 +66,7 @@ if Meteor.isServer
 
         f.wait()
 
-    uploadWithThumb: (pics)->
+    uploadWithThumb: (pics, bucket)->
 
       loggedInUser = Meteor.user()
       if Roles.userIsInRole(loggedInUser, ['owner', 'admin'])
@@ -64,8 +74,11 @@ if Meteor.isServer
         s3 = new AWS.S3()
 
         origBuffer = new Buffer(pics[0].data, 'binary')
+        resizedBuffer = dataUriToBuffer(pics[1].data)
 
-        resizedBuffer = new Buffer(pics[1].data, 'binary')
+        console.log pics
+        console.log pics[0].fileInfo
+        console.log pics[0].fileInfo.name
 
         newName = do ->
           extention = _.last pics[0].fileInfo.name.split('.')
@@ -80,14 +93,14 @@ if Meteor.isServer
           Key: newName.orig
           ContentType: pics[0].fileInfo.type
           Body: origBuffer
-          Bucket: 'ahsl/aura'
+          Bucket: bucket
         }
 
         resizedImage =  {
           Key: newName.thumb
           ContentType: pics[0].fileInfo.type
           Body: resizedBuffer
-          Bucket: 'ahsl/aura'
+          Bucket: bucket
         }
 
         f = new Future()
@@ -97,7 +110,7 @@ if Meteor.isServer
             console.log err
             f.return(false)
           else
-            console.log 'object ' + pics[0].fileInfo.name + 'named ' + newName.orig + ' uploaded to S3! Congrats!'
+            console.log 'object ' + pics[0].fileInfo.name + ' named ' + newName.orig + ' uploaded to S3! Congrats!'
             f.return(true)
 
         f.wait()
@@ -109,7 +122,7 @@ if Meteor.isServer
             console.log err
             f.return(false)
           else
-            console.log 'object ' + pics[1].fileInfo.name + ' thumb named' + newName.thumb + 'uploaded to S3'
+            console.log 'object ' + pics[1].fileInfo.name + ' thumb named ' + newName.thumb + ' uploaded to S3'
             f.return(true)
 
         f.wait()
@@ -135,13 +148,14 @@ if Meteor.isServer
             console.log(err, err.stack)
             f.return(false)
           else
+            console.log data
             console.log('object ' + pic + ' deleted from S3')
             f.return(true)
 
         f.wait()
 
 
-    deletePics: (pics)->
+    deletePics: (pics, bucket)->
 
       loggedInUser = Meteor.user()
       if Roles.userIsInRole(loggedInUser, ['owner', 'admin'])
@@ -151,7 +165,7 @@ if Meteor.isServer
           s3 = new AWS.S3()
 
           params = {
-            Bucket: 'ahsl/aura',
+            Bucket: bucket,
             Delete: {
               Objects: []
             }
@@ -183,6 +197,8 @@ if Meteor.isServer
 
     auraCreateUser: (options)->
 
+      console.log 'creating new user'
+
       loggedInUser = Meteor.user()
       if Roles.userIsInRole(loggedInUser, ['owner'])
         user = Accounts.createUser {
@@ -192,6 +208,7 @@ if Meteor.isServer
           profile: {
             name: options.name,
             surname: options.surname,
+            pic: options.pic if options.pic?
           }
         }
 
@@ -201,11 +218,17 @@ if Meteor.isServer
       else
         'Permission denied'
 
+
+
     auraRemoveUser: (id)->
 
       loggedInUser = Meteor.user()
+      userToDelete = Meteor.users.findOne({_id: id})
       if Roles.userIsInRole(loggedInUser, ['owner'])
-        Meteor.users.remove {'_id': id}
+        if !Roles.userIsInRole(userToDelete, ['owner'])
+          Meteor.users.remove {'_id': id}
+        else
+          Aura.notify 'Нельзя удалить владельца сайта, обратитесь для этого к разработчику'
 
 
     saveHtml: (item)->
@@ -220,6 +243,48 @@ if Meteor.isServer
         console.log query
         AuraColl[item.collection].update searchQuery, {$set: query}
 
+        Meteor.call 'saveHistory', item
+#        Meteor.call 'saveLogs', item
+
+#        AuraLogs.insert {
+#          userId:
+#          name:
+#        }
+
+    saveHistory: (item)->
+      loggedInUser = Meteor.user()
+      console.log 'History item:'
+      historyItem = item
+      if Roles.userIsInRole(loggedInUser, ['owner', 'admin'])
+        historyItem['userId'] = loggedInUser._id
+        historyItem['name'] = loggedInUser.profile.name
+        historyItem['surname'] = loggedInUser.profile.surname
+        historyItem['date'] = Date.parse(new Date())
+        historyItem['restored'] = false
+        console.log historyItem
+        AuraHistory.insert historyItem
+
+    restoreHistory: (id)->
+
+      loggedInUser = Meteor.user()
+      item = AuraHistory.findOne({_id: id})
+      console.log 'Restoring history item:'
+      console.log item
+      if Roles.userIsInRole(loggedInUser, ['owner', 'admin'])
+        query = {}
+        searchQuery = {}
+        searchQuery[item.index] = item.document
+        query[item.field] = do ->
+          if !item.restored
+            item.changedData
+          else
+            item.data
+        AuraColl[item.collection].update searchQuery, {$set: query}
+        AuraHistory.update {_id: id}, {$set: {restored: !item.restored}}
+        query[item.field]
+
+
+
     addListItem: (document, field, object)->
       loggedInUser = Meteor.user()
       if Roles.userIsInRole(loggedInUser, ['owner', 'admin'])
@@ -233,10 +298,5 @@ if Meteor.isServer
         query = {}
         query[field] = object
         AuraPages.update {'name': document}, {$pull: query}
-
-    saveHistory: (item)->
-      loggedInUser = Meteor.user()
-      if Roles.userIsInRole(loggedInUser, ['owner', 'admin'])
-        AuraHistory.insert item
 
   }

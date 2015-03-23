@@ -48,4 +48,47 @@
 
     </section>
 
+    <div id="contacts-lead" class="custom-modal">
+
+        <div class="body">
+
+            <h2 class="red">ЗАПИСЬ</h2>
+
+            <div class="close-it">&times;</div>
+
+            <form id="form" action="">
+
+                <input id="contacts-user-name" type="text" minlength="2" maxlength="50" placeholder="Ваше имя:" required/>
+                <input id="contacts-user-email" type="email" name="email" maxlength="80" placeholder="Ваш email:" required/>
+                <input id="contacts-user-phone" name="tel" type="tel" placeholder="Ваше телефон:" required/>
+
+            </form>
+
+            <!--<div class="types">-->
+
+            <!--<div id="day1" class="item">Международный этикет</div>-->
+            <!--<div id="day2" class="item">Столовый этикет</div>-->
+            <!--<div id="diner" class="item">Гала-ужин</div>-->
+            <!--<span style="clear: both; display: block;"></span>-->
+
+            <!--</div>-->
+
+            <button id="send" class="lead" data-title="title">ОТПРАВИТЬ</button>
+
+        </div>
+
+    </div>
+
+    <div class="modal-overlay"></div>
+
+    <div class="sccss">
+        <div class="body">
+            <h3 class="red">
+                Ваша заявка отправлена!
+            </h3>
+            <h4>Мы свяжемся с вами в ближайшее время</h4>
+        </div>
+
+    </div>
+
 </template>

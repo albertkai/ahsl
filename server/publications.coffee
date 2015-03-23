@@ -3,3 +3,15 @@ Meteor.publish 'schedules', ->
 
 Meteor.publish 'events', ->
   Events.find()
+
+Meteor.publish 'news', ->
+  News.find()
+
+Meteor.publish 'requests', ->
+  Requests.find()
+
+Meteor.publish 'slider', ->
+  Slider.find()
+
+Meteor.publish 'summerSlider', ->
+  SummerSlider.find()
