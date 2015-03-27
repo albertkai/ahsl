@@ -58,6 +58,9 @@ if Meteor.isClient
   Template.registerHelper 'history', ->
     AuraHistory.find({}, {sort: {date: -1}})
 
+  Template.registerHelper 'newRequests', ->
+    Session.get('newRequests')
+
   Template.registerHelper 'auraCheckboxIsChecked', (value)->
     if value
       'checked'

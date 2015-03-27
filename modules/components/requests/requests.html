@@ -14,15 +14,27 @@
 
             <aside>
 
-                <select name="" id="">
-                    <option value="">Все</option>
-                    <option value="">Только непрочитанные</option>
-                </select>
+                <div class="rdo _active" data-value="all">
+                    <div><div></div></div>
+                    <p>Все ({{allRequests}})</p>
+                </div>
 
-                <select name="" id="">
-                    <option value="">По дате</option>
-                    <option value="">По типу</option>
-                </select>
+                <div class="rdo" data-value="error">
+                    <div><div></div></div>
+                    <p>Отмененные ({{errorRequests}})</p>
+                </div>
+
+                <div class="rdo" data-value="recall">
+                    <div><div></div></div>
+                    <p>Отложенные ({{recallRequests}})</p>
+                </div>
+
+                <div class="rdo" data-value="success">
+                    <div><div></div></div>
+                    <p>Успешные ({{successRequests}})</p>
+                </div>
+
+                <h3>Новых: <strong>{{newRequests}}</strong></h3>
 
             </aside>
 
@@ -30,15 +42,15 @@
 
                 <ul>
                     {{#each requests}}
-                    <li data-id="{{_id}}" class="{{#if isWatched}}{{else}}_unwatched{{/if}}">
+                    <li data-id="{{_id}}" class="{{#if isWatched status}}{{else}}_unwatched{{/if}}">
                         <div class="heading">
-                            <div class="status-stripe"></div>
+                            <div class="status-stripe {{status}}"></div>
                             <div>
                                 <p class="date">{{getDate date}}</p>
                                 <div class="status">
-                                    <button><i class="fa fa-times"></i></button>
-                                    <button><i class="fa fa-repeat"></i></button>
-                                    <button><i class="fa fa-check"></i></button>
+                                    <button data-status="error" class="{{isActive status 'error'}}"><i class="fa fa-times"></i></button>
+                                    <button data-status="recall" class="{{isActive status 'recall'}}"><i class="fa fa-repeat"></i></button>
+                                    <button data-status="success" class="{{isActive status 'success'}}"><i class="fa fa-check"></i></button>
                                 </div>
                             </div>
                             <p class="title">{{event}}</p>

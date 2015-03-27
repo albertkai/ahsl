@@ -23,15 +23,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="server.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/server.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="28" selection-start="1764" selection-end="1764" vertical-scroll-proportion="-20.88" vertical-offset="693" max-vertical-offset="2595">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="credentials.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packages/aura:core/lib/credentials.coffee">
           <provider selected="true" editor-type-id="text-editor">
@@ -50,48 +41,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packages/aura:core/server/server.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="45" selection-start="628" selection-end="628" vertical-scroll-proportion="-13.2" vertical-offset="45" max-vertical-offset="4605">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collections.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/collections.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="10" selection-start="855" selection-end="855" vertical-scroll-proportion="-19.68" vertical-offset="483" max-vertical-offset="1200">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="19" selection-start="62" selection-end="62" vertical-scroll-proportion="0.046511628" vertical-offset="0" max-vertical-offset="660">
+            <state line="2" column="19" selection-start="62" selection-end="62" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="660">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="merchant.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/merchant.coffee">
+      <file leaf-file-name="requests.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/components/requests/requests.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="28" selection-start="258" selection-end="290" vertical-scroll-proportion="-7.2" vertical-offset="0" max-vertical-offset="630">
+            <state line="98" column="0" selection-start="2031" selection-end="2031" vertical-scroll-proportion="-18.6" vertical-offset="1005" max-vertical-offset="1980">
               <folding>
-                <marker date="1427103124000" expanded="true" signature="199:298" placeholder="merchantId: &quot;66888&quot;..." />
+                <marker date="1427113982000" expanded="true" signature="72:271" placeholder="..." />
+                <marker date="1427113982000" expanded="true" signature="879:1051" placeholder="..." />
+                <marker date="1427113982000" expanded="true" signature="1252:1291" placeholder="date: {$exists: true}..." />
+                <marker date="1427113982000" expanded="true" signature="2006:2071" placeholder="..." />
+                <marker date="1427113982000" expanded="true" signature="2101:2590" placeholder="..." />
+                <marker date="1427113982000" expanded="true" signature="2263:2586" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requests.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="server.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/server.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="81" column="28" selection-start="1764" selection-end="1764" vertical-scroll-proportion="-20.88" vertical-offset="693" max-vertical-offset="2595">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aura.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="30" selection-start="1652" selection-end="1652" vertical-scroll-proportion="-20.4" vertical-offset="405" max-vertical-offset="25200">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminPanel.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/packages/aura:core/client/ui/adminPanel.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="60" selection-start="2582" selection-end="2582" vertical-scroll-proportion="-18.125" vertical-offset="615" max-vertical-offset="2010">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requests.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/components/requests/requests.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="50" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.0" vertical-offset="449" max-vertical-offset="1365">
+            <state line="48" column="68" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.58049536" vertical-offset="345" max-vertical-offset="1545">
               <folding />
             </state>
           </provider>
@@ -100,7 +105,16 @@
       <file leaf-file-name="aura.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="782" column="29" selection-start="18098" selection-end="18098" vertical-scroll-proportion="0.0" vertical-offset="11730" max-vertical-offset="12420">
+            <state line="747" column="35" selection-start="16686" selection-end="16686" vertical-scroll-proportion="-21.571428" vertical-offset="10148" max-vertical-offset="13350">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="seed.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/seed.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="127" column="23" selection-start="5168" selection-end="5168" vertical-scroll-proportion="-19.08" vertical-offset="1428" max-vertical-offset="2085">
               <folding />
             </state>
           </provider>
@@ -137,8 +151,6 @@
         <option value="$PROJECT_DIR$/client/views/payment/payment.html" />
         <option value="$PROJECT_DIR$/packages/aura:core/client/less/admin.lessimport" />
         <option value="$PROJECT_DIR$/packages/aura:core/client/aura.html" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/aura.coffee" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/ui/adminPanel.html" />
         <option value="$PROJECT_DIR$/lib/collections.coffee" />
         <option value="$PROJECT_DIR$/client/compatibility/validation.js" />
         <option value="$PROJECT_DIR$/client/compatibility/inputmask.js" />
@@ -159,14 +171,16 @@
         <option value="$PROJECT_DIR$/client/views/event/event.lessimport" />
         <option value="$PROJECT_DIR$/client/views/event/event.coffee" />
         <option value="$PROJECT_DIR$/server/server.coffee" />
-        <option value="$PROJECT_DIR$/modules/components/requests/requests.html" />
-        <option value="$PROJECT_DIR$/packages/aura:core/client/aura.less" />
         <option value="$USER_HOME$/Downloads/расслыка_ahsl.html" />
-        <option value="$PROJECT_DIR$/modules/components/requests/requests.coffee" />
         <option value="$PROJECT_DIR$/server/merchant.coffee" />
         <option value="$PROJECT_DIR$/lib/credentials.coffee" />
         <option value="$PROJECT_DIR$/packages/aura:core/lib/credentials.coffee" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/packages/aura:core/client/aura.less" />
+        <option value="$PROJECT_DIR$/packages/aura:core/client/aura.coffee" />
+        <option value="$PROJECT_DIR$/packages/aura:core/client/ui/adminPanel.html" />
+        <option value="$PROJECT_DIR$/modules/components/requests/requests.coffee" />
+        <option value="$PROJECT_DIR$/modules/components/requests/requests.html" />
       </list>
     </option>
   </component>
@@ -229,20 +243,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ahsl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ahsl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="packages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -262,6 +262,94 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="aura:core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ahsl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ahsl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aura:core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ahsl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ahsl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aura:core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ahsl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ahsl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="requests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ahsl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ahsl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -356,7 +444,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="813" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2108183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -427,7 +515,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/contacts/contacts.lessimport">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/bootstrap3-less/lib/js/tab.js">
@@ -490,24 +580,16 @@
         <state line="11" column="30" selection-start="208" selection-end="208" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="345" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/ui/adminPanel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="44" selection-start="2301" selection-end="2301" vertical-scroll-proportion="-3.75" vertical-offset="870" max-vertical-offset="2010" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/packages/aura:core/client/less/admin.lessimport">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="272" column="11" selection-start="5938" selection-end="5942" vertical-scroll-proportion="-1.96" vertical-offset="3933" max-vertical-offset="7035" />
+        <state line="272" column="11" selection-start="5938" selection-end="5942" vertical-scroll-proportion="-1.96" vertical-offset="3933" max-vertical-offset="7035">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/packages/aura:core/lib/collections.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="9" selection-start="76" selection-end="76" vertical-scroll-proportion="-1.8" vertical-offset="0" max-vertical-offset="240" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="43" selection-start="1730" selection-end="1730" vertical-scroll-proportion="-3.5294118" vertical-offset="810" max-vertical-offset="25155" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/directions/directions.html">
@@ -547,7 +629,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/components/successWindow.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="3" selection-start="868" selection-end="868" vertical-scroll-proportion="-10.102041" vertical-offset="0" max-vertical-offset="1125" />
+        <state line="33" column="3" selection-start="868" selection-end="868" vertical-scroll-proportion="-10.102041" vertical-offset="0" max-vertical-offset="1125">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/components/successWindow.coffee">
@@ -558,11 +642,6 @@
     <entry file="file://$PROJECT_DIR$/server/publications.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="21" selection-start="286" selection-end="286" vertical-scroll-proportion="-9.6" vertical-offset="0" max-vertical-offset="345" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/seed.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="23" selection-start="5168" selection-end="5168" vertical-scroll-proportion="-12.0" vertical-offset="1605" max-vertical-offset="2085" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../detilly/dist/styles/7f6e1cab.main.css">
@@ -628,37 +707,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/components/requests/requests.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="454" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="945">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/collections.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="10" selection-start="855" selection-end="855" vertical-scroll-proportion="-19.68" vertical-offset="483" max-vertical-offset="1200">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/components/requests/requests.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="50" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.0" vertical-offset="449" max-vertical-offset="1365">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="782" column="29" selection-start="18098" selection-end="18098" vertical-scroll-proportion="0.0" vertical-offset="11730" max-vertical-offset="12420">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/server.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="28" selection-start="1764" selection-end="1764" vertical-scroll-proportion="-20.88" vertical-offset="693" max-vertical-offset="2595">
           <folding />
         </state>
       </provider>
@@ -674,7 +725,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="28" selection-start="258" selection-end="290" vertical-scroll-proportion="-7.2" vertical-offset="0" max-vertical-offset="630">
           <folding>
-            <marker date="1427103124000" expanded="true" signature="199:298" placeholder="merchantId: &quot;66888&quot;..." />
+            <marker date="1427103124000" expanded="true" signature="-1:-1" placeholder="merchantId: &quot;66888&quot;..." />
           </folding>
         </state>
       </provider>
@@ -693,9 +744,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/ui/adminPanel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="60" selection-start="2582" selection-end="2582" vertical-scroll-proportion="-18.125" vertical-offset="615" max-vertical-offset="2010">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="30" selection-start="1652" selection-end="1652" vertical-scroll-proportion="-20.4" vertical-offset="405" max-vertical-offset="25200">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="19" selection-start="62" selection-end="62" vertical-scroll-proportion="0.046511628" vertical-offset="0" max-vertical-offset="660">
+        <state line="2" column="19" selection-start="62" selection-end="62" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="660">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/aura:core/client/aura.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="747" column="35" selection-start="16686" selection-end="16686" vertical-scroll-proportion="-21.571428" vertical-offset="10148" max-vertical-offset="13350">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/seed.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="23" selection-start="5168" selection-end="5168" vertical-scroll-proportion="-19.08" vertical-offset="1428" max-vertical-offset="2085">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="28" selection-start="1764" selection-end="1764" vertical-scroll-proportion="-20.88" vertical-offset="693" max-vertical-offset="2595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/components/requests/requests.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="0" selection-start="2031" selection-end="2031" vertical-scroll-proportion="-18.6" vertical-offset="1005" max-vertical-offset="1980">
+          <folding>
+            <marker date="1427113982000" expanded="true" signature="72:271" placeholder="..." />
+            <marker date="1427113982000" expanded="true" signature="879:1051" placeholder="..." />
+            <marker date="1427113982000" expanded="true" signature="1252:1291" placeholder="date: {$exists: true}..." />
+            <marker date="1427113982000" expanded="true" signature="2006:2071" placeholder="..." />
+            <marker date="1427113982000" expanded="true" signature="2101:2590" placeholder="..." />
+            <marker date="1427113982000" expanded="true" signature="2263:2586" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/components/requests/requests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="68" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.58049536" vertical-offset="345" max-vertical-offset="1545">
           <folding />
         </state>
       </provider>

@@ -674,6 +674,56 @@
 
 #aura-requests-modal{
 
+  aside{
+    padding: 10px;
+    .rdo{
+      &[data-value="all"]{
+        >div{
+          border-color: @brand-color;
+          >div{
+            background: @brand-color;
+          }
+        }
+        >p{
+          color: @brand-color;
+        }
+      }
+      &[data-value="error"]{
+        >div{
+          border-color: red;
+          >div{
+            background: red;
+          }
+        }
+        >p{
+          color: red;
+        }
+      }
+      &[data-value="recall"]{
+        >div{
+          border-color: yellow;
+          >div{
+            background: yellow;
+          }
+        }
+        >p{
+          color: yellow;
+        }
+      }
+      &[data-value="success"]{
+        >div{
+          border-color: lawngreen;
+          >div{
+            background: lawngreen;
+          }
+        }
+        >p{
+          color: lawngreen;
+        }
+      }
+    }
+  }
+
   .body{
 
     .list-wrap{
@@ -695,7 +745,7 @@
         li{
           border-bottom: 1px solid rgba(255, 255, 255, .3);
           &._unwatched{
-            background: rgba(0, 150, 255, .2);
+            background: rgba(0, 255, 255, .1);
           }
           &._expanded{
             .info{
@@ -714,9 +764,18 @@
               position: absolute;
               width: 4px;
               height: 100%;
-              background: red;
+              background: @brand-color;
               top: 0;
               left: 0;
+              &.error{
+                background: red;
+              }
+              &.recall{
+                background: yellow;
+              }
+              &.success{
+                background: lawngreen;
+              }
             }
             .date, .title{
               padding-left: 10px;
@@ -743,33 +802,36 @@
                 line-height: 28px;
                 border-radius: 30px;
                 margin: 5px;
-                &:hover{
+                &:hover, &._active{
                   color: white;
                 }
                 &:nth-child(1){
                   color: red;
-                  &:hover{
+                  &:hover, &._active{
                     color: white;
                     background: red;
+                    border-color: red;
                   }
                 }
                 &:nth-child(2){
                   color: yellow;
-                  &:hover{
+                  &:hover, &._active{
                     color: white;
                     background: yellow;
+                    border-color: yellow;
                   }
                 }
                 &:nth-child(3){
-                  color: green;
-                  &:hover{
+                  color: lawngreen;
+                  &:hover, &._active{
                     color: white;
-                    background: green;
+                    background: lawngreen;
+                    border-color: lawngreen;
                   }
                 }
                 &:nth-child(4){
                   color: blue;
-                  &:hover{
+                  &:hover, &._active{
                     color: white;
                     background: blue;
                   }
