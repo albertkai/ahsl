@@ -61,6 +61,9 @@ if Meteor.isClient
   Template.registerHelper 'newRequests', ->
     Session.get('newRequests')
 
+  Template.registerHelper 'email', ->
+    AuraPages.findOne({name: 'email'})
+
   Template.registerHelper 'auraCheckboxIsChecked', (value)->
     if value
       'checked'
@@ -178,6 +181,22 @@ if Meteor.isClient
       'click #toggle-requests': ->
 
         $('#aura-requests-modal').addClass '_opened'
+
+      'click #toggle-mailing': ->
+
+        $('#emailModal').modal('show')
+
+        if $('#mailing-bases-cont').html() is ''
+
+          Meteor.call 'getBasesList', (err, res)->
+
+            if err
+              console.log err
+            else
+              markup = ''
+              res.forEach (b)->
+                markup += '<div><input type="checkbox" value="' + b.id + '"/><p>' + b.name + ' <span>' + b.active + '</span></p></div>'
+              $('#mailing-bases-cont').html(markup)
 
       'click .aura-toggle-edit': (e)->
         $(e.currentTarget).toggleClass('_active')

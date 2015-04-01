@@ -30,4 +30,28 @@
       else
         window.location.href = res
 
+  sendMailing: (name, subject, bases, html)->
+
+    console.log 'Creating mailing list'
+
+    Meteor.call 'createMailing', name, subject, bases, html, (err, res)->
+
+      if err
+
+        console.log err
+
+      else
+
+        console.log 'Creating mailing list with ID: ' + res
+        console.log 'Sending created mailing'
+
+        Meteor.call 'sendMailing', res, (err, res)->
+
+          if err
+            console.log err
+          else
+            console.log res
+
+          $('#emailModal').modal('hide')
+
 }

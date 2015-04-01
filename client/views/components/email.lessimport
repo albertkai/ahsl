@@ -1,0 +1,30 @@
+#emailModal{
+
+  #mailing-bases-cont{
+
+    h3{
+      text-align: center;
+    }
+
+    overflow: hidden;
+    >div{
+      float: left;
+      width: 33%;
+      height: 60px;
+    }
+
+  }
+
+  .aura-input{
+    margin: 10px;
+  }
+
+  .modal-footer{
+    text-align: center;
+    #send{
+      color: @brand-primary;
+      border-color: @brand-primary;
+    } 
+  }
+
+}

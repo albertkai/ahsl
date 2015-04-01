@@ -1,0 +1,276 @@
+<template name="email">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+<td width="100%" valign="top" bgcolor="#ffffff" style="padding-top:20px">
+
+<!-- Start Header-->
+<table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="deviceWidth">
+    <tr>
+        <td width="100%" bgcolor="#ffffff">
+
+            <!-- Logo -->
+            <table border="0" cellpadding="0" cellspacing="0" align="left" class="deviceWidth">
+                <tr>
+                    <td style="padding:10px 20px; text-align: center;" class="center" >
+                        <a href="http://ladies-school.com"><img src="http://d1tvqt3gjtui5j.cloudfront.net/assets/main_logo.png" width="60%" alt="" border="0" /></a>
+                    </td>
+                </tr>
+            </table><!-- End Logo -->
+
+            <!-- Nav -->
+            <table border="0" cellpadding="0" cellspacing="0" align="center" class="deviceWidth">
+                <tr>
+                    <td class="center" style="font-size: 13px; color: #272727; font-weight: light; text-align: right; font-family: Georgia, Times, serif; line-height: 20px; vertical-align: middle; padding:10px; font-style:italic">
+                        <a href="http://www.ladies-school.com" style="text-decoration: none; color: #666;">Школа</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="http://www.ladies-school.com/masterclass" style="text-decoration: none; color: #666;">Мастер-классы</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="http://www.ladies-school.com/shedule" style="text-decoration: none; color: #666;">Расписание</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="http://www.ladies-school.com/events" style="color: #666;">События</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="http://www.ladies-school.com/summer" style="color: #666;">Летняя школа</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="http://www.ladies-school.com/contacts" style="color: #666;">Контакты</a>
+                    </td>
+                </tr>
+            </table><!-- End Nav -->
+
+        </td>
+    </tr>
+</table><!-- End Header -->
+
+<!-- One Column -->
+<table width="580"  class="deviceWidth" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#eeeeed">
+    <tr>
+        <td valign="top" style="padding:0" bgcolor="#ffffff">
+            <div style="position: relative;"></div>
+            <a href="#"><img  class="deviceWidth" data-aura-image="email.mainPic" width="100%" src="{{storagePath}}/images/{{email.mainPic}}" alt="" border="0" style="display: block; border-radius: 4px;" /></a>
+            <!--<h2>АВСТРИЙСКАЯ ВЫСШАЯ ШКОЛА ЛЕДИ ПРЕДЛАГАЕТ ВАМ ОЗНАКОМИТЬСЯ С ЛЕТНИМ ПРОЕКТОМ 2015</h2>-->
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 13px; color: #959595; font-weight: normal; text-align: left; font-family: Georgia, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px" bgcolor="white">
+
+            <div data-aura-html="email.desc1" style="font-size: 16px" contenteditable="false">{{email.desc1}}</div>
+
+        </td>
+    </tr>
+</table><!-- End One Column -->
+
+<div style="height:15px">&nbsp;</div><!-- spacer -->
+
+
+<!-- Two Column (Images Stacked over Text) -->
+<table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="deviceWidth" bgcolor="#eeeeed">
+    <tr>
+        <td class="center" style="padding:10px 0 0 5px">
+
+            <table width="49%" border="0" cellpadding="0" cellspacing="0" align="left" class="deviceWidth">
+                <tr>
+                    <td align="center">
+                        <!-- The paragraph tag is important here to ensure that this table floats properly in Outlook 2007, 2010, and 2013
+                        To learn more about this fix check out this link: http://www.emailonacid.com/blog/details/C13/removing_unwanted_spacing_or_gaps_between_tables_in_outlook_2007_2010
+                        This fix is used for all floating tables in this responsive template
+                        The margin set to 0 is for Gmail -->
+                        <p style="mso-table-lspace:0;mso-table-rspace:0; margin:0"><a href="#"><img width="267" data-aura-image="email.pic1" src="{{storagePath}}/images/{{email.pic1}}" alt="" border="0" style="border-radius: 4px; width: 267px" class="deviceWidth" /></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 12px; color: #959595; font-weight: normal; text-align: left; font-family: Georgia, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px">
+
+                        <table style="border-bottom: 1px solid #333">
+                            <tr>
+                                <td valign="top" style="padding:0 10px 10px 0">
+                                    <img  src="http://d1tvqt3gjtui5j.cloudfront.net/assets/1.png" alt="" border="0" align="left" />
+                                </td>
+                                <td valign="middle" style="padding:0 10px 10px 0"><a href="#" style="text-decoration: none; font-size: 16px; color: #363636; font-weight: bold; font-family:Arial, sans-serif " data-aura-html="email.picDesc1" contenteditable="false">{{email.picDesc1}}</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="49%" border="0" cellpadding="0" cellspacing="0" align="left" class="deviceWidth">
+                <tr>
+                    <td align="center">
+                        <p style="mso-table-lspace:0;mso-table-rspace:0; margin:0"><a href="#"><img width="267"  data-aura-image="email.pic2" src="{{storagePath}}/images/{{email.pic2}}" alt="" border="0" style="border-radius: 4px; width: 267px" class="deviceWidth" /></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 12px; color: #959595; font-weight: normal; text-align: left; font-family: Georgia, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px">
+
+                        <table style="border-bottom: 1px solid #333">
+                            <tr>
+                                <td valign="top" style="padding:0 10px 10px 0">
+                                    <img  src="http://d1tvqt3gjtui5j.cloudfront.net/assets/2.png" alt="" border="0" align="left" />
+                                </td>
+                                <td valign="middle" style="padding:0 10px 10px 0"><a href="#" data-aura-html="email.picDesc2" contenteditable="false" style="text-decoration: none; font-size: 16px; color: #363636; font-weight: bold; font-family:Arial, sans-serif ">{{email.picDesc2}}</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table><!-- End Two Column (Images Stacked over Text) -->
+
+
+<!-- Two Column (Images Stacked over Text) -->
+<table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="deviceWidth" bgcolor="#eeeeed">
+    <tr>
+        <td class="center" style="padding:10px 0 0 5px">
+
+            <table width="49%" border="0" cellpadding="0" cellspacing="0" align="left" class="deviceWidth">
+                <tr>
+                    <td align="center">
+                        <!-- The paragraph tag is important here to ensure that this table floats properly in Outlook 2007, 2010, and 2013
+                        To learn more about this fix check out this link: http://www.emailonacid.com/blog/details/C13/removing_unwanted_spacing_or_gaps_between_tables_in_outlook_2007_2010
+                        This fix is used for all floating tables in this responsive template
+                        The margin set to 0 is for Gmail -->
+                        <p style="mso-table-lspace:0;mso-table-rspace:0; margin:0"><a href="#"><img width="267" data-aura-image="email.pic3" src="{{storagePath}}/images/{{email.pic3}}" alt="" border="0" style="border-radius: 4px; width: 267px" class="deviceWidth" /></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 12px; color: #959595; font-weight: normal; text-align: left; font-family: Georgia, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px">
+
+                        <table style="border-bottom: 1px solid #333">
+                            <tr>
+                                <td valign="top" style="padding:0 10px 10px 0">
+                                    <img  src="http://d1tvqt3gjtui5j.cloudfront.net/assets/3.png" alt="" border="0" align="left" />
+                                </td>
+                                <td valign="middle" style="padding:0 10px 10px 0"><a href="#"  data-aura-html="email.picDesc3" contenteditable="false" style="text-decoration: none; font-size: 16px; color: #363636; font-weight: bold; font-family:Arial, sans-serif ">{{email.picDesc3}}</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <table width="49%" border="0" cellpadding="0" cellspacing="0" align="left" class="deviceWidth">
+                <tr>
+                    <td align="center">
+                        <p style="mso-table-lspace:0;mso-table-rspace:0; margin:0"><a href="#"><img width="267" data-aura-image="email.pic4" src="{{storagePath}}/images/{{email.pic4}}" alt="" border="0" style="border-radius: 4px; width: 267px" class="deviceWidth" /></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 12px; color: #959595; font-weight: normal; text-align: left; font-family: Georgia, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px">
+
+                        <table style="border-bottom: 1px solid #333">
+                            <tr>
+                                <td valign="top" style="padding:0 10px 10px 0">
+                                    <img  src="http://d1tvqt3gjtui5j.cloudfront.net/assets/4.png" alt="" border="0" align="left" />
+                                </td>
+                                <td valign="middle" style="padding:0 10px 10px 0"><a href="#" data-aura-html="email.picDesc4" contenteditable="false" style="text-decoration: none; font-size: 16px; color: #363636; font-weight: bold; font-family:Arial, sans-serif ">{{email.picDesc4}}</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table><!-- End Two Column (Images Stacked over Text) -->
+
+<!-- One Column -->
+<table width="580"  class="deviceWidth" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#eeeeed">
+    <tr>
+        <td style="font-size: 13px; color: #959595; font-weight: normal; text-align: left; font-family: Georgia, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px" bgcolor="white">
+
+            <div data-aura-html="email.desc2" style="font-size: 16px" contenteditable="false">
+                {{email.desc2}}
+            </div>
+
+
+            <!--<div class="row dates"><div class="col-md-4">1 заезд - </div><div class="col-md-7" style="margin-bottom: 15px; font-size: 30px;" data-aura-html="summer.firstDate" contenteditable="false">с <span style="color: #8d3636">24 мая</span> по <span style="color: #8d3636">13 июня</span></div></div>-->
+            <!--<div class="row dates"><div class="col-md-4">2 заезд - </div><div class="col-md-7" style="margin-bottom: 15px; font-size: 30px;" data-aura-html="summer.secondDate" contenteditable="false">с <span style="color: #8d3636">14 июня</span> по <span style="color: #8d3636">4 июля</span></div></div>-->
+            <!--<div class="row dates"><div class="col-md-4">3 заезд - </div><div class="col-md-7" style="margin-bottom: 15px; font-size: 30px;" data-aura-html="summer.thirdDate" contenteditable="false">c <span style="color: #8d3636">5 июля</span> по <span style="color: #8d3636">24 июля</span></div></div>-->
+
+            <!--<small data-aura-html="summer.disclaimer" contenteditable="false">Возможно проживание сразу несколько заездов</small>-->
+
+            <!--<h4>Время:</h4>-->
+
+            <!--<p class="price"><strong>11:00 -15:00</strong> (понедельник, среда)</p>-->
+            <!--<p class="price"><strong>11:00 -15:00</strong> (суббота, воскресенье)</p>-->
+
+            <div data-aura-html="email.bottomDesc"  style="font-size: 24px; font-family: copper; color: #8d3636; text-align: center; margin: 40px 0;" contenteditable="false">
+                {{email.bottomDesc}}
+            </div>
+
+
+            <!--<h2 style="color: #666">Вы можете записаться по телефону:</h2>-->
+
+            <!--<h1 id="main-phone">(812) 984-30-88</h1>-->
+
+            <!--<h2 style="color: #666">Либо заполнив форму на сайте:</h2>-->
+
+            <a href="{{email.link}}?payment=true" style="display: block; width: 200px; margin: 10px auto; color: #8d3636; border: 1px solid; padding: 20px 45px;font-size: 24px;text-align: center;text-transform: uppercase;">Участвовать</a>
+
+
+        </td>
+    </tr>
+</table><!-- End One Column -->
+
+
+
+<div style="height:35px">&nbsp;</div><!-- spacer -->
+
+
+<!-- 4 Columns -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+    <tr>
+        <td bgcolor="#363636" style="padding:30px 0">
+            <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" class="deviceWidth">
+                <tr>
+                    <td>
+                        <table width="45%" cellpadding="0" cellspacing="0"  border="0" align="left" class="deviceWidth">
+                            <tr>
+                                <td valign="top" style="font-size: 11px; color: #f1f1f1; color:#999; font-family: Arial, sans-serif; padding-bottom:20px" class="center">
+
+                                    Вы получили это письмо, потому что:<br/>
+                                    1.) Вы наш уважаемый клиент и мы хотим чтобы вы были в курсе самых лучших предложений<br/>
+                                    2.) Вы подписаны на рассылку на <a href="http://ladies-school.com" style="color: #8d3636;text-decoration:underline;">нашем сайте</a><br/>
+
+                                    <br/><br/>
+                                    Вы можете отписаться наших рассылок, перейдя по <a id="unsub_link" href="%ОТПИСАТЬСЯ%">этой ссылке</a>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table width="40%" cellpadding="0" cellspacing="0"  border="0" align="right" class="deviceWidth">
+                            <tr>
+                                <td valign="top" style="font-size: 11px; color: #f1f1f1; font-weight: normal; font-family: Georgia, Times, serif; line-height: 26px; vertical-align: top; text-align:right" class="center">
+
+                                    <a href=""><img src="http://www.emailonacid.com/images/emails/5_13/footer_rss.gif" width="42" height="42" alt="RSS Feed" title="RSS Feed" border="0" /></a>
+
+                                    <a href=""><img src="http://www.emailonacid.com/images/emails/5_13/footer_twitter.gif" width="42" height="42" alt="Twitter" title="Twitter" border="0" /></a>
+
+                                    <a href=""><img src="http://www.emailonacid.com/images/emails/5_13/footer_vm.gif" width="42" height="42" alt="Vimeo" title="Vimeo" border="0" /></a>
+
+                                    <a href=""><img src="http://www.emailonacid.com/images/emails/5_13/footer_fb.gif" width="42" height="42" alt="Facebook" title="Facebook" border="0" /></a>
+                                    <br />
+
+                                    <a href="#" style="text-decoration: none; color: #848484; font-weight: normal;">(812) 984-30-88</a><br/>
+                                    <a href="#" style="text-decoration: none; color: #848484; font-weight: normal;">info@sisi-elizabeth.com</a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table><!-- End 4 Columns -->
+
+</td>
+</tr>
+</table> <!-- End Wrapper -->
+
+</template>

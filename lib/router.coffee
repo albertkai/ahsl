@@ -222,12 +222,6 @@ Router.map ->
           html: html
         })
 
-#      Email.send({
-#        from: "info@ladies-school.com",
-#        to: 'albertkai@me.com',
-#        subject: 'Покупка в Austrian Higher School of Ladies',
-#        html: JSON.stringify(@params.query)
-#      })
 
       Requests.update {'_id': request._id}, {$set: {paymentStatus: 'received'}}
       console.log request._id

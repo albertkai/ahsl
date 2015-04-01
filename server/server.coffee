@@ -62,6 +62,8 @@ Meteor.methods {
     console.log type
     console.log requestId
 
+    Meteor.call 'addEmailToBase', email
+
     Requests.insert {
 
       event: event
@@ -124,31 +126,161 @@ Meteor.methods {
       true
 
 
+#Prostoemail API integration
+
+
+  createMailing: (name, subject, bases, html)->
+
+    if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+
+      options = {
+        username: process.env.EMAIL_USER
+        password: process.env.EMAIL_PASS
+        method: 'campaigns.create'
+        list_id: bases
+        name: name
+        subject: subject
+        from_name: 'Austrian Higher School of Ladies'
+        from_email: 'maria@sisi-elizabeth.com'
+        html: html
+      }
+
+
+#      str = 'http://api.prostoemail.ru/?' + getParams
+#
+#      f = new Future()
+#
+#      result = HTTP.get str, (err, result)->
+#        issue = JSON.parse(result.content)
+#        console.log(issue)
+#        f.return(issue.response.data.campaign_id)
+#
+#      f.wait()
+
+      str = 'http://api.prostoemail.ru/'
+
+      f = new Future()
+
+      result = HTTP.post str, {params: options}, (err, result)->
+        issue = JSON.parse(result.content)
+        console.log(issue)
+        f.return(issue.response.data.campaign_id)
+
+      f.wait()
+
+  getBasesList: ->
+
+    if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+
+      options = {
+        username: process.env.EMAIL_USER
+        password: process.env.EMAIL_PASS
+        method: 'lists.get'
+  #      list_id: bases
+
+      }
+
+      getParams = ''
+
+      for name, prop of options
+
+        getParams += name + '=' + prop + '&'
+
+      str = 'http://api.prostoemail.ru/?' + getParams
+
+      f = new Future()
+
+      result = HTTP.get str, (err, result)->
+        bases = []
+        issue = JSON.parse(result.content)
+        issue.response.data.forEach (b)->
+          bases.push {
+            id: b.id,
+            name: b.name,
+            active: b.count_active,
+            total: b.count_all
+          }
+        f.return(bases)
+
+      f.wait()
+
+
+  addEmailToBase: (email)->
+
+    if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+
+      options = {
+        username: process.env.EMAIL_USER
+        password: process.env.EMAIL_PASS
+        method: 'lists.add_member'
+        list_id: 260371
+        email: email
+
+      }
+
+      getParams = ''
+
+      for name, prop of options
+
+        getParams += name + '=' + prop + '&'
+
+      str = 'http://api.prostoemail.ru/?' + getParams
+      result = HTTP.get str, (err, result)->
+        issue = JSON.parse(result.content)
+        console.log(issue)
+
+  sendMailing: (id)->
+
+    if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+
+      options = {
+        username: process.env.EMAIL_USER
+        password: process.env.EMAIL_PASS
+        method: 'campaigns.update'
+        campaign_id: id
+        status: 'MODERATING'
+
+      }
+
+      getParams = ''
+
+      for name, prop of options
+
+        getParams += name + '=' + prop + '&'
+
+      str = 'http://api.prostoemail.ru/?' + getParams
+      result = HTTP.get str, (err, result)->
+        issue = JSON.parse(result.content)
+        console.log(issue)
 
 
 
+
+#Helper method for saving requests DB as CSV
 
 
   saveCSV: ->
 
-    f = new Future()
-    jszip = Meteor.npmRequire 'jszip'
-    zip = new jszip()
-    assetsFolder = zip.folder 'assets'
-    fastCsv = Meteor.npmRequire 'fast-csv'
-    requests = Requests.find({}, {fields: {'email': 1}}).fetch()
-    csv = fastCsv
-    csv.writeToString(requests,
-      {headers: true},
-      (error,data) ->
-        if error
-          console.log error
-        else
-          zip.file('friends.csv', data)
-          file = zip.generate({type:"base64"})
-          f.return(file)
-    )
-    f.wait()
+    if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+
+      f = new Future()
+      jszip = Meteor.npmRequire 'jszip'
+      zip = new jszip()
+      assetsFolder = zip.folder 'assets'
+      fastCsv = Meteor.npmRequire 'fast-csv'
+      requests = Requests.find({}, {fields: {'email': 1}}).fetch()
+      csv = fastCsv
+      csv.writeToString(requests,
+        {headers: true},
+        (error,data) ->
+          if error
+            console.log error
+          else
+            zip.file('friends.csv', data)
+            file = zip.generate({type:"base64"})
+            f.return(file)
+      )
+      f.wait()
 
 
 #    fs = require('fs')

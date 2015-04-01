@@ -74,6 +74,11 @@ Template.slider.events {
 
     IndexCtrl.removeSlide(e)
 
+  'click .slider-cont > li': (e)->
+    console.log 'clicked'
+    if $(e.currentTarget).data('link') isnt '' and !$(e.target).is('input')
+      Router.go('/' + $(e.currentTarget).data('link'))
+
   'click .slider-edit .slide-item': (e)->
 
     $('#top-slider').carousel($(e.currentTarget).index())
