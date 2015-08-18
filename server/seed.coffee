@@ -132,3 +132,21 @@ if SummerSlider.find().count() is 0
     order: 1
 
   }
+
+if CountrySlider.find().count() is 0
+
+  CountrySlider.insert {
+
+    pic: 'dsc_6597.jpg'
+    desc: 'Школа основана под патронажем австрийской императрицы Sisi Elizabeth в 1867 году'
+    order: 0
+
+  }
+
+  CountrySlider.insert {
+
+    pic: 'dsc_6607.jpg'
+    desc: 'Текст слайдера'
+    order: 1
+
+  }

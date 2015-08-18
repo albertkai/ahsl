@@ -57,6 +57,9 @@
 h1, h2, h3{
   font-family: @font-family-serif;
   text-align: center;
+  @media screen and (max-width: @screen-xs-max) {
+    font-size: 4vw !important;
+  }
 }
 
 h2{
@@ -64,10 +67,19 @@ h2{
   color: @gray-darker;
   text-transform: uppercase;
   margin-bottom: 37px;
+  @media screen and (max-width: @screen-xs-max) {
+    font-size: 4vw !important;
+  }
+}
+
+html, body{
+  width: 100%;
 }
 
 body{
   font-family: @font-family-sans-serif;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
 }
 
@@ -78,6 +90,9 @@ a{
 p{
   font-size: 18px;
   font-weight: 200;
+  @media screen and (max-width: @screen-xs-max) {
+    font-size: 4vw;
+  }
   &.quot{
     font-size: 24px;
     font-weight: 300;
@@ -86,6 +101,15 @@ p{
 }
 *{
   -webkit-font-smoothing: antialiased;
+}
+
+*[data-aura-html], *[data-aura-with-html], *[data-aura-with-html]{
+  p, li{
+    @media screen and (max-width: @screen-xs-max) {
+      padding: 1vw 3vw;
+      font-size: 4vw !important;
+    }
+  }
 }
 
 button{
@@ -98,6 +122,12 @@ button{
     font-family: @font-family-serif;
     padding: 7px 15px;
     text-transform: uppercase;
+    @media screen and (max-width: @screen-xs-max) {
+      margin: 12vw auto !important;
+      font-size: 4vw !important;
+      padding: 5vw 10vw !important;
+      width: 80% !important;
+    }
   }
 }
 a{
@@ -124,6 +154,9 @@ hr{
   background-image: url(/img/hr.jpg);
   opacity: .8;
   margin: 30px 0 60px 0;
+  @media screen and (max-width: @screen-xs-max) {
+    margin: 7vw 0 12vw 0;
+  }
 }
 
 .container{
@@ -133,6 +166,72 @@ hr{
 
 //Main
 
+.side-menu{
+  position: fixed;
+  width: 70vw;
+  .translate(-70vw, 0);
+  height: 100%;
+  padding-top: 10vw;
+  background: black;
+  h3{
+    text-align: center;
+    color: white;
+    margin: 0;
+    margin-bottom: 10vw;
+  }
+  &._shifted{
+    .translate(0, 0);
+  }
+  .transition(.4s);
+  nav{
+    >ul{
+      list-style: none;
+      padding-left: 5vw;
+      >li{
+        a{
+          color: white;
+          font-size: 14px;
+        }
+        >ul{
+          li{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+#open-menu{
+  position: absolute;
+  top: 6vw;
+  left: 3vw;
+  font-size: 20px;
+  @media screen and (max-width: @screen-xs-max) {
+    font-size: 6vw;
+  }
+}
+
+.wrap{
+  position: relative;
+  .transition(4s);
+  &._shifted{
+    .translate(70vw, 0);
+  }
+}
+
+#main-logo{
+  img{
+    width: 410px;
+    margin-bottom: 5px;
+    text-align: center;
+    @media screen and (max-width: @screen-sm-max) {
+      width: 70%;
+    }
+  }
+}
+
 header{
 
   &.main{
@@ -141,13 +240,8 @@ header{
     height: 253px;
     width: 100%;
     text-align: center;
-
-    #main-logo{
-      img{
-        width: 410px;
-        margin-bottom: 5px;
-        text-align: center;
-      }
+    @media screen and (max-width: @screen-sm-max) {
+      height: 38vw;
     }
 
     .social, .contacts-top{
@@ -228,6 +322,16 @@ header{
   &.inner{
 
     height: 75px;
+
+    @media screen and (max-width: @screen-sm-max) {
+      height: 25vw;
+      text-align: center;
+      #main-logo{
+        img{
+          width: 50% !important;
+        }
+      }
+    }
 
     .logo{
       >img{
@@ -394,6 +498,12 @@ header{
       margin: 15px;
       line-height: 65px;
       font-size: 30px;
+      @media screen and (max-width: @screen-sm-max) {
+        width: 15vw;
+        height: 15vw;
+        font-size: 10vw;
+        line-height: 15vw;
+      }
     }
   }
   &.small{
@@ -404,6 +514,12 @@ header{
       margin: 5px;
       line-height: 26px;
       font-size: 16px;
+      @media screen and (max-width: @screen-sm-max) {
+        width: 8vw;
+        height: 8vw;
+        font-size: 5vw;
+        line-height: 8vw;
+      }
     }
   }
   a{
@@ -510,9 +626,12 @@ header{
 
 .group-change-cont{
   margin-top: 60px;
+  padding-left: 2vw;
+  overflow: hidden;
   .row{
     >div{
       .make-md-column(3);
+      .make-sm-column(3);
       padding: 0 5px;
     }
   }
@@ -522,6 +641,17 @@ header{
     &:hover, &._active{
       border-color: @brand-primary;
       color: @brand-primary;
+    }
+    @media screen and (max-width: @screen-xs-max) {
+      font-size: 9px;
+    }
+    @media screen and (max-width: @screen-xs-max) {
+      display: block;
+      margin: 3vw auto !important;
+      font-size: 4vw !important;
+      padding: 3vw 1vw !important;
+      width: 90% !important;
+
     }
   }
 }
@@ -546,6 +676,11 @@ header{
     -ms-transform: scaleY(1);
     -o-transform: scaleY(1);
     transform: scaleY(1);
+    @media screen and (max-width: @screen-xs-max) {
+      margin-top: 10px;
+      margin-left: 10px;
+      height: 95px;
+    }
   }
 }
 
@@ -608,6 +743,11 @@ header{
   display: inline-block;
   width: 280px;
   margin: 5px 0;
+  &[data-value="card"]{
+    @media screen and (max-width: @screen-sm-max) {
+      height: 28vw;
+    }
+  }
   >div:nth-child(1){
     position: relative;
     width: 35px;
@@ -650,11 +790,20 @@ header{
 @cell1: rgba(255, 0, 0, .1);
 @cell2: rgba(0, 255, 0, .1);
 
+.calendar-wrapper{
+  width: 100%;
+  overflow: scroll;
+}
+
 .calendar{
   width: 960px;
+  @media screen and (max-width: @screen-sm-max) {
+    width: 100%;
+  }
   .header{
     overflow: hidden;
     margin-bottom: 7px;
+    width: 960px;
     >div{
       float: left;
       width: 120px;
@@ -714,6 +863,7 @@ header{
     border-top: 1px solid @gray-lighter;
     opacity: 0;
     visibility: hidden;
+    width: 960px;
     .transition(.4s);
     &._visible{
       opacity: 1;
@@ -974,6 +1124,9 @@ header{
     padding: 0;
     width: 100%;
     height: 420px;
+    @media screen and (max-width: @screen-sm-max) {
+      height: 50vw;
+    }
     li{
       width: 100%;
       height: 100%;
@@ -1002,6 +1155,14 @@ header{
         font-family: copper;
         font-size: 22px;
         text-align: center;
+        @media screen and (max-width: @screen-xs-max) {
+          font-size: 3vw;
+          span{
+            &:nth-child(2){
+              font-size: 2vw;
+            }
+          }
+        }
         span{
           display: block;
           &:nth-child(2){
@@ -1026,6 +1187,8 @@ header{
   .row{
     .direction{
       .make-md-column(3);
+      .make-sm-column(3);
+      .make-xs-column(6);
       cursor: pointer;
       .img{
         width: 100%;
@@ -1033,6 +1196,9 @@ header{
         -webkit-background-size: cover;
         background-size: cover;
         background-position: center center;
+        @media screen and (max-width: @screen-xs-max) {
+          height: 27vw;
+        }
       }
       h3{
         margin-top: 28px;
@@ -1052,6 +1218,9 @@ header{
         text-align: center;
         line-height: 22px;
         color: @gray;
+        >h3, >h4, >h2, >h1{
+          font-size: 4vw !important;
+        }
       }
     }
   }
@@ -1068,12 +1237,14 @@ header{
       >article{
 
         .make-md-column(9);
+        .make-sm-column(9);
 
       }
 
       >.news{
 
         .make-md-column(3);
+        .make-sm-column(3);
 
         >a{
           display: block;
@@ -1086,6 +1257,9 @@ header{
 
           margin-bottom: 30px;
           cursor: pointer;
+          @media screen and (max-width: @screen-xs-max) {
+            text-align: center;
+          }
 
           .img{
             width: 100%;
@@ -1113,6 +1287,10 @@ header{
 
 .events{
 
+  @media screen and (max-width: @screen-xs-max) {
+    height: 580px;
+  }
+
   .arrows{
     top: 70px;
     button{
@@ -1130,6 +1308,8 @@ header{
     .event{
 
       .make-md-column(3);
+      .make-sm-column(6);
+      .make-xs-column(6);
       cursor: pointer;
 
       >div{
@@ -1183,6 +1363,8 @@ header{
     .partner{
 
       .make-md-column(3);
+      .make-sm-column(3);
+      .make-xs-column(6);
 
       >div{
 
@@ -1225,6 +1407,8 @@ footer{
   .links{
     >div{
       .make-md-column(3);
+      .make-sm-column(3);
+      .make-xs-column(6);
       a{
         color: #ccc;
         font-size: 16px;
@@ -1295,7 +1479,6 @@ footer{
     }
   }
 }
-
 .modal-content{
 
   border: 0 !important;
@@ -1318,6 +1501,15 @@ input._invalid{
   border-color: @brand-danger !important;
 }
 
+iframe{
+
+  @media screen and (max-width: @screen-xs-max) {
+    width: 93vw !important;
+    height: 61vw !important;
+  }
+
+}
+
 @import "views/directions/directions.lessimport";
 @import "views/gallery/gallery.lessimport";
 @import "views/contacts/contacts.lessimport";
@@ -1327,5 +1519,6 @@ input._invalid{
 @import "views/news/news.lessimport";
 @import "views/event/event.lessimport";
 @import "views/summer/summer.lessimport";
+@import "views/country/country.lessimport";
 @import "views/archive/archive.lessimport";
 @import "views/components/email.lessimport";

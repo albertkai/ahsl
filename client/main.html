@@ -3,6 +3,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -45,11 +46,55 @@
 
 <template name="mainLayout">
 
-{{#if userIsAdmin}}
 
-    {{>mailingModal}}
+<div class="side-menu visible-sm visible-xs">
 
-{{/if}}
+    <h3>МЕНЮ</h3>
+
+    <nav>
+        <ul>
+            <li><a href="/">Школа</a></li>
+            <li>
+                <a>Обучение</a>
+                <ul>
+                    <li><a href="/children">Детская группа</a></li>
+                    <li><a href="/teens">Школьная группа</a></li>
+                    <li><a href="/lateteens">Подростковая группа</a></li>
+                    <li><a href="/grownups">Взрослая группа</a></li>
+                    <li><a href="/international">Международная программа</a></li>
+                    <li><a href="/summer-school">Летняя программа</a></li>
+                    <li><a href="/online">Дистанционное обучение</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>Мастер-классы</a>
+                <ul>
+                    <li><a href="/masterclass">Мастер-классы в СПБ</a></li>
+                    <li><a href="/masterclass_partners">Мастер-классы партнерам</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>События</a>
+                <ul>
+                    <li><a href="/events">Мероприятия</a></li>
+                    <li><a href="/news">Новости</a></li>
+                    <li><a href="/archive">Архив</a></li>
+                </ul>
+            </li>
+            <li><a href="/schedule">Расписание</a></li>
+            <li><a href="/gallery">Галерея</a></li>
+            <li><a href="">Наши школы</a>
+                <ul>
+                    <li><a href="/summer-school">Школы в Санкт-Петербурге</a></li>
+                    <li><a href="/country">Школа-Садик в Курортном районе</a></li>
+                    <li><a href="/summer">Школа во Франции</a></li>
+                </ul></li>
+            <li><a href="/contacts">Контакты</a></li>
+        </ul>
+
+    </nav>
+
+</div>
 
 
 <div class="wrap">
@@ -58,21 +103,23 @@
         
         <div class="container">
 
-            <div class="social">
+            <div class="social hidden-xs hidden-sm">
                 <a href="{{common.vkLink}}"><i class="fa fa-vk"></i></a>
                 <a href="{{common.facebookLink}}"><i class="fa fa-facebook"></i></a>
                 <a href="{{common.twitterLink}}"><i class="fa fa-twitter"></i></a>
                 <a href="{{common.instagramLink}}"><i class="fa fa-instagram"></i></a>
             </div>
 
+            <button id="open-menu" class="visible-xs visible-sm"><i class="fa fa-bars"></i></button>
+
             <a id="main-logo" href="/"><img src="/img/main_logo.png" alt="Austrian Higher School of Ladies"/></a>
 
-            <div class="contacts-top">
+            <div class="contacts-top hidden-xs hidden-sm">
                 <span data-aura-html="common.phoneMain" contenteditable="false">{{common.phoneMain}}</span>
                 <span data-aura-html="common.emailMain" contenteditable="false">{{common.emailMain}}</span>
             </div>
 
-            <nav>
+            <nav class="hidden-xs hidden-sm">
                 <ul>
                     <li><a href="/">Школа</a></li><span>|</span>
                     <li>
@@ -84,9 +131,16 @@
                             <li><a href="/grownups">Взрослая группа</a></li>
                             <li><a href="/international">Международная программа</a></li>
                             <li><a href="/summer-school">Летняя программа</a></li>
+                            <li><a href="/online">Дистанционное обучение</a></li>
                         </ul>
                     </li><span>|</span>
-                    <li><a href="/masterclass">Мастер-классы</a></li><span>|</span>
+                    <li>
+                        <a>Мастер-классы</a>
+                        <ul>
+                            <li><a href="/masterclass">Мастер-классы в СПБ</a></li>
+                            <li><a href="/masterclass_partners">Мастер-классы партнерам</a></li>
+                        </ul>
+                    </li><span>|</span>
                     <li>
                         <a>События</a>
                         <ul>
@@ -97,7 +151,12 @@
                     </li><span>|</span>
                     <li><a href="/schedule">Расписание</a></li><span>|</span>
                     <li><a href="/gallery">Галерея</a></li><span>|</span>
-                    <li><a href="/summer">Летняя школа</a></li><span>|</span>
+                    <li><a href="">Наши школы</a>
+                        <ul>
+                            <li><a href="/summer-school">Школы в Санкт-Петербурге</a></li>
+                            <li><a href="/country">Школа-Садик в Курортном районе</a></li>
+                            <li><a href="/summer">Школа во Франции</a></li>
+                        </ul></li><span>|</span>
                     <li><a href="/contacts">Контакты</a></li>
                 </ul>
 
@@ -196,8 +255,8 @@
 
                 <div class="arrows small">
 
-                    <button data-slide="prev" href="#events-carousel" class="carousel-control left"></button>
-                    <button data-slide="next" href="#events-carousel" class="carousel-control right"></button>
+                    <button data-slide="prev" href="#events-carousel" class="carousel-control left hidden-xs hidden-sm"></button>
+                    <button data-slide="next" href="#events-carousel" class="carousel-control right hidden-xs hidden-sm"></button>
                 </div>
 
                 <div class="carousel-inner">
@@ -538,8 +597,8 @@
 
             <div class="arrows small">
 
-                <button data-slide="prev" href="#partners-carousel" class="carousel-control left"></button>
-                <button data-slide="next" href="#partners-carousel" class="carousel-control right"></button>
+                <button data-slide="prev" href="#partners-carousel" class="carousel-control left hidden-xs hidden-sm"></button>
+                <button data-slide="next" href="#partners-carousel" class="carousel-control right hidden-xs hidden-sm"></button>
             </div>
 
             <div id="partners-carousel" class="carousel slide">
@@ -553,7 +612,7 @@
                             <div class="partner">
                                 <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
                                     <a href="">
-                                        <img src="/img/partner1.jpg" alt=""/>
+                                        <img src="/img/partner1.png" alt=""/>
                                     </a>
                                 </div>
                             </div>
@@ -561,7 +620,7 @@
                             <div class="partner">
                                 <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
                                     <a href="">
-                                        <img src="/img/partner2.jpg" alt=""/>
+                                        <img src="/img/partner2.png" alt=""/>
                                     </a>
                                 </div>
                             </div>
@@ -569,7 +628,7 @@
                             <div class="partner">
                                 <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
                                     <a href="">
-                                        <img src="/img/partner3.jpg" alt=""/>
+                                        <img src="/img/partner3.png" alt=""/>
                                     </a>
                                 </div>
                             </div>
@@ -577,7 +636,7 @@
                             <div class="partner">
                                 <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
                                     <a href="">
-                                        <img src="/img/partner4.jpg" alt=""/>
+                                        <img src="/img/partner4.png" alt=""/>
                                     </a>
                                 </div>
                             </div>
@@ -593,7 +652,7 @@
                             <div class="partner">
                                 <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
                                     <a href="">
-                                        <img src="/img/partner1.jpg" alt=""/>
+                                        <img src="/img/partner5.png" alt=""/>
                                     </a>
                                 </div>
                             </div>
@@ -601,7 +660,7 @@
                             <div class="partner">
                                 <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
                                     <a href="">
-                                        <img src="/img/partner1.jpg" alt=""/>
+                                        <img src="/img/partner6.jpg" alt=""/>
                                     </a>
                                 </div>
                             </div>
@@ -667,7 +726,7 @@
                         <span data-aura-html="common.emailMain" contenteditable="false">{{common.emailMain}}</span>
                     </div>
 
-                    <div class="social huge">
+                    <div class="social huge hidden-xs hidden-sm">
                         <a href="http://vk.com"><i class="fa fa-vk"></i></a>
                         <a href="http://facebook.com"><i class="fa fa-facebook"></i></a>
                         <a href="http://twitter.com"><i class="fa fa-twitter"></i></a>
@@ -726,8 +785,8 @@
             <div id="top-slider" class="aura-slider carousel slide" data-plugin="slider">
 
                 <div class="arrows">
-                    <button data-slide="prev" href="#top-slider" class="carousel-control left"></button>
-                    <button data-slide="next" href="#top-slider" class="carousel-control right"></button>
+                    <button data-slide="prev" href="#top-slider" class="carousel-control left  hidden-xs hidden-sm"></button>
+                    <button data-slide="next" href="#top-slider" class="carousel-control right  hidden-xs hidden-sm"></button>
                 </div>
 
                 <ul class="slider-cont carousel-inner">

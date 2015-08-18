@@ -3,6 +3,7 @@
 @Requests = new Mongo.Collection 'requests'
 @Slider = new Mongo.Collection 'slider'
 @SummerSlider = new Mongo.Collection 'summerSlider'
+@CountrySlider = new Mongo.Collection 'countrySlider'
 Slider.allow {
 
   insert: (userId)->
@@ -20,6 +21,22 @@ Slider.allow {
 }
 
 SummerSlider.allow {
+
+  insert: (userId)->
+    if userId
+      true
+
+  update: (userId)->
+    if userId
+      true
+
+  remove: (userId)->
+    if userId
+      true
+
+}
+
+CountrySlider.allow {
 
   insert: (userId)->
     if userId
@@ -73,3 +90,4 @@ AuraColl['news'] = News
 AuraColl['requests'] = Requests
 AuraColl['slider'] = Slider
 AuraColl['summerSlider'] = SummerSlider
+AuraColl['countrySlider'] = CountrySlider

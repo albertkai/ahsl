@@ -57,6 +57,11 @@ if Meteor.isClient
         query['status'] = Session.get('requestsSort')
       Requests.find(query, {sort: {date: -1}})
 
+    showEmail: (email)->
+
+      console.log email
+      email
+
     allRequests: ->
 
       Session.get 'allRequests'

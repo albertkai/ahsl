@@ -171,7 +171,7 @@ if Meteor.isClient
 
       heading = @_drawHeading()
       calendar = @_drawCalendar()
-      markup = '<div class="container"><div class="calendar" data-month="' + @month + '">' + heading + '<div class="body">' + calendar + '</div></div></div>'
+      markup = '<div class="container"><div class="calendar" data-month="' + @month + '">' + heading + '<div class="body">' + calendar + '</div></div></div></div></div>'
       $(@el).html(markup)
       @_showCalendar()
       @_showControls()
@@ -193,6 +193,7 @@ if Meteor.isClient
       markup += '<div class="container calendar-controls">'
       markup += controls
       markup += '<div class="arrows small"><button></button><button></button></div></div>'
+      markup += '<div class="calendar-wrapper">'
       markup += @header
       markup
 

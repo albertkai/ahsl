@@ -40,6 +40,9 @@ if Meteor.isClient
   Template.registerHelper 'grownUps', ->
     AuraPages.findOne({name: 'grownUps'})
 
+  Template.registerHelper 'onlineSchool', ->
+    AuraPages.findOne({name: 'onlineSchool'})
+
   Template.registerHelper 'international', ->
     AuraPages.findOne({name: 'international'})
 
@@ -61,8 +64,11 @@ if Meteor.isClient
   Template.registerHelper 'newRequests', ->
     Session.get('newRequests')
 
-  Template.registerHelper 'email', ->
+  Template.registerHelper 'mailing', ->
     AuraPages.findOne({name: 'email'})
+
+  Template.registerHelper 'country', ->
+    AuraPages.findOne({name: 'country'})
 
   Template.registerHelper 'auraCheckboxIsChecked', (value)->
     if value
@@ -183,6 +189,8 @@ if Meteor.isClient
         $('#aura-requests-modal').addClass '_opened'
 
       'click #toggle-mailing': ->
+
+        console.log 'opening mailing'
 
         $('#emailModal').modal('show')
 
@@ -344,6 +352,7 @@ if Meteor.isClient
             pic: null
           }
 
+
           if Meteor.users.findOne('emails.$.address': options.email)
 
             Aura.notify 'Пользователь с таким e-mail уже существует!'
@@ -394,7 +403,6 @@ if Meteor.isClient
         else
 
           Aura.notify 'Пожалуйста, корректно заполните все поля формы, отмеченные звездочкой!'
-
 
     }
 
@@ -517,8 +525,9 @@ if Meteor.isClient
         editor.commands.wrapRange(el)
 
       'click #b-add-video': ->
-        code = prompt("Пожалуйста добавьте код видео с YouTube")
-        editor.commands.pasteHtml(code)
+        html = prompt("Пожалуйста добавьте код видео с YouTube")
+        editor.lastFocused.element.focus()
+        editor._insertHtmlAtCaret(html)
 
       'click #b-italic': ->
         editor.commands.italic()
@@ -811,6 +820,14 @@ if Meteor.isClient
             editor.blured = false
           , 1000
 
+    $('body').on 'mouseup', '[data-aura-html][contenteditable="true"], [data-aura-list-html][contenteditable="true"],  [data-aura-with-html][contenteditable="true"]', (e)->
+
+      el = $(e.currentTarget).get(0)
+      range = window.getSelection().getRangeAt(0)
+      pos = editor._getCharOffset(range, el)
+      editor.lastFocused.pos = pos
+      editor.lastFocused.element = el
+
 
     $('body').on 'input', '[data-aura-html][contenteditable=true], [data-aura-with-html][contenteditable=true], [data-aura-list-html][contenteditable=true]', (e)->
       markup = $(e.currentTarget).html()
@@ -844,6 +861,8 @@ if Meteor.isClient
 
     $('body').on 'mouseleave', '[data-aura-image-background]', (e)->
       $(e.currentTaget).removeClass('_hover')
+
+
 
 
     $('body').on 'click', '[data-aura-image-embed]', (e)->
@@ -1455,17 +1474,96 @@ if Meteor.isClient
 
   auraEditorHtml: null
 
+  lastFocused: {
+    element: null
+    pos: null
+  }
+
   htmlEditorInit: ->
 
     editor.auraEditorHtml = ace.edit("editorHtml")
-#    editor.auraEditorHtml.setTheme("ace/theme/monokai")
-#    editor.auraEditorHtml
-#    editor.auraEditorHtml.on 'change', (e)->
-#      value = editor.auraEditorHtml.getValue().replace(/\s+/g, ' ')
-#      target = $('.editor').find('.html-cont').data('path')
-#      console.log target
-#      console.log value
-#      $(target).html(value)
+
+  setLastCaret: ->
+    input = @lastFocused.element
+    pos = @lastFocused.pos
+    @_setCaret(input, pos)
+
+  _setCaret: (input, pos)->
+
+    @_setSelectionRange(input, pos, pos)
+
+  _setSelectionRange: (input, selectionStart, selectionEnd)->
+    console.log 'setting caret position'
+    if input.setSelectionRange
+      input.focus()
+      input.setSelectionRange(selectionStart, selectionEnd)
+    else if input.createTextRange
+      range = input.createTextRange()
+      range.collapse(true)
+      range.moveEnd('character', selectionEnd)
+      range.moveStart('character', selectionStart)
+      range.select()
+
+  _getCharOffset: (range, node)->
+
+    treeWalker = document.createTreeWalker node, NodeFilter.SHOW_TEXT, (node)->
+      nodeRange = document.createRange()
+      nodeRange.selectNode(node)
+      if nodeRange.compareBoundaryPoints(Range.END_TO_END, range) < 1
+        NodeFilter.FILTER_ACCEPT
+      else
+        NodeFilter.FILTER_REJECT
+    , false
+
+    charCount = 0;
+    while treeWalker.nextNode()
+      charCount += treeWalker.currentNode.length
+    if range.startContainer.nodeType is 3
+      charCount += range.startOffset
+    charCount
+
+#  _insertNodeAtCaret: (node)->
+#
+#    if typeof window.getSelection != 'undefined'
+#      sel = window.getSelection()
+#      if sel.rangeCount
+#        range = sel.getRangeAt(0)
+#        range.collapse false
+#        range.insertNode node
+#        range = range.cloneRange()
+#        range.selectNodeContents node
+#        range.collapse false
+#        sel.removeAllRanges()
+#        sel.addRange range
+#    else if typeof document.selection != 'undefined' and document.selection.type != 'Control'
+#      html = if node.nodeType == 1 then node.outerHTML else node.data
+#      id = 'marker_' + ('' + Math.random()).slice(2)
+#      html += '<span id="' + id + '"></span>'
+#      textRange = document.selection.createRange()
+#      textRange.collapse false
+#      textRange.pasteHTML html
+#      markerSpan = document.getElementById(id)
+#      textRange.moveToElementText markerSpan
+#      textRange.select()
+#      markerSpan.parentNode.removeChild markerSpan
+#    return
+
+  _insertHtmlAtCaret: (html)->
+
+    if typeof window.getSelection != 'undefined'
+      sel = window.getSelection()
+      node = document.createElement('div')
+      node.innerHTML = html
+      if sel.rangeCount
+        range = sel.getRangeAt(0)
+        range.collapse false
+        range.insertNode node
+        range = range.cloneRange()
+        range.selectNodeContents node
+        range.collapse false
+        sel.removeAllRanges()
+        sel.addRange range
+    return
 
   commands: {
 

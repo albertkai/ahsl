@@ -465,6 +465,27 @@ if Meteor.isServer
 
     }
 
+  if Schedules.find({group: 'onlineSchool'}).count() is 0
+
+    Schedules.insert {
+
+      group: 'onlineSchool'
+
+      schedule: {
+
+        115: {
+          10: {
+            1: {
+              lessons: ['верховая езда', 'верховая езда', 'верховая езда']
+              color: '1'
+            }
+          }
+        }
+
+      }
+
+    }
+
   if Schedules.find({group: 'summerSchool'}).count() is 0
 
     Schedules.insert {

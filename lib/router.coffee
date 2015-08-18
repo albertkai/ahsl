@@ -60,6 +60,25 @@ Router.map ->
         @render()
   }
 
+  @route 'online', {
+    template: 'onlineSchool'
+    layoutTemplate: 'innerLayout'
+    waitOn: ->
+#      Meteor.subscribe('schedules')
+    action: ->
+      if @ready()
+        @render()
+  }
+
+  @route 'country', {
+    layoutTemplate: 'innerLayout'
+    waitOn: ->
+      Meteor.subscribe('countrySlider')
+    action: ->
+      if @ready()
+        @render()
+  }
+
   @route 'international', {
     layoutTemplate: 'innerLayout'
     action: ->
@@ -70,6 +89,16 @@ Router.map ->
   @route 'masterclass', {
     layoutTemplate: 'innerLayout'
     template: 'masterClassesList'
+    waitOn: ->
+      Meteor.subscribe('events')
+    action: ->
+      if @ready()
+        @render()
+  }
+
+  @route 'masterclass_partners', {
+    layoutTemplate: 'innerLayout'
+    template: 'masterClassesListSochi'
     waitOn: ->
       Meteor.subscribe('events')
     action: ->
@@ -248,5 +277,7 @@ Router.onAfterAction ->
           $(this).attr('contenteditable', 'true')
 
     , 1000
+
+    $('.wrap, .side-menu').removeClass '_shifted'
 
 #end

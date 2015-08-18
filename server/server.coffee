@@ -140,7 +140,7 @@ Meteor.methods {
         list_id: bases
         name: name
         subject: subject
-        from_name: 'Austrian Higher School of Ladies'
+        from_name: 'Мария Бастрыкина'
         from_email: 'maria@sisi-elizabeth.com'
         html: html
       }

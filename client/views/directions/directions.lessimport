@@ -6,16 +6,25 @@
     -webkit-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
+    @media screen and (max-width: @screen-sm-max) {
+      height: 60vw;
+    }
     .container{
       height: 100%;
       h1{
         position: absolute;
         bottom: -39px;
         text-align: left;
+        @media screen and (max-width: @screen-sm-max) {
+          bottom: -5vw;
+        }
         span{
           display: block;
           font-size: 150px;
           color: white;
+          @media screen and (max-width: @screen-sm-max) {
+            font-size: 22vw;
+          }
           &:nth-child(1){
             font-family: @font-family-script;
             line-height: 0;
@@ -29,6 +38,9 @@
   .about{
 
     padding: 100px 0 60px 0;
+    @media screen and (max-width: @screen-sm-max) {
+      padding-top: 10vw;
+    }
 
     .row{
 
@@ -48,6 +60,9 @@
           font-family: georgia;
           width: 50px;
           height: 50px;
+          @media screen and (max-width: @screen-sm-max) {
+            font-size: 23vw;
+          }
           &:nth-child(1){
             top: 5px;
             .rotate(180deg);
@@ -66,6 +81,9 @@
           font-size: 20px;
           color: @gray;
           padding: 0 20px;
+          @media screen and (max-width: @screen-sm-max) {
+            padding: 6vw 8vw;
+          }
         }
       }
 
@@ -74,6 +92,10 @@
   }
 
   .classes-header{
+
+    @media screen and (max-width: @screen-sm-max) {
+      padding-bottom: 50px;
+    }
 
     #add-item{
       color: @brand-success;
@@ -100,6 +122,9 @@
           width: 100%;
           height: 45px;
           font-size: 13px;
+          @media screen and (max-width: @screen-sm-max) {
+            width: 100% !important;
+          }
           &:hover, &._active{
             color: @brand-primary;
             border-color: @brand-primary;
@@ -141,6 +166,9 @@
               vertical-align: middle;
               text-align: center;
               font-size: 12px;
+              @media screen and (max-width: @screen-xs-max) {
+                padding-bottom: 10px;
+              }
             }
           }
         }
@@ -254,10 +282,16 @@
         margin-top: 55px;
         font-size: 37px;
         margin-bottom: -5px;
+        @media screen and (max-width: @screen-xs-max) {
+          font-size: 6vw;
+        }
       }
       &:nth-child(2){
         font-family: copper;
         font-size: 45px;
+        @media screen and (max-width: @screen-xs-max) {
+          font-size: 8vw;
+        }
       }
     }
     a{
@@ -267,6 +301,9 @@
       font-family: copper;
       border: 1px solid white;
       padding: 5px 45px;
+      @media screen and (max-width: @screen-xs-max) {
+        font-size: 8vw;
+      }
     }
   }
 

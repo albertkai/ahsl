@@ -24,7 +24,6 @@ if Meteor.isServer
     AWS.config.update
       accessKeyId: process.env.AWS_KEY_ID
       secretAccessKey: process.env.AWS_SECRET
-#    AWS.config.loadFromPath('config.json')
     AWS.config.region = 'eu-west-1'
 
 

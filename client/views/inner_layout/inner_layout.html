@@ -35,6 +35,7 @@
     <div class="modal-overlay"></div>
 
     <div class="sccss">
+
         <div class="body">
             <h3 class="red">
                 Ваша заявка отправлена!
@@ -44,29 +45,13 @@
 
     </div>
 
+    <div class="side-menu visible-sm visible-xs">
 
-    <header class="inner">
+        <h3>МЕНЮ</h3>
 
-        <div class="container">
-
-            <a href="/" class="logo"><img src="/img/logo_small.png" alt="Austrian Higher school of Ladies"/></a>
-            <div class="social small">
-                <a href="http://vk.com"><i class="fa fa-vk"></i></a>
-                <a href="http://facebook.com"><i class="fa fa-facebook"></i></a>
-                <a href="http://twitter.com"><i class="fa fa-twitter"></i></a>
-                <a href="http://instagram.com"><i class="fa fa-instagram"></i></a>
-            </div>
-            <p class="phone">(812) 984-30-88</p>
-
-        </div>
-
-    </header>
-
-    <div class="fixed-nav-cont">
-
-        <nav class="fixed-nav">
+        <nav>
             <ul>
-                <li><a href="/">Школа</a></li><span>|</span>
+                <li><a href="/">Школа</a></li>
                 <li>
                     <a>Обучение</a>
                     <ul>
@@ -76,9 +61,16 @@
                         <li><a href="/grownups">Взрослая группа</a></li>
                         <li><a href="/international">Международная программа</a></li>
                         <li><a href="/summer-school">Летняя программа</a></li>
+                        <li><a href="/online">Дистанционное обучение</a></li>
                     </ul>
-                </li><span>|</span>
-                <li><a class="disabled" href="/masterclass">Мастер-классы</a></li><span>|</span>
+                </li>
+                <li>
+                    <a>Мастер-классы</a>
+                    <ul>
+                        <li><a href="/masterclass">Мастер-классы в СПБ</a></li>
+                        <li><a href="/masterclass_partners">Мастер-классы партнерам</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a>События</a>
                     <ul>
@@ -86,10 +78,17 @@
                         <li><a href="/news">Новости</a></li>
                         <li><a href="/archive">Архив</a></li>
                     </ul>
-                </li><span>|</span>
-                <li><a href="/schedule">Расписание</a></li><span>|</span>
-                <li><a href="/gallery">Галерея</a></li><span>|</span>
-                <li><a href="/summer">Летняя школа</a></li><span>|</span>
+                </li>
+                <li><a href="/schedule">Расписание</a></li>
+                <li><a href="/gallery">Галерея</a></li>
+                <li>
+                    <a href="">Наши школы</a>
+                    <ul>
+                        <li><a href="/summer-school">Школы в Санкт-Петербурге</a></li>
+                        <li><a href="/country">Школа-Садик в Курортном районе</a></li>
+                        <li><a href="/summer">Школа во Франции</a></li>
+                    </ul>
+                </li>
                 <li><a href="/contacts">Контакты</a></li>
             </ul>
 
@@ -97,65 +96,141 @@
 
     </div>
 
-    {{>yield}}
+    <div class="wrap">
 
-    <footer>
+        <header class="inner">
 
-        <div class="container">
+            <div class="container">
 
-            <div class="row links">
+                <button id="open-menu"><i class="fa fa-bars"></i></button>
 
-                <div>
-                    <a href="/">главная</a>
-                    <a href="/contacts">контакты</a>
-                </div>
-                <div>
-                    <a href="/children">детская группа</a>
-                    <a href="/teens">школьная группа</a>
-                    <a href="/lateteens">подростковая группа</a>
-                    <a href="/grownups">взрослая группа</a>
-                    <a href="/international">международная программа</a>
-                    <a href="/summer-school">летняя программа</a>
-                </div>
-                <div>
-                    <a href="/news">новости</a>
-                    <a href="/events">мероприятия</a>
-                    <a href="/blog">блог</a>
-                </div>
-                <div>
-                    <a href="/schedule">расписание</a>
-                    <a href="/gallery" class="disabled">галерея</a>
-                </div>
-
-            </div>
-
-            <div class="bottom-info">
-
-                <p class="disclaimer" data-aura-html="common.footerDesc" contenteditable="false">
-                    <br/>
-                    <span>ИНН: </span> 7801351540 <br/>
-                    <span>ОГРН: </span> 1137800010875 <br/>
-                    * в данный момент, оплата картами возможна только для некоторых мастерклассов <br/>
-                    {{{common.footerDesc}}}
-                </p>
-                <div class="contacts-footer">
-                    <span>(812) 984-30-88</span>
-                    <span>info@sisi-elizabeth.com</span>
-                </div>
-
-                <div class="social huge">
+                <a href="/" class="logo hidden-sm hidden-xs"><img src="/img/logo_small.png" alt="Austrian Higher school of Ladies"/></a>
+                <a id="main-logo" href="/" class="hidden-md hidden-lg"><img src="/img/main_logo.png" alt="Austrian Higher School of Ladies"/></a>
+                <div class="social small hidden-sm hidden-xs">
                     <a href="http://vk.com"><i class="fa fa-vk"></i></a>
                     <a href="http://facebook.com"><i class="fa fa-facebook"></i></a>
                     <a href="http://twitter.com"><i class="fa fa-twitter"></i></a>
                     <a href="http://instagram.com"><i class="fa fa-instagram"></i></a>
                 </div>
+                <p class="phone hidden-sm hidden-xs">(812) 984-30-88</p>
 
             </div>
 
+        </header>
+
+        <div class="fixed-nav-cont hidden-xs hidden-sm">
+
+            <nav class="fixed-nav hidden-xs hidden-sm">
+                <ul>
+                    <li><a href="/">Школа</a></li><span>|</span>
+                    <li>
+                        <a>Обучение</a>
+                        <ul>
+                            <li><a href="/children">Детская группа</a></li>
+                            <li><a href="/teens">Школьная группа</a></li>
+                            <li><a href="/lateteens">Подростковая группа</a></li>
+                            <li><a href="/grownups">Взрослая группа</a></li>
+                            <li><a href="/international">Международная программа</a></li>
+                            <li><a href="/summer-school">Летняя программа</a></li>
+                            <li><a href="/online">Дистанционное обучение</a></li>
+                        </ul>
+                    </li><span>|</span>
+                    <li>
+                        <a>Мастер-классы</a>
+                        <ul>
+                            <li><a href="/masterclass">Мастер-классы в СПБ</a></li>
+                            <li><a href="/masterclass_partners">Мастер-классы партнерам</a></li>
+                        </ul>
+                    </li><span>|</span>
+                    <li>
+                        <a>События</a>
+                        <ul>
+                            <li><a href="/events">Мероприятия</a></li>
+                            <li><a href="/news">Новости</a></li>
+                            <li><a href="/archive">Архив</a></li>
+                        </ul>
+                    </li><span>|</span>
+                    <li><a href="/schedule">Расписание</a></li><span>|</span>
+                    <li><a href="/gallery">Галерея</a></li><span>|</span>
+                    <li><a href="">Наши школы</a>
+                        <ul>
+                            <li><a href="/summer-school">Школы в Санкт-Петербурге</a></li>
+                            <li><a href="/country">Школа-Садик в Курортном районе</a></li>
+                            <li><a href="/summer">Школа во Франции</a></li>
+                        </ul></li><span>|</span>
+                    <li><a href="/contacts">Контакты</a></li>
+                </ul>
+
+            </nav>
+
         </div>
 
+        {{>yield}}
 
-    </footer>
+        <footer>
+
+            <div class="container">
+
+                <div class="row links">
+
+                    <div>
+                        <a href="/">главная</a>
+                        <a href="/contacts">контакты</a>
+                    </div>
+                    <div>
+                        <a href="/children">детская группа</a>
+                        <a href="/teens">школьная группа</a>
+                        <a href="/lateteens">подростковая группа</a>
+                        <a href="/grownups">взрослая группа</a>
+                        <a href="/international">международная программа</a>
+                        <a href="/summer-school">летняя программа</a>
+                        <a href="/online">Дистанционное обучение</a>
+                    </div>
+                    <div>
+                        <a href="/news">новости</a>
+                        <a href="/events">мероприятия</a>
+                        <a href="/blog">блог</a>
+                    </div>
+                    <div>
+                        <a href="/schedule">расписание</a>
+                        <a href="/gallery" class="disabled">галерея</a>
+                    </div>
+
+                </div>
+
+                <div class="bottom-info">
+
+                    <p class="disclaimer" data-aura-html="common.footerDesc" contenteditable="false">
+                        <br/>
+                        <span>ИНН: </span> 7801351540 <br/>
+                        <span>ОГРН: </span> 1137800010875 <br/>
+                        * в данный момент, оплата картами возможна только для некоторых мастерклассов <br/>
+                        {{{common.footerDesc}}}
+                    </p>
+                    <div class="contacts-footer">
+                        <span>(812) 984-30-88</span>
+                        <span>info@sisi-elizabeth.com</span>
+                    </div>
+
+                    <div class="social huge">
+                        <a href="http://vk.com"><i class="fa fa-vk"></i></a>
+                        <a href="http://facebook.com"><i class="fa fa-facebook"></i></a>
+                        <a href="http://twitter.com"><i class="fa fa-twitter"></i></a>
+                        <a href="http://instagram.com"><i class="fa fa-instagram"></i></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </footer>
+
+
+
+    </div>
+
+
 
 
 </template>

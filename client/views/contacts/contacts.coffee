@@ -91,6 +91,7 @@ Template.contacts.events {
 @initializeMap = ->
 
   myLatLng = new google.maps.LatLng(59.940577, 30.378407)
+  myLatLng2 = new google.maps.LatLng(59.9451941, 30.3671845)
 
   mapOptions = {
     center: myLatLng,
@@ -163,6 +164,12 @@ Template.contacts.events {
 
   marker = new google.maps.Marker({
     position: myLatLng,
+    map: map,
+    icon: image
+  })
+
+  marker2 = new google.maps.Marker({
+    position: myLatLng2,
     map: map,
     icon: image
   })

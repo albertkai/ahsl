@@ -8,7 +8,7 @@
 
         <div class="container">
 
-            <div class="timeline">
+            <div class="timeline hidden-sm hidden-xs">
                 <div></div>
                 <div></div>
             </div>
@@ -54,7 +54,7 @@
 
                 <div class="body">
 
-                    <div class="stripe"></div>
+                    <div class="stripe hidden-xs hidden-sm"></div>
 
                     <h3>{{{title}}}</h3>
 
@@ -88,7 +88,7 @@
 
         <div class="container">
 
-            <div class="timeline">
+            <div class="timeline hidden-sm hidden-xs">
                 <div></div>
                 <div></div>
             </div>
@@ -134,7 +134,86 @@
 
                 <div class="body">
 
-                    <div class="stripe"></div>
+                    <div class="stripe hidden-sm hidden-xs"></div>
+
+                    <h3>{{{title}}}</h3>
+
+                    <div class="row">
+
+                        <div><img src="{{storagePath}}/images/{{pic}}" alt=""/></div>
+                        <div><p>{{{shortDesc}}}</p></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {{/each}}
+
+        </div>
+
+    </section>
+
+</template>
+
+<template name="masterClassesListSochi">
+
+    <section id="events">
+
+        <div class="shadow"></div>
+
+        <h2>Ближайшие события</h2>
+
+        <div class="container">
+
+            <div class="timeline hidden-sm hidden-xs">
+                <div></div>
+                <div></div>
+            </div>
+
+            {{#if userIsAdmin}}
+
+            <div id="add-event" class="row item" data-add-event>
+
+                <div class="date"></div>
+
+                <div class="body">
+
+                    <div>+</div>
+                    <p>Добавить событие</p>
+
+                </div>
+
+
+            </div>
+
+            {{/if}}
+
+
+            {{#each masterClassesList}}
+
+            <div class="row item" data-alias="{{alias}}">
+
+                {{#if userIsAdmin}}
+
+                <div class="remove"><i class="fa fa-times"></i></div>
+
+                {{/if}}
+
+                <div class="date">
+
+                    <h3>
+                        <span>{{eventGetDay date}}</span>
+                        <span>{{eventGetMonth date}}</span>
+                        <span>{{eventGetYear date}}</span>
+                    </h3>
+
+                </div>
+
+                <div class="body">
+
+                    <div class="stripe hidden-sm hidden-xs"></div>
 
                     <h3>{{{title}}}</h3>
 

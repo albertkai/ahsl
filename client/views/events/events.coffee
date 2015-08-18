@@ -10,6 +10,18 @@ Template.eventsList.helpers {
 
 }
 
+Template.eventsList.rendered = ->
+
+  $('.wrap').addClass '_animated'
+
+Template.masterClassesList.rendered = ->
+
+  $('.wrap').addClass '_animated'
+
+Template.masterClassesListSochi.rendered = ->
+
+  $('.wrap').addClass '_animated'
+
 Template.masterClassesList.helpers {
 
   masterClassesList: ->
@@ -24,105 +36,172 @@ Template.masterClassesList.helpers {
 
 }
 
+Template.masterClassesListSochi.helpers {
 
-Template.masterClassesList.events {
+  masterClassesList: ->
 
-  'click [data-alias]': (e)->
+#    today = new Date().setHours(0, 0, 0, 0)
 
-    if $(e.target).parent('.remove').length is 0 and !$(e.target).hasClass('remove')
+#    Events.find({type: 'masterclass', date: {$gte: today}}, {sort: {date: 1}})
 
-      alias = $(e.currentTarget).data('alias')
-      Router.go 'eventPage', {
-        alias: alias
-      }
-
-    else
-
-      (new PNotify({
-        title: 'Удалить событие?',
-        text: 'Возможности восстановить его уже не будет',
-        hide: false,
-        addclass: 'aura-notify',
-        confirm: {
-          confirm: true
-        },
-        buttons: {
-          closer: false,
-          sticker: false
-        },
-        history: {
-          history: false
-        }
-      })).get().on('pnotify.confirm', ->
-
-        alias = $(e.currentTarget).data('alias')
-        Meteor.call 'removeEvent', alias, (err, res)->
-          if err
-            console.log err
-          else
-            Aura.notify 'Событие удалено!'
-
-      )
+    Events.find({type: 'masterclass_sochi'}, {sort: {date: 1}})
 
 
-  'click [data-add-event]': (e)->
-
-    if !EventsCtrl.eventCreateModal
-      EventsCtrl.eventCreateModal = Blaze.render Template.eventCreateModal, document.body
-    else
-      $('#event-create-modal').addClass('_opened')
 
 }
 
+['eventsList', 'masterClassesList', 'masterClassesListSochi'].forEach (t)->
 
-Template.eventsList.events {
+  Template[t].events {
 
-  'click [data-alias]': (e)->
+    'click [data-alias]': (e)->
 
-    if $(e.target).parent('.remove').length is 0 and !$(e.target).hasClass('remove')
-
-      alias = $(e.currentTarget).data('alias')
-      Router.go 'eventPage', {
-        alias: alias
-      }
-
-    else
-
-      (new PNotify({
-        title: 'Удалить событие?',
-        text: 'Возможности восстановить его уже не будет',
-        hide: false,
-        addclass: 'aura-notify',
-        confirm: {
-          confirm: true
-        },
-        buttons: {
-          closer: false,
-          sticker: false
-        },
-        history: {
-          history: false
-        }
-      })).get().on('pnotify.confirm', ->
+      if $(e.target).parent('.remove').length is 0 and !$(e.target).hasClass('remove')
 
         alias = $(e.currentTarget).data('alias')
-        Meteor.call 'removeEvent', alias, (err, res)->
-          if err
-            console.log err
-          else
-            Aura.notify 'Событие удалено!'
+        Router.go 'eventPage', {
+          alias: alias
+        }
 
-      )
+      else
+
+        (new PNotify({
+          title: 'Удалить событие?',
+          text: 'Возможности восстановить его уже не будет',
+          hide: false,
+          addclass: 'aura-notify',
+          confirm: {
+            confirm: true
+          },
+          buttons: {
+            closer: false,
+            sticker: false
+          },
+          history: {
+            history: false
+          }
+        })).get().on('pnotify.confirm', ->
+
+          alias = $(e.currentTarget).data('alias')
+          Meteor.call 'removeEvent', alias, (err, res)->
+            if err
+              console.log err
+            else
+              Aura.notify 'Событие удалено!'
+
+        )
 
 
-  'click [data-add-event]': (e)->
+    'click [data-add-event]': (e)->
 
-    if !EventsCtrl.eventCreateModal
-      EventsCtrl.eventCreateModal = Blaze.render Template.eventCreateModal, document.body
-    else
-      $('#event-create-modal').addClass('_opened')
+      if !EventsCtrl.eventCreateModal
+        EventsCtrl.eventCreateModal = Blaze.render Template.eventCreateModal, document.body
+      else
+        $('#event-create-modal').addClass('_opened')
 
-}
+  }
+
+
+
+
+#Template.masterClassesList.events {
+#
+#  'click [data-alias]': (e)->
+#
+#    if $(e.target).parent('.remove').length is 0 and !$(e.target).hasClass('remove')
+#
+#      alias = $(e.currentTarget).data('alias')
+#      Router.go 'eventPage', {
+#        alias: alias
+#      }
+#
+#    else
+#
+#      (new PNotify({
+#        title: 'Удалить событие?',
+#        text: 'Возможности восстановить его уже не будет',
+#        hide: false,
+#        addclass: 'aura-notify',
+#        confirm: {
+#          confirm: true
+#        },
+#        buttons: {
+#          closer: false,
+#          sticker: false
+#        },
+#        history: {
+#          history: false
+#        }
+#      })).get().on('pnotify.confirm', ->
+#
+#        alias = $(e.currentTarget).data('alias')
+#        Meteor.call 'removeEvent', alias, (err, res)->
+#          if err
+#            console.log err
+#          else
+#            Aura.notify 'Событие удалено!'
+#
+#      )
+#
+#
+#  'click [data-add-event]': (e)->
+#
+#    if !EventsCtrl.eventCreateModal
+#      EventsCtrl.eventCreateModal = Blaze.render Template.eventCreateModal, document.body
+#    else
+#      $('#event-create-modal').addClass('_opened')
+#
+#}
+#
+#
+#Template.eventsList.events {
+#
+#  'click [data-alias]': (e)->
+#
+#    if $(e.target).parent('.remove').length is 0 and !$(e.target).hasClass('remove')
+#
+#      alias = $(e.currentTarget).data('alias')
+#      Router.go 'eventPage', {
+#        alias: alias
+#      }
+#
+#    else
+#
+#      (new PNotify({
+#        title: 'Удалить событие?',
+#        text: 'Возможности восстановить его уже не будет',
+#        hide: false,
+#        addclass: 'aura-notify',
+#        confirm: {
+#          confirm: true
+#        },
+#        buttons: {
+#          closer: false,
+#          sticker: false
+#        },
+#        history: {
+#          history: false
+#        }
+#      })).get().on('pnotify.confirm', ->
+#
+#        alias = $(e.currentTarget).data('alias')
+#        Meteor.call 'removeEvent', alias, (err, res)->
+#          if err
+#            console.log err
+#          else
+#            Aura.notify 'Событие удалено!'
+#
+#      )
+#
+#
+#  'click [data-add-event]': (e)->
+#
+#    if !EventsCtrl.eventCreateModal
+#      EventsCtrl.eventCreateModal = Blaze.render Template.eventCreateModal, document.body
+#    else
+#      $('#event-create-modal').addClass('_opened')
+#
+#}
 
 Template.registerHelper 'eventGetDay', (date)->
 

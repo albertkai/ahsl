@@ -1,5 +1,7 @@
 Template.news.rendered = ->
-  #
+
+  Meteor.defer ->
+    $('.wrap').addClass '_animated'
 
 Template.news.events {
 

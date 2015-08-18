@@ -1,4 +1,4 @@
-#summer-page{
+#country-page{
 
   .select2-container{
     width: 90% !important;

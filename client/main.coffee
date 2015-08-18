@@ -5,6 +5,7 @@ Meteor.subscribe 'news'
 #Meteor.subscribe 'requests'
 Meteor.subscribe 'slider'
 Meteor.subscribe 'summerSlider'
+Meteor.subscribe 'countrySlider'
 Meteor.subscribe 'schedules', ->
   Session.set 'schedule', 'loaded'
 
@@ -76,8 +77,9 @@ Template.slider.events {
 
   'click .slider-cont > li': (e)->
     console.log 'clicked'
-    if $(e.currentTarget).data('link') isnt '' and !$(e.target).is('input')
-      Router.go('/' + $(e.currentTarget).data('link'))
+    unless Session.get('admin.editMode')
+      if $(e.currentTarget).data('link') isnt '' and !$(e.target).is('input')
+        Router.go('/' + $(e.currentTarget).data('link'))
 
   'click .slider-edit .slide-item': (e)->
 
@@ -116,6 +118,20 @@ Template.mainLayout.helpers {
     markup
 
 
+
+}
+
+Template.mainLayout.events {
+
+  'click #open-menu': ->
+    $('.wrap, .side-menu').toggleClass '_shifted'
+
+}
+
+Template.innerLayout.events {
+
+  'click #open-menu': ->
+    $('.wrap, .side-menu').toggleClass '_shifted'
 
 }
 

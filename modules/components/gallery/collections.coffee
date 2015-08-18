@@ -4,15 +4,15 @@ AuraColl['auraGallery'] = AuraGallery
 AuraGallery.allow {
 
   insert: (userId)->
-    if Roles.userIsInRole userId, ['admin']
+    if userId
       true
 
   update: (userId)->
-    if Roles.userIsInRole userId, ['admin']
+    if userId
       true
 
   remove: (userId)->
-    if Roles.userIsInRole userId, ['admin']
+    if userId
       true
 
 }

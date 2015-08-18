@@ -1,0 +1,123 @@
+<template name="country">
+
+
+
+    <section id="country-page" class="wrap">
+        {{>countrySlider}}
+        <div class="container body">
+            <div class="row">
+                <div>
+                    <p data-aura-html="country.mainDesc" contenteditable="false">
+                        {{{country.mainDesc}}}
+                    </p>
+                    <button id="send-request" class="lead checkin">Оставить заявку</button>
+
+                </div>
+                <aside>
+
+                    <h3>Программы обучения в Детском саду:</h3>
+
+                    <ul data-aura-html="country.programChildren" contenteditable="false">
+                        {{{country.programChildren}}}
+                    </ul>
+
+                    <h3>Программа для взрослых:</h3>
+
+                    <ul data-aura-html="country.programGrownups" contenteditable="false">
+                        {{{country.programGrownups}}}
+                    </ul>
+
+                    <h3>Адрес:</h3>
+
+                    <h4 data-aura-html="country.address" contenteditable="false">{{{country.address}}}</h4>
+
+
+                </aside>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="custom-modal">
+
+        <div class="body">
+
+            <h2 class="red">ЗАПИСЬ</h2>
+
+            <div class="close-it">&times;</div>
+
+            <form id="form" action="">
+
+                <input id="event-user-name" type="text" minlength="2" maxlength="50" placeholder="Ваше имя:" required/>
+                <input id="event-user-email" type="email" name="email" maxlength="80" placeholder="Ваш email:" required/>
+                <input id="event-user-phone" name="tel" type="tel" placeholder="Ваше телефон:" required/>
+
+            </form>
+
+            <h4>Способ оплаты</h4>
+
+            <button id="send" class="lead" data-title="title">ОТПРАВИТЬ</button>
+
+        </div>
+
+    </div>
+
+    <div class="modal-overlay"></div>
+
+    <div class="sccss">
+        <div class="body">
+            <h3 class="red">
+                Ваша заявка отправлена!
+            </h3>
+            <h4>Мы свяжемся с вами в ближайшее время</h4>
+        </div>
+
+    </div>
+
+</template>
+
+
+<template name="countrySlider">
+
+    <section class="slider">
+
+        <div class="container">
+
+            {{#if userIsAdmin}}
+            <div class="slider-edit">
+                <div id="slider-edit-button"><i class="fa fa-edit"></i></div>
+                <ul>
+                    {{#each countrySlider}}
+                    <li class="slide-item" data-id="{{_id}}" data-order="{{order}}">
+                        <div style="background-image: url({{storagePath}}/images/{{pic}})"></div>
+                        <button class="remove"><i class="fa fa-times"></i></button>
+                    </li>
+                    {{/each}}
+                    <li class="add-slide"><i class="fa fa-plus"></i></li>
+                    <button class="close-slider-edit"><i class="fa fa-times"></i></button>
+                </ul>
+            </div>
+            {{/if}}
+
+            <div id="country-slider" class="aura-slider carousel slide" data-plugin="slider">
+
+                <div class="arrows">
+                    <button data-slide="prev" href="#country-slider" class="carousel-control left hidden-xs hidden-sm"></button>
+                    <button data-slide="next" href="#country-slider" class="carousel-control right hidden-xs hidden-sm"></button>
+                </div>
+
+                <ul class="slider-cont carousel-inner">
+                    {{#each countrySlider}}
+                    <li data-aura-with="{{_id}}" data-aura-collection="countrySlider" data-aura-index="_id" data-aura-with-image-background="pic" class="item" data-order="{{order}}" data-id="{{_id}}" style="background-image: url({{storagePath}}/images/{{pic}});" data-stellar-background-ratio=".8">
+                        <p data-aura-with-html="desc" contenteditable="false">{{{desc}}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</template>

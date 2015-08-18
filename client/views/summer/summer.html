@@ -64,66 +64,6 @@
                     <p data-aura-html="summer.disclaimer2" contenteditable="false">{{{summer.disclaimer2}}}</p>
 
 
-
-
-
-                    <!--<h4>Место:</h4>-->
-
-                    <!--<h3 data-aura-with-html="place" contenteditable="false">{{{place}}}</h3>-->
-
-                    <!--<h4>Время:</h4>-->
-
-                    <!--<h3 data-aura-with-html="time" class="huge" contenteditable="false">{{{time}}}</h3>-->
-
-                    <!--&lt;!&ndash;{{#if pricePrev}}&ndash;&gt;-->
-                    <!--&lt;!&ndash;<h3 class="previous" data-aura-with-html="pricePrev" contenteditable="false">{{{pricePrev}}}&ndash;&gt;-->
-                    <!--&lt;!&ndash;</h3>{{#if userIsAdmin}}<button class="del-previous">- удалить старую цену</button>{{/if}}&ndash;&gt;-->
-                    <!--&lt;!&ndash;{{else}}&ndash;&gt;-->
-                    <!--&lt;!&ndash;{{#if userIsAdmin}}&ndash;&gt;-->
-                    <!--&lt;!&ndash;<button class="add-previous"><span>+</span> Старая цена</button>&ndash;&gt;-->
-                    <!--&lt;!&ndash;{{/if}}&ndash;&gt;-->
-
-                    <!--&lt;!&ndash;{{/if}}&ndash;&gt;-->
-
-                    <!--&lt;!&ndash;{{#if online}}&ndash;&gt;-->
-                    <!--&lt;!&ndash;<h4>Стоимость вебинар:</h4>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<h3 data-aura-with-html="price" class="huge" contenteditable="false">{{{webinarPrice}}}</h3>&ndash;&gt;-->
-                    <!--&lt;!&ndash;{{/if}}&ndash;&gt;-->
-
-                    <!--{{#if userIsAdmin}}-->
-                    <!--<h4>Дата:</h4>-->
-                    <!--<input id="set-event-date" class="aura-input input-white" type="date" value="{{getEventInputDate date}}" data-aura-instant-input="events.{{_id}}.date"/>-->
-                    <!--<h4>Стоимость:</h4>-->
-                    <!--<input type="text" class="aura-input input-white" value="{{price}}" data-aura-instant-input="events.{{_id}}.price"/>-->
-                    <!--<div class="checkbox-cont">-->
-                        <!--<input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.gotVideo" {{auraCheckboxIsChecked gotVideo}}/> <span> Видео</span><br/>-->
-                        <!--{{#if gotVideo}}-->
-                        <!--<input type="text" class="aura-input input-white" value="{{videoPrice}}" data-aura-instant-input="events.{{_id}}.videoPrice" placeholder="Стоимость вебинара"/>-->
-                        <!--{{/if}}-->
-                    <!--</div>-->
-                    <!--<div class="checkbox-cont">-->
-                        <!--<input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.online" {{auraCheckboxIsChecked online}}/> <span> Вебинар</span><br/>-->
-                        <!--{{#if online}}-->
-                        <!--<input type="text" class="aura-input input-white" value="{{webinarLink}}" data-aura-instant-input="events.{{_id}}.webinarLink" placeholder="Ссылка на вебинар"/>-->
-                        <!--<input type="text" class="aura-input input-white" value="{{webinarPrice}}" data-aura-instant-input="events.{{_id}}.webinarPrice" placeholder="Стоимость вебинара"/>-->
-                        <!--{{/if}}-->
-                    <!--</div>-->
-                    <!--<h4>Тип:</h4>-->
-                    <!--<select id="type-select" data-aura-instant-select="events.{{_id}}.type">-->
-                        <!--<option value="common">Общее</option>-->
-                        <!--<option value="masterclass">Мастер-класс</option>-->
-                    <!--</select>-->
-                    <!--<h4>Ссылка:</h4>-->
-                    <!--<input id="aura-alias-input" class="aura-input input-white" type="text" value="{{alias}}" data-aura-instant-input="events.{{_id}}.alias"/>-->
-                    <!--<h4>Короткое описание</h4>-->
-                    <!--<p class="short-desc" data-aura-with-html="shortDesc" contenteditable="false">{{shortDesc}}</p>-->
-                    <!--<br/>-->
-                    <!--<div class="checkbox-cont">-->
-                        <!--<input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.mainPage" {{auraCheckboxIsChecked mainPage}}/> <span> Показывать на главной</span>-->
-                    <!--</div>-->
-
-                    <!--{{/if}}-->
-
                 </aside>
             </div>
 
@@ -194,8 +134,8 @@
             <div id="summer-slider" class="aura-slider carousel slide" data-plugin="slider">
 
                 <div class="arrows">
-                    <button data-slide="prev" href="#summer-slider" class="carousel-control left"></button>
-                    <button data-slide="next" href="#summer-slider" class="carousel-control right"></button>
+                    <button data-slide="prev" href="#summer-slider" class="carousel-control left hidden-xs hidden-sm"></button>
+                    <button data-slide="next" href="#summer-slider" class="carousel-control right hidden-xs hidden-sm"></button>
                 </div>
 
                 <ul class="slider-cont carousel-inner">

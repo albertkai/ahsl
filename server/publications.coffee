@@ -15,3 +15,6 @@ Meteor.publish 'slider', ->
 
 Meteor.publish 'summerSlider', ->
   SummerSlider.find()
+
+Meteor.publish 'countrySlider', ->
+  CountrySlider.find()

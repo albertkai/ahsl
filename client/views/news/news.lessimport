@@ -192,6 +192,10 @@
       -webkit-background-size: cover;
       background-size: cover;
 
+      @media screen and (max-width: @screen-xs-max) {
+        height: 61vw;
+      }
+
       img{
         width: 100%;
       }

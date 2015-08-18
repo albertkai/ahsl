@@ -75,6 +75,9 @@
   .header{
     position: relative;
     height: 380px;
+    @media screen and (max-width: @screen-xs-max) {
+      height: 75vw;
+    }
     text-align: center;
     margin-top: 30px;
     background: @gray-lighter;
@@ -101,6 +104,9 @@
           font-weight: 300;
           color: black;
           margin-top: 5px;
+          @media screen and (max-width: @screen-xs-max) {
+            font-size: 3vw;
+          }
         }
       }
     }
@@ -116,6 +122,9 @@
         .make-md-column(8);
         p{
           color: #666;
+          @media screen and (max-width: @screen-xs-max) {
+            padding: 0 3vw;
+          }
         }
         a{
           font-size: inherit;
@@ -182,6 +191,11 @@
               position: absolute;
               width: 100%;
               bottom: 115px;
+              @media screen and (max-width: @screen-xs-max) {
+                position: relative;
+                bottom: auto;
+                padding: 4vw 0;
+              }
              }
             .thumbnail{
               -webkit-border-radius: 0;
@@ -189,6 +203,10 @@
               border-radius: 0;
               height: 380px;
               position: relative;
+              @media screen and (max-width: @screen-xs-max) {
+                padding: 15px;
+                margin: 15px;
+              }
               .ovrl{
                 position: absolute;
                 width: 100%;
@@ -213,6 +231,11 @@
               position: absolute;
               bottom: 0;
               left: 5px;
+              @media screen and (max-width: @screen-xs-max) {
+                position: relative;
+                bottom: auto;
+                margin: 7vw auto !important;
+              }
             }
             .hover-group{
               position: absolute;
@@ -222,6 +245,10 @@
               button{
                 width: 48%;
                 border-radius: 0 !important;
+              }
+              @media screen and (max-width: @screen-xs-max) {
+                position: relative;
+                bottom: auto;
               }
             }
             ul{
@@ -519,6 +546,10 @@
     top: 10px;
     background: white;
     text-align: center;
+    @media screen and (max-width: @screen-xs-max) {
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
     h1{
       font-size: 55px;
       margin-top: -15px;
