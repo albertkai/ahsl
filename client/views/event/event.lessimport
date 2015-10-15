@@ -1,5 +1,9 @@
 #event-page{
 
+  ._invisible{
+    display: none !important;
+  }
+
   .select2-container{
     width: 90% !important;
     margin: 5% !important;
@@ -728,4 +732,10 @@
       background-image: url(/img/paypal.png);
     }
   }
+}
+
+.input-white{
+
+  color: #777 !important;
+
 }

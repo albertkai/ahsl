@@ -1,9 +1,9 @@
-Package.describe({
-  name: 'aura:core',
-  summary: 'Sexy cms for meteor world',
-  version: '1.0.0',
-  git: ' /* Fill me in! */ '
-});
+//Package.describe({
+//  name: 'aura:core',
+//  summary: 'Sexy cms for meteor world',
+//  version: '1.0.0',
+//  git: ' /* Fill me in! */ '
+//});
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0');

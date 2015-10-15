@@ -154,6 +154,7 @@ Template.contacts.events {
       ]
     }
   ]
+
   styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"})
 
   map.mapTypes.set('map_style', styledMap)

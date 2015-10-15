@@ -9,10 +9,10 @@ Template.eventPage.rendered = ->
     $('.types').find('button').removeClass('_active')
     $('[data-type="' + chosenType + '"]').addClass('_active')
 
-  $('[data-toggle="popover"]').popover({
-    html: true
-    trigger: 'hover'
-  })
+#  $('[data-toggle="popover"]').popover({
+#    html: true
+#    trigger: 'hover'
+#  })
 
 #  if $('#isSpecial').val() is 'true'
 #    specialPrice1 = $('.choose-special-price > .chckbx:nth-child(1)').val()
@@ -58,6 +58,12 @@ Template.eventPage.helpers {
     else if Session.get('chosenType') is 'video'
       @videoPrice
 
+  isInvisible: ->
+
+    if @type is 'masterclass_sochi'
+
+      '_invisible'
+
   special: ->
 
     if Router.current().location.get().path is '/event/detilly' or Router.current().location.get().path is '/event/detilly?payment=true'
@@ -71,12 +77,19 @@ Template.eventPage.helpers {
 
 Template.eventPage.events {
 
-  'click .checkin': (e)->
+  'click .checkin, click #toggle-special': (e)->
 
     $('.custom-modal').addClass('_visible')
     $('.modal-overlay').addClass('_visible')
-    Session.set('chosenPrice', parseInt $(e.currentTarget).siblings('.price').html().replace(/\D+/, ''))
-    Session.set('eventType', $(e.currentTarget).data('type'))
+
+    if @isSpecial
+
+      Session.set('chosenPrice', 5900)
+
+    else
+
+      Session.set('chosenPrice', parseInt $(e.currentTarget).siblings('.price').html().replace(/\D+/, ''))
+      Session.set('eventType', $(e.currentTarget).data('type'))
 
   'click .types button': (e)->
 

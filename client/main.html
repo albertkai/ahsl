@@ -660,7 +660,7 @@
                             <div class="partner">
                                 <div data-tltp="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem beatae corporis cum cumque ducimus eligendi excepturi explicabo iure modi nesciunt perspiciatis quia quos, repellat similique, tempora vel vero voluptates.">
                                     <a href="">
-                                        <img src="/img/partner6.jpg" alt=""/>
+                                        <img src="/img/partner6.png" alt=""/>
                                     </a>
                                 </div>
                             </div>
@@ -805,35 +805,5 @@
         </div>
 
     </section>
-
-</template>
-
-
-<template name="mailingModal">
-
-    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3 class="modal-title" id="myModalLabel">Новое письмо</h3>
-                    <div id="mailing-bases-cont"></div>
-                    <input class="aura-input" id="mailing-name" type="text" placeholder="Название рассылки"/>
-                    <input class="aura-input" id="mailing-subject" type="text" placeholder="Тема рассылки"/>
-                    <input class="aura-input" data-aura-instant-input="auraPages.email.link" value="{{email.link}}" type="text" placeholder="Ссылка"/>
-                </div>
-                <div class="modal-body">
-                    {{>email}}
-                </div>
-                <div class="modal-footer">
-
-                    <button id="send" class="lead">Отправить рассылку</button>
-
-                    <p>Не забудьте проверить статус модерационной проверки!</p>
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 </template>

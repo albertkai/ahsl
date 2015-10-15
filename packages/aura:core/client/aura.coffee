@@ -971,7 +971,12 @@ if Meteor.isClient
         item = {}
         item['collection'] = query[0]
         item['document'] = query[1]
-        item['index'] = '_id'
+        item['index'] = do ->
+          index = $(e.currentTarget).data('aura-index')
+          if !index? or index is ''
+            '_id'
+          else
+            index
         query.shift()
         query.shift()
         item['field'] = query

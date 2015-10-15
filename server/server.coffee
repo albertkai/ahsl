@@ -191,16 +191,17 @@ Meteor.methods {
       f = new Future()
 
       result = HTTP.get str, (err, result)->
-        bases = []
-        issue = JSON.parse(result.content)
-        issue.response.data.forEach (b)->
-          bases.push {
-            id: b.id,
-            name: b.name,
-            active: b.count_active,
-            total: b.count_all
-          }
-        f.return(bases)
+        if !err
+          bases = []
+          issue = JSON.parse(result.content)
+          issue.response.data.forEach (b)->
+            bases.push {
+              id: b.id,
+              name: b.name,
+              active: b.count_active,
+              total: b.count_all
+            }
+          f.return(bases)
 
       f.wait()
 
