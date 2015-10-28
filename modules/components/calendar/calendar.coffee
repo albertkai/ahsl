@@ -145,6 +145,10 @@ if Meteor.isClient
             Aura.notify 'Расписание изменено!'
 
 
+      $('.time-range').on 'click', (e)->
+        console.log 'hey'
+
+
       $('body').off 'input', '.calendar [contenteditable="true"]'
 
       $('body').on 'input', '.calendar [contenteditable="true"]', (e)=>

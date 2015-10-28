@@ -169,6 +169,15 @@ Router.route 'archive', {
       @render()
 }
 
+Router.route 'kindergarten', {
+  layoutTemplate: 'innerLayout'
+#  waitOn: ->
+#    Meteor.subscribe('eve')
+#  action: ->
+#    if @ready()
+#      @render()
+}
+
 Router.route 'contacts', {
   path: 'contacts'
   layoutTemplate: 'innerLayout'
