@@ -1,0 +1,105 @@
+<template name="cinema">
+
+    <section id="cinema" class="wrap cinema">
+
+        <section class="top" data-aura-image-background="cinema.mainPic" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{cinema.mainPic}}); background-position: center">
+
+            <div class="container">
+
+                <h1 data-aura-html="cinema.heading" contenteditable="false">{{{cinema.heading}}}</h1>
+
+            </div>
+
+        </section>
+
+        <section class="about">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div>
+                        <p data-aura-html="cinema.mainDesc" contenteditable="false">{{cinema.mainDesc}}</p>
+                    </div>
+                    <aside>
+                        <span class="quots">“</span>
+                        <span class="quots">“</span>
+                        <p data-aura-html="cinema.mainQuot" contenteditable="false">{{cinema.mainQuot}}</p>
+
+                    </aside>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="girls">
+
+            <div class="disc container" data-aura-html="cinema.disc" contenteditable="false">{{{cinema.disc}}}</div>
+
+            {{#each girls}}
+
+                <div class="girl" data-aura-with="{{_id}}" data-aura-collection="girls" data-aura-index="_id">
+
+                    <div class="container">
+
+                        <h2><span data-aura-with-html="name" contenteditable="false">{{name}}</span><span data-aura-with-html="surname" contenteditable="false">{{surname}}</span><span></span></h2>
+
+
+                        <div class="row">
+
+                            <div>
+                                <div class="pic" data-aura-with-image-background="pic" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{pic}});"></div>
+                            </div>
+                            <div>
+                                <!--<div class="video" style="background-image: url('/img/girls/{{thumb}}')"></div>-->
+                                <iframe  class="video" src="{{video}}" frameborder="0"></iframe>
+                            </div>
+
+                        </div>
+
+                        {{#if gotText text}}
+                        <div class="text">
+                            <span class="quots">“</span>
+                            <span class="quots">“</span>
+                            <p data-aura-with-html="text" contenteditable="false">{{text}}</p>
+                        </div>
+                        {{/if}}
+
+                        <p class="votes-count"><span>Всего голосов:</span><span>{{votes}}</span></p>
+
+                        <hr/>
+
+
+                    </div>
+
+                </div>
+
+            {{/each}}
+
+        </section>
+
+        <div class="modal-overlay"></div>
+
+        <div id="voted" class="sccss">
+            <div class="body">
+                <h3 class="red">
+                    Ваш голос принят!
+                </h3>
+                <h4>Большое спасибо за проявленый интерес!</h4>
+            </div>
+        </div>
+
+        <div id="cant-vote" class="sccss">
+            <div class="body">
+                <h3 class="red">
+                    Вы уже проголосовали!
+                </h3>
+                <h4>К сожалению, проголосовать можно только один раз..</h4>
+            </div>
+        </div>
+
+    </section>
+
+</template>

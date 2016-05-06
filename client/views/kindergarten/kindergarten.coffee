@@ -15,15 +15,23 @@ Template.kindergarten.onRendered ->
   else
     document.body.appendChild(script)
 
+  Meteor.setTimeout ->
+    $('.custom-tab').first().addClass '_active'
+    $('.classes-header .row > div').first().addClass '_active'
+  , 500
+
+  $('#direction-user-phone').inputmask("+7(999)999-99-99")
+
+
 
 
 @initializeMap2 = ->
 
-  myLatLng = new google.maps.LatLng(59.940577, 30.378407)
+  myLatLng = new google.maps.LatLng(60.279624, 29.785293)
 
   mapOptions = {
     center: myLatLng,
-    zoom:13,
+    zoom:10,
     zoomControl:true,
     zoomControlOpt:{
       style:"MEDIUM",
@@ -99,6 +107,13 @@ Template.kindergarten.onRendered ->
 
 Template.kindergarten.events
 
+  'click .classes-header .row > div button': (e)->
+
+    index = $(e.currentTarget).parent().index()
+    $(e.currentTarget).addClass('_active').parent().siblings().find('button').removeClass('_active')
+    $('.custom-tab').removeClass('_active')
+    $('.custom-tab').eq(index).addClass('_active')
+
 
   'click .send-request': (e)->
 
@@ -138,7 +153,7 @@ Template.kindergarten.events
 
           text = 'Имя: ' + name + ' \n Телефон: ' + phone + ' \n' + ' Почта: ' + email
 
-          Meteor.call 'sendRequestEmail', title, text, (error, response)->
+          Meteor.call 'sendRequestEmail', title, text, ['uganina@gmail.com'], (error, response)->
 
             if err
               console.log err

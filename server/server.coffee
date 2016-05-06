@@ -86,11 +86,13 @@ Meteor.methods {
     }
     true
 
-  sendRequestEmail: (header, text)->
+  sendRequestEmail: (header, text, to)->
+
+    if to? then toAddress = to else toAddress = ["info.sisi-elizabeth@yandex.ru", "info@sisi-elizabeth.com", "maria-skr-rt@mail.ru"]
 
     Email.send({
       from: "info@ladies-school.com",
-      to: ["info.sisi-elizabeth@yandex.ru", "info@sisi-elizabeth.com", "maria-skr-rt@mail.ru"],
+      to: toAddress,
       subject: header,
       text: text
     })
@@ -208,27 +210,25 @@ Meteor.methods {
 
   addEmailToBase: (email)->
 
-    if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+    options = {
+      username: process.env.EMAIL_USER
+      password: process.env.EMAIL_PASS
+      method: 'lists.add_member'
+      list_id: 260371
+      email: email
 
-      options = {
-        username: process.env.EMAIL_USER
-        password: process.env.EMAIL_PASS
-        method: 'lists.add_member'
-        list_id: 260371
-        email: email
+    }
 
-      }
+    getParams = ''
 
-      getParams = ''
+    for name, prop of options
 
-      for name, prop of options
+      getParams += name + '=' + prop + '&'
 
-        getParams += name + '=' + prop + '&'
-
-      str = 'http://api.prostoemail.ru/?' + getParams
-      result = HTTP.get str, (err, result)->
-        issue = JSON.parse(result.content)
-        console.log(issue)
+    str = 'http://api.prostoemail.ru/?' + getParams
+    result = HTTP.get str, (err, result)->
+      issue = JSON.parse(result.content)
+      console.log(issue)
 
   sendMailing: (id)->
 
@@ -253,6 +253,86 @@ Meteor.methods {
       result = HTTP.get str, (err, result)->
         issue = JSON.parse(result.content)
         console.log(issue)
+
+
+  vote: (id, fingerprint)->
+
+    ip = @connection.clientAddress
+    console.log('Voting for ' + id)
+    console.log('IP ' + ip)
+    if Voted.find({ip: ip}).count() is 0
+      console.log 'Can vote'
+      Girls.update id, {$inc: {votes: 1}}
+
+      Voted.insert {
+        ip: ip,
+        date: Date.now()
+        fingerprint: fingerprint,
+        id: id
+      }
+      true
+    else
+      console.log 'Cant vote'
+      false
+
+
+  setVote: (id, count)->
+
+    if @userId?
+      console.log('setting vote')
+      Girls.update id, {$set: {votes: count}}
+
+  setText: (id, text)->
+
+    if @userId?
+      console.log('setting text')
+      Girls.update id, {$set: {text: text}}
+
+  getTrueVotes: (timePeriod)->
+
+    f = new Future()
+    sorted = []
+    Girls.find().forEach (g)->
+      sorted.push {
+        name: g.surname
+        votes: Voted.find({id: g._id}, {sort: {date: 1}}).fetch()
+      }
+    deduplicate = []
+    sorted.forEach (s)->
+      fingerprints = []
+      duplicates = 0
+      votesProcessed = []
+      s.votes.forEach (v)->
+        unless _.contains fingerprints, v.fingerprint
+          votesProcessed.push v
+          fingerprints.push v.fingerprint
+        else
+          duplicates++
+      deduplicate.push {
+        name: s.name
+        votes: votesProcessed
+        duplicates: duplicates
+      }
+    result = ''
+    deduplicate.forEach (i)->
+      result += i.name + ': '
+      count = 0
+      bot = 0
+      i.votes.forEach (vot, index)->
+        if i.votes[index + 1]?
+          if i.votes[index + 1].date - vot.date > timePeriod
+            count++
+          else
+            bot++
+      result += count + '\n'
+      result += 'Подозрения по времени: ' + bot + '\n'
+      result += 'Подозрения по браузерам: ' + i.duplicates + '\n'
+      result += '\n'
+    f.return(result)
+    f.wait()
+
+
+
 
 
 

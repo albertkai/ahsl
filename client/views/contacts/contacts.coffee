@@ -16,6 +16,8 @@ Template.contacts.rendered = ->
   else
     document.body.appendChild(script)
 
+  Meteor.subscribe 'voted'
+
 
 Template.contacts.events {
 

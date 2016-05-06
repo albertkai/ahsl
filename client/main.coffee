@@ -5,6 +5,7 @@ Meteor.subscribe 'news'
 #Meteor.subscribe 'requests'
 Meteor.subscribe 'slider'
 Meteor.subscribe 'summerSlider'
+Meteor.subscribe 'sochiSlider'
 Meteor.subscribe 'countrySlider'
 Meteor.subscribe 'schedules', ->
   Session.set 'schedule', 'loaded'

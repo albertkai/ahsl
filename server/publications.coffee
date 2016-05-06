@@ -18,3 +18,12 @@ Meteor.publish 'summerSlider', ->
 
 Meteor.publish 'countrySlider', ->
   CountrySlider.find()
+
+Meteor.publish 'sochiSlider', ->
+  SochiSlider.find()
+
+Meteor.publish 'girls', ->
+  Girls.find()
+
+Meteor.publish 'voted', ->
+  Voted.find()

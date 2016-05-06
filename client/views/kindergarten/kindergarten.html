@@ -34,11 +34,11 @@
     <section id="kindergarten" class="wrap">
 
         <div class="container">
-            <div class="header" data-aura-image-background="pic" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/kindergarten_1.jpg);"></div>
+            <div class="header" data-aura-image-background="kindergarten.mainPic" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{kindergarten.mainPic}});"></div>
         </div>
 
         <h1 class="main-header">
-            <span>Детский сад и школа</span>
+            <span>Детский сад</span>
             <span>при Австрийской Высшей Школе Этикета</span>
         </h1>
 
@@ -48,13 +48,13 @@
 
                 <div class="row">
 
-                    <div data-aura-html="children.mainDesc" contenteditable="false">
-                        <p>Программа Школы этикета новый этап в жизни Вашего малыша, которая даст ребенку знания о том, как необходимо вести себя в обществе, в транспорте в культурно-досуговых местах и за столом. Так же в нашем саду есть уникальная программа по всестороннему развитию Вашего малыша.  ФОТО где дети сидят за столом (по возможности заменить на более качественное фото)</p>
+                    <div>
+                        <p data-aura-html="kindergarten.mainDesc" contenteditable="false">{{{kindergarten.mainDesc}}}</p>
                     </div>
                     <aside>
                         <span class="quots">“</span>
                         <span class="quots">“</span>
-                        <p data-aura-html="children.mainQuot" contenteditable="false">Дети должны жить в мире красоты, игры, сказки, музыки, рисунка, фантазии, творчества.</p>
+                        <p data-aura-html="kindergarten.mainQuot" contenteditable="false">{{{kindergarten.mainQuot}}}</p>
 
                     </aside>
 
@@ -64,18 +64,17 @@
 
         </section>
 
+        <section class="content-section">
 
-        <section id="food" class="content-section">
-
-            <h2>Здоровое питание, прогулки и сон</h2>
+            <h2 data-aura-html="kindergarten.foodHeader" contenteditable="false">{{{kindergarten.foodHeader}}}</h2>
 
             <div class="container">
 
                 <div class="row">
 
-                    <div class="col-md-6"><p> Важный элемент в жизни малыша. У нас только здоровое и сбалансированное питание, одобренное педиатрами и диетологами.  Мы учитываем все особенности каждого ребенка. Даже детям с особой диетой или аллергией будет у нас очень комфортно, ведь для них мы составим специальное меню.  Наш сад находиться на территории, где всегда чистый воздух, лес, хорошо оборудованная детская площадка.</p></div>
+                    <div class="col-md-6"><p data-aura-html="kindergarten.foodDesc" contenteditable="false">{{{kindergarten.foodDesc}}}</p></div>
 
-                    <aside class="col-md-6"><img src="{{storagePath}}/images/kindergarten_3.png" alt=""/></aside>
+                    <aside class="col-md-6"><img data-aura-image="kindergarten.foodImage" src="{{storagePath}}/images/{{kindergarten.foodImage}}" alt=""/></aside>
 
                 </div>
 
@@ -83,19 +82,137 @@
 
         </section>
 
-        <section id="food" class="content-section">
+        <hr/>
 
-            <h2>Досуг</h2>
+        <section class="content-section">
+
+            <h2 data-aura-html="kindergarten.walkHeader" contenteditable="false">{{{kindergarten.walkHeader}}}</h2>
 
             <div class="container">
 
                 <div class="row">
 
-                    <aside class="col-md-6"><img src="http://d1tvqt3gjtui5j.cloudfront.net/images/kindergarten_2.png" alt=""/></aside>
+                    <aside class="col-md-6"><img data-aura-image="kindergarten.walkImage" src="{{storagePath}}/images/{{kindergarten.walkImage}}" alt=""/></aside>
 
-                    <div class="col-md-6"><p>А чтобы ребенок знал что такое настоящий праздник и волшебство, мы регулярно организуем детские вечеринки, на которых малыши закрепляют полученный материал во время обучения , развлекаются и принимают сказочных гостей.</p></div>
+                    <div class="col-md-6"><p  data-aura-html="kindergarten.walkDesc" contenteditable="false">{{{kindergarten.walkDesc}}}</p></div>
 
                 </div>
+
+            </div>
+
+        </section>
+
+        <hr/>
+
+        <section class="content-section">
+
+            <h2 data-aura-html="kindergarten.dreamHeader" contenteditable="false">{{{kindergarten.dreamHeader}}}</h2>
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-6"><p  data-aura-html="kindergarten.dreamDesc" contenteditable="false">{{{kindergarten.dreamDesc}}}</p></div>
+
+                    <aside class="col-md-6"><img data-aura-image="kindergarten.dreamImage" src="{{storagePath}}/images/{{kindergarten.dreamImage}}" alt=""/></aside>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <hr/>
+
+        <section class="content-section">
+
+            <h2 data-aura-html="kindergarten.leisureHeader" contenteditable="false">{{{kindergarten.leisureHeader}}}</h2>
+
+            <div class="container">
+
+                <div class="row">
+
+                    <aside class="col-md-6"><img  data-aura-image="kindergarten.leisureImage" src="http://d1tvqt3gjtui5j.cloudfront.net/images/{{kindergarten.leisureImage}}" alt=""/></aside>
+
+                    <div class="col-md-6"><p data-aura-html="kindergarten.leisureDesc" contenteditable="false">{{{kindergarten.leisureDesc}}}</p></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="classes-header">
+
+            <h2 data-aura-html="kindergarten.classesHeader" contenteditable="false">{{{kindergarten.classesHeader}}}</h2>
+
+            <div class="container">
+
+                <div class="row" data-aura-list="kindergarten.classes">
+
+                    {{#each kindergarten.classes}}
+
+                        <div data-aura-list-item>
+                            <button class="lead">
+                                <div>
+                                    <p data-aura-list-html="name">{{{name}}}</p>
+                                </div>
+                                {{#if userIsAdmin}}
+                                    <span class="remove" data-aura-list-remove><i class="fa fa-times"></i></span>
+                                {{/if}}
+                            </button>
+                        </div>
+
+                    {{/each}}
+
+                    {{#if userIsAdmin}}
+                        <div>
+                            <button id="add-item" class="lead" data-aura-list-add data-aura-sample-text="Новый предмет">
+                                <div>
+                                    +
+                                </div>
+                            </button>
+                        </div>
+                    {{/if}}
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="classes-body">
+
+            <div class="shadow"></div>
+
+            <div class="tab-cont" data-aura-list="kindergarten.classes">
+
+                {{#each kindergarten.classes}}
+
+                    <div class="custom-tab" data-aura-list-item>
+
+
+                        <h3 data-aura-list-html="name" contenteditable="false">{{{name}}}</h3>
+
+                        <div class="container">
+
+                            <div class="row">
+
+                                <div>
+                                    <img data-aura-list-image="pic" src="{{storagePath}}/images/{{pic}}" alt="Новости"/>
+                                </div>
+
+                                <div data-aura-list-html="desc" contenteditable="false">
+                                    {{{desc}}}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {{/each}}
 
             </div>
 
@@ -106,10 +223,10 @@
             <div class="container">
 
                 <p>
-                    <span>Мы работаем для вас:</span>
-                    <span>с понедельника по пятницу с <strong>8 до 19</strong></span>
-                    <span>вечерние группы - до <strong>23:00</strong></span>
-                    <span>Так же Вы можете оставить ребенка у нас на ночь, где заботливая и добрая няня уложит малыша спать и прочитает ему сказку</span>
+                    <span data-aura-html="kindergarten.workForYou" contenteditable="false">{{{kindergarten.workForYou}}}</span>
+                    <span data-aura-html="kindergarten.workTimes" contenteditable="false">{{{kindergarten.workTimes}}}</span>
+                    <span data-aura-html="kindergarten.workEvening" contenteditable="false">{{{kindergarten.workEvening}}}</span>
+                    <span data-aura-html="kindergarten.workTip" contenteditable="false">{{{kindergarten.workTip}}}</span>
                 </p>
 
             </div>
@@ -120,12 +237,12 @@
 
             <div class="container">
 
-                <p class="address">Наш адрес: Зеленогорский р-он, п. Ильичево 3 Подъездная ул. 15</p>
+                <p class="address" data-aura-html="kindergarten.address" contenteditable="false">{{{kindergarten.address}}}</p>
                 <div id="map"></div>
 
-                <h4>Звоните нам:</h4>
-                <h3 class="phone">+7 (905) 545-54-54</h3>
-                <h5>Мы с удовольствием ответим на все интересующие вас вопросы</h5>
+                <h4 data-aura-html="kindergarten.callUs" contenteditable="false">{{{kindergarten.callUs}}}</h4>
+                <h3 class="phone" data-aura-html="kindergarten.phone" contenteditable="false">{{{kindergarten.phone}}}</h3>
+                <h5 data-aura-html="kindergarten.contactsTip" contenteditable="false">{{{kindergarten.contactsTip}}}</h5>
 
 
             </div>
@@ -137,7 +254,7 @@
                     <div class="interact">
 
                         <button id="send-request" class="lead red send-request" data-group="детский сад">Записаться</button>
-                        <p>Наш менеджер свяжется с вами в ближайшее время</p>
+                        <p data-aura-html="kindergarten.managerTip" contenteditable="false">{{{kindergarten.managerTip}}}</p>
                         <!--<a>Заказать обратный звонок</a>-->
                         <button class="excursion lead send-request" data-group="Экскурсия">Приехать на экскурсию</button>
 

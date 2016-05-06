@@ -49,6 +49,15 @@ Router.route 'summer', {
       @render()
 }
 
+Router.route 'sochi', {
+  layoutTemplate: 'innerLayout'
+  waitOn: ->
+    Meteor.subscribe('sochiSlider')
+  action: ->
+    if @ready()
+      @render()
+}
+
 Router.route 'lateteens', {
   layoutTemplate: 'innerLayout'
   waitOn: ->
@@ -67,6 +76,14 @@ Router.route 'online', {
     if @ready()
       @render()
 }
+
+Router.route 'cinema',
+  layoutTemplate: 'innerLayout'
+  waitOn: ->
+    Meteor.subscribe('girls')
+  action: ->
+    if @ready()
+      @render()
 
 Router.route 'country', {
   layoutTemplate: 'innerLayout'

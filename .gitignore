@@ -32,6 +32,10 @@ packages/aura:core/lib/credentials.coffee
 ######################
 .DS_Store
 .DS_Store?
+.idea
+.idea?
+settings.json
+mup.json
 ._*
 .Spotlight-V100
 .Trashes

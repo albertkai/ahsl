@@ -150,3 +150,21 @@
 #    order: 1
 #
 #  }
+
+#if SochiSlider.find().count() is 0
+#
+#  SochiSlider.insert {
+#
+#    pic: 'dsc_6597.jpg'
+#    desc: 'Школа основана под патронажем австрийской императрицы Sisi Elizabeth в 1867 году'
+#    order: 0
+#
+#  }
+#
+#  SochiSlider.insert {
+#
+#    pic: 'dsc_6607.jpg'
+#    desc: 'Текст слайдера'
+#    order: 1
+#
+#  }

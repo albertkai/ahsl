@@ -3,7 +3,10 @@
 @Requests = new Mongo.Collection 'requests'
 @Slider = new Mongo.Collection 'slider'
 @SummerSlider = new Mongo.Collection 'summerSlider'
+@SochiSlider = new Mongo.Collection 'sochiSlider'
 @CountrySlider = new Mongo.Collection 'countrySlider'
+@Girls = new Mongo.Collection 'girls'
+@Voted = new Mongo.Collection 'voted'
 Slider.allow {
 
   insert: (userId)->
@@ -21,6 +24,22 @@ Slider.allow {
 }
 
 SummerSlider.allow {
+
+  insert: (userId)->
+    if userId
+      true
+
+  update: (userId)->
+    if userId
+      true
+
+  remove: (userId)->
+    if userId
+      true
+
+}
+
+SochiSlider.allow {
 
   insert: (userId)->
     if userId
@@ -84,6 +103,22 @@ Requests.allow {
 
 }
 
+Girls.allow {
+
+  insert: (userId)->
+    if userId
+      true
+
+  update: (userId)->
+    if userId
+      true
+
+  remove: (userId)->
+    if userId
+      true
+
+}
+
 
 AuraColl['events'] = Events
 AuraColl['news'] = News
@@ -91,3 +126,6 @@ AuraColl['requests'] = Requests
 AuraColl['slider'] = Slider
 AuraColl['summerSlider'] = SummerSlider
 AuraColl['countrySlider'] = CountrySlider
+AuraColl['sochiSlider'] = SochiSlider
+AuraColl['girls'] = Girls
+AuraColl['voted'] = Voted

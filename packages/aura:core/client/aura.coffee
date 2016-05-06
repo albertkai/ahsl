@@ -28,6 +28,9 @@ if Meteor.isClient
   Template.registerHelper 'summer', ->
     AuraPages.findOne({name: 'summer'})
 
+  Template.registerHelper 'sochi', ->
+    AuraPages.findOne({name: 'sochi'})
+
   Template.registerHelper 'children', ->
     AuraPages.findOne({name: 'children'})
 
@@ -49,8 +52,14 @@ if Meteor.isClient
   Template.registerHelper 'summerSchool', ->
     AuraPages.findOne({name: 'summerSchool'})
 
+  Template.registerHelper 'kindergarten', ->
+    AuraPages.findOne({name: 'kindergarten'})
+
   Template.registerHelper 'eventsList', ->
     AuraPages.findOne({name: 'events'})
+
+  Template.registerHelper 'cinema', ->
+    AuraPages.findOne({name: 'cinema'})
 
   Template.registerHelper 'inputInstantGetDate', (date)->
     moment(date).lang('ru').format('YYYY-MM-DD')
@@ -838,29 +847,58 @@ if Meteor.isClient
 
 
     $('body').on 'click', '[data-aura-list-remove]', (e)->
+      console.log 'Removing list item'
       index = $(e.currentTarget).closest('[data-aura-list-item]').index()
       list = $(e.currentTarget).closest('[data-aura-list]').data('aura-list')
       document = list.split('.')[0]
       field = list.split('.')[1]
       object = AuraPages.findOne({name: document}).classes[index]
-      Meteor.call 'removeListItem', document, field, object, (err, res)->
-        if err then console.log err
+
+      (new PNotify({
+        title: 'Удалить элемент списка?',
+        text: 'Удаленный элемент удалится из базы навсегда (Ксюша!!!=))!',
+        hide: false,
+        confirm: {
+          confirm: true
+        },
+        buttons: {
+          closer: false,
+          sticker: false
+        },
+        history: {
+          history: false
+        }
+      })).get().on('pnotify.confirm', ->
+
+        Meteor.call 'removeListItem', document, field, object, (err, res)->
+          if err then console.log err
+
+      ).on('pnotify.cancel', ->
+        console.log 'Cancelled!'
+      )
+
 
     $('body').on 'click', '[data-aura-list-add]', (e)->
+      console.log 'Adding list item'
       list = $(e.currentTarget).closest('[data-aura-list]').data('aura-list')
       document = list.split('.')[0]
       field = list.split('.')[1]
       sample = AuraPages.findOne({name: document})[field][0]
 
+      console.log list
+      console.log document
+      console.log field
+      console.log sample
+
       Meteor.call 'addListItem', document, field, sample, (err, res)->
         if err then console.log err
 
-
-    $('body').on 'mouseenter', '[data-aura-image-background]', (e)->
-       $(e.currentTaget).addClass('_hover')
-
-    $('body').on 'mouseleave', '[data-aura-image-background]', (e)->
-      $(e.currentTaget).removeClass('_hover')
+#
+#    $('body').on 'mouseenter', '[data-aura-image-background]', (e)->
+#       $(e.currentTarget).addClass('_hover')
+#
+#    $('body').on 'mouseleave', '[data-aura-image-background]', (e)->
+#      $(e.currentTarget).removeClass('_hover')
 
 
 

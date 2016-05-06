@@ -289,6 +289,7 @@ if Meteor.isServer
       if Roles.userIsInRole(loggedInUser, ['owner', 'admin'])
         query = {}
         query[field] = object
+        console.log query
         AuraPages.update {'name': document}, {$push: query}
 
     removeListItem: (document, field, object)->
