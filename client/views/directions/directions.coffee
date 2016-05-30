@@ -429,7 +429,7 @@ Template.summerSchool.rendered = ->
 
   Deps.autorun ->
 
-    if Session.get('schedule') is 'loaded' and !DirCtrl.scheduleLoaded
+    if Session.get('schedule') is 'loaded'
       console.log 'schedule loaded'
       if $('.direction-summerSchool').length > 0
         new Calendar('#group-schedule', {
@@ -439,7 +439,6 @@ Template.summerSchool.rendered = ->
           month: 5
           limit: [5, 7]
         })
-        DirCtrl.scheduleLoaded = true
 
   $('.custom-tab').first().addClass '_active'
   $('.classes-header .row > div').first().addClass '_active'
@@ -526,25 +525,41 @@ Template.onlineSchool.rendered = ->
 
   console.log 'summer rendered'
 
+  Session.set('onlinePayType', 'full')
+  Session.set('onlinePayPrice', 18000)
+  Session.set('payLater', false);
+
   Meteor.defer ->
     $('.wrap').addClass '_animated'
     $('body').stellar()
 
   $('#direction-user-phone').inputmask("+7(999)999-99-99")
 
-#  Deps.autorun ->
-#
-#    if Session.get('schedule') is 'loaded' and !DirCtrl.scheduleLoaded
-#      console.log 'schedule loaded'
-#      if $('.direction-onlineSchool').length > 0
-#        new Calendar('#group-schedule', {
-#          group: 'onlineSchool'
-#          drawGroups: false
-#        })
-#        DirCtrl.scheduleLoaded = true
+  Deps.autorun ->
+
+    if Session.get('schedule') is 'loaded'
+      console.log 'schedule loaded'
+      if $('.direction-onlineSchool').length > 0
+        Meteor.setTimeout ->
+          new Calendar('#group-schedule', {
+            group: 'onlineSchool_morning'
+            drawGroups: false
+          })
+        , 1500
+        DirCtrl.scheduleLoaded = true
 
   $('.custom-tab').first().addClass '_active'
   $('.classes-header .row > div').first().addClass '_active'
+
+Template.onlineSchool.helpers {
+
+  isPayType: (type)->
+    Session.equals('onlinePayType', type)
+
+  currentPrice: ->
+    Session.get('onlinePayPrice')
+
+}
 
 Template.onlineSchool.events {
 
@@ -555,12 +570,24 @@ Template.onlineSchool.events {
     $('.custom-tab').removeClass('_active')
     $('.custom-tab').eq(index).addClass('_active')
 
+  'click .pay-later input': (e)->
+    Session.set('payLater', $(e.currentTarget).is(':checked'))
+
+
+  'click .choose-special-price .chckbx > div': (e)->
+
+    Session.set('onlinePayType', $(e.currentTarget).closest('.chckbx').data('type'))
+    Session.set('onlinePayPrice', $(e.currentTarget).closest('.chckbx').data('price'))
+
+
   'click #send-request': (e)->
     group = $(e.currentTarget).data('group')
     $('.custom-modal').addClass('_visible')
     $('.modal-overlay').addClass('_visible')
 
   'click #send': (e)->
+
+    console.log('Sending payment request')
 
     re = re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -579,33 +606,86 @@ Template.onlineSchool.events {
       else
         $('#direction-user-phone').removeClass('_invalid').addClass '_valid'
 
-      title = 'Запись в группу: ' + $(e.currentTarget).data('group')
+      title = 'Покупка онлайн обучения: ' + Session.get('onlinePayType')
       name = $('#direction-user-name').val()
       phone = $('#direction-user-phone').val()
       email = $('#direction-user-email').val()
-
-      Meteor.call 'addRequest', title, name, phone, email, (err, res)->
+      requestId = Random.id()
+      eventDate = Date.now()
+      type = 'card'
+      eventType = 'onlineCourses'
+      amount = Session.get('onlinePayPrice') + '.00'
+      place = 'No place'
+      eventTime = 'No time'
+      additional = {}
+      Meteor.call 'addRequest', title, name, phone, email, type, eventType, eventDate, eventTime, place, requestId, additional, amount, (err, resp)->
 
         if err
           console.log err
         else
+          console.log 'Request email sent!'
 
-          text = 'Имя: ' + name + ' \n Телефон: ' + phone + ' \n' + ' Почта: ' + email
+          console.log 'Starting transactional machinery'
 
-          Meteor.call 'sendRequestEmail', title, text, (error, response)->
+          console.log(requestId)
+          console.log(amount)
 
-            if err
-              console.log err
-            else
-              $('.custom-modal').addClass('_shifted')
-              $('.sccss').addClass('_shifted')
-              Meteor.setTimeout ->
-                $('.custom-modal').removeClass('_shifted').removeClass('_visible')
-                $('.sccss').removeClass('_shifted')
-                $('.modal-overlay').removeClass '_visible'
-              , 2000
+          if Session.get('payLater')
+
+            title = 'Запись на онлайн-обучение'
+            text = 'Имя: ' + name + ' \n Телефон: ' + phone + ' \n' + ' Почта: ' + email
+
+            Meteor.call 'sendRequestEmail', title, text, (error, response)->
+
+              if err
+                console.log err
+              else
+                $('.custom-modal').addClass('_shifted')
+                $('.sccss').addClass('_shifted')
+                Meteor.setTimeout ->
+                  $('.custom-modal').removeClass('_shifted').removeClass('_visible')
+                  $('.sccss').removeClass('_shifted')
+                  $('.modal-overlay').removeClass '_visible'
+                , 2000
+
+            options = {
+              title: title
+              name: name
+              phone: phone
+              email: email
+              type: type
+              date: eventDate
+              place: place
+              time: eventTime
+            }
+
+            console.log 'yoo'
+
+            Meteor.call 'sendOnlineTransactionalEmail', options, (err, res)->
+
+              console.log 'sending transactional email'
+
+              if err
+                console.log err
+#              else
+#                NProgress.done()
+#                $('.custom-modal').addClass('_shifted')
+#                $('.sccss').addClass('_shifted')
+#                Meteor.setTimeout ->
+#                  $('.custom-modal').removeClass('_shifted').removeClass('_visible')
+#                  $('.sccss').removeClass('_shifted')
+#                  $('.modal-overlay').removeClass '_visible'
+#                , 4000
+
+          else
+
+            Meteor.call 'payment', 'card', requestId, amount, (err, res)->
+
+              window.location.href = res
 
     else
+
+      console.log('Validation not passed')
 
       if $('#direction-user-name').val() is ''
         $('#direction-user-name').addClass '_invalid'
@@ -627,3 +707,24 @@ Template.onlineSchool.events {
   scheduleLoaded: false
 
 }
+
+Template.facebookShare.onRendered ->
+
+  console.log('loading srcipt')
+  d = document
+  s = 'script'
+  id = 'facebook-jssdk'
+  fjs = d.getElementsByTagName(s)[0]
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6&appId=287085884968214";
+  fjs.parentNode.insertBefore(js, fjs);
+
+Template.facebookShare.onDestroyed ->
+  $('#facebook-jssdk').remove()
+  $('#fb-root').removeClass('fb_reset')
+  $('#fb-root').html('')
+
+Template.facebookShare.helpers({
+  lind: ->
+    window.location.href
+})

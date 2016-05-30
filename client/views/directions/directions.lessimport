@@ -1,5 +1,11 @@
 #direction{
 
+  .share{
+    top: -40px;
+  }
+
+
+
   .top{
     height: 430px;
     width: 100%;
@@ -23,7 +29,7 @@
           font-size: 150px;
           color: white;
           @media screen and (max-width: @screen-sm-max) {
-            font-size: 22vw;
+            font-size: 13vw;
           }
           &:nth-child(1){
             font-family: @font-family-script;
@@ -271,6 +277,7 @@
   }
 
   .international{
+    position: relative;
     background: #441133;
     height: 300px;
     text-align: center;
@@ -328,5 +335,215 @@
     }
 
   }
+
+  .more-info{
+
+    h3{
+      span{
+        display: block;
+      }
+      span:nth-child(1){
+        font-size: 3vw;
+      }
+      span:nth-child(2){
+        font-size: 5vw;
+        color: @brand-primary;
+      }
+    }
+
+    h4{
+      font-size: 2vw;
+      margin-top: 2vw;
+    }
+
+    ul{
+      margin: 2vw;
+      li{
+        font-size: 1.6vw;
+        color: @gray;
+      }
+    }
+
+    @media screen and (max-width: @screen-sm-max) {
+      h3{
+        span:nth-child(1){
+          font-size: 5vw;
+        }
+        span:nth-child(2){
+          font-size: 8vw;
+          color: @brand-primary;
+        }
+      }
+      h4{
+        font-size: 4vw;
+        margin-top: 4vw;
+      }
+      ul{
+        margin: 4vw;
+        li{
+          font-size: 4vw;
+        }
+      }
+    }
+
+  }
+  
+  .about-trainer{
+    margin-bottom: 6vw;
+    h3{
+      font-family: @font-family-script;
+      font-size: 6vw;
+      color: @gray-light;
+      margin: 6vw 0;
+    }
+    .row{
+      position: relative;
+      z-index: 2;
+      >aside{
+        position: relative;
+        .make-md-column(5);
+      }
+      >div{
+        .make-md-column(7);
+        h4{
+          font-size: 3vw;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+        .sub-header{
+          font-size: 1.5vw;
+          text-align: center;
+        }
+        p{
+          margin-top: 1.3vw;
+        }
+      }
+    }
+    @media screen and (max-width: @screen-sm-max) {
+      h3{
+        position: relative;
+        font-size: 10vw !important;
+        z-index: 11;
+      }
+      .row{
+        >div{
+          h4{
+            font-size: 8vw;
+            text-align: center;
+            margin-top: 4vw;
+            font-family: @font-family-serif;
+          }
+          .sub-header{
+            display: block;
+            text-align: center;
+            font-size: 3vw;
+          }
+          p{
+            margin-top: 4vw;
+            font-size: 4vw;
+          }
+        }
+      }
+    }
+  }
+
+  .cost{
+    h3{
+      font-size: 4vw;
+      margin-bottom: 3vw;
+    }
+    h4{
+      font-size: 2vw;
+      text-align: center;
+      margin-bottom: 2vw;
+      span:nth-child(1){
+        color: @gray-light;
+        font-weight: 200;
+      }
+      span:nth-child(2){
+        color: @brand-primary;
+        font-family: @font-family-serif;
+      }
+    }
+    @media screen and (max-width: @screen-sm-max) {
+      h3{
+        font-size: 7vw !important;
+        margin-bottom: 5vw !important;
+      }
+      h4{
+        font-size: 5vw;
+        span{
+          display: block;
+          margin-bottom: 1.5vw;
+        }
+      }
+    }
+  }
+
+  .free-seminar{
+    margin: 3vw auto;
+    p{
+      @media screen and (max-width: @screen-sm-max) {
+        font-size: 4vw;
+      }
+    }
+    a{
+      display: block;
+      font-size: 3vw;
+      font-family: @font-family-serif;
+      color: @brand-primary;
+      @media screen and (max-width: @screen-sm-max) {
+        font-size: 6vw;
+      }
+    }
+  }
+
+}
+.top-nav{
+  position: relative;
+  z-index: 100;
+  text-align: center;
+  margin-top: 50px;
+  .hidden-sm;
+  .hidden-xs;
+  a{
+    margin: 0px 20px;
+    font-family: @font-family-serif;
+    font-size: 16px;
+  }
+}
+
+.online-features{
+  text-align: left;
+  font-size: 18px;
+  padding: 0px 11%;
+}
+
+.pay-later{
+
+  font-size: 18px;
+  font-family: Helvetica Neue, Helvetica, Arial;
+  font-weight: 200;
+
+  input{
+    width: 18px;
+    height: 18px;
+    padding-right: 10px !important;
+    margin-left: 20px;
+  }
+
+}
+
+.direction-onlineSchool{
+
+  .group-time{
+    height: 160px;
+  }
+
+}
+
+.custom-modal._special._visible{
+
+  margin-top: 0 !important;
 
 }

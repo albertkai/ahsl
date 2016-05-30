@@ -600,4 +600,87 @@ Schedules.allow {
 #
 #    }
 
-
+#if Meteor.isServer
+#
+#  if Schedules.find({group: 'onlineSchool_morning'}).count() is 0
+#
+#    Schedules.insert {
+#
+#      group: 'onlineSchool_morning'
+#
+#      times: ['12:00 - 13:00']
+#
+#      schedule: {
+#
+#        116: {
+#          10: {
+#            1: {
+#              lessons: ['верховая езда', 'верховая езда', 'верховая езда']
+#              color: '1'
+#            }
+#          }
+#        }
+#
+#      }
+#
+#    }
+#
+#  if Schedules.find({group: 'onlineSchool_weekend'}).count() is 0
+#
+#    Schedules.insert {
+#
+#      group: 'onlineSchool_weekend'
+#
+#      times: ['13:00 - 14:00', '18:00 - 19:00']
+#
+#      schedule: {
+#
+#        116: {
+#          10: {
+#            1: {
+#              lessons: ['верховая езда', 'верховая езда', 'верховая езда']
+#              color: '1'
+#            }
+#          }
+#        }
+#
+#      }
+#
+#    }
+#
+#  if Schedules.find({group: 'onlineSchool_evening'}).count() is 0
+#
+#    Schedules.insert {
+#
+#      group: 'onlineSchool_evening'
+#
+#      times: ['18:30 - 19:30']
+#
+#      schedule: {
+#
+#        116: {
+#          10: {
+#            1: {
+#              lessons: ['верховая езда', 'верховая езда', 'верховая езда']
+#              color: '1'
+#            }
+#          }
+#        }
+#
+#      }
+#
+#    }
+#
+#  Schedules.find().forEach (schedule)=>
+#    if schedule.group is 'lateTeens' or schedule.group is 'children' or schedule.group is 'teens_day' or schedule.group is 'summerSchool'
+#      Schedules.update schedule._id,  {$set: {times: ['17:00 - 17:45', '17:55 - 18:40', '18:45 - 19:30']}}
+#    else if schedule.group is 'grownUps_evening' or schedule.group is 'summerSchool_evening'
+#      Schedules.update schedule._id,  {$set: {times: ['19:30 - 20:15', '20:25 - 21:10', '21:15 - 22:00']}}
+#    else if schedule.group is 'grownUps'
+#      Schedules.update schedule._id,  {$set: {times: ['11:00 - 11:45', '11:55 - 12:35', '12:45 - 13:30', '13:40 - 14:25', '14:35 - 15:10']}}
+#    else if schedule.group is 'onlineSchool_evening'
+#      Schedules.update schedule._id,  {$set: {times: ['18:30 - 19:30']}}
+#    else if schedule.group is 'onlineSchool_morning'
+#      Schedules.update schedule._id,  {$set: {times: ['12:00 - 13:00']}}
+#    else if schedule.group is 'onlineSchool_weekend'
+#      Schedules.update schedule._id,  {$set: {times: ['13:00 - 14:00', '18:00 - 19:00']}}

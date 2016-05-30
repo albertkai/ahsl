@@ -112,6 +112,10 @@ p{
   }
 }
 
+#vk_share_button{
+  font-size: 16px;
+}
+
 button{
   border: 0;
   .rounded(0);
@@ -130,6 +134,16 @@ button{
     }
   }
 }
+
+.share{
+  position: relative;
+  >div{
+    display: inline-block;
+    margin: 0px 10px;
+    vertical-align: top;
+  }
+}
+
 a{
   color: @gray-darker;
   font-weight: 200;
@@ -161,6 +175,21 @@ hr{
 
 .container{
   position: relative;
+}
+
+.online-link{
+  margin-top: 7px;
+  display: block;
+  //border: 1px solid @brand-primary;
+  text-align: right;
+  color: @brand-primary;
+  font-family: copper;
+  font-size: 14px;
+  //padding: 5px;
+  text-decoration: none;
+  border: 1px solid;
+  text-align: center;
+  padding: 5px;
 }
 
 
@@ -322,6 +351,13 @@ header{
   &.inner{
 
     height: 75px;
+
+    .online-link{
+      position: absolute;
+      right: 200px;
+      top: 15px;
+      font-size: 12px;
+    }
 
     @media screen and (max-width: @screen-sm-max) {
       height: 25vw;
@@ -491,6 +527,7 @@ header{
 .social{
   left: 0;
   &.huge{
+    .hidden-xs;
     a{
       width: 65px;
       height: 65px;
@@ -734,6 +771,31 @@ header{
       .translate(0, 0);
     }
   }
+}
+
+.calendar-time-controls{
+
+  margin-top: 10px;
+  
+  input{
+    font-size: 24px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin: 0 5px 10px 0;
+    border: 0;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, .3);
+  }
+  
+  .remove{
+    color: red;
+  }
+  
+  .add{
+    color: lawngreen;
+    font-size: 28px;
+    padding: 5px 10px;
+  }
+  
 }
 
 
@@ -1427,6 +1489,7 @@ footer{
     bottom: 0;
     right: 0;
     text-align: right;
+    .hidden-sm;
   }
   
   .disclaimer{
@@ -1452,6 +1515,12 @@ footer{
       &:nth-child(1){
         font-weight: 400;
       }
+    }
+    @media screen and (max-width: @screen-sm-max) {
+      width: 100%;
+      left: 0;
+      bottom: 200px;
+      text-align: center;
     }
   }
   

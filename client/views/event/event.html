@@ -15,6 +15,12 @@
             </div>
         </div>
         <div class="container body">
+            <div class="share">
+                <div id="vk_share_button"></div>
+                <div class="fb-share-button" data-href="{{location}}" data-layout="button_count" data-mobile-iframe="true"></div>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="ahse">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
             <div class="row">
                 <div>
                     <p data-aura-with-html="mainDesc" contenteditable="false">
@@ -330,5 +336,7 @@
         </div>
 
     </div>
+
+    <script>document.getElementById('vk_share_button').innerHTML = VK.Share.button('{{location}}', {type: 'button'})</script>
 
 </template>

@@ -4,6 +4,10 @@
     display: none !important;
   }
 
+  .share{
+    top: -20px;
+  }
+
   .select2-container{
     width: 90% !important;
     margin: 5% !important;

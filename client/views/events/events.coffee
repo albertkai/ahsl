@@ -13,10 +13,12 @@ Template.eventsList.helpers {
 Template.eventsList.rendered = ->
 
   $('.wrap').addClass '_animated'
+  Session.set('eventsRoute', 'event')
 
 Template.masterClassesList.rendered = ->
 
   $('.wrap').addClass '_animated'
+  Session.set('eventsRoute', 'masterclass')
 
 Template.masterClassesListSochi.rendered = ->
 

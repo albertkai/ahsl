@@ -58,6 +58,9 @@ Template.eventPage.helpers {
     else if Session.get('chosenType') is 'video'
       @videoPrice
 
+  location: ->
+    window.location.href
+
   isInvisible: ->
 
     if @type is 'masterclass_sochi'

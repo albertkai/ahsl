@@ -84,12 +84,12 @@
 #    }
 
 
-Meteor.startup ->
-
-  Girls.update {surname: 'Селиверстова'}, {$set: {votes: 758}}
-  Girls.update {surname: 'Сокольникова'}, {$set: {votes: 623}}
-  Girls.update {surname: 'Газа'}, {$set: {votes: 801}}
-  Girls.update {surname: 'Бакирова'}, {$set: {votes: 654}}
-  Girls.update {surname: 'Иевлева'}, {$set: {votes: 728}}
-  Girls.update {surname: 'Шнайдер'}, {$set: {votes: 651}}
-  Girls.update {surname: 'Александрова'}, {$set: {votes: 540}}
+#Meteor.startup ->
+#
+#  Girls.update {surname: 'Селиверстова'}, {$set: {votes: 758}}
+#  Girls.update {surname: 'Сокольникова'}, {$set: {votes: 623}}
+#  Girls.update {surname: 'Газа'}, {$set: {votes: 801}}
+#  Girls.update {surname: 'Бакирова'}, {$set: {votes: 654}}
+#  Girls.update {surname: 'Иевлева'}, {$set: {votes: 728}}
+#  Girls.update {surname: 'Шнайдер'}, {$set: {votes: 651}}
+#  Girls.update {surname: 'Александрова'}, {$set: {votes: 540}}

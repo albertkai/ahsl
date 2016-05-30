@@ -8,6 +8,7 @@ if Meteor.isClient
       teens_day: ['17:00 - 17:45', '17:55 - 18:40', '18:45 - 19:30']
       lateTeens: ['17:00 - 17:45', '17:55 - 18:40', '18:45 - 19:30']
       grownUps: ['11:00 - 11:45', '11:55 - 12:35', '12:45 - 13:30', '13:40 - 14:25', '14:35 - 15:10']
+      onlineSchool: ['11:00 - 11:45', '11:55 - 12:35', '12:45 - 13:30', '13:40 - 14:25', '14:35 - 15:10']
       grownUps_evening: ['19:30 - 20:15', '20:25 - 21:10', '21:15 - 22:00']
       summerSchool: ['17:00 - 17:45', '17:55 - 18:40', '18:45 - 19:30']
       summerSchool_evening: ['19:30 - 20:15', '20:25 - 21:10', '21:15 - 22:00']
@@ -17,6 +18,7 @@ if Meteor.isClient
     groups: '<div class="container group-change-cont"><div class="row"><div><button class="lead _active" data-group="children">Детская группа</button></div><div><button class="lead" data-group="teens_day">Школьная группа</button></div><div><button class="lead" data-group="lateTeens">Подростковая группа</button></div><div><button class="lead" data-group="grownUps" data-time="true">Взрослая группа</button></div></div></div>'
     groupTimes: '<div class="container group-time"><div class="chckbx _active" data-group="grownUps"><div><div></div></div><p>Дневная группа</p></div><div class="chckbx" data-group="grownUps_evening"><div><div></div></div><p>Вечерняя группа</p></div></div>'
     summerGroupTimes: '<div class="container group-time"><div class="chckbx _active" data-group="summerSchool"><div><div></div></div><p>Дневная группа</p></div><div class="chckbx" data-group="summerSchool_evening"><div><div></div></div><p>Вечерняя группа</p></div></div>'
+    onlineGroupTimes: '<div class="container _visible group-time"><div class="chckbx _active" data-group="onlineSchool_morning"><div><div></div></div><p>Дневная группа</p></div><div class="chckbx" data-group="onlineSchool_evening"><div><div></div></div><p>Вечерняя группа</p></div><div class="chckbx" data-group="onlineSchool_weekend"><div><div></div></div><p>Группа выходного дня</p></div></div>'
     months: ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
     drawGroups: true
     chooseTime: false
@@ -44,8 +46,16 @@ if Meteor.isClient
 
     init: ->
 
-      @schedule = Schedules.findOne({'group': @group}).schedule
+      schedule = Schedules.findOne({'group': @group})
+      @schedule = schedule.schedule
+      @hours = schedule.times
       @_draw()
+
+      Deps.autorun (c)->
+        unless c.firstRun
+          user = Meteor.user()
+          if user?
+            @_refresh()
 
 
       #Events
@@ -100,11 +110,12 @@ if Meteor.isClient
         target = $(e.currentTarget).data('group')
         $('body').find(@el).find('.group-change-cont').find('button').removeClass '_active'
         $(e.currentTarget).addClass '_active'
-        @hours = @hourTimes[target]
         if !$(e.currentTarget).data('time') or $(e.currentTarget).data('time') is ''
           $('.group-time').removeClass '_visible'
           @group = target
-          @schedule = Schedules.findOne({'group': target}).schedule
+          schedule = Schedules.findOne({'group': target})
+          @schedule = schedule.schedule
+          @hours = schedule.times
           @_redrawCalendar()
         else
           $('.group-time').addClass '_visible'
@@ -113,9 +124,10 @@ if Meteor.isClient
       $('body').on 'click', '.group-time .chckbx>div', (e)=>
         target = $(e.currentTarget).closest('.chckbx').data('group')
         console.log target
-        @hours = @hourTimes[target]
+        schedule = Schedules.findOne({'group': target})
+        @schedule = schedule.schedule
+        @hours = schedule.times
         $(e.currentTarget).closest('.chckbx').addClass('_active').siblings().removeClass('_active')
-        @schedule = Schedules.findOne({'group': target}).schedule
         @group = target
         console.log @schedule
         @_redrawCalendar()
@@ -144,6 +156,27 @@ if Meteor.isClient
           else
             Aura.notify 'Расписание изменено!'
 
+      $('body').on 'input', '.calendar-time-controls input', (e)=>
+        Meteor.clearTimeout @saveTimesTimeout
+        @saveTimesTimeout = Meteor.setTimeout =>
+          val = $(e.target).val()
+          index = $(e.target).closest('div').index()
+          Meteor.call 'updateScheduleTimes', val, index, @group, @hours, (err, res)=>
+            console.log('Times updated')
+            @_refresh()
+        , 1500
+
+      $('body').on 'click', '.calendar-time-controls .remove', (e)=>
+        index = $(e.target).closest('div').index()
+        Meteor.call 'removeScheduleTimes', index, @group, @hours, (err, res)=>
+          console.log('Time removed')
+          @_refresh()
+
+      $('body').on 'click', '.calendar-time-controls .add', (e)=>
+        index = $(e.target).closest('div').index()
+        Meteor.call 'addScheduleTimes', @group, @hours, (err, res)=>
+          console.log('Time removed')
+          @_refresh()
 
       $('.time-range').on 'click', (e)->
         console.log 'hey'
@@ -170,12 +203,21 @@ if Meteor.isClient
         , 1500
 
 
+    _refresh: ->
+
+      console.log('refreshing')
+      schedule = Schedules.findOne({'group': @group})
+      @schedule = schedule.schedule
+      @hours = schedule.times
+      @_redrawCalendar()
+
 
     _draw: ->
 
       heading = @_drawHeading()
       calendar = @_drawCalendar()
-      markup = '<div class="container"><div class="calendar" data-month="' + @month + '">' + heading + '<div class="body">' + calendar + '</div></div></div></div></div>'
+      timeControls = @_drawTimeControls()
+      markup = '<div class="container"><div class="calendar" data-month="' + @month + '">' + heading + '<div class="body">' + calendar + '</div></div>' + timeControls + '</div></div></div>'
       $(@el).html(markup)
       @_showCalendar()
       @_showControls()
@@ -192,6 +234,8 @@ if Meteor.isClient
       console.log 'group is ' + @group
       if @group is 'summerSchool' or @group is 'summerSchool_evening'
         markup += @summerGroupTimes
+      else if @group is 'onlineSchool_morning' or @group is 'onlineSchool_evening' or @group is 'onlineSchool_weekend'
+        markup += @onlineGroupTimes
       else
         markup += @groupTimes
       markup += '<div class="container calendar-controls">'
@@ -200,6 +244,31 @@ if Meteor.isClient
       markup += '<div class="calendar-wrapper">'
       markup += @header
       markup
+
+    _drawTimeControls: ->
+      console.log('Roles')
+      console.log(Roles)
+      markup = '<div class="calendar-time-controls">'
+      for i in [0..@hours.length - 1]
+        markup += '<div><input class="calendar-input" value="' + @hours[i] + '"/><button class="remove">Убрать</button></div>'
+      markup += '<button class="add">+ Добавить</button></div>'
+      if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+        markup
+      else
+        ''
+
+    _redrawTimeControls: ->
+
+      markup = ''
+      for i in [0..@hours.length - 1]
+        markup += '<div><input class="calendar-input" value="' + @hours[i] + '"/><button class="remove">Убрать</button></div>'
+      markup += '<button class="add">+ Добавить</button>'
+      if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+        markup
+      else
+        ''
+      $('.calendar-time-controls').html(markup)
+
 
     _drawCalendar: ->
 
@@ -214,6 +283,7 @@ if Meteor.isClient
 
       newCalendar = @_drawCalendar()
       $(@el).find('.body').html(newCalendar)
+      @_redrawTimeControls()
 
     _redrawControls: ->
 
@@ -340,6 +410,26 @@ if Meteor.isServer
         Schedules.update {group: group}, {$set: query2}
         console.log query1
         console.log query2
+
+    'updateScheduleTimes': (value, index, group, hours)->
+
+      if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+        hours[parseInt(index)] = value
+        console.log(hours)
+        console.log(group)
+        Schedules.update {group: group}, {$set: {times: hours}}
+
+    'removeScheduleTimes': (index, group, hours)->
+
+      if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+        hours.splice(index, 1)
+        Schedules.update {group: group}, {$set: {times: hours}}
+
+    'addScheduleTimes': (group, hours)->
+
+      if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+        hours.push('00:00 - 00:00')
+        Schedules.update {group: group}, {$set: {times: hours}}
 
   }
 
