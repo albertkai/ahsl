@@ -34,3 +34,5 @@ random
 percolate:paginated-subscription
 http
 service-configuration
+manuelschoebel:ms-seo
+reactive-var

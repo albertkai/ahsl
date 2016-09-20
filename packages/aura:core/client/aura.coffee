@@ -43,6 +43,9 @@ if Meteor.isClient
   Template.registerHelper 'grownUps', ->
     AuraPages.findOne({name: 'grownUps'})
 
+  Template.registerHelper 'reviews', ->
+    AuraPages.findOne({name: 'reviews'})
+
   Template.registerHelper 'onlineSchool', ->
     AuraPages.findOne({name: 'onlineSchool'})
 
@@ -959,6 +962,22 @@ if Meteor.isClient
       $(e.currentTarget).remove()
 
 
+    $('body').on 'change', '[data-aura-instant-checkbox-simple]', (e)->
+
+      query = $(e.currentTarget).data('aura-instant-checkbox-simple').split('.')
+      value = $(e.currentTarget).val()
+      item = {}
+      item['collection'] = 'auraPages'
+      item['document'] = query[0]
+      item['index'] = 'name'
+      item['field'] = query[1]
+      item['data'] = $(e.currentTarget).is(':checked')
+      Meteor.call 'saveHtml', item, (err, res)->
+        if err
+          console.log err
+        else
+          Aura.notify 'Изменения сохранены!'
+
     $('body').on 'change', '[data-aura-instant-checkbox]', (e)->
 
       query = $(e.currentTarget).data('aura-instant-checkbox').split('.')
@@ -982,12 +1001,13 @@ if Meteor.isClient
 
       if $(e.currentTarget).val() isnt '-'
 
+        index = $(e.currentTarget).data('aura-index')
         query = $(e.currentTarget).data('aura-instant-select').split('.')
         value = $(e.currentTarget).val()
         item = {}
         item['collection'] = query[0]
         item['document'] = query[1]
-        item['index'] = '_id'
+        item['index'] = if index? and index isnt '' then index else '_id'
         query.shift()
         query.shift()
         item['field'] = query

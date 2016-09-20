@@ -21,6 +21,27 @@ Router.route 'children', {
       @render()
 }
 
+Router.route 'reviews', {
+  layoutTemplate: 'innerLayout'
+  waitOn: ->
+#      Meteor.subscribe('schedules')
+  action: ->
+    if @ready()
+      @render()
+}
+
+Router.route 'blog', {
+  layoutTemplate: 'innerLayout'
+}
+
+#Router.route 'thank-you-signin', {
+#  template: 'thankYouSignup'
+#}
+#
+#Router.route 'thank-you-payment', {
+#  template: 'thankYouPayment'
+#}
+
 Router.route 'teens', {
   layoutTemplate: 'innerLayout'
   waitOn: ->
@@ -38,6 +59,23 @@ Router.route 'summer-school', {
   action: ->
     if @ready()
       @render()
+  onAfterAction: ->
+    if Meteor.isClient
+      doc = AuraPages.findOne({name: 'summerSchool'})
+      if doc
+        SEO.set({
+          title: 'Austrian Higher School of Etiquette | Летняя школа',
+          meta: {
+            'description':  doc.mainDesc
+          },
+          og: {
+            'title': 'Летняя щкола',
+            'description': doc.mainDesc,
+            'url': 'http://ladies-school.com/summer',
+            'type': 'article',
+            'image': 'http://d1tvqt3gjtui5j.cloudfront.net/images/' + doc.mainPic
+          }
+        })
 }
 
 Router.route 'summer', {
@@ -70,8 +108,35 @@ Router.route 'lateteens', {
 Router.route 'online', {
   template: 'onlineSchool'
   layoutTemplate: 'innerLayout'
+  data: ->
+    doc = AuraPages.findOne({name: 'onlineSchool'})
+    if doc
+      {
+        url: 'http://ladies-school.com',
+        title: 'Austrian Higher School of Etiquette',
+        desc: 'Онлайн обучение в Австрийской высшей школе Этикета',
+        img: doc.mainPic
+      }
+    else {}
   waitOn: ->
 #      Meteor.subscribe('schedules')
+  onAfterAction: ->
+    if Meteor.isClient
+      doc = AuraPages.findOne({name: 'onlineSchool'})
+      if doc
+        SEO.set({
+          title: 'Austrian Higher School of Etiquette | Онлайн обучение',
+          meta: {
+            'description': 'Обучение онлайн в Австрийской Высшей школе Этикета'
+          },
+          og: {
+            'title': 'Австрийская высшая школа этикета',
+            'description': 'Обучение онлайн в Австрийской Высшей школе Этикета',
+            'url': 'http://ladies-school.com/online',
+            'type': 'article',
+            'image': 'http://d1tvqt3gjtui5j.cloudfront.net/images/' + doc.mainPic
+          }
+        })
   action: ->
     if @ready()
       @render()
@@ -159,6 +224,23 @@ Router.route 'eventPage', {
   action: ->
     if @ready()
       @render()
+  onAfterAction: ->
+    if Meteor.isClient
+      doc = Events.findOne({alias: @params.alias})
+      if doc
+        SEO.set({
+          title: 'Austrian Higher School of Etiquette | ' + doc.title,
+          meta: {
+            'description':  doc.desc
+          },
+          og: {
+            'title': doc.title,
+            'description': doc.desc,
+            'url': 'http://ladies-school.com/event/' + doc.alias,
+            'type': 'article',
+            'image': 'http://d1tvqt3gjtui5j.cloudfront.net/images/' + doc.pic
+          }
+        })
 }
 
 Router.route 'gallery', {
@@ -211,6 +293,8 @@ Router.route 'success', {
     Meteor.subscribe('slider')
   onAfterAction: ->
     Blaze.render Template.successWindow, document.body
+    fbq('track', 'Purchase', {value: '100.00', currency: 'USD'})
+    yaCounter27185078.reachGoal('Purchase')
 
   action: ->
     if @ready()
@@ -233,6 +317,9 @@ Router.route 'api/paymentSuccess', {
     place = request.place
     time = request.eventTime
     type = request.eventType
+
+    Meteor.call('sendRequestEmail', 'Прошла оплата по заявке', "Имя: #{ request.name }, \n Email: #{ request.email } \n Заголовок: #{ request.title } \n Тип: #{ request.type }")
+
     if type is 'webinar'
       link = request.additional.link
       password = request.additional.pass
@@ -275,7 +362,6 @@ Router.route 'api/paymentSuccess', {
         html: html
       })
 
-
     Requests.update {'_id': request._id}, {$set: {paymentStatus: 'received'}}
     console.log request._id
 
@@ -294,7 +380,10 @@ Router.onAfterAction ->
 
   if Meteor.isClient
 
-    document.body.scrollTop = 0
+    currentRoute = Session.get('currentActiveRoute')
+    if currentRoute isnt Router.current().location.get().href
+      document.body.scrollTop = 0
+    Session.set('currentActiveRoute', Router.current().location.get().href)
     Meteor.setTimeout ->
       if Session.get('admin.editMode') is true
         $('[contenteditable]').each ->

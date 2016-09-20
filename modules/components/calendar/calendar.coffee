@@ -15,7 +15,7 @@ if Meteor.isClient
     month: new Date().getMonth()
     year: new Date().getYear()
     header: '<div class="header"><div>Время</div><div>ПН</div><div>ВТ</div><div>СР</div><div>ЧТ</div><div>ПТ</div><div>СБ</div><div>ВС</div></div>'
-    groups: '<div class="container group-change-cont"><div class="row"><div><button class="lead _active" data-group="children">Детская группа</button></div><div><button class="lead" data-group="teens_day">Школьная группа</button></div><div><button class="lead" data-group="lateTeens">Подростковая группа</button></div><div><button class="lead" data-group="grownUps" data-time="true">Взрослая группа</button></div></div></div>'
+    groups: '<div class="container group-change-cont"><div class="row"><div><button id="trigger-grown" class="lead _active" data-group="grownUps" data-time="true">Взрослая группа</button></div><div><button class="lead" data-group="children">Детская группа</button></div><div><button class="lead" data-group="teens_day">Школьная группа</button></div><div><button class="lead" data-group="lateTeens">Подростковая группа</button></div></div></div>'
     groupTimes: '<div class="container group-time"><div class="chckbx _active" data-group="grownUps"><div><div></div></div><p>Дневная группа</p></div><div class="chckbx" data-group="grownUps_evening"><div><div></div></div><p>Вечерняя группа</p></div></div>'
     summerGroupTimes: '<div class="container group-time"><div class="chckbx _active" data-group="summerSchool"><div><div></div></div><p>Дневная группа</p></div><div class="chckbx" data-group="summerSchool_evening"><div><div></div></div><p>Вечерняя группа</p></div></div>'
     onlineGroupTimes: '<div class="container _visible group-time"><div class="chckbx _active" data-group="onlineSchool_morning"><div><div></div></div><p>Дневная группа</p></div><div class="chckbx" data-group="onlineSchool_evening"><div><div></div></div><p>Вечерняя группа</p></div><div class="chckbx" data-group="onlineSchool_weekend"><div><div></div></div><p>Группа выходного дня</p></div></div>'
@@ -105,6 +105,10 @@ if Meteor.isClient
             @_showControls()
           , 100
         , 400
+
+      Meteor.setTimeout ->
+        $('body').find('button#trigger-grown').trigger('click')
+      , 400
 
       $('body').find(@el).on 'click', '.group-change-cont button', (e)=>
         target = $(e.currentTarget).data('group')

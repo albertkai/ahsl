@@ -283,7 +283,6 @@ if Meteor.isServer
         query[item.field]
 
 
-
     addListItem: (document, field, object)->
       loggedInUser = Meteor.user()
       if Roles.userIsInRole(loggedInUser, ['owner', 'admin'])

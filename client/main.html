@@ -4,17 +4,47 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <meta property="og:url"           content="http://www.your-domain.com/your-page.html" />
+    <meta property="og:url"           content="http://www.ladies-school.com/" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Your Website Title" />
-    <meta property="og:description"   content="Your description" />
-    <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+    <meta property="og:title"         content="Austrian Higher School of Etiquette" />
+    <meta property="og:description"   content="Австрийская высшая школа этикета" />
+    <meta property="og:image"         content="http://www.ladies-school.com/img/main_logo.jpg" />
     <link rel="shortcut icon" href="/img/favicon.ico">
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
     <script type="text/javascript" src="http://vk.com/js/api/share.js?90" charset="windows-1251"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+            document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq = fbq;
+    fbq('init', '1571501976405822');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+                 src="https://www.facebook.com/tr?id=1571501976405822&ev=PageView&noscript=1"
+          /></noscript>
+  <!-- End Facebook Pixel Code -->
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6&appId=287085884968214";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+    window.fbAsyncInit = function() {
+        return FB.init({
+            appId: 287085884968214,
+            version:  'v2.6'
+        })
+    };
+</script>
 
 {{>aura}}
 
@@ -43,7 +73,6 @@
         } else { f(); }
     })(document, window, "yandex_metrika_callbacks");
 </script>
-<div id="fb-root"></div>
 <noscript><div><img src="//mc.yandex.ru/watch/27185078" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
@@ -94,7 +123,7 @@
             <li><a href="/gallery">Галерея</a></li>
             <li><a href="">Наши школы</a>
                 <ul>
-                    <li><a href="/summer-school">Школы в Санкт-Петербурге</a></li>
+                    <li><a href="/grownups">Школы в Санкт-Петербурге</a></li>
                     <li><a href="/country">Школа-Садик в Курортном районе</a></li>
                     <li><a href="/summer">Школа во Франции</a></li>
                     <li><a href="/sochi">Школа в Сочи</a></li>
@@ -166,7 +195,7 @@
                     <li><a href="/gallery">Галерея</a></li><span>|</span>
                     <li><a href="">Наши школы</a>
                         <ul>
-                            <li><a href="/summer-school">Школы в Санкт-Петербурге</a></li>
+                            <li><a href="/grownups">Школы в Санкт-Петербурге</a></li>
                             <li><a href="/country">Школа-Садик в Курортном районе</a></li>
                             <li><a href="/summer">Школа во Франции</a></li>
                             <li><a href="/sochi">Школа в Сочи</a></li>
@@ -190,28 +219,34 @@
 
             <h2 data-aura-html="index.header2" contenteditable="false">{{index.header2}}</h2>
 
-            <div class="row">
-                <div class="direction" data-aura-with="directions.$.kids" data-target="children">
-                    <div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{children.mainPic}})"></div>
-                    <h3>{{{children.heading}}}</h3>
-                    <p data-aura-html="children.indexDesc" contenteditable="false">{{{children.indexDesc}}}</p>
-                </div>
-                <div class="direction" data-aura-with="directions.$.teens" data-target="teens">
-                    <div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{teens.mainPic}})"></div>
-                    <h3>{{{teens.heading}}}</h3>
-                    <p data-aura-html="teens.indexDesc" contenteditable="false">{{{teens.indexDesc}}}</p>
-                </div>
-                <div class="direction" data-aura-with="directions.$.lateTeens" data-target="lateteens">
-                    <div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{lateTeens.mainPic}})"></div>
-                    <h3>{{{lateTeens.heading}}}</h3>
-                    <p data-aura-html="lateTeens.indexDesc" contenteditable="false">{{{lateTeens.indexDesc}}}</p>
-                </div>
-                <div class="direction" data-aura-with="directions.$.grownUps" data-target="grownups">
-                    <div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{grownUps.mainPic}})"></div>
-                    <h3>{{{grownUps.heading}}}</h3>
-                    <p data-aura-html="grownUps.indexDesc" contenteditable="false">{{{grownUps.indexDesc}}}</p>
-                </div>
-            </div>
+            <!--<div class="row">-->
+                <!--<div class="direction" data-aura-with="directions.$.kids" data-target="children">-->
+                    <!--<div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{children.mainPic}})"></div>-->
+                    <!--<h3>{{{children.heading}}}</h3>-->
+                    <!--<p data-aura-html="children.indexDesc" contenteditable="false">{{{children.indexDesc}}}</p>-->
+                <!--</div>-->
+                <!--<div class="direction" data-aura-with="directions.$.teens" data-target="teens">-->
+                    <!--<div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{teens.mainPic}})"></div>-->
+                    <!--<h3>{{{teens.heading}}}</h3>-->
+                    <!--<p data-aura-html="teens.indexDesc" contenteditable="false">{{{teens.indexDesc}}}</p>-->
+                <!--</div>-->
+                <!--<div class="direction" data-aura-with="directions.$.lateTeens" data-target="lateteens">-->
+                    <!--<div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{lateTeens.mainPic}})"></div>-->
+                    <!--<h3>{{{lateTeens.heading}}}</h3>-->
+                    <!--<p data-aura-html="lateTeens.indexDesc" contenteditable="false">{{{lateTeens.indexDesc}}}</p>-->
+                <!--</div>-->
+                <!--<div class="direction" data-aura-with="directions.$.grownUps" data-target="grownups">-->
+                    <!--<div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{grownUps.mainPic}})"></div>-->
+                    <!--<h3>{{{grownUps.heading}}}</h3>-->
+                    <!--<p data-aura-html="grownUps.indexDesc" contenteditable="false">{{{grownUps.indexDesc}}}</p>-->
+                <!--</div>-->
+            <!--</div>-->
+          <div class="row">
+            {{>mainDirections direction=index.dir1 field="dir1"}}
+            {{>mainDirections direction=index.dir2 field="dir2"}}
+            {{>mainDirections direction=index.dir3 field="dir3"}}
+            {{>mainDirections direction=index.dir4 field="dir4"}}
+          </div>
 
         </div>
 
@@ -232,6 +267,30 @@
                     <div data-aura-html="index.mainDesc" contenteditable="false">
                         {{{index.mainDesc}}}
                     </div>
+                  <section class="school-for-you">
+
+                    <h2 data-aura-html="onlineSchool.forYouHeader1" contenteditable="false">{{{onlineSchool.forYouHeader1}}}</h2>
+
+                    <div class="row">
+
+                      <ul class="col-md-6" data-aura-html="onlineSchool.forYou1" contenteditable="false">
+                        {{{onlineSchool.forYou1}}}
+                      </ul>
+
+                      <ul class="col-md-6" data-aura-html="onlineSchool.forYou2" contenteditable="false">
+                        {{{onlineSchool.forYou2}}}
+                      </ul>
+
+                    </div>
+
+                    <h3 data-aura-html="onlineSchool.forYouHeader2" contenteditable="false">{{{onlineSchool.forYouHeader2}}}</h3>
+
+                  </section>
+                    <div class="video-about">
+                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/XX5vjIHif2E" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+
 
                 </article>
                 <div class="news">
@@ -820,4 +879,25 @@
 
     </section>
 
+</template>
+
+
+<template name="mainDirections">
+  <div class="direction" data-target="{{direction}}">
+    <div class="img" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{mainPic}})"></div>
+    <h3>{{{heading}}}</h3>
+    <p data-aura-html="{{direction}}.indexDesc" contenteditable="false">{{{indexDesc}}}</p>
+    {{#if userIsAdmin}}
+      <select id="type-select" data-aura-instant-select="auraPages.index.{{field}}" data-aura-index="name">
+        <option value="children">Детская группа</option>
+        <option value="teens">Школьная группа</option>
+        <option value="lateTeens">Подростковая группа</option>
+        <option value="grownUps">Взрослая группа</option>
+        <option value="summerSchool">Летняя школа</option>
+        <option value="international">Международная</option>
+        <option value="onlineSchool">Дистанционное</option>
+        <option value="masterclass">Мастер-классы</option>
+      </select>
+    {{/if}}
+  </div>
 </template>

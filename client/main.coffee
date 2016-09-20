@@ -10,6 +10,15 @@ Meteor.subscribe 'countrySlider'
 Meteor.subscribe 'schedules', ->
   Session.set 'schedule', 'loaded'
 
+#ShareIt.configure({
+#  sites: {
+#    'facebook': {
+#      'appId': 287085884968214
+#    }
+#  },
+#  classes: 'btn btn-xs'
+#});
+
 
 Template.mainLayout.rendered = ->
 
@@ -156,9 +165,10 @@ Template.mainLayout.events {
 
   'click .directions .direction': (e)->
     console.log 'clicked dir'
-    if !$(e.target).data('aura-html') and !$(e.target).data('aura-with-html') and !$(e.target).data('aura-list-html')
+    if !$(e.target).data('aura-html') and !$(e.target).data('aura-with-html') and !$(e.target).data('aura-list-html') and !$(e.target).is('select')
       if !Session.get('admin.editMode')
         target = $(e.currentTarget).data('target')
+        target = if target is 'onlineSchool' then 'online' else target
         Router.go '/' + target
 
   'click .events .event': (e)->
@@ -235,4 +245,19 @@ Meteor.Spinner.options = {
     })
 
 
+}
+
+Template.mainDirections.onRendered ->
+  @.$('select').val(@data.direction)
+
+Template.mainDirections.helpers {
+  heading: ->
+    dir = Template.instance().data.direction
+    AuraPages.findOne({name: dir}).heading
+  mainPic: ->
+    dir = Template.instance().data.direction
+    AuraPages.findOne({name: dir}).mainPic
+  indexDesc: ->
+    dir = Template.instance().data.direction
+    AuraPages.findOne({name: dir}).indexDesc
 }

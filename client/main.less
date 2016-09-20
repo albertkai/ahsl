@@ -78,9 +78,10 @@ html, body{
 
 body{
   font-family: @font-family-sans-serif;
-  overflow-y: scroll;
-  overflow-x: hidden;
+}
 
+.wrap{
+  overflow-x: hidden !important;
 }
 
 a{
@@ -1268,6 +1269,9 @@ header{
         span{
           display: block;
           font-size: 28px;
+          @media screen and (max-width: @screen-xs-max) {
+            font-size: 22px;
+          }
           &:nth-child(1){
             font-family: @font-family-script;
             color: @gray;
@@ -1291,6 +1295,12 @@ header{
 
 
 .about{
+
+  .school-for-you{
+    li{
+      font-size: 14px;
+    }
+  }
 
   .container{
 
@@ -1350,7 +1360,7 @@ header{
 .events{
 
   @media screen and (max-width: @screen-xs-max) {
-    height: 580px;
+    height: 780px;
   }
 
   .arrows{
@@ -1369,9 +1379,9 @@ header{
 
     .event{
 
-      .make-md-column(3);
+      .make-xs-column(12);
       .make-sm-column(6);
-      .make-xs-column(6);
+      .make-md-column(3);
       cursor: pointer;
 
       >div{
@@ -1600,3 +1610,4 @@ iframe{
 @import "views/archive/archive.lessimport";
 @import "views/components/email.lessimport";
 @import "views/kindergarten/kindergarten.lessimport";
+@import "views/reviews/reviews.lessimport";

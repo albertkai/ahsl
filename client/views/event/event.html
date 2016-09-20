@@ -17,14 +17,13 @@
         <div class="container body">
             <div class="share">
                 <div id="vk_share_button"></div>
-                <div class="fb-share-button" data-href="{{location}}" data-layout="button_count" data-mobile-iframe="true"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="ahse">Tweet</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                {{>facebookShare img=pic desc=title}}
+                <!--{{>shareit}}-->
             </div>
             <div class="row">
                 <div>
                     <p data-aura-with-html="mainDesc" contenteditable="false">
-                        {{#if isSpecial}}Специальное{{/if}}
+                        <!--{{#if isSpecial}}Специальное{{/if}}-->
                         {{{mainDesc}}}
                     </p>
                     <!--{{#if online}}-->
@@ -58,9 +57,12 @@
 
                     {{#if isSpecial}}
 
-                        <button id="toggle-special" class="lead">Записаться</button>
+                        <button id="toggle-special-subscribe" class="lead">Записаться</button>
 
                     {{else}}
+
+                      {{#unless isSpecialSubscribe}}
+
                     <div class="row variants">
 
                         <div>
@@ -140,6 +142,11 @@
                         </div>
 
                     </div>
+                        {{else}}
+
+                        <button id="toggle-special-subscribe" class="lead">Записаться</button>
+
+                        {{/unless}}
                     {{/if}}
 
                 </div>
@@ -200,7 +207,8 @@
                     <br/>
                     <div class="checkbox-cont">
                         <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.mainPage" {{auraCheckboxIsChecked mainPage}}/> <span> Показывать на главной</span><br/>
-                        <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.isSpecial" {{auraCheckboxIsChecked isSpecial}}/> <span> Специальное событие</span>
+                        <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.isSpecial" {{auraCheckboxIsChecked isSpecial}}/> <span> Специальное событие</span><br/>
+                        <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.isSpecialSubscribe" {{auraCheckboxIsChecked isSpecialSubscribe}}/> <span> Специальное событие запись</span>
                     </div>
 
                     {{/if}}
@@ -211,7 +219,7 @@
         </div>
     </section>
 
-    <div class="custom-modal {{#if isSpecial}}_special{{/if}}" >
+    <div class="custom-modal {{#if isSpecial}}_special{{/if}} {{#if isSpecialSubscribe}}_special{{/if}}" >
 
         <div class="body">
 
@@ -271,6 +279,8 @@
 
             {{/if}}
 
+            {{#unless isSpecialSubscribe}}
+
             <h4>Способ оплаты</h4>
 
             <div class="payment-method">
@@ -318,6 +328,8 @@
                 </div>
 
             </div>
+
+            {{/unless}}
 
             <button id="send" class="lead" data-title="title">ОТПРАВИТЬ</button>
 

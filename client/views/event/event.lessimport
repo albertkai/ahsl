@@ -8,6 +8,12 @@
     top: -20px;
   }
 
+  img.aura-image-highlight {
+    width: 100%;
+    box-shadow: none !important;
+    z-index: 1000;
+  }
+
   .select2-container{
     width: 90% !important;
     margin: 5% !important;

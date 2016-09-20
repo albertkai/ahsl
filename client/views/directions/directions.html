@@ -1279,6 +1279,38 @@
 
     <section id="direction" class="wrap direction-onlineSchool">
 
+        <div class="reviews-link">
+          <div class="heading">
+            <i class="fa fa-users"></i> Отзывы клиентов
+            <button class="close-it"><i class="fa fa-times"></i></button>
+          </div>
+          <!--<div class="body">-->
+            <!--<p>авпппваваа</p>-->
+          <!--</div>-->
+        </div>
+
+        <div class="class-overlay">
+
+            <div class="container">
+
+              <h3>{{{classOverlayHeader}}}</h3>
+
+              <div class="close"><i class="fa fa-times"></i></div>
+
+              <div class="row">
+
+                <div>
+                  <img data-aura-list-image="pic" src="{{classOverlaySrc}}" alt="Новости"/>
+                </div>
+
+                <div data-aura-list-html="desc">{{{classOverlayDesc}}}</div>
+
+              </div>
+
+            </div>
+
+        </div>
+
         <section class="top" data-aura-image-background="onlineSchool.mainPic" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{onlineSchool.mainPic}});" data-stellar-background-ratio=".7">
 
             <div class="container">
@@ -1291,14 +1323,14 @@
 
         </section>
 
-        <section class="top-nav">
+        <section id="online-nav" class="top-nav">
             <nav>
                 <a href="#about-sec">Описание</a>
                 <a href="#info-sec">Содержание</a>
                 <a href="#trainer-sec">Педагог</a>
                 <a href="#classes-sec">Предметы</a>
                 <a href="#schedule-sec">Расписание</a>
-                <a href="#lead-sec">Запись</a></nav>
+                <a href="#packs-sec">Запись</a></nav>
         </section>
 
         <!--<script>(function(d, s, id) {-->
@@ -1315,16 +1347,25 @@
 
                 <div class="share">
                     <div id="vk_share_button"></div>
-                    {{>facebookShare}}
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="ahse">Tweet</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    {{>facebookShare img=onlineSchool.mainPic desc="Онлайн обучение в австрийской высшей школе леди"}}
+                    <!--{{>shareit}}-->
+                    <!--<iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fladies-school.com%2Fonline%2F&layout=button_count&mobile_iframe=true&appId=287085884968214&width=150&height=20&title=HelloWelt&description=gooooo" width="150" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>-->
+                    <!--<div class="fb-share-button" data-href="http://ladies-school.com/online" data-layout="button_count" data-mobile-iframe="true"></div>-->
                 </div>
                 <div class="row">
 
-                    <div data-aura-html="onlineSchool.mainDesc" contenteditable="false">
-                        {{{onlineSchool.mainDesc}}}
+                    <div>
+                        {{#if userIsAdmin}}
+                            <input type="checkbox" data-aura-instant-checkbox-simple="onlineSchool.gotSpecialActions" {{auraCheckboxIsChecked onlineSchool.gotSpecialActions}}/> <span> Есть акция</span><br/>
+                        {{/if}}
+                        {{# if onlineSchool.gotSpecialActions}}
+                            <div class="important" data-aura-html="onlineSchool.specialAction" contenteditable="false">{{{onlineSchool.specialAction}}}</div>
+                        {{/if}}
+                        <div data-aura-html="onlineSchool.mainDesc" contenteditable="false">
+                            {{{onlineSchool.mainDesc}}}
+                        </div>
                     </div>
-                    <aside>
+                    <aside class="hidden-xs">
                         <span class="quots">“</span>
                         <span class="quots">“</span>
                         <p data-aura-html="onlineSchool.mainQuot" contenteditable="false">{{{onlineSchool.mainQuot}}}</p>
@@ -1334,6 +1375,287 @@
                 </div>
 
             </div>
+
+        </section>
+
+      <!--<section class="video-about">-->
+
+        <!--<div class="container">-->
+
+          <!--<div class="row">-->
+
+            <!--<div class="col-md-10 col-md-offset-1">-->
+
+              <!--<iframe width="100%" height="480" src="https://www.youtube.com/embed/FhjfG-m86qE" frameborder="0" allowfullscreen></iframe>-->
+
+            <!--</div>-->
+
+          <!--</div>-->
+
+        <!--</div>-->
+
+      <!--</section>-->
+
+      <section id="packs-sec" class="packs">
+
+        <h2>Выбрать курс</h2>
+
+        <div class="container">
+
+          <div class="row">
+
+            <div class="pack">
+              <div class="wrap">
+                <h2 data-aura-html="onlineSchool.packOneName" contenteditable="false">{{{onlineSchool.packOneName}}}</h2>
+                {{#if onlineSchool.packOneGotDiscount}}
+                  <div class="new-price full">
+                    <h5>On-line курс</h5>
+                    <p><span class="actual">{{getDiscountedPrice onlineSchool.packOnePriceFull onlineSchool.packOneDiscount}} р</span> вместо <span data-aura-html="onlineSchool.packOnePriceFull" contenteditable="false">{{onlineSchool.packOnePriceFull}}</span></p>
+                  </div>
+                  <div class="new-price video">
+                    <h5>Курс видео-лекций</h5>
+                    <p><span class="actual">{{getDiscountedPrice onlineSchool.packOnePriceVideo onlineSchool.packOneDiscount}} р</span> вместо <span data-aura-html="onlineSchool.packOnePriceVideo" contenteditable="false">{{onlineSchool.packOnePriceVideo}}</span></p>
+                  </div>
+                {{else}}
+                  <div class="new-price full">
+                    <h5>On-line курс</h5>
+                    <p><span class="actual" data-aura-html="onlineSchool.packOnePriceFull" contenteditable="false">{{onlineSchool.packOnePriceFull}}</span></p>
+                  </div>
+                  <div class="new-price video">
+                    <h5>Курс видео-лекций</h5>
+                    <p><span class="actual" data-aura-html="onlineSchool.packOnePriceVideo" contenteditable="false">{{onlineSchool.packOnePriceVideo}}</span></p>
+                  </div>
+                {{/if}}
+                <hr/>
+                <!--<h4 data-aura-html="onlineSchool.packOneHeader" contenteditable="false">{{onlineSchool.packOneHeader}}</h4>-->
+                <ul data-aura-html="onlineSchool.packOneFeatures" contenteditable="false">
+                  {{{onlineSchool.packOneFeatures}}}
+                </ul>
+                <button class="lead" data-type="standard">Выбрать</button>
+                {{#if onlineSchool.packOneGotDiscount}}
+                  <div class="discount-cont row">
+                    <div>
+                      <p class="discount"><span>скидка</span><span data-aura-html="onlineSchool.packOneDiscount" contenteditable="false">{{onlineSchool.packOneDiscount}}</span></p>
+                    </div>
+                    <!--{{> counter date=onlineSchool.packOneDiscountDate field="packOneDiscountDate"}}-->
+                  </div>
+                {{/if}}
+                <!--<div id="star">-->
+                <!--<span>скидка</span><span>-50%</span>-->
+                <!--</div>-->
+                {{#if userIsAdmin}}
+                  <input type="checkbox" data-aura-instant-checkbox-simple="onlineSchool.packOneGotDiscount" {{auraCheckboxIsChecked onlineSchool.packOneGotDiscount}}/> <span> Есть скидка</span><br/>
+                        <!--{{#if onlineSchool.packOneGotDiscount}}-->
+                  <!--<input type="date" data-aura-instant-input="auraPages.onlineSchool.packOneDiscountDate" data-aura-index="name" value="{{onlineSchool.packOneDiscountDate}}"/> <span>Новая дата окончания акции</span>-->
+                        <!--{{/if}}-->
+                {{/if}}
+              </div>
+            </div>
+
+            <!--<div class="pack">-->
+            <!--<div class="wrap">-->
+            <!--<h2 data-aura-html="onlineSchool.packTwoName" contenteditable="false">{{onlineSchool.packTwoName}}</h2>-->
+                  <!--{{#if onlineSchool.packTwoGotDiscount}}-->
+            <!--<div class="new-price full">-->
+            <!--<h5>Online курс</h5>-->
+            <!--<p><span class="actual">{{getDiscountedPrice onlineSchool.packTwoPriceFull onlineSchool.packTwoDiscount}} р</span> вместо <span data-aura-html="onlineSchool.packTwoPriceFull" contenteditable="false">{{onlineSchool.packTwoPriceFull}}</span></p>-->
+            <!--</div>-->
+            <!--<div class="new-price video">-->
+            <!--<h5>Курс видео-лекций</h5>-->
+            <!--<p><span class="actual">{{getDiscountedPrice onlineSchool.packTwoPriceVideo onlineSchool.packTwoDiscount}} р</span> вместо <span data-aura-html="onlineSchool.packTwoPriceVideo" contenteditable="false">{{onlineSchool.packTwoPriceVideo}}</span></p>-->
+            <!--</div>-->
+                  <!--{{else}}-->
+            <!--<div class="new-price full">-->
+            <!--<h5>Online курс</h5>-->
+            <!--<p><span class="actual" data-aura-html="onlineSchool.packTwoPriceFull" contenteditable="false">{{onlineSchool.packTwoPriceFull}}</span></p>-->
+            <!--</div>-->
+            <!--<div class="new-price video">-->
+            <!--<h5>Курс видео-лекций</h5>-->
+            <!--<p><span class="actual" data-aura-html="onlineSchool.packTwoPriceVideo" contenteditable="false">{{onlineSchool.packTwoPriceVideo}}</span></p>-->
+            <!--</div>-->
+                  <!--{{/if}}-->
+            <!--<hr/>-->
+            <!--<ul data-aura-html="onlineSchool.packTwoFeatures" contenteditable="false">-->
+            <!--{{{onlineSchool.packTwoFeatures}}}-->
+            <!--</ul>-->
+            <!--<button class="lead" data-type="gold">Выбрать</button>-->
+                  <!--{{#if onlineSchool.packTwoGotDiscount}}-->
+            <!--<div class="discount-cont row">-->
+            <!--<div>-->
+            <!--<p class="discount"><span>скидка</span><span data-aura-html="onlineSchool.packTwoDiscount" contenteditable="false">{{onlineSchool.packTwoDiscount}}</span></p>-->
+            <!--</div>-->
+            <!--{{> counter date=onlineSchool.packTwoDiscountDate field="packTwoDiscountDate"}}-->
+            <!--</div>-->
+                  <!--{{/if}}-->
+            <!--&lt;!&ndash;<div id="star">&ndash;&gt;-->
+            <!--&lt;!&ndash;<span>скидка</span><span>-50%</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                  <!--{{#if userIsAdmin}}-->
+            <!--<input type="checkbox" data-aura-instant-checkbox-simple="onlineSchool.packTwoGotDiscount" {{auraCheckboxIsChecked onlineSchool.packTwoGotDiscount}}/> <span> Есть скидка</span><br/>-->
+                  <!--{{#if onlineSchool.packTwoGotDiscount}}-->
+              <!--<input type="date" data-aura-instant-input="auraPages.onlineSchool.packTwoDiscountDate" data-aura-index="name" value="{{onlineSchool.packTwoDiscountDate}}"/> <span>Новая дата окончания акции</span>-->
+                    <!--{{/if}}-->
+                  <!--{{/if}}-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <div class="pack">
+              <div class="wrap">
+                <h2 data-aura-html="onlineSchool.packThreeName" contenteditable="false">{{{onlineSchool.packThreeName}}}</h2>
+                {{#if onlineSchool.packThreeGotDiscount}}
+                  <div class="new-price full">
+                    <h5>On-line курс</h5>
+                    <p><span class="actual">{{getDiscountedPrice onlineSchool.packThreePriceFull onlineSchool.packThreeDiscount}} р</span> вместо <span data-aura-html="onlineSchool.packThreePriceFull" contenteditable="false">{{onlineSchool.packThreePriceFull}}</span></p>
+                  </div>
+                  <div class="new-price video">
+                    <h5>Курс видео-лекций</h5>
+                    <p><span class="actual">{{getDiscountedPrice onlineSchool.packThreePriceVideo onlineSchool.packThreeDiscount}} р</span> вместо <span data-aura-html="onlineSchool.packThreePriceVideo" contenteditable="false">{{onlineSchool.packThreePriceVideo}}</span></p>
+                  </div>
+                {{else}}
+                  <div class="new-price full">
+                    <h5>On-line курс</h5>
+                    <p><span class="actual" data-aura-html="onlineSchool.packThreePriceFull" contenteditable="false">{{onlineSchool.packThreePriceFull}}</span></p>
+                  </div>
+                  <div class="new-price video">
+                    <h5>Курс видео-лекций</h5>
+                    <p><span class="actual" data-aura-html="onlineSchool.packThreePriceVideo" contenteditable="false">{{onlineSchool.packThreePriceVideo}}</span></p>
+                  </div>
+                {{/if}}
+                <hr/>
+                <ul data-aura-html="onlineSchool.packThreeFeatures" contenteditable="false">
+                  {{{onlineSchool.packThreeFeatures}}}
+                </ul>
+                <button class="lead" data-type="vip">Выбрать</button>
+                {{#if onlineSchool.packThreeGotDiscount}}
+                  <div class="discount-cont row">
+                    <div>
+                      <p class="discount"><span>скидка</span><span data-aura-html="onlineSchool.packThreeDiscount" contenteditable="false">{{onlineSchool.packThreeDiscount}}</span></p>
+                    </div>
+                    <!--{{> counter date=onlineSchool.packThreeDiscountDate field="packThreeDiscountDate"}}-->
+                  </div>
+                {{/if}}
+                <!--<div id="star">-->
+                <!--<span>скидка</span><span>-50%</span>-->
+                <!--</div>-->
+                {{#if userIsAdmin}}
+                  <input type="checkbox" data-aura-instant-checkbox-simple="onlineSchool.packThreeGotDiscount" {{auraCheckboxIsChecked onlineSchool.packThreeGotDiscount}}/> <span> Есть скидка</span><br/>
+                        <!--{{#if onlineSchool.packThreeGotDiscount}}-->
+                  <!--<input type="date" data-aura-instant-input="auraPages.onlineSchool.packThreeDiscountDate" data-aura-index="name" value="{{onlineSchool.packThreeDiscountDate}}"/> <span>Новая дата окончания акции</span>-->
+                        <!--{{/if}}-->
+                {{/if}}
+              </div>
+            </div>
+
+            <!--<div class="pack">-->
+            <!--<div class="wrap">-->
+            <!--<h2 data-aura-html="onlineSchool.packFourName" contenteditable="false">{{onlineSchool.packFourName}}</h2>-->
+                  <!--{{#if onlineSchool.packFourGotDiscount}}-->
+            <!--<div class="new-price full">-->
+            <!--<h5>Online курс</h5>-->
+            <!--<p><span class="actual">{{getDiscountedPrice onlineSchool.packFourPriceFull onlineSchool.packFourDiscount}} р</span> вместо <span data-aura-html="onlineSchool.packFourPriceFull" contenteditable="false">{{onlineSchool.packFourPriceFull}}</span></p>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;<div class="new-price video">&ndash;&gt;-->
+            <!--&lt;!&ndash;<h5>Курс видео-лекций</h5>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p><span class="actual">{{getDiscountedPrice onlineSchool.packFourPriceVideo onlineSchool.packFourDiscount}} р</span> вместо <span data-aura-html="onlineSchool.packFourPriceVideo" contenteditable="false">{{onlineSchool.packFourPriceVideo}}</span></p>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                  <!--{{else}}-->
+            <!--<div class="new-price full">-->
+            <!--<h5>Online курс</h5>-->
+            <!--<p><span class="actual" data-aura-html="onlineSchool.packFourPriceFull" contenteditable="false">{{onlineSchool.packFourPriceFull}}</span></p>-->
+            <!--</div>-->
+            <!--<div class="new-price video">-->
+            <!--<h5>Курс видео-лекций</h5>-->
+            <!--<p><span class="actual" data-aura-html="onlineSchool.packFourPriceVideo" contenteditable="false">{{onlineSchool.packFourPriceVideo}}</span></p>-->
+            <!--</div>-->
+                  <!--{{/if}}-->
+            <!--<hr/>-->
+            <!--<h3 class="special-text" data-aura-html="onlineSchool.packFourSpecial" contenteditable="false">{{onlineSchool.packFourSpecial}}</h3>-->
+            <!--<ul data-aura-html="onlineSchool.packFourFeatures" contenteditable="false">-->
+            <!--{{{onlineSchool.packFourFeatures}}}-->
+
+            <!--</ul>-->
+            <!--<button class="lead" data-type="vip">Выбрать</button>-->
+                  <!--{{#if onlineSchool.packFourGotDiscount}}-->
+            <!--<div class="discount-cont row">-->
+            <!--<div>-->
+            <!--<p class="discount"><span>скидка</span><span data-aura-html="onlineSchool.packFourDiscount" contenteditable="false">{{onlineSchool.packFourDiscount}}</span></p>-->
+            <!--</div>-->
+            <!--{{> counter date=onlineSchool.packFourDiscountDate field="packFourDiscountDate"}}-->
+            <!--</div>-->
+                  <!--{{/if}}-->
+            <!--&lt;!&ndash;<div id="star">&ndash;&gt;-->
+            <!--&lt;!&ndash;<span>скидка</span><span>-50%</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                  <!--{{#if userIsAdmin}}-->
+            <!--<input type="checkbox" data-aura-instant-checkbox-simple="onlineSchool.packFourGotDiscount" {{auraCheckboxIsChecked onlineSchool.packFourGotDiscount}}/> <span> Есть скидка</span><br/>-->
+                  <!--{{#if onlineSchool.packFourGotDiscount}}-->
+              <!--<input type="date" data-aura-instant-input="auraPages.onlineSchool.packFourDiscountDate" data-aura-index="name" value="{{onlineSchool.packFourDiscountDate}}"/> <span>Новая дата окончания акции</span>-->
+                    <!--{{/if}}-->
+                  <!--{{/if}}-->
+            <!--</div>-->
+            <!--</div>-->
+
+          </div>
+
+          <div class="row">
+
+            <div class="pack full-width">
+
+              <div class="wrap">
+
+                <h2 data-aura-html="onlineSchool.packFiveName" contenteditable="false">{{{onlineSchool.packFiveName}}}</h2>
+                <div class="row">
+                  <div class="col-md-6">
+                    <img src="http://d1tvqt3gjtui5j.cloudfront.net/images/{{onlineSchool.packFivePic}}" alt=""/>
+                    <button class="lead hidden-xs" data-type="individual">Выбрать</button>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="new-price full">
+                      <h5>Стоимость курса</h5>
+                      <p><span class="actual" data-aura-html="onlineSchool.packFivePriceFull" contenteditable="false">{{onlineSchool.packFivePriceFull}}</span></p>
+                    </div>
+                    <h4 class="note" data-aura-html="onlineSchool.packFiveNote" contenteditable="false">{{onlineSchool.packFiveNote}}</h4>
+                    <ul data-aura-html="onlineSchool.packFiveFeatures" contenteditable="false">
+                      {{{onlineSchool.packFiveFeatures}}}
+                    </ul>
+                    <button class="lead visible-xs" data-type="individual">Выбрать</button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <hr/>
+
+
+        <section class="school-for-you">
+
+            <h2 data-aura-html="onlineSchool.forYouHeader1" contenteditable="false">{{{onlineSchool.forYouHeader1}}}</h2>
+
+            <div class="container">
+
+                <div class="row">
+
+                    <ul class="col-md-6" data-aura-html="onlineSchool.forYou1" contenteditable="false">
+                        {{{onlineSchool.forYou1}}}
+                    </ul>
+
+                    <ul class="col-md-6" data-aura-html="onlineSchool.forYou2" contenteditable="false">
+                        {{{onlineSchool.forYou2}}}
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <h3 data-aura-html="onlineSchool.forYouHeader2" contenteditable="false">{{{onlineSchool.forYouHeader2}}}</h3>
 
         </section>
 
@@ -1351,15 +1673,31 @@
                     {{{onlineSchool.forms}}}
                 </ul>
 
-                <h4 data-aura-html="onlineSchool.courseContent" contenteditable="false">{{onlineSchool.courseContent}}</h4>
+                <div class="row">
 
-                <ul data-aura-html="onlineSchool.contentText" contenteditable="false">
-                    {{{onlineSchool.contentText}}}
-                </ul>
+                    <div class="col-md-6">
+                        <h4 data-aura-html="onlineSchool.courseContent" contenteditable="false">{{onlineSchool.courseContent}}</h4>
+
+                        <ul data-aura-html="onlineSchool.contentText" contenteditable="false">
+                            {{{onlineSchool.contentText}}}
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 data-aura-html="onlineSchool.courseTopics" contenteditable="false">{{onlineSchool.courseTopics}}</h4>
+
+                        <ol data-aura-html="onlineSchool.topicsText" contenteditable="false">
+                            {{{onlineSchool.topicsText}}}
+                        </ol>
+                    </div>
+
+                </div>
+
 
             </div>
 
         </section>
+
+        <hr/>
         
         <section id="trainer-sec" class="about-trainer">
             
@@ -1367,7 +1705,7 @@
 
                 <h3 data-aura-html="onlineSchool.aboutTrainer" contenteditable="false">{{onlineSchool.aboutTrainer}}</h3>
 
-                <div class="row">
+                <div class="row first-one">
 
                     <aside>
                         <img width="100%" data-aura-image="onlineSchool.trainerPic" src="http://d1tvqt3gjtui5j.cloudfront.net/images/{{onlineSchool.trainerPic}}" />
@@ -1381,6 +1719,24 @@
                 </div>
                 
             </div>
+
+          <div class="container">
+
+            <div class="row second-one">
+
+              <div>
+                <h4 data-aura-html="onlineSchool.trainer2Header" contenteditable="false">{{onlineSchool.trainer2Header}}</h4>
+                <span class="sub-header" data-aura-html="onlineSchool.trainer2WhoIs" contenteditable="false">{{onlineSchool.trainer2WhoIs}}</span>
+                <p data-aura-html="onlineSchool.trainer2Text" contenteditable="false">{{onlineSchool.trainer2Text}}</p>
+              </div>
+
+              <aside>
+                <img width="100%" data-aura-image="onlineSchool.trainer2Pic" src="http://d1tvqt3gjtui5j.cloudfront.net/images/{{onlineSchool.trainer2Pic}}" />
+              </aside>
+
+            </div>
+
+          </div>
             
         </section>
 
@@ -1431,7 +1787,7 @@
 
                 {{#each onlineSchool.classes}}
 
-                    <div class="custom-tab" data-aura-list-item>
+                    <div class="custom-tab" data-aura-list-item data-class-header="{{name}}">
 
 
                         <h3 data-aura-list-html="name" contenteditable="false">{{{name}}}</h3>
@@ -1444,7 +1800,7 @@
                                     <img data-aura-list-image="pic" src="{{storagePath}}/images/{{pic}}" alt="Новости"/>
                                 </div>
 
-                                <div data-aura-list-html="desc" contenteditable="false">
+                                <div class="class-desc" data-aura-list-html="desc" contenteditable="false">
                                     {{{desc}}}
                                 </div>
 
@@ -1470,22 +1826,48 @@
 
         </section>
 
+      <section class="video-about">
+
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-md-10 col-md-offset-1">
+
+              <iframe width="100%" height="480" src="https://www.youtube.com/embed/XX5vjIHif2E" frameborder="0" allowfullscreen></iframe>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
 
         <hr/>
 
+      <section class="reviews-lead">
+        <a class="lead" href="/reviews">Отзывы клиентов</a>
+      </section>
+
+      <section class="reviews-lead dod">
+        <a class="lead" href="/event/dod">Записаться на день открытых дверей 13 августа</a>
+      </section>
+
         <section id="lead-sec" class="lead-button">
 
-            <div class="cost container">
+            <!--<div class="cost container">-->
 
-                <h3 data-aura-html="onlineSchool.coursePrice" contenteditable="false">{{onlineSchool.coursePrice}}</h3>
-                <h4><span data-aura-html="onlineSchool.courseOnlineText" contenteditable="false">{{onlineSchool.courseOnlineText}}</span> <span data-aura-html="onlineSchool.courseOnlinePrice" contenteditable="false">{{onlineSchool.courseOnlinePrice}}</span></h4>
-                <h4><span data-aura-html="onlineSchool.courseVideoText" contenteditable="false">{{onlineSchool.courseVideoText}}</span> <span data-aura-html="onlineSchool.courseVideoPrice" contenteditable="false">{{onlineSchool.courseVideoPrice}}</span></h4>
+                <!--<h3 data-aura-html="onlineSchool.coursePrice" contenteditable="false">{{onlineSchool.coursePrice}}</h3>-->
+                <!--<h4><span data-aura-html="onlineSchool.courseOnlineText" contenteditable="false">{{onlineSchool.courseOnlineText}}</span> <span data-aura-html="onlineSchool.courseOnlinePrice" contenteditable="false">{{onlineSchool.courseOnlinePrice}}</span></h4>-->
+                <!--<h4><span data-aura-html="onlineSchool.courseVideoText" contenteditable="false">{{onlineSchool.courseVideoText}}</span> <span data-aura-html="onlineSchool.courseVideoPrice" contenteditable="false">{{onlineSchool.courseVideoPrice}}</span></h4>-->
 
-            </div>
+            <!--</div>-->
 
-            <div class="container">
-                <button id="send-request" class="lead red" data-group="onlineSchool">Записаться</button>
-            </div>
+            <!--<div class="container">-->
+                <!--<button id="send-request" class="lead red" data-group="onlineSchool">Записаться и оплатить</button>-->
+            <!--</div>-->
 
             <div class="container free-seminar">
                 <p><span data-aura-html="onlineSchool.alsoParticipate" contenteditable="false">{{onlineSchool.alsoParticipate}}</span><a href="{{onlineSchool.freeLink}}"  data-aura-html="onlineSchool.free" contenteditable="false">{{onlineSchool.free}}</a></p>
@@ -1503,7 +1885,104 @@
 
     </section>
 
-    <div id="direction-lead" class="custom-modal _special">
+    <!--<div id="direction-lead" class="custom-modal _special online">-->
+
+        <!--<div class="body">-->
+
+            <!--<h2 class="red">ЗАПИСЬ</h2>-->
+
+            <!--<div class="close-it">&times;</div>-->
+
+            <!--<form id="form">-->
+
+                <!--<input id="direction-user-name" class="required" name="name" type="text" minlength="2" maxlength="50" placeholder="Ваше имя:"/>-->
+                <!--<input id="direction-user-email" class="required email" type="email" name="email" maxlength="80" placeholder="Ваш email:"/>-->
+                <!--<input id="direction-user-phone" class="required" name="tel" type="tel" placeholder="Ваше телефон:"/>-->
+
+            <!--</form>-->
+
+            <!--<input id="isSpecial" type="hidden" value="true"/>-->
+
+            <!--<div class="choose-special-price">-->
+
+                <!--<div class="chckbx {{#if isPayType 'full'}}_active{{/if}}" data-type="full" data-price="5900">-->
+                    <!--<div>-->
+                        <!--<div></div>-->
+                    <!--</div>-->
+                    <!--<p>Полный курс <span>5900р</span></p>-->
+                <!--</div>-->
+
+                <!--<div class="chckbx dinner {{#if isPayType 'month'}}_active{{/if}}" data-type="month" data-price="3200">-->
+                    <!--<div>-->
+                        <!--<div></div>-->
+                    <!--</div>-->
+                    <!--<p>Месяц обучения<span>3200р</span></p>-->
+                <!--</div>-->
+
+                <!--<div class="chckbx {{#if isPayType 'video'}}_active{{/if}}" data-type="video" data-price="4900">-->
+                    <!--<div>-->
+                        <!--<div></div>-->
+                    <!--</div>-->
+                    <!--<p>Видео лекции<span>4900р</span></p>-->
+                <!--</div>-->
+
+                <!--<div class="chckbx" data-type="video" data-price="4900">-->
+                <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<div class="special-price">-->
+
+                <!--<h3><span>Сумма: </span> <span>{{currentPrice}}р</span> <span class="pay-later"><input type="checkbox"/> Оплатить позже</span></h3>-->
+
+            <!--</div>-->
+
+            <!--<div class="verbose">-->
+                <!--{{#if isPayType 'full'}}-->
+
+                    <!--<ul class="online-features">-->
+                        <!--<li>16 On-line занятий</li>-->
+                        <!--<li>8 практических игр</li>-->
+                        <!--<li>дополнительная литература</li>-->
+                        <!--<li>пошаговое руководство по элегантности</li>-->
+                        <!--<li>тест для проверки знаний</li>-->
+                        <!--<li>коучинг в течение месяцев обучения</li>-->
+                    <!--</ul>-->
+
+                <!--{{/if}}-->
+                <!--{{#if isPayType 'month'}}-->
+
+                    <!--<ul class="online-features">-->
+                        <!--<li>16 On-line занятий</li>-->
+                        <!--<li>8 практических игр</li>-->
+                        <!--<li>дополнительная литература</li>-->
+                        <!--<li>пошаговое руководство по элегантности</li>-->
+                        <!--<li>тест для проверки знаний</li>-->
+                        <!--<li>коучинг в течение месяцев обучения</li>-->
+                    <!--</ul>-->
+
+                <!--{{/if}}-->
+                <!--{{#if isPayType 'video'}}-->
+
+                    <!--<ul class="online-features">-->
+                        <!--<li>16 видео-лекций</li>-->
+                        <!--<li>заданий с тренером</li>-->
+                        <!--<li>дополнительная литература</li>-->
+                        <!--<li>пошаговое руководство по элегантности</li>-->
+                        <!--<li>тест для проверки знаний</li>-->
+                        <!--<li>коучинг в течение месяцев обучения</li>-->
+                    <!--</ul>-->
+
+                <!--{{/if}}-->
+            <!--</div>-->
+
+            <!--<button id="send" class="lead" data-title="title">ОТПРАВИТЬ</button>-->
+
+        <!--</div>-->
+
+    <!--</div>-->
+
+    <div id="direction-lead" class="custom-modal _special online">
 
         <div class="body">
 
@@ -1516,91 +1995,69 @@
                 <input id="direction-user-name" class="required" name="name" type="text" minlength="2" maxlength="50" placeholder="Ваше имя:"/>
                 <input id="direction-user-email" class="required email" type="email" name="email" maxlength="80" placeholder="Ваш email:"/>
                 <input id="direction-user-phone" class="required" name="tel" type="tel" placeholder="Ваше телефон:"/>
+                <input id="direction-user-city" type="text"/>
 
             </form>
 
             <input id="isSpecial" type="hidden" value="true"/>
 
-            <div class="choose-special-price">
+            {{#if gotChoice}}
 
-                <div class="chckbx {{#if isPayType 'full'}}_active{{/if}}" data-type="full" data-price="18000">
+            <div class="choose-special-price {{onlinePackType}}">
+
+                <div class="chckbx {{#if isPayType 'full'}}_active{{/if}}" data-type="full" data-price="{{onlinePackFullPrice}}">
                     <div>
                         <div></div>
                     </div>
-                    <p>Полный курс <span>18000р</span></p>
+                    <p>Online курс <span>{{onlinePackFullPrice}}р</span></p>
                 </div>
 
-                <div class="chckbx dinner {{#if isPayType 'month'}}_active{{/if}}" data-type="month" data-price="11000">
+                <div class="chckbx dinner {{#if isPayType 'video'}}_active{{/if}}" data-type="video" data-price="{{onlinePackVideoPrice}}">
                     <div>
                         <div></div>
                     </div>
-                    <p>Месяц обучения<span>11000р</span></p>
+                    <p>Видео лекций<span>{{onlinePackVideoPrice}}р</span></p>
                 </div>
 
-                <div class="chckbx {{#if isPayType 'video'}}_active{{/if}}" data-type="video" data-price="11000">
-                    <div>
-                        <div></div>
-                    </div>
-                    <p>Видео лекции<span>11000р</span></p>
-                </div>
+                <!--<div class="chckbx {{#if isPayType 'video'}}_active{{/if}}" data-type="video" data-price="4900">-->
+                    <!--<div>-->
+                        <!--<div></div>-->
+                    <!--</div>-->
+                    <!--<p>Видео лекции<span>4900р</span></p>-->
+                <!--</div>-->
 
-                <div class="chckbx" data-type="video" data-price="11000">
-                </div>
+                <!--<div class="chckbx" data-type="video" data-price="4900">-->
+                <!--</div>-->
 
+            </div>
+
+            {{/if}}
+
+            <div class="verbose hidden-xs">
+                <h2 class="{{onlinePackType}}">{{onlinePackName}}</h2>
             </div>
 
             <div class="special-price">
 
-                <h3><span>Сумма: </span> <span>{{currentPrice}}р</span> <span class="pay-later"><input type="checkbox"/> Оплатить позже</span></h3>
+                <!--<h3><span>Сумма: </span> <span>{{currentPrice}}р</span> <span class="pay-later"><input type="checkbox"/> Оплатить позже</span></h3>-->
+                <h3><span>Сумма: </span> <span>{{currentPrice}}р</span></h3>
 
             </div>
 
-            <div class="verbose">
-                {{#if isPayType 'full'}}
-
-                    <ul class="online-features">
-                        <li>16 On-line занятий</li>
-                        <li>8 практических игр</li>
-                        <li>дополнительная литература</li>
-                        <li>пошаговое руководство по элегантности</li>
-                        <li>тест для проверки знаний</li>
-                        <li>коучинг в течение месяцев обучения</li>
-                    </ul>
-
-                {{/if}}
-                {{#if isPayType 'month'}}
-
-                    <ul class="online-features">
-                        <li>16 On-line занятий</li>
-                        <li>8 практических игр</li>
-                        <li>дополнительная литература</li>
-                        <li>пошаговое руководство по элегантности</li>
-                        <li>тест для проверки знаний</li>
-                        <li>коучинг в течение месяцев обучения</li>
-                    </ul>
-
-                {{/if}}
-                {{#if isPayType 'video'}}
-
-                    <ul class="online-features">
-                        <li>16 видео-лекций</li>
-                        <li>заданий с тренером</li>
-                        <li>дополнительная литература</li>
-                        <li>пошаговое руководство по элегантности</li>
-                        <li>тест для проверки знаний</li>
-                        <li>коучинг в течение месяцев обучения</li>
-                    </ul>
-
-                {{/if}}
-            </div>
-
-            <button id="send" class="lead" data-title="title">ОТПРАВИТЬ</button>
+            <button id="send" class="lead" data-title="title">ЗАПИСАТЬСЯ</button>
 
         </div>
 
     </div>
 
+
     <div class="modal-overlay"></div>
+
+    <div class="wait-for-pay">
+        <h3>Подождите немного</h3>
+        <h4>Сейчас мы переведем вас на страницу оплаты</h4>
+
+    </div>
 
     <div class="sccss">
         <div class="body">
@@ -1617,6 +2074,16 @@
 
 <template name="facebookShare">
 
-    <div class="fb-share-button" data-href="{{link}}" data-layout="button_count" data-mobile-iframe="true"></div>
+    <button class="btn btn-xs" style="background-color: #3B5998; color: white;"><i class="fa fa-facebook"></i> Поделиться</button>
 
+</template>
+
+
+<template name="counter">
+    <div class="counter row">
+        <h5>До конца акции <strong>({{dateVerb}})</strong> осталось:</h5>
+        <div><span>{{days}}</span><span>{{daysHeader}}</span></div>
+        <div><span>{{hours}}</span><span>{{hoursHeader}}</span></div>
+        <div><span>{{minutes}}</span><span>{{minutesHeader}}</span></div>
+    </div>
 </template>

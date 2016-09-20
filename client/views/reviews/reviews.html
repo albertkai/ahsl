@@ -1,0 +1,26 @@
+<template name="reviews">
+
+  <div id="reviews" class="wrap">
+
+    <div class="container">
+
+      <h2>Отзывы клиентов {{#if userIsAdmin}}<button class="toggle-small"><i class="fa fa-arrows-v"></i></button>{{/if}}</h2>
+
+      <div class="reviews">
+        {{#each reviews}}
+          <div class="item">
+            <img src="http://d1tvqt3gjtui5j.cloudfront.net/images/{{pic}}" alt=""/>
+            {{#if userIsAdmin}}<button class="remove"><i class="fa fa-times"></i></button>{{/if}}
+          </div>
+        {{/each}}
+        <div class="item add">
+          <strong>+</strong> Добавить отзыв
+          <input id="add-review" type="file"/>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</template>

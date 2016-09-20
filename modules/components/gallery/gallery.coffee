@@ -8,7 +8,7 @@ if Meteor.isClient
     console.log 'tracker runned'
     if AuraGallery.findOne()
       if initial
-        Session.set 'auraGalleryCurrentAlbum', AuraGallery.findOne()._id
+        Session.set 'auraGalleryCurrentAlbum', AuraGallery.findOne({}, {sort: {order: 1}})._id
         initial = false
 
   Tracker.autorun ->

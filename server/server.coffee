@@ -51,6 +51,8 @@ Meteor.methods {
 
       News.remove {'_id': id}
 
+
+
   addRequest: (event, name, phone, email, type, eventType, eventDate, eventTime, place, requestId, additional, amount)->
 
     console.log 'saving request'
@@ -88,7 +90,7 @@ Meteor.methods {
 
   sendRequestEmail: (header, text, to)->
 
-    if to? then toAddress = to else toAddress = ["info.sisi-elizabeth@yandex.ru", "info@sisi-elizabeth.com", "maria-skr-rt@mail.ru"]
+    if to? then toAddress = to else toAddress = ["info@sisi-elizabeth.com", "maria-skr-rt@mail.ru", "albertkai@me.com"]
 
     Email.send({
       from: "info@ladies-school.com",
@@ -96,6 +98,20 @@ Meteor.methods {
       subject: header,
       text: text
     })
+
+  addReview: (pic)->
+
+    if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+      page = AuraPages.findOne({name: 'reviews'})
+      reviews = page.reviews
+      reviews.push({pic: pic, order: reviews.length + 1, _id: Random.id()})
+      AuraPages.update page._id, {$set: {reviews: reviews}}
+
+  updateReviews: (reviews)->
+
+    if Roles.userIsInRole(Meteor.user(), ['owner', 'admin'])
+      page = AuraPages.findOne({name: 'reviews'})
+      AuraPages.update page._id, {$set: {reviews: reviews}}
 
 
   sendTransactionalEmail: (options)->
@@ -128,12 +144,33 @@ Meteor.methods {
       true
 
 
+  extendDiscount: (field)->
+
+    console.log('field')
+
+    currentDiscount = AuraPages.findOne({name: 'onlineSchool'})[field]
+    if currentDiscount < Date.now()
+      query = {}
+      query[field] = currentDiscount + 172800000
+      AuraPages.update({name: 'onlineSchool'}, {$set: query})
+
+
+
   sendOnlineTransactionalEmail: (options)->
 
     console.log 'sending transactional email'
 
     header = 'Подтверждение заказа на ladies-school.com'
-    html = '<h2>' + options.name + ', доброго времени суток!</h2><p>Благодарим, за то, что вы сделали заявку на онлайн обучение.</p><p>Продолжительность курса - 2 месяца.</p><p>Наш менеджер свяжется с вами для уточнения деталей</p><p>Благодарим Вас за обращение в «Австрийскую Высшую Школу Этикета»!</p>'
+    if options.pack is 'standard'
+      html = '<h2>' + options.name + ', доброго времени суток!</h2><p>Благодарим Вас за покупку Начального курса</p><p>Наш менеджер свяжется с вами для уточнения деталей</p><p>Благодарим Вас за обращение в «Австрийскую Высшую Школу Этикета»!</p>'
+    else if options.pack is 'gold'
+      html = '<h2>' + options.name + ', доброго времени суток!</h2><p>Благодарим, за то, что вы сделали заявку на приобретение пакета "Gold".</p><p>Наш менеджер свяжется с вами для уточнения деталей</p><p>Благодарим Вас за обращение в «Австрийскую Высшую Школу Этикета»!</p>'
+    if options.pack is 'platinum'
+      html = '<h2>' + options.name + ', доброго времени суток!</h2><p>Благодарим Вас за покупку Базового курса.</p><p>Наш менеджер свяжется с вами для уточнения деталей</p><p>Благодарим Вас за обращение в «Австрийскую Высшую Школу Этикета»!</p>'
+    if options.pack is 'vip'
+      html = '<h2>' + options.name + ', доброго времени суток!</h2><p>Благодарим, за то, что вы сделали заявку на приобретение пакета "VIP".</p><p>Наш менеджер свяжется с вами для уточнения деталей</p><p>Благодарим Вас за обращение в «Австрийскую Высшую Школу Этикета»!</p>'
+    if options.pack is 'individual'
+      html = '<h2>' + options.name + ', доброго времени суток!</h2><p>Благодарим Вас за покупку Индивидуального курса.</p><p>Наш менеджер свяжется с вами для уточнения деталей</p><p>Благодарим Вас за обращение в «Австрийскую Высшую Школу Этикета»!</p>'
     Email.send({
       from: "info@ladies-school.com",
       to: [options.email],

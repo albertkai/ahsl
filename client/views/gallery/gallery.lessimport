@@ -121,18 +121,21 @@
   .list-albums{
 
     >div{
-      -moz-column-width: 14em;
-      -webkit-column-width: 14em;
-      -moz-column-gap: 1em;
-      -webkit-column-gap: 1em;
+      //-moz-column-width: 14em;
+      //-webkit-column-width: 14em;
+      //column-width: 14em;
+      //-moz-column-gap: 1em;
+      //-webkit-column-gap: 1em;
+      //column-gap: 1em;
       .item{
         display: inline-block;
         margin:  0.25rem;
         padding:  1rem;
         width:  100%;
+        height: 420px;
         cursor: pointer;
         margin: 15px 0;
-//        .make-md-column(3);
+        .make-md-column(3);
 
         &#gallery-edit-button{
           position: relative;

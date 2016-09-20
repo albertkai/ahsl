@@ -80,7 +80,7 @@ Template.eventPage.helpers {
 
 Template.eventPage.events {
 
-  'click .checkin, click #toggle-special': (e)->
+  'click .checkin, click #toggle-special, click #toggle-special-subscribe': (e)->
 
     $('.custom-modal').addClass('_visible')
     $('.modal-overlay').addClass('_visible')
@@ -204,13 +204,7 @@ Template.eventPage.events {
 
           console.log 'Starting transactional machinery'
 
-          if type is 'card' or type is 'webmoney'
-
-            Meteor.call 'payment', type, requestId, amount, (err, res)->
-
-              window.location.href = res
-
-          else
+          if @isSpecialSubscribe
 
             console.log 'Starting simple sending process'
 
@@ -244,6 +238,49 @@ Template.eventPage.events {
                   $('.sccss').removeClass('_shifted')
                   $('.modal-overlay').removeClass '_visible'
                 , 4000
+
+          else
+
+            if type is 'card' or type is 'webmoney'
+
+              Meteor.call 'payment', type, requestId, amount, (err, res)->
+
+                window.location.href = res
+
+            else
+
+              console.log 'Starting simple sending process'
+
+              NProgress.start()
+
+              options = {
+                title: title
+                name: name
+                phone: phone
+                email: email
+                type: type
+                date: eventDate
+                place: place
+                time: eventTime
+              }
+
+              console.log 'yoo'
+
+              Meteor.call 'sendTransactionalEmail', options, (err, res)->
+
+                console.log 'sending transactional email'
+
+                if err
+                  console.log err
+                else
+                  NProgress.done()
+                  $('.custom-modal').addClass('_shifted')
+                  $('.sccss').addClass('_shifted')
+                  Meteor.setTimeout ->
+                    $('.custom-modal').removeClass('_shifted').removeClass('_visible')
+                    $('.sccss').removeClass('_shifted')
+                    $('.modal-overlay').removeClass '_visible'
+                  , 4000
 
 
     else

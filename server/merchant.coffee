@@ -9,7 +9,7 @@ Meteor.methods {
       f = new Future()
 
       payOnlineClient = new PayOnline {
-        merchantId: "66888",
+        merchantId: "74663",
         privateSecurityKey: process.env.PRIVATE_SECURITY_KEY
       }
 
