@@ -144,7 +144,7 @@
                     </div>
                         {{else}}
 
-                        <button id="toggle-special-subscribe" class="lead">Записаться</button>
+                        <button id="toggle-special-subscribe" class="lead">{{#if isSpecialSubscribePayment}}Записаться{{else}}Оплатить{{/if}}</button>
 
                         {{/unless}}
                     {{/if}}
@@ -209,6 +209,7 @@
                         <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.mainPage" {{auraCheckboxIsChecked mainPage}}/> <span> Показывать на главной</span><br/>
                         <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.isSpecial" {{auraCheckboxIsChecked isSpecial}}/> <span> Специальное событие</span><br/>
                         <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.isSpecialSubscribe" {{auraCheckboxIsChecked isSpecialSubscribe}}/> <span> Специальное событие запись</span>
+                        <input type="checkbox" data-aura-instant-checkbox="events.{{_id}}.isSpecialSubscribePayment" {{auraCheckboxIsChecked isSpecialSubscribePayment}}/> <span> Запись с оплатой</span>
                     </div>
 
                     {{/if}}
@@ -279,20 +280,24 @@
 
             {{/if}}
 
-            {{#unless isSpecialSubscribe}}
+            <!--{{#if isSimplePrice}}-->
+              <!--<p class="price">{{price}}</p>-->
+            <!--{{/if}}-->
 
-            <h4>Способ оплаты</h4>
+            <!--{{#unless isSpecialSubscribe}}-->
 
-            <div class="payment-method">
+            {{#unless isSpecialSubscribePayment}}<h4>Способ оплаты</h4>{{/unless}}
 
-                <div class="rdo _active" data-value="cash1">
+            <div class="payment-method {{#if isSpecialSubscribePayment}}hiddn{{/if}}">
+
+                <div class="rdo" data-value="cash1">
                     <div>
                         <div></div>
                     </div>
                     <p>Наличными курьеру</p>
                 </div>
 
-                <div class="rdo" data-value="card">
+                <div class="rdo _active" data-value="card">
                     <div>
                         <div></div>
                     </div>
@@ -329,9 +334,15 @@
 
             </div>
 
-            {{/unless}}
+            <!--{{/unless}}-->
 
-            <button id="send" class="lead" data-title="title">ОТПРАВИТЬ</button>
+            <div class="special-price">
+
+              <h3><span>Сумма: </span> <span>{{price}}</span> </h3>
+
+            </div>
+
+            <button id="send" class="lead" data-title="title">{{#if isSpecialSubscribePayment}}ЗАПИСАТЬСЯ{{else}}ОТПРАВИТЬ{{/if}}</button>
 
         </div>
 

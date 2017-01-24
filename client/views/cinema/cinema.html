@@ -16,10 +16,16 @@
 
             <div class="container">
 
+                <div class="share">
+                  <div id="vk_share_button"></div>
+                  {{>facebookShare img=cinema.mainPic desc='Кинопробы "Турист"'}}
+                  <!--{{>shareit}}-->
+                </div>
+
                 <div class="row">
 
                     <div>
-                        <p data-aura-html="cinema.mainDesc" contenteditable="false">{{cinema.mainDesc}}</p>
+                        <p data-aura-html="cinema.mainDesc" contenteditable="false">{{{cinema.mainDesc}}}</p>
                     </div>
                     <aside>
                         <span class="quots">“</span>
@@ -37,6 +43,8 @@
         <section class="girls">
 
             <div class="disc container" data-aura-html="cinema.disc" contenteditable="false">{{{cinema.disc}}}</div>
+
+            <hr />
 
             {{#each girls}}
 
@@ -67,7 +75,10 @@
                         </div>
                         {{/if}}
 
-                        <p class="votes-count"><span>Всего голосов:</span><span>{{votes}}</span></p>
+                        <!--<p class="votes-count"><span>Голоса жюри:</span><span>{{juri}}</span></p>-->
+                        <!--<p class="votes-count"><span>Голоса пользователей:</span><span>{{votes}}</span></p>-->
+
+                        <!--<button class="lead">Проголосовать</button>-->
 
                         <hr/>
 
@@ -101,5 +112,7 @@
         </div>
 
     </section>
+
+  <script>document.getElementById('vk_share_button').innerHTML = VK.Share.button('{{location}}', {type: 'button'})</script>
 
 </template>

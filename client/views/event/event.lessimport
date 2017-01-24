@@ -14,6 +14,12 @@
     z-index: 1000;
   }
 
+  img.aura-centered {
+    width: 100%;
+    box-shadow: none !important;
+    z-index: 1000;
+  }
+
   .select2-container{
     width: 90% !important;
     margin: 5% !important;
@@ -506,6 +512,11 @@
   .translate(0, -600px);
   .payment-method{
     margin: 12px;
+    &.hiddn {
+      opacity: 0;
+      visibility: hidden;
+      margin-top: -50px !important;
+    }
   }
   .disclaimer{
     color: @brand-primary;

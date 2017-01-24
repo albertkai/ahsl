@@ -312,7 +312,8 @@ Meteor.methods {
     ip = @connection.clientAddress
     console.log('Voting for ' + id)
     console.log('IP ' + ip)
-    if Voted.find({ip: ip}).count() is 0
+    if true
+#    if Voted.find({ip: ip}).count() is 0 or !ip
       console.log 'Can vote'
       Girls.update id, {$inc: {votes: 1}}
 

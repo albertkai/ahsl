@@ -33,12 +33,14 @@ Template.cinema.events {
   'click .lead': (e)->
     id = Blaze.getData(e.target)._id
     console.log id
-    unless localStorage['ahslVoted']?
+    if navigator
       fingerprint = navigator.appVersion + '//' + navigator.productSub + '//' + navigator.userAgent
+    unless localStorage.getItem('cinemaVote')
       Meteor.call 'vote', id, fingerprint, (err, voted)->
         if err?
           console.log err
         else
+          localStorage.setItem('cinemaVote', id)
           if voted
             console.log 'Voted'
             $('#voted').addClass '_shifted'
@@ -47,7 +49,6 @@ Template.cinema.events {
               $('#voted').removeClass '_shifted'
               $('.modal-overlay').removeClass('_visible')
             , 2800
-            localStorage.setItem('ahslVoted', id)
           else
             $('#cant-vote').addClass '_shifted'
             $('.modal-overlay').addClass('_visible')

@@ -89,6 +89,10 @@ Template.eventPage.events {
 
       Session.set('chosenPrice', 5900)
 
+    else if @isSpecialSubscribe
+
+      Session.set('chosenPrice', parseInt(@price, 10))
+
     else
 
       Session.set('chosenPrice', parseInt $(e.currentTarget).siblings('.price').html().replace(/\D+/, ''))
@@ -204,7 +208,8 @@ Template.eventPage.events {
 
           console.log 'Starting transactional machinery'
 
-          if @isSpecialSubscribe
+#          if @isSpecialSubscribe
+          if false
 
             console.log 'Starting simple sending process'
 

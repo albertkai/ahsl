@@ -570,18 +570,18 @@ Template.onlineSchool.rendered = ->
 
   $('#direction-user-phone').inputmask("+7(999)999-99-99")
 
-  Deps.autorun ->
-
-    if Session.get('schedule') is 'loaded'
-      console.log 'schedule loaded'
-      if $('.direction-onlineSchool').length > 0
-        Meteor.setTimeout ->
-          new Calendar('#group-schedule', {
-            group: 'onlineSchool_morning'
-            drawGroups: false
-          })
-        , 1500
-        DirCtrl.scheduleLoaded = true
+#  Deps.autorun ->
+#
+#    if Session.get('schedule') is 'loaded'
+#      console.log 'schedule loaded'
+#      if $('.direction-onlineSchool').length > 0
+#        Meteor.setTimeout ->
+#          new Calendar('#group-schedule', {
+#            group: 'onlineSchool_morning'
+#            drawGroups: false
+#          })
+#        , 1500
+#        DirCtrl.scheduleLoaded = true
 
   $('.custom-tab').first().addClass '_active'
   $('.classes-header .row > div').first().addClass '_active'
@@ -659,10 +659,10 @@ Template.onlineSchool.events {
     $('.modal-overlay').addClass('_visible')
 
   'click .pack ul li': (e)->
-    unless Session.get('admin.editMode') is 'true'
+    unless Session.get('admin.editMode')
       headerName = $(e.currentTarget).html().trim()
       console.log(headerName)
-      $classTab = $('[data-class-header="' + headerName + '"]')
+      $classTab = $("[data-class-header='" + headerName + "']")
       console.log($classTab)
       imgSrc = $classTab.find('img').attr('src')
       desc = $classTab.find('.class-desc').html()

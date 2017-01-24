@@ -51,6 +51,15 @@ Router.route 'teens', {
       @render()
 }
 
+Router.route 'lessons', {
+  layoutTemplate: 'innerLayout'
+  waitOn: ->
+#      Meteor.subscribe('schedules')
+  action: ->
+    if @ready()
+      @render()
+}
+
 Router.route 'summer-school', {
   layoutTemplate: 'innerLayout'
   template: 'summerSchool'

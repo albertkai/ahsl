@@ -1,7 +1,7 @@
 module.exports = {
   servers: {
     one: {
-      host: '52.28.7.104',
+      host: '35.156.212.219',
       username: 'ubuntu',
       pem: '/Users/user/Dropbox/keys/aws/ahsl.pem'
       // password:
@@ -19,7 +19,7 @@ module.exports = {
     //  serverOnly: true
     //},
     env: {
-      ROOT_URL: 'http://ec2-52-28-7-104.eu-central-1.compute.amazonaws.com',
+      ROOT_URL: 'http://ec2-35-156-212-219.eu-central-1.compute.amazonaws.com',
       MONGO_URL: 'mongodb://localhost:27017/ahsl_db'
     },
 
