@@ -625,6 +625,116 @@ Template.onlineSchool.helpers {
 
 }
 
+Session.setDefault('mapLoaded', false)
+
+Template.threeDays.rendered = ->
+
+  console.log 'children rendered'
+
+  Meteor.defer ->
+    $('.wrap').addClass '_animated'
+    $('body').stellar()
+
+  Deps.autorun ->
+    if Session.get('schedule') is 'loaded'
+      console.log 'schedule loaded'
+      if $('.direction-children').length > 0
+        new Calendar('#group-schedule', {
+          group: 'threeDays'
+          drawGroups: false
+        })
+
+  Meteor.setTimeout ->
+    $('.classes-header').find('.lead').first().trigger('click')
+  , 1000
+
+  $('#direction-user-phone').inputmask("+7(999)999-99-99")
+
+  $('.custom-tab').first().addClass '_active'
+  $('.classes-header .row > div').first().addClass '_active'
+
+
+
+Template.threeDays.events {
+
+  'click .classes-header .row > div button': (e)->
+
+
+    index = $(e.currentTarget).parent().index()
+    $(e.currentTarget).addClass('_active').parent().siblings().find('button').removeClass('_active')
+    $('.custom-tab').removeClass('_active')
+    $('.custom-tab').eq(index).addClass('_active')
+
+  'click #send-request': (e)->
+    group = $(e.currentTarget).data('group')
+    $('.custom-modal').addClass('_visible')
+    $('.modal-overlay').addClass('_visible')
+
+  'click #send': (e)->
+
+    re = re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if $('#direction-user-name').val() isnt '' and $('#direction-user-phone').val() isnt '' and re.test($('#direction-user-email').val())
+
+      console.log 'sending request'
+
+      if $('#direction-user-name').val() is ''
+        $('#direction-user-name').addClass '_invalid'
+      else
+        $('#direction-user-name').removeClass('_invalid').addClass '_valid'
+      if !re.test($('#direction-user-email').val())
+        $('#direction-user-email').addClass '_invalid'
+      else
+        $('#direction-user-email').removeClass('_invalid').addClass '_valid'
+      if $('#direction-user-phone').val() is ''
+        $('#direction-user-phone').addClass '_invalid'
+      else
+        $('#direction-user-phone').removeClass('_invalid').addClass '_valid'
+
+      title = 'Запись в группу: ' + $(e.currentTarget).data('group')
+      name = $('#direction-user-name').val()
+      phone = $('#direction-user-phone').val()
+      email = $('#direction-user-email').val()
+
+      Meteor.call 'addRequest', title, name, phone, email, (err, res)->
+
+        if err
+          console.log err
+        else
+
+          text = 'Имя: ' + name + ' \n Телефон: ' + phone + ' \n' + ' Почта: ' + email
+
+          Meteor.call 'sendRequestEmail', title, text, (error, response)->
+
+            if err
+              console.log err
+            else
+              $('.custom-modal').addClass('_shifted')
+              $('.sccss').addClass('_shifted')
+              Meteor.setTimeout ->
+                $('.custom-modal').removeClass('_shifted').removeClass('_visible')
+                $('.sccss').removeClass('_shifted')
+                $('.modal-overlay').removeClass '_visible'
+              , 2000
+
+    else
+
+      if $('#direction-user-name').val() is ''
+        $('#direction-user-name').addClass '_invalid'
+      else
+        $('#direction-user-name').removeClass('_invalid').addClass '_valid'
+      if !re.test($('#direction-user-email').val())
+        $('#direction-user-email').addClass '_invalid'
+      else
+        $('#direction-user-email').removeClass('_invalid').addClass '_valid'
+      if $('#direction-user-phone').val() is ''
+        $('#direction-user-phone').addClass '_invalid'
+      else
+        $('#direction-user-phone').removeClass('_invalid').addClass '_valid'
+
+}
+
+
 Template.onlineSchool.events {
 
   'click .classes-header .row > div button': (e)->

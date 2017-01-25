@@ -684,3 +684,8 @@ Schedules.allow {
 #      Schedules.update schedule._id,  {$set: {times: ['12:00 - 13:00']}}
 #    else if schedule.group is 'onlineSchool_weekend'
 #      Schedules.update schedule._id,  {$set: {times: ['13:00 - 14:00', '18:00 - 19:00']}}
+
+unless Schedules.findOne({ group: 'threeDays' })
+  Schedules.insert
+    group: 'threeDays'
+    schedule: {}

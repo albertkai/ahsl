@@ -21,6 +21,16 @@ Router.route 'children', {
       @render()
 }
 
+Router.route 'three-days', {
+  layoutTemplate: 'innerLayout'
+  template: 'threeDays'
+  waitOn: ->
+#      Meteor.subscribe('schedules')
+  action: ->
+    if @ready()
+      @render()
+}
+
 Router.route 'reviews', {
   layoutTemplate: 'innerLayout'
   waitOn: ->

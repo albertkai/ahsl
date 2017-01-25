@@ -34,6 +34,9 @@ if Meteor.isClient
   Template.registerHelper 'children', ->
     AuraPages.findOne({name: 'children'})
 
+  Template.registerHelper 'threeDays', ->
+    AuraPages.findOne({name: 'threeDays'})
+
   Template.registerHelper 'teens', ->
     AuraPages.findOne({name: 'teens'})
 

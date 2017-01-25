@@ -2072,6 +2072,253 @@
 
 </template>
 
+<template name="threeDays">
+
+  <section id="direction" class="wrap direction-threeDays">
+
+    <section class="top" data-aura-image-background="threeDays.mainPic" style="background-image: url(http://d1tvqt3gjtui5j.cloudfront.net/images/{{threeDays.mainPic}});" data-stellar-background-ratio=".7">
+
+      <div class="container">
+
+        <h1 data-aura-html="threeDays.heading" contenteditable="false">
+          {{{threeDays.heading}}}
+        </h1>
+
+      </div>
+
+    </section>
+
+    <section class="about">
+
+      <div class="container">
+
+        <div class="row">
+
+          <div data-aura-html="threeDays.mainDesc" contenteditable="false">
+            {{{threeDays.mainDesc}}}
+          </div>
+          <aside>
+            <span class="quots">“</span>
+            <span class="quots">“</span>
+            <p data-aura-html="threeDays.mainQuot" contenteditable="false">{{{threeDays.mainQuot}}}</p>
+
+          </aside>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <hr class="hidden-sm hidden-xs"/>
+
+    <section class="classes-header">
+
+      <h2 data-aura-html="threeDays.classesHeader" contenteditable="false">{{{threeDays.classesHeader}}}</h2>
+
+      <div class="container">
+
+        <div class="row" data-aura-list="threeDays.classes">
+
+          {{#each threeDays.classes}}
+
+            <div data-aura-list-item>
+              <button class="lead">
+                <div>
+                  <p data-aura-list-html="name">{{{name}}}</p>
+                </div>
+                {{#if userIsAdmin}}
+                  <span class="remove" data-aura-list-remove><i class="fa fa-times"></i></span>
+                {{/if}}
+              </button>
+            </div>
+
+          {{/each}}
+
+          {{#if userIsAdmin}}
+            <div>
+              <button id="add-item" class="lead" data-aura-list-add data-aura-sample-text="Новый предмет">
+                <div>
+                  +
+                </div>
+              </button>
+            </div>
+          {{/if}}
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="classes-body">
+
+      <div class="shadow"></div>
+
+      <div class="tab-cont" data-aura-list="threeDays.classes">
+
+        {{#each threeDays.classes}}
+
+          <div class="custom-tab" data-aura-list-item>
+
+
+            <h3 data-aura-list-html="name" contenteditable="false">{{{name}}}</h3>
+
+            <div class="container">
+
+              <div class="row">
+
+                <div>
+                  <img data-aura-list-image="pic" src="{{storagePath}}/images/{{pic}}" alt="Новости"/>
+                </div>
+
+                <div data-aura-list-html="desc" contenteditable="false">
+                  {{{desc}}}
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        {{/each}}
+
+      </div>
+
+    </section>
+
+    <hr/>
+
+    <section class="schedule">
+
+      <h2>Расписание</h2>
+
+      <div id="group-schedule"></div>
+
+    </section>
+
+    <!--<hr/>-->
+
+    <!--<section class="teachers">-->
+
+    <!--<h2>Преподователи</h2>-->
+
+    <!--<div class="container">-->
+
+    <!--<div class="row">-->
+    <!--<div class="teacher row">-->
+    <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+    <!--<div>-->
+    <!--<p class="name">Альбина</p>-->
+    <!--<p class="second-name">Григорьева</p>-->
+    <!--<p class="classes">Стилистика</p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="teacher row">-->
+    <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+    <!--<div>-->
+    <!--<p class="name">Альбина</p>-->
+    <!--<p class="second-name">Григорьева</p>-->
+    <!--<p class="classes">Стилистика</p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="teacher row">-->
+    <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+    <!--<div>-->
+    <!--<p class="name">Альбина</p>-->
+    <!--<p class="second-name">Григорьева</p>-->
+    <!--<p class="classes">Стилистика</p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="teacher row">-->
+    <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+    <!--<div>-->
+    <!--<p class="name">Альбина</p>-->
+    <!--<p class="second-name">Григорьева</p>-->
+    <!--<p class="classes">Стилистика</p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="teacher row">-->
+    <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+    <!--<div>-->
+    <!--<p class="name">Альбина</p>-->
+    <!--<p class="second-name">Григорьева</p>-->
+    <!--<p class="classes">Стилистика</p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="teacher row">-->
+    <!--<div><img src="/img/teacher_pic.jpg" alt="Эльвира Ивановна"/></div>-->
+    <!--<div>-->
+    <!--<p class="name">Альбина</p>-->
+    <!--<p class="second-name">Григорьева</p>-->
+    <!--<p class="classes">Стилистика</p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--</div>-->
+
+    <!--</section>-->
+
+    <hr/>
+
+    <section class="lead-button">
+
+      <div class="container">
+        <button id="send-request" class="lead red" data-group="threeDays">Записаться</button>
+        <p>Наш менеджер свяжется с вами в ближайшие 5 минут</p>
+      </div>
+
+    </section>
+
+  </section>
+
+  <div id="direction-lead" class="custom-modal">
+
+    <div class="body">
+
+      <h2 class="red">ЗАПИСЬ</h2>
+
+      <div class="close-it">&times;</div>
+
+      <form id="form" action="">
+
+        <input id="direction-user-name" type="text" minlength="2" maxlength="50" placeholder="Ваше имя:" required/>
+        <input id="direction-user-email" type="email" name="email" maxlength="80" placeholder="Ваш email:" required/>
+        <input id="direction-user-phone" name="tel" type="tel" placeholder="Ваше телефон:" required/>
+
+      </form>
+
+      <!--<div class="types">-->
+
+      <!--<div id="day1" class="item">Международный этикет</div>-->
+      <!--<div id="day2" class="item">Столовый этикет</div>-->
+      <!--<div id="diner" class="item">Гала-ужин</div>-->
+      <!--<span style="clear: both; display: block;"></span>-->
+
+      <!--</div>-->
+
+      <button id="send" class="lead" data-group="children">ОТПРАВИТЬ</button>
+
+    </div>
+
+  </div>
+
+  <div class="modal-overlay"></div>
+
+  <div class="sccss">
+    <div class="body">
+      <h3 class="red">
+        Ваша заявка отправлена!
+      </h3>
+      <h4>Мы свяжемся с вами в ближайшее время</h4>
+    </div>
+
+  </div>
+
+</template>
+
 
 <template name="facebookShare">
 
